@@ -1,22 +1,19 @@
-const mysql = require('mysql2');
-const dotenv = require('dotenv');
-
-dotenv.config();
+const mysql = require('mysql');
 
 const db = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',
-  database: process.env.DB_NAME || 'crud-php-app',
-  port: process.env.DB_PORT || 3306
+    host: 'localhost',       // Servidor local
+    user: 'root',            // Usuario de MySQL
+    password: '',            // Contraseña 
+    database: 'crud-php-app' // Nombre de la base de datos
 });
 
 db.connect(err => {
-  if (err) {
-    console.error('Error connecting to the database:', err.stack);
-    return;
-  }
-  console.log(`Connected to the database at ${process.env.DB_HOST || 'localhost'}`);
+    if (err) {
+        console.error('Error conectando a la base de datos:', err);
+    } else {
+        console.log('Conectado a la base de datos');
+    }
 });
 
 module.exports = db;
+
