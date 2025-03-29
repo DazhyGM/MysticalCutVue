@@ -65,23 +65,34 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '@/assets/css/style.css';
+import { Carousel } from 'bootstrap';
 
+// Imágenes del carrusel
 const images = ref([
   { src: new URL('@/assets/img/background/ImagenPrincipal.jpeg', import.meta.url).href, alt: 'Imagen Principal', title: 'Bienvenidos a MysticalCut' },
   { src: new URL('@/assets/img/background/Productos.jpg', import.meta.url).href, alt: 'Productos', title: 'Los mejores productos de Barbería', text: 'Ofrecemos los mejores productos a los mejores precios.' },
   { src: new URL('@/assets/img/background/corte.jpeg', import.meta.url).href, alt: 'Servicios', title: 'Nuestros servicios', text: 'Ofrecemos una gran variedad de servicios como: Cortes, barba, tintura.' }
 ]);
 
+// Inicializar el carrusel cuando el componente se monte
+onMounted(() => {
+  const carouselElement = document.querySelector('#carouselExampleCaptions');
+  if (carouselElement) {
+    new Carousel(carouselElement, {
+      interval: 3000, // Tiempo entre diapositivas (3 segundos)
+      ride: 'carousel' // Hace que el carrusel empiece automáticamente
+    });
+  }
+});
 
-const socials = ref([
-  { name: 'Facebook', link: 'https://facebook.com', icon: '/img/background/logo-facebook.png' },
-  { name: 'Instagram', link: 'https://instagram.com', icon: '/img/background/instagram.png' },
-  { name: 'TikTok', link: 'https://tiktok.com', icon: '/img/background/tiktok.png' },
-  { name: 'WhatsApp', link: 'https://wa.me/1234567890', icon: '/img/background/whatsapp.jpg' }
-]);
+
 </script>
+
+
 
 <style scoped>
 .social-icon {
