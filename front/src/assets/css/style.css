@@ -424,10 +424,29 @@
     /* Color del texto dentro del input con transparencia */
   }
   
+  .dropdown {
+    position: relative; /* Para que el menú se posicione con respecto a este contenedor */
+  }
+  
   .dropdown-menu {
-    background-color: #111;
-    border: 1px solid #333;
+    position: absolute;
+    top: 100%;
+    right: 0;  /* 🔹 Alineado a la derecha */
+    margin-top: 5px; /* 🔹 Espaciado entre botón y menú */
+    background-color: #141313;
+    border: 0.5px solid rgba(255, 255, 255, 0.315);
     border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 200px; /* 🔹 Evita que el menú sea demasiado estrecho */
+  }
+  
+  .dropdown-toggle{
+    color: white;
+  }
+  
+  .dropdown-toggle:hover{
+    color: #CCAF54;
   }
   
   .dropdown-item {

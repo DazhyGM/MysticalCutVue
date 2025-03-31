@@ -25,10 +25,14 @@ exports.registerUser = async (req, res) => {
 
 // 🔹 Iniciar sesión
 exports.loginUser = (req, res) => {
-    const { user_email, user_password } = req.body;
-    const query = 'SELECT * FROM user WHERE user_email = ?';
+    const { email, password } = req.body;
+    const query = `
+        SELECT user.*, role.role_name 
+        FROM user 
+        JOIN role ON user.role_fk = role.role_id 
+        WHERE user_email = ?`;
 
-    db.query(query, [user_email], async (err, results) => {
+    db.query(query, [email], async (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error en el servidor' });
         }
@@ -37,23 +41,76 @@ exports.loginUser = (req, res) => {
         }
 
         const user = results[0];
-        const passwordMatch = await bcrypt.compare(user_password, user.user_password);
+
+        if (!user.user_password) {
+            return res.status(500).json({ error: 'Error interno: contraseña no encontrada.' });
+        }
+
+        const passwordMatch = await bcrypt.compare(password, user.user_password);
 
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
 
-        console.log('Valor de JWT_SECRET:', JWT_SECRET);  // 🔥 Verifica el valor en la terminal
+        const token = jwt.sign(
+            { id: user.user_id, role: user.role_name }, // 🔹 Ahora usamos el nombre del rol
+            JWT_SECRET,
+            { expiresIn: '1h' }
+        );
 
-        if (!JWT_SECRET) {
-            return res.status(500).json({ error: 'JWT_SECRET no está definido' });
-        }
-
-        const token = jwt.sign({ id: user.user_id, role: user.role_fk }, JWT_SECRET, { expiresIn: '1h' });
-
-        res.json({ message: 'Inicio de sesión exitoso', token });
+        // 🔹 Devolver el nombre del rol en la respuesta
+        res.json({ 
+            message: 'Inicio de sesión exitoso', 
+            token, 
+            user: {
+                full_name: user.full_name,
+                email: user.user_email,
+                role: user.role_name // 🔹 Ahora devuelve el nombre del rol
+            }
+        });
     });
 };
+
+
+// Obtener el usuario logueado
+
+exports.getProfile = (req, res) => {
+    const userId = req.user.id; // 🔹 ID del usuario desde el token
+
+    const query = `
+        SELECT 
+            u.full_name, 
+            u.user_email, 
+            u.document_number, 
+            dt.doctype_name AS type_document,  -- 🔹 Obtener el nombre del tipo de documento
+            u.address, 
+            r.role_name AS role  -- 🔹 Obtener el nombre del rol
+        FROM user u
+        LEFT JOIN document_type dt ON u.type_document_id = dt.id_doctypes
+        LEFT JOIN role r ON u.role_fk = r.role_id
+        WHERE u.user_id = ?
+    `;
+
+    db.query(query, [userId], (err, results) => {
+        if (err) {
+            console.error("Error en la consulta:", err);
+            return res.status(500).json({ error: 'Error al obtener el perfil del usuario' });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Usuario no encontrado' });
+        }
+
+        console.log("Usuario obtenido:", results[0]); // 🔹 Verificar datos en consola
+
+        res.json(results[0]); // Retornar el usuario con los nombres correctos
+    });
+};
+
+
+
+
+
+
 
 // 🔹 Obtener todos los usuarios
 exports.getUsers = (req, res) => {
