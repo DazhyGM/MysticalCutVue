@@ -3,16 +3,17 @@
     <HeaderComponent />
 
     <div class="d-flex align-items-center justify-content-between w-100 mb-3">
-      <a :href="addUserUrl" class="btn btn-agregar">
-        <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">Agregar
-      </a>
-      
+      <router-link to="/AgregarUser" class="btn btn-agregar">
+        <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
+        Agregar
+      </router-link>
+
       <div class="input-group" style="max-width: 300px;">
         <input type="text" v-model="searchQuery" class="form-control" placeholder="Buscar usuario...">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"></button>
         <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#">A......Z</a></li>
-          <li><a class="dropdown-item" href="#">Z......A</a></li>
+          <li><a class="dropdown-item" href="#" @click.prevent="sortUsers('asc')">A......Z</a></li>
+          <li><a class="dropdown-item" href="#" @click.prevent="sortUsers('desc')">Z......A</a></li>
           <li><a class="dropdown-item" href="#">Fecha de registro</a></li>
           <li><a class="dropdown-item" href="#">Último pedido</a></li>
         </ul>
@@ -26,72 +27,104 @@
         </div>
         <h5>{{ user.full_name }}</h5>
         <div class="icon-container">
-          <a :href="editUserUrl(user.user_id)" class="btn btn-icon">
+          <router-link :to="`/EditUser/${user.user_id}`" class="btn btn-icon">
             <img src="/img/logos/pencil.svg" alt="Icono lapiz">
-          </a>
-          <a :href="viewUserUrl(user.user_id)" class="btn btn-icon">
+          </router-link>
+          <router-link :to="`/VerUser/${user.user_id}`" class="btn btn-icon">
             <img src="/img/logos/eye.svg" alt="Icono Ojo">
-          </a>
-          <a :href="deleteUserUrl(user.user_id)" class="btn btn-icon" @click.prevent="confirmDelete(user.user_id)">
+          </router-link>
+          <button class="btn btn-icon" @click="confirmDelete(user.user_id)">
             <img src="/img/logos/x-circle.svg">
-          </a>
+          </button>
         </div>
       </div>
     </div>
-    
+
     <div class="btn-regresar mt-3">
-      <button class="back-button btn btn-secondary" @click="goBack">Regresar</button>
+      <button class="btn botonav" @click="goBack">Regresar</button>
     </div>
+    
     <FooterComponent />
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
+import { getUsers, deleteUser } from '@/services/api';
 import '@/assets/css/style.css';
+import '@/assets/css/usersInfo.css';
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 
 const router = useRouter();
+const users = ref([]);
+const searchQuery = ref("");
 const isMenuOpen = ref(false);
 
-const goBack = () => {
-  router.push('/Home'); // Redirigir al home
+// 🔹 Cargar usuarios desde la API al montar el componente
+const loadUsers = async () => {
+  try {
+    users.value = await getUsers();
+  } catch (error) {
+    console.error("Error al obtener usuarios:", error);
+  }
 };
 
-// 🔹 Función para cerrar el menú si se hace clic fuera
+// 🔹 Filtrar usuarios por nombre
+const filteredUsers = computed(() => {
+  if (!searchQuery.value) return users.value;
+  return users.value.filter(user => 
+    user.full_name.toLowerCase().includes(searchQuery.value.toLowerCase())
+  );
+});
+
+// 🔹 Confirmar eliminación del usuario
+const confirmDelete = async (id) => {
+  const confirmation = window.confirm("¿Estás seguro de que deseas eliminar este usuario?");
+  if (confirmation) {
+    try {
+      // Realizar la eliminación del usuario
+      await deleteUser(id);
+      
+      // Eliminar el usuario de la lista localmente
+      users.value = users.value.filter(user => user.user_id !== id);
+      
+      // Puedes agregar una alerta para confirmar la eliminación
+      alert("Usuario eliminado exitosamente.");
+    } catch (error) {
+      console.error("Error al eliminar usuario:", error);
+      alert("Hubo un error al intentar eliminar el usuario.");
+    }
+  }
+};
+
+// 🔹 Ordenar usuarios alfabéticamente
+const sortUsers = (order) => {
+  users.value.sort((a, b) => {
+    if (order === "asc") return a.full_name.localeCompare(b.full_name);
+    if (order === "desc") return b.full_name.localeCompare(a.full_name);
+  });
+};
+
+// 🔹 Redirigir al home
+const goBack = () => {
+  router.push('/Home');
+};
+
+// 🔹 Cerrar menú al hacer clic fuera
 const closeMenu = (event) => {
   if (!event.target.closest(".dropdown")) {
     isMenuOpen.value = false;
   }
 };
-// 🔹 Agregar evento al montar el componente
+
 onMounted(() => {
   document.addEventListener("click", closeMenu);
+  loadUsers();
 });
 
-// 🔹 Eliminar evento al desmontar el componente
 onUnmounted(() => {
   document.removeEventListener("click", closeMenu);
 });
-
-
-// Definir user con un objeto vacío
-const user = ref({ full_name: '' });
-
-// Recuperar el usuario guardado en `localStorage` al montar el componente
-onMounted(() => {
-  const storedUser = localStorage.getItem('user');
-  if (storedUser) {
-    try {
-      user.value = JSON.parse(storedUser);
-    } catch (error) {
-      console.error("Error al parsear usuario de localStorage", error);
-    }
-  }
-});
-
-
-
 </script>

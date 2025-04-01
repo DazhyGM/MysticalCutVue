@@ -40,6 +40,8 @@
       </header>
     </div>
 
+    <!--Carrusel-->
+
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
       <div class="carousel-indicators">
         <button v-for="(item, index) in images" :key="index" type="button" :data-bs-target="'#carouselExampleCaptions'"
@@ -87,6 +89,8 @@
       </button>
     </div>
 
+<!--Seccion de servicios-->
+
     <div class="container section">
       <h2 class="section-title">Servicios</h2>
       <div class="row row-cols-1 row-cols-md-4 g-8">
@@ -102,7 +106,12 @@
           </div>
         </div>
       </div>
+      <div class="text-center mt-4">
+    <a href="/usuario/elegir-tipo-cita" class="btn btn-custom">Agenda tu cita</a>
+  </div>
     </div>
+
+<!--Seccion de Productos-->
 
     <div class="container section">
       <h2 class="section-title">Productos</h2>
@@ -119,6 +128,11 @@
           </div>
         </div>
       </div>
+      <!-- Botón para elegir un producto con más espacio abajo -->
+<div class="text-center mt-4 mb-4">
+  <a href="/usuario/productos" class="btn btn-custom">Elige un producto</a>
+</div>
+
     </div>
 
     <footer class="footer">

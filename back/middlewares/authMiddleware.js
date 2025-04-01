@@ -1,23 +1,23 @@
 const jwt = require('jsonwebtoken');
+const JWT_SECRET = 'W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE'; 
 
-const JWT_SECRET = "W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE";  // Asegúrate de que sea el mismo en loginUser
+module.exports = (req, res, next) => {
+    const authHeader = req.headers.authorization;
 
-const authenticateToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-
-    if (!token) {
-        return res.status(401).json({ error: 'Acceso denegado, token requerido' });
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({ error: "Acceso no autorizado" });
     }
 
-    jwt.verify(token, JWT_SECRET, (err, user) => {
-        if (err) {
-            return res.status(403).json({ error: 'Token inválido' });
-        }
-        req.user = user;
+    const token = authHeader.split(" ")[1];
+
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.user = decoded;  // 🔥 Aquí se asigna el usuario con el `id`
+
+        console.log("🔍 Usuario autenticado en middleware:", req.user);  // 👀 Verificar
+
         next();
-    });
+    } catch (error) {
+        return res.status(403).json({ error: "Token inválido o expirado" });
+    }
 };
-
-module.exports = authenticateToken;
-

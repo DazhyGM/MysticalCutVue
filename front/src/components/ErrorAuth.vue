@@ -3,7 +3,7 @@
     <h1 class="error-code">404</h1>
     <h2 class="error-message">⚠️ Acceso denegado</h2>
     <p class="error-description">
-      No tienes permiso para acceder a esta página. Por favor, inicia sesión.
+      Pagina no disponible en este momento.
     </p>
     <router-link to="/" class="home-link">Volver al inicio</router-link>
   </div>

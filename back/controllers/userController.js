@@ -23,7 +23,7 @@ exports.registerUser = async (req, res) => {
     }
 };
 
-// 🔹 Iniciar sesión
+// Iniciar sesión
 exports.loginUser = (req, res) => {
     const { email, password } = req.body;
     const query = `
@@ -52,39 +52,54 @@ exports.loginUser = (req, res) => {
             return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
 
+        // Si el estado del usuario es 'inactivo', lo cambiamos a 'activo'
+        if (user.userStatus_fk === 3) { // 3 = inactivo
+            const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?'; // 1 = activo
+            db.query(updateQuery, [user.user_id], (err, result) => {
+                if (err) {
+                    console.error("Error al actualizar el estado del usuario:", err);
+                    return res.status(500).json({ error: 'Error al activar el usuario' });
+                }
+                console.log("Estado del usuario actualizado a activo"); // Verifica si esta línea se imprime
+            });
+        }
+
         const token = jwt.sign(
-            { id: user.user_id, role: user.role_name }, // 🔹 Ahora usamos el nombre del rol
+            { id: user.user_id, role: user.role_name },
             JWT_SECRET,
             { expiresIn: '1h' }
         );
 
-        // 🔹 Devolver el nombre del rol en la respuesta
+        // Devolver la respuesta con el token y los datos del usuario
         res.json({ 
             message: 'Inicio de sesión exitoso', 
             token, 
             user: {
                 full_name: user.full_name,
                 email: user.user_email,
-                role: user.role_name // 🔹 Ahora devuelve el nombre del rol
+                role: user.role_name
             }
         });
     });
 };
 
 
+
 // Obtener el usuario logueado
 
+// Obtener el perfil del usuario
 exports.getProfile = (req, res) => {
-    const userId = req.user.id; // 🔹 ID del usuario desde el token
+    const userId = req.user.id; // ID del usuario desde el token
 
     const query = `
         SELECT 
+            u.user_id,  /* Asegúrate de que user_id esté seleccionado */
             u.full_name, 
             u.user_email, 
             u.document_number, 
-            dt.doctype_name AS type_document,  -- 🔹 Obtener el nombre del tipo de documento
+            dt.doctype_name AS type_document,
             u.address, 
-            r.role_name AS role  -- 🔹 Obtener el nombre del rol
+            r.role_name AS role
         FROM user u
         LEFT JOIN document_type dt ON u.type_document_id = dt.id_doctypes
         LEFT JOIN role r ON u.role_fk = r.role_id
@@ -100,12 +115,11 @@ exports.getProfile = (req, res) => {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
 
-        console.log("Usuario obtenido:", results[0]); // 🔹 Verificar datos en consola
+        console.log("Usuario obtenido:", results[0]); // Verificar datos en consola
 
-        res.json(results[0]); // Retornar el usuario con los nombres correctos
+        res.json(results[0]); // Retornar el usuario con los datos correctos
     });
 };
-
 
 
 
@@ -228,16 +242,14 @@ exports.updateUserStatus = (req, res) => {
 
 
 // 🔹 Eliminar usuario (cambio de estado en lugar de eliminación física)
+
 exports.deleteUser = (req, res) => {
     const { id } = req.params;
-    
-    // Verificar si el ID es válido
     if (!id || isNaN(id)) {
         return res.status(400).json({ error: 'ID de usuario inválido' });
     }
 
-    const query = 'UPDATE user SET userStatus_fk = 3 WHERE user_id = ?';
-
+    const query = 'UPDATE user SET userStatus_fk = 3 WHERE user_id = ?';  // Cambia el estado a inactivo
     db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: 'Error al cambiar el estado del usuario' });
@@ -248,5 +260,7 @@ exports.deleteUser = (req, res) => {
         res.json({ message: 'Usuario marcado como inactivo correctamente' });
     });
 };
+
+
 
 
