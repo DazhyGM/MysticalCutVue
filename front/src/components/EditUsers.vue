@@ -33,7 +33,7 @@
           </div>
           <div class="col-md-6">
             <label for="id-number">Número de Identificación</label>
-            <input type="text" id="id-number" v-model="form.idNumber" required disabled /> <!-- Desactivado para que no se edite -->
+            <input type="text" id="id-number" v-model="form.idNumber" required /> <!-- Desactivado para que no se edite -->
             <label for="address">Dirección</label>
             <input type="text" id="address" v-model="form.address" required />
             <label for="password">Contraseña</label>

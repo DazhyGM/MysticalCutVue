@@ -29,7 +29,7 @@
           <label for="full-name">Nombres y Apellidos</label>
           <input type="text" id="full-name" v-model="form.fullName" required />
           <label for="email">Correo Electrónico</label>
-          <input type="email" id="email" v-model="form.email" required disabled /> <!-- Desactivado para que no se edite -->
+          <input type="email" id="email" v-model="form.email" required /> 
         </div>
         <div class="col-md-6">
           <label for="id-number">Número de Identificación</label>
