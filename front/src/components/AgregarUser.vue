@@ -30,6 +30,9 @@
   
             <label for="email">Correo Electrónico</label>
             <input type="email" id="email" v-model="form.email" required />
+
+            <label for="phone">Telefono</label>
+            <input type="text" id="phone" v-model="form.phone" required />
   
   
           </div>
@@ -39,7 +42,6 @@
             <input type="text" id="id-number" v-model="form.idNumber" required />
             <label for="address">Dirección</label>
             <input type="text" id="address" v-model="form.address" required />
-            
             <label for="password">Contraseña</label>
             <input type="password" id="password" v-model="form.password" required />
             <label for="confirm-password">Confirmar Contraseña</label>
@@ -75,6 +77,7 @@
         email: '',
         idNumber: '',
         address: '',
+        phone:'',
         password: '',
         confirmPassword: '',
         role: '' 
@@ -101,6 +104,7 @@
             document_number: form.idNumber,
             type_document_id: form.docType,
             address: form.address,
+            phone: form.phone,
             role_fk: form.role // 🔹 Se envía el rol seleccionado
           });
   

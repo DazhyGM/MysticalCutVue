@@ -7,11 +7,11 @@ const JWT_SECRET = 'W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE';
 
 // 🔹 Registrar usuario
 exports.registerUser = async (req, res) => {
-    const { full_name, user_email, user_password, document_number, type_document_id, address, role_fk } = req.body;
+    const { full_name, user_email, user_password, document_number, type_document_id, address, phone, role_fk } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(user_password, 10);
-        const query = 'INSERT INTO user (full_name, user_email, user_password, document_number, type_document_id, address,  role_fk, userStatus_fk) VALUES (?, ?, ?, ?, ?, ?, ?, 1)';
-        db.query(query, [full_name, user_email, hashedPassword, document_number, type_document_id, address, role_fk], (err, result) => {
+        const query = 'INSERT INTO user (full_name, user_email, user_password, document_number, type_document_id, address, phone,  role_fk, userStatus_fk) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1)';
+        db.query(query, [full_name, user_email, hashedPassword, document_number, type_document_id, address, phone, role_fk], (err, result) => {
             if (err) {
                 console.error(err);
                 return res.status(500).json({ error: 'Error al registrar el usuario' });
@@ -23,14 +23,13 @@ exports.registerUser = async (req, res) => {
     }
 };
 
-// Iniciar sesión
+    // 🔹 Iniciar sesión
 exports.loginUser = (req, res) => {
     const { email, password } = req.body;
-    const query = `
-        SELECT user.*, role.role_name 
-        FROM user 
-        JOIN role ON user.role_fk = role.role_id 
-        WHERE user_email = ?`;
+    const query = `SELECT user.*, role.role_name 
+                   FROM user 
+                   JOIN role ON user.role_fk = role.role_id 
+                   WHERE user_email = ?`;
 
     db.query(query, [email], async (err, results) => {
         if (err) {
@@ -42,6 +41,11 @@ exports.loginUser = (req, res) => {
 
         const user = results[0];
 
+        // Verificar si el usuario está bloqueado antes de validar la contraseña
+        if (user.userStatus_fk === 2) { // 2 = Bloqueado
+            return res.status(403).json({ error: 'Este usuario está bloqueado. Contacta al administrador.' });
+        }
+
         if (!user.user_password) {
             return res.status(500).json({ error: 'Error interno: contraseña no encontrada.' });
         }
@@ -49,18 +53,17 @@ exports.loginUser = (req, res) => {
         const passwordMatch = await bcrypt.compare(password, user.user_password);
 
         if (!passwordMatch) {
-            return res.status(401).json({ error: 'Contraseña incorrecta' });
+            return res.status(401).json({ error: 'Credenciales incorrectas. Verifica tu correo y contraseña.' });
         }
 
-        // Si el estado del usuario es 'inactivo', lo cambiamos a 'activo'
-        if (user.userStatus_fk === 3) { // 3 = inactivo
-            const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?'; // 1 = activo
+        // Si el estado del usuario es 'inactivo', lo activamos automáticamente
+        if (user.userStatus_fk === 3) { // 3 = Inactivo
+            const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?'; // 1 = Activo
             db.query(updateQuery, [user.user_id], (err, result) => {
                 if (err) {
                     console.error("Error al actualizar el estado del usuario:", err);
                     return res.status(500).json({ error: 'Error al activar el usuario' });
                 }
-                console.log("Estado del usuario actualizado a activo"); // Verifica si esta línea se imprime
             });
         }
 
@@ -70,7 +73,6 @@ exports.loginUser = (req, res) => {
             { expiresIn: '1h' }
         );
 
-        // Devolver la respuesta con el token y los datos del usuario
         res.json({ 
             message: 'Inicio de sesión exitoso', 
             token, 
@@ -85,11 +87,11 @@ exports.loginUser = (req, res) => {
 
 
 
-// Obtener el usuario logueado
 
-// Obtener el perfil del usuario
+// 🔹 Obtener los datos del usuario logueado
+
 exports.getProfile = (req, res) => {
-    const userId = req.user.id; // ID del usuario desde el token
+    const userId = req.user.id;
 
     const query = `
         SELECT 
@@ -99,6 +101,7 @@ exports.getProfile = (req, res) => {
             u.document_number, 
             dt.doctype_name AS type_document,
             u.address, 
+            u.phone,
             r.role_name AS role
         FROM user u
         LEFT JOIN document_type dt ON u.type_document_id = dt.id_doctypes
@@ -115,32 +118,31 @@ exports.getProfile = (req, res) => {
             return res.status(404).json({ error: 'Usuario no encontrado' });
         }
 
-        console.log("Usuario obtenido:", results[0]); // Verificar datos en consola
+        console.log("Usuario obtenido:", results[0]);
 
-        res.json(results[0]); // Retornar el usuario con los datos correctos
+        res.json(results[0]);
     });
 };
-
-
-
-
 
 
 // 🔹 Obtener todos los usuarios
 exports.getUsers = (req, res) => {
-    const query = 'SELECT user_id, full_name, user_email, user_password, document_number, type_document_id, address,  role_fk, userStatus_fk FROM user WHERE userStatus_fk = 1';
+    // Consulta para obtener todos los usuarios
+    const query = 'SELECT user_id, full_name, user_email, user_password, document_number, type_document_id, address, phone, role_fk, userStatus_fk FROM user WHERE userStatus_fk IN (1, 2);';
+    
     db.query(query, (err, results) => {
         if (err) {
             return res.status(500).json({ error: 'Error al obtener los usuarios' });
         }
-        res.json(results);
+        res.json(results);  // Devuelve todos los usuarios (activos, bloqueados e inactivos)
     });
 };
+
 
 // 🔹 Obtener un solo usuario por ID
 exports.getUserById = (req, res) => {
     const { id } = req.params;
-    const query = 'SELECT user_id, full_name, user_email, user_password, document_number, type_document_id, address,  role_fk, userStatus_fk FROM user WHERE user_id = ?';
+    const query = 'SELECT user_id, full_name, user_email, user_password, document_number, type_document_id, address, phone,  role_fk, userStatus_fk FROM user WHERE user_id = ?';
     db.query(query, [id], (err, result) => {
         if (err) {
             return res.status(500).json({ error: 'Error al obtener el usuario' });
@@ -152,11 +154,12 @@ exports.getUserById = (req, res) => {
     });
 };
 
+
 // 🔹 Actualizar usuario
 
 exports.updateUser = async (req, res) => {
     const { id } = req.params;
-    let { full_name, user_email, user_password, role_fk, address } = req.body;
+    let { full_name, user_email, user_password, role_fk, address, phone } = req.body;
 
     // Verificar si el ID es válido
     if (!id || isNaN(id)) {
@@ -164,8 +167,8 @@ exports.updateUser = async (req, res) => {
     }
 
     try {
-        // 1️⃣ Primero obtenemos los datos actuales del usuario
-        const getUserQuery = 'SELECT full_name, user_email, role_fk, address, user_password FROM user WHERE user_id = ?';
+        // Obtenemos los datos actuales del usuario
+        const getUserQuery = 'SELECT full_name, user_email, role_fk, address, phone, user_password FROM user WHERE user_id = ?';
         db.query(getUserQuery, [id], async (err, results) => {
             if (err) {
                 console.error('Error al obtener el usuario:', err);
@@ -177,21 +180,22 @@ exports.updateUser = async (req, res) => {
 
             const currentUser = results[0]; // Datos actuales del usuario
 
-            // 2️⃣ Si no se envía un campo en la solicitud, usamos el valor actual
+            // Si no se envía un campo en la solicitud, usamos el valor actual
             full_name = full_name || currentUser.full_name;
             user_email = user_email || currentUser.user_email;
             role_fk = role_fk || currentUser.role_fk;
             address = address || currentUser.address;
+            phone = phone || currentUser.phone;
             let newPassword = currentUser.user_password; // Por defecto, mantiene la misma contraseña
 
-            // 3️⃣ Si el usuario envía una nueva contraseña, la encriptamos antes de actualizar
+            // Si el usuario envía una nueva contraseña, se encripta antes de actualizar
             if (user_password) {
                 newPassword = await bcrypt.hash(user_password, 10);
             }
 
-            // 4️⃣ Ahora actualizamos solo los campos permitidos
-            const updateQuery = 'UPDATE user SET full_name = ?, user_email = ?, user_password = ?, role_fk = ?, address = ? WHERE user_id = ?';
-            const values = [full_name, user_email, newPassword, role_fk, address, id];
+            // Se actualizan solo los campos permitidos
+            const updateQuery = 'UPDATE user SET full_name = ?, user_email = ?, user_password = ?, role_fk = ?, address = ?, phone = ? WHERE user_id = ?';
+            const values = [full_name, user_email, newPassword, role_fk, address, phone, id];
 
             db.query(updateQuery, values, (err, result) => {
                 if (err) {
@@ -211,18 +215,13 @@ exports.updateUser = async (req, res) => {
     }
 };
 
-// Actualizar estado del usuario
+// 🔹 Actualizar estado del usuario
+
 exports.updateUserStatus = (req, res) => {
     const { id } = req.params;
-    const { userStatus_fk } = req.body; // Recibimos el nuevo estado
+    const { userStatus_fk } = req.body; // Nuevo estado
 
-    // Verificar si el ID es válido
-    if (!id || isNaN(id)) {
-        return res.status(400).json({ error: 'ID de usuario inválido' });
-    }
-
-    // Verificar si el estado es válido (1 = activo, 2 = bloqueado, 3 = inactivo)
-    if (![1, 2, 3].includes(userStatus_fk)) {
+    if (![1, 2].includes(userStatus_fk)) { // Solo Active (1) y Blocked (2)
         return res.status(400).json({ error: 'Estado inválido' });
     }
 
@@ -233,15 +232,14 @@ exports.updateUserStatus = (req, res) => {
             return res.status(500).json({ error: 'Error al actualizar el estado del usuario' });
         }
         if (result.affectedRows === 0) {
-            return res.status(404).json({ error: 'Usuario no encontrado o ya tiene ese estado' });
+            return res.status(404).json({ error: 'Usuario no encontrado' });
         }
         res.json({ message: `Estado del usuario actualizado a ${userStatus_fk}` });
     });
 };
 
 
-
-// 🔹 Eliminar usuario (cambio de estado en lugar de eliminación física)
+// 🔹 Eliminar usuario (cambio de estado a "3-Inactive" en lugar de eliminación física)
 
 exports.deleteUser = (req, res) => {
     const { id } = req.params;

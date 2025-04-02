@@ -28,6 +28,8 @@
           <input type="text" id="full-name" v-model="form.fullName" required />
           <label for="email">Correo Electrónico</label>
           <input type="email" id="email" v-model="form.email" required />
+          <label for="phone">Telefono</label>
+          <input type="text" id="phone" v-model="form.phone" required />
         </div>
         <div class="col-md-6">
           <label for="id-number">Número de Identificación</label>
@@ -45,6 +47,9 @@
     </form>
     <button class="back-button" @click="goBack">Regresar</button>
   </div>
+  <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+    </footer>
 </template>
 
 <script>
@@ -61,6 +66,7 @@ export default {
       email: '',
       idNumber: '',
       address: '',
+      phone: '',
       password: '',
       confirmPassword: '',
       role: 3 // Por defecto, asignamos el rol de usuario normal
@@ -91,6 +97,7 @@ export default {
       document_number: form.idNumber,
       type_document_id: form.docType,
       address: form.address,
+      phone: form.phone,
       role_fk: form.role
     });
 

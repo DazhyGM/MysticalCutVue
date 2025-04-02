@@ -22,6 +22,9 @@
   
             <label for="email">Correo Electrónico</label>
             <input type="email" id="email" v-model="user.email" disabled />
+
+            <label for="phone">Telefono</label>
+            <input type="text" id="phone" v-model="user.phone" disabled />
           </div>
   
           <div class="col-md-6">
@@ -30,6 +33,9 @@
   
             <label for="address">Dirección</label>
             <input type="text" id="address" v-model="user.address" disabled />
+
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" v-model="user.password" disabled />
   
             <label for="role">Rol</label>
             <input type="text" id="role" :value="roleName" disabled />
@@ -57,7 +63,9 @@
         email: '',
         idNumber: '',
         address: '',
+        phone:'',
         role: '',
+        password:'',
         docType: ''
       });
   
@@ -100,7 +108,9 @@
           user.email = userData.user_email || '';
           user.idNumber = userData.document_number || '';
           user.address = userData.address || '';
+          user.phone = userData.phone || '';
           user.role = userData.role_fk || '';
+          user.password = userData.user_password || '';
           user.docType = userData.type_document_id || '';
   
           isLoading.value = false;

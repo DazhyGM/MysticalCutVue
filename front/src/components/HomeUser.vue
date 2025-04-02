@@ -181,12 +181,12 @@ const router = useRouter();
 const isMenuOpen = ref(false);
 const user = ref({ full_name: '', role: '' }); // ✅ Define `user` antes de usarlo
 
-// 🔹 Función para alternar el menú
+// Función para alternar el menú
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value;
 };
 
-// 🔹 Función para cerrar el menú si se hace clic fuera
+// Función para cerrar el menú si se hace clic fuera
 const closeMenu = (event) => {
   if (!event.target.closest(".dropdown")) {
     isMenuOpen.value = false;
@@ -214,14 +214,14 @@ onUnmounted(() => {
   document.removeEventListener("click", closeMenu);
 });
 
-// 🔹 Cerrar sesión
+// Cerrar sesión
 const logout = () => {
   localStorage.removeItem('token'); // Eliminar token
   localStorage.removeItem('user'); // Eliminar usuario
   router.push('/'); // Redirigir al Index
 };
 
-// 🔹 Función para ir a la página de perfil
+// Función para ir a la página de perfil
 const goToProfile = () => {
   console.log("🔹 Redirigiendo a perfil...");
   isMenuOpen.value = false;
@@ -230,13 +230,14 @@ const goToProfile = () => {
 
 // 🔹 Definir los módulos y qué roles pueden verlos
 const allModules = [
-  { module_route: 'Home', role_module: 'Home', roles: ['Admin', 'Client'] },
+  { module_route: 'Home', role_module: 'Home', roles: ['Admin', 'Client', 'Employee'] },
   { module_route: 'Users', role_module: 'Users', roles: ['Admin'] },
   { module_route: 'Services', role_module: 'Servicios', roles: ['Admin', 'Client'] },
-  { module_route: 'Productos', role_module: 'Productos', roles: ['Admin', 'Client'] }
+  { module_route: 'Productos', role_module: 'Productos', roles: ['Admin', 'Client'] },
+  { module_route: 'Citas', role_module: 'Citas', roles: ['Employee'] }
 ];
-
-// 🔥 Filtrar los módulos según el rol del usuario
+  
+// Filtrar los módulos según el rol del usuario
 const filteredModules = computed(() => {
   if (!user.value.role) return [];
   console.log("🧐 Filtrando módulos para el rol:", user.value.role);
@@ -244,21 +245,21 @@ const filteredModules = computed(() => {
   return allModules.filter(module => module.roles.includes(user.value.role));
 });
 
-// 🔥 Observador para ver cambios en `user.role`
+// Observador para ver cambios en `user.role`
 watch(() => user.value.role, (newRole) => {
   if (newRole) {
     console.log("😎 Rol actualizado del usuario:", newRole);
   }
 });
 
-// 🔹 Definir imágenes del carrusel
+// Definir imágenes del carrusel
 const images = ref([
   { src: '/img/background/ImagenPrincipal.jpeg', alt: 'Imagen Principal', title: 'Bienvenidos a MysticalCut' },
   { src: '/img/background/Productos.jpg', alt: 'Productos', title: 'Los mejores productos de Barbería', text: 'Ofrecemos los mejores productos a los mejores precios.' },
   { src: '/img/background/corte.jpeg', alt: 'Servicios', title: 'Nuestros servicios', text: 'Ofrecemos una gran variedad de servicios como: Cortes, barba, tintura.' }
 ]);
 
-// 🔹 Lista de servicios
+// Lista de servicios
 const services = ref([
   { image: '/img/background/BarbaCortaCuadrada.jpg', title: 'Barba Corta Cuadrada', text: 'Barba recortada con precisión.' },
   { image: '/img/background/mullet.jpg', title: 'Mullet', text: 'Corte con dos extensiones diferenciadas.' },
@@ -266,7 +267,7 @@ const services = ref([
   { image: '/img/background/tintebicolor.jpg', title: 'Tinte Bicolor', text: 'División de color en el cabello.' }
 ]);
 
-// 🔹 Lista de productos
+// Lista de productos
 const products = ref([
   { image: '/img/background/ceramate.jpg', title: 'Cera', text: 'Cera mate para estilizar tu cabello.' },
   { image: '/img/background/shampoocaida.jpg', title: 'Shampoo', text: 'Shampoo para prevenir la caída del cabello.' },
