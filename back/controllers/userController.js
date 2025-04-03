@@ -24,66 +24,75 @@ exports.registerUser = async (req, res) => {
 };
 
     // 🔹 Iniciar sesión
-exports.loginUser = (req, res) => {
-    const { email, password } = req.body;
-    const query = `SELECT user.*, role.role_name 
-                   FROM user 
-                   JOIN role ON user.role_fk = role.role_id 
-                   WHERE user_email = ?`;
-
-    db.query(query, [email], async (err, results) => {
-        if (err) {
-            return res.status(500).json({ error: 'Error en el servidor' });
-        }
-        if (results.length === 0) {
-            return res.status(401).json({ error: 'Usuario no encontrado' });
-        }
-
-        const user = results[0];
-
-        // Verificar si el usuario está bloqueado antes de validar la contraseña
-        if (user.userStatus_fk === 2) { // 2 = Bloqueado
-            return res.status(403).json({ error: 'Este usuario está bloqueado. Contacta al administrador.' });
-        }
-
-        if (!user.user_password) {
-            return res.status(500).json({ error: 'Error interno: contraseña no encontrada.' });
-        }
-
-        const passwordMatch = await bcrypt.compare(password, user.user_password);
-
-        if (!passwordMatch) {
-            return res.status(401).json({ error: 'Credenciales incorrectas. Verifica tu correo y contraseña.' });
-        }
-
-        // Si el estado del usuario es 'inactivo', lo activamos automáticamente
-        if (user.userStatus_fk === 3) { // 3 = Inactivo
-            const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?'; // 1 = Activo
-            db.query(updateQuery, [user.user_id], (err, result) => {
-                if (err) {
-                    console.error("Error al actualizar el estado del usuario:", err);
-                    return res.status(500).json({ error: 'Error al activar el usuario' });
+    exports.loginUser = (req, res) => {
+        const { email, password } = req.body;
+        const query = `SELECT user.*, role.role_name 
+                       FROM user 
+                       JOIN role ON user.role_fk = role.role_id 
+                       WHERE LOWER(user_email) = LOWER(?)`;
+    
+        console.log("Intentando iniciar sesión con:", email); // Verifica qué email llega al backend
+    
+        db.query(query, [email], async (err, results) => {
+            if (err) {
+                console.error("Error en la consulta SQL:", err);
+                return res.status(500).json({ error: 'Error en el servidor' });
+            }
+    
+            console.log("Resultados de la consulta:", results); // Muestra qué devuelve la BD
+    
+            if (results.length === 0) {
+                return res.status(401).json({ error: 'Usuario no encontrado' });
+            }
+    
+            const user = results[0];
+    
+            if (user.userStatus_fk === 2) { 
+                return res.status(403).json({ error: 'Este usuario está bloqueado. Contacta al administrador.' });
+            }
+    
+            if (!user.user_password) {
+                return res.status(500).json({ error: 'Error interno: contraseña no encontrada.' });
+            }
+    
+            const passwordMatch = await bcrypt.compare(password, user.user_password);
+    
+            if (!passwordMatch) {
+                console.log("Contraseña incorrecta para el usuario:", email);
+                return res.status(401).json({ error: 'Credenciales incorrectas. Verifica tu correo y contraseña.' });
+            }
+    
+            if (user.userStatus_fk === 3) { 
+                const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?';
+                db.query(updateQuery, [user.user_id], (err, result) => {
+                    if (err) {
+                        console.error("Error al actualizar el estado del usuario:", err);
+                        return res.status(500).json({ error: 'Error al activar el usuario' });
+                    }
+                    console.log(`Usuario ${email} activado automáticamente.`);
+                });
+            }
+    
+            const token = jwt.sign(
+                { id: user.user_id, role: user.role_name },
+                JWT_SECRET,
+                { expiresIn: '1h' }
+            );
+    
+            console.log(`Usuario ${email} inició sesión correctamente.`);
+    
+            res.json({ 
+                message: 'Inicio de sesión exitoso', 
+                token, 
+                user: {
+                    full_name: user.full_name,
+                    email: user.user_email,
+                    role: user.role_name
                 }
             });
-        }
-
-        const token = jwt.sign(
-            { id: user.user_id, role: user.role_name },
-            JWT_SECRET,
-            { expiresIn: '1h' }
-        );
-
-        res.json({ 
-            message: 'Inicio de sesión exitoso', 
-            token, 
-            user: {
-                full_name: user.full_name,
-                email: user.user_email,
-                role: user.role_name
-            }
         });
-    });
-};
+    };
+    
 
 
 

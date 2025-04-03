@@ -18,15 +18,15 @@
         <div class="col-md-6">
           <h3>Tipo de documento de identificación</h3>
           <label>
-            <input type="radio" v-model="form.docType" value="1" :disabled="isClient" class="disabled-field" /> Cédula
+            <input type="radio" v-model="form.docType" value="1" :disabled="form.role !== 1" class="disabled-field" /> Cédula
             de Ciudadanía
           </label>
           <label>
-            <input type="radio" v-model="form.docType" value="2" :disabled="isClient" class="disabled-field" /> Tarjeta
+            <input type="radio" v-model="form.docType" value="2" :disabled="form.role !== 1" class="disabled-field" /> Tarjeta
             de Identidad
           </label>
           <label>
-            <input type="radio" v-model="form.docType" value="3" :disabled="isClient" class="disabled-field" /> Cédula
+            <input type="radio" v-model="form.docType" value="3" :disabled="form.role !== 1" class="disabled-field" /> Cédula
             de Extranjería
           </label>
           <label for="full-name">Nombres y Apellidos</label>
@@ -38,7 +38,7 @@
         </div>
         <div class="col-md-6">
           <label for="id-number">Número de Identificación</label>
-          <input type="text" id="id-number" v-model="form.idNumber" required :disabled="isClient"
+          <input type="text" id="id-number" v-model="form.idNumber" required :disabled="form.role !== 1"
             class="disabled-field" />
           <label for="address">Dirección</label>
           <input type="text" id="address" v-model="form.address" required />

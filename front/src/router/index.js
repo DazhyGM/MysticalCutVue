@@ -15,6 +15,8 @@ import ErrorUserBlock from '../components/ErrorUserBlock.vue'; //🛑
 import ErrorPNF from '../components/ErrorPNF.vue'; //🛑
 
 
+
+
 const routes = [
   { path: '/', component: Index, meta: { title: 'Inicio | MysticalCut' } },
   { path: '/Login', component: Login, meta: { title: 'Login | MysticalCut' } },

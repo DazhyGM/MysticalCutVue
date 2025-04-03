@@ -12,9 +12,9 @@ module.exports = (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, JWT_SECRET);
-        req.user = decoded;  // 🔥 Aquí se asigna el usuario con el `id`
+        req.user = decoded; 
 
-        console.log("🔍 Usuario autenticado en middleware:", req.user);  // 👀 Verificar
+        console.log("🔍 Usuario autenticado en middleware:", req.user);  
 
         next();
     } catch (error) {
