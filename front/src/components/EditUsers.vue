@@ -47,15 +47,16 @@
 
           <label for="confirm-password">Confirmar Contraseña</label>
           <input type="password" id="confirm-password" v-model="form.confirmPassword" class="editable-field" />
-        </div>
-
-        <label for="role">Rol del Usuario</label>
+          <label for="role">Rol del Usuario</label>
         <select id="role" class="select-field" v-model="form.role" required>
           <option value="" disabled>Seleccione un rol</option>
           <option v-for="role in roles" :key="role.id" :value="role.id">
             {{ role.name }}
           </option>
         </select>
+        </div>
+
+        
       </div>
 
       <button type="submit" class="btn button-registrar">Guardar Cambios</button>

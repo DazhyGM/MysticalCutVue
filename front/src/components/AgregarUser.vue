@@ -46,9 +46,7 @@
             <input type="password" id="password" v-model="form.password" required />
             <label for="confirm-password">Confirmar Contraseña</label>
             <input type="password" id="confirm-password" v-model="form.confirmPassword" required />
-            
-          </div>
-          <!-- 🔹 Selector de Rol con Estilos -->
+            <!-- 🔹 Selector de Rol con Estilos -->
           <label for="role">Rol del Usuario</label>
           <select id="role" class="select-field" v-model="form.role" required>
             <option value="" disabled>Seleccione un rol</option>
@@ -56,12 +54,17 @@
               {{ role.name }}
             </option>
           </select>
+          </div>
+          
         </div>
   
         <button type="submit" class="btn button-registrar">Agregar Usuario</button>
       </form>
       <button class="back-button" @click="goBack">Regresar</button>
     </div>
+    <footer class="py-3 my-4">
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+    </footer>
   </template>
   
   <script>

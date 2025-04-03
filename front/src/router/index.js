@@ -16,6 +16,8 @@ import ErrorPNF from '../components/ErrorPNF.vue'; //🛑
 import UsersInactives from '../components/UsersInactives.vue'; //🛑
 
 
+
+
 const routes = [
   { path: '/', component: Index, meta: { title: 'Inicio | MysticalCut' } },
   { path: '/Login', component: Login, meta: { title: 'Login | MysticalCut' } },

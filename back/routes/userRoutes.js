@@ -8,7 +8,7 @@ router.post('/users/register', userController.registerUser);
 router.post('/login', userController.loginUser);
 
 // Rutas protegidas
-router.get('/profile', authenticateToken, userController.getProfile); // 🔹 Obtener perfil del usuario autenticado
+router.get('/profile', authenticateToken, userController.getProfile); 
 router.get('/users', authenticateToken, userController.getUsers);
 router.get('/users/:id', authenticateToken, userController.getUserById);
 router.get('/inactives', authenticateToken, userController.getInactiveUsers);
