@@ -1,8 +1,6 @@
 const db = require('../config/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
-// 🔥 Definir JWT_SECRET directamente en este archivo
 const JWT_SECRET = 'W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE';
 
 // 🔹 Registrar usuario
@@ -42,7 +40,7 @@ exports.loginUser = (req, res) => {
         const user = results[0];
 
         // Verificar si el usuario está bloqueado antes de validar la contraseña
-        if (user.userStatus_fk === 2) { // 2 = Bloqueado
+        if (user.userStatus_fk === 2) {
             return res.status(403).json({ error: 'Este usuario está bloqueado. Contacta al administrador.' });
         }
 
@@ -56,9 +54,9 @@ exports.loginUser = (req, res) => {
             return res.status(401).json({ error: 'Credenciales incorrectas. Verifica tu correo y contraseña.' });
         }
 
-        // Si el estado del usuario es 'inactivo', lo activamos automáticamente
+        // Si el estado del usuario es 'inactivo', lo activamos automáticamente cuando el usuario inicie sesion
         if (user.userStatus_fk === 3) { // 3 = Inactivo
-            const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?'; // 1 = Activo
+            const updateQuery = 'UPDATE user SET userStatus_fk = 1 WHERE user_id = ?';
             db.query(updateQuery, [user.user_id], (err, result) => {
                 if (err) {
                     console.error("Error al actualizar el estado del usuario:", err);
@@ -92,10 +90,9 @@ exports.loginUser = (req, res) => {
 
 exports.getProfile = (req, res) => {
     const userId = req.user.id;
-
     const query = `
         SELECT 
-            u.user_id,  /* Asegúrate de que user_id esté seleccionado */
+            u.user_id,  
             u.full_name, 
             u.user_email, 
             u.document_number, 
@@ -134,7 +131,7 @@ exports.getUsers = (req, res) => {
         if (err) {
             return res.status(500).json({ error: 'Error al obtener los usuarios' });
         }
-        res.json(results);  // Devuelve todos los usuarios (activos, bloqueados e inactivos)
+        res.json(results);  // Devuelve todos los usuarios (activos y bloqueados)
     });
 };
 
@@ -258,6 +255,19 @@ exports.deleteUser = (req, res) => {
         res.json({ message: 'Usuario marcado como inactivo correctamente' });
     });
 };
+
+// 🔹 Obtener solo los usuarios inactivos
+exports.getInactiveUsers = (req, res) => {
+    const query = 'SELECT user_id, full_name, user_email, document_number, type_document_id, address, phone, role_fk, userStatus_fk FROM user WHERE userStatus_fk = 3';
+
+    db.query(query, (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Error al obtener los usuarios inactivos' });
+        }
+        res.json(results);  // Devuelve solo los usuarios inactivos
+    });
+};
+
 
 
 

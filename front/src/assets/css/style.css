@@ -146,7 +146,7 @@
   
   .back-button {
     padding: 7px 15px;
-    background-color: #ffffff;
+    background-color: #CCAF54;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -154,10 +154,14 @@
     font-weight: bold;
     font-size: 14px;
     margin-top: 15px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
   }
   
   .back-button:hover {
-    background-color: #ccc;
+    background-color: #00000000;
+    color: #fff;
   }
   
   /* Footer */

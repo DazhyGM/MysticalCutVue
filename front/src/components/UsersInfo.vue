@@ -7,6 +7,10 @@
         <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
         Agregar
       </router-link>
+      <router-link to="/usersInactives" class="btn botonav">
+        <button class="btn">Ver usuarios inactivos</button>
+      </router-link>
+
 
       <div class="input-group" style="max-width: 300px;">
         <input type="text" v-model="searchQuery" class="form-control" placeholder="Buscar usuario...">
@@ -37,25 +41,19 @@
           </button>
 
           <div class="form-check form-switch d-flex justify-content-end">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              :checked="user.userStatus_fk === 1"
-              @change="toggleUserStatus(user)"
-              :disabled="user.userStatus_fk === 3"
-              :class="{
+            <input class="form-check-input" type="checkbox" :checked="user.userStatus_fk === 1"
+              @change="toggleUserStatus(user)" :disabled="user.userStatus_fk === 3" :class="{
                 'active-switch': user.userStatus_fk === 1,
                 'blocked-switch': user.userStatus_fk === 2,
                 'disabled-switch': user.userStatus_fk === 3,
-              }"
-            />
+              }" />
           </div>
         </div>
       </div>
     </div>
 
     <div class="btn-regresar mt-3">
-      <button class="btn botonav" @click="goBack">Regresar</button>
+      <button class="btn back-button" @click="goBack">Regresar</button>
     </div>
 
     <FooterComponent />
@@ -81,7 +79,7 @@ const loadUsers = async () => {
     users.value = await getUsers();
     console.log("Usuarios cargados:", users.value);
     users.value.forEach(user => {
-        console.log("Estado del usuario:", user.userStatus_fk);
+      console.log("Estado del usuario:", user.userStatus_fk);
     });
   } catch (error) {
     console.error("Error al obtener usuarios:", error);
@@ -90,9 +88,9 @@ const loadUsers = async () => {
 
 // Filtrar usuarios, excluyendo solo a los inactivos (status === 3)
 const filteredUsers = computed(() => {
-  return users.value.filter(user => user.userStatus_fk !== 3 && 
-    (user.full_name.toLowerCase().includes(searchQuery.value.toLowerCase()) || 
-    user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase())));
+  return users.value.filter(user => user.userStatus_fk !== 3 &&
+    (user.full_name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase())));
 });
 
 // Cambiar el estado del usuario entre Activo y Bloqueado
@@ -176,18 +174,22 @@ onMounted(loadUsers);
   border-color: #dc3545 !important;
 }
 
-.form-check-input.disabled-switch{
-    background-color: #6c757d !important;
-    border-color: #6c757d !important;
+.form-check-input.disabled-switch {
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
 }
 
 .form-check-input:focus {
-  outline: none; /* Elimina el borde de enfoque */
-  box-shadow: none; /* Elimina el sombreado de enfoque */
+  outline: none;
+  /* Elimina el borde de enfoque */
+  box-shadow: none;
+  /* Elimina el sombreado de enfoque */
 }
 
 .form-check-input:active {
-  appearance: none; /* Elimina los estilos predeterminados del navegador */
-  box-shadow: none; /* Elimina el sombreado azul al hacer clic */
+  appearance: none;
+  /* Elimina los estilos predeterminados del navegador */
+  box-shadow: none;
+  /* Elimina el sombreado azul al hacer clic */
 }
 </style>

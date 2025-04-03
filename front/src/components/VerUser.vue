@@ -46,7 +46,7 @@
           <p>Cargando datos del usuario...</p>
         </div>
   
-        <button type="button" class="btn botonav" @click="goBack">Regresar</button>
+        <button type="button" class="btn back-button" @click="goBack">Regresar</button>
       </form>
     </div>
   </template>

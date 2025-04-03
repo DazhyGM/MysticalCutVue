@@ -20,7 +20,7 @@
 
     <div class="back-button-container">
       <router-link :to="`/EditPerfil/${user.id}`" class="btn btn-icon">
-        <img src="/img/logos/pencil.svg" alt="Icono lápiz">
+        <img src="/img/background/editar_perfil_2.png"> Editar
       </router-link>
       <button v-if="['Cliente', 'Empleado'].includes(user.role)" class="btn botonav" @click="goMisCitas">Mis citas</button>
       <button v-if="['Administrador', 'Cliente', 'Empleado'].includes(user.role)" class="btn botonav" @click="goBack">Regresar</button>
@@ -105,4 +105,5 @@ const goBack = () => {
 const goMisCitas = () => {
   router.push('/Home');
 };
+
 </script>

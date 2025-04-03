@@ -13,6 +13,7 @@ import EditPerfil from '../components/EditPerfil.vue';
 import ErrorRole from '../components/ErrorRole.vue'; //🛑
 import ErrorUserBlock from '../components/ErrorUserBlock.vue'; //🛑
 import ErrorPNF from '../components/ErrorPNF.vue'; //🛑
+import UsersInactives from '../components/UsersInactives.vue'; //🛑
 
 
 const routes = [
@@ -30,7 +31,8 @@ const routes = [
   { path: '/EditPerfil/:id', component: EditPerfil, meta: { title: 'Editar | MysticalCut', requiresAuth: true } },
   { path: '/errorRole', component: ErrorRole, meta: { title: 'Error 404 | MysticalCut' } },
   { path: '/errorUserBlock', component: ErrorUserBlock, meta: { title: 'Error | MysticalCut' } },
-  { path: '/errorPNF', component: ErrorPNF, meta: { title: 'Error | MysticalCut' } }
+  { path: '/errorPNF', component: ErrorPNF, meta: { title: 'Error | MysticalCut' } },
+  { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut' } }
 ];
 
 

@@ -11,6 +11,7 @@ router.post('/login', userController.loginUser);
 router.get('/profile', authenticateToken, userController.getProfile); // 🔹 Obtener perfil del usuario autenticado
 router.get('/users', authenticateToken, userController.getUsers);
 router.get('/users/:id', authenticateToken, userController.getUserById);
+router.get('/inactives', authenticateToken, userController.getInactiveUsers);
 router.put('/users/:id', authenticateToken, userController.updateUser);
 router.put('/users/status/:id', authenticateToken, userController.updateUserStatus);
 router.delete('/users/:id', authenticateToken, userController.deleteUser);

@@ -129,3 +129,27 @@ export const deleteUser = async (id) => {
       throw new Error('Error al eliminar el usuario.');
     }
   };
+
+  //Mostrar usuarios inactivos
+  export const getInactiveUsers = async () => {
+    const token = localStorage.getItem('token'); // Obtén el token almacenado
+    try {
+        const response = await fetch('http://localhost:5000/api/users/inactives', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`, // Enviar el token
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al obtener los usuarios inactivos');
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+};
+

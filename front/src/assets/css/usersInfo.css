@@ -47,9 +47,23 @@
     margin-top: 20px;
 }
 
-.btn-icon{
+.btn-icon {
     background-color: #CCAF54;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Ajusta según sea necesario */
+    border: none;
+    cursor: pointer;
 }
+
+.btn-icon img {
+    width: 24px; /* Ajusta el tamaño del icono */
+    height: 24px;
+    object-fit: contain; /* Mantiene la proporción */
+}
+
 
 .bi-person-circle{
     background-color: #ffffff;
