@@ -105,10 +105,6 @@ export const updateUserStatus = async (id, status) => {
   }
 };
 
-
-
-
-
 // 🔹 Eliminar usuario (cambiar estado a inactivo)
 export const deleteUser = async (id) => {
     const token = localStorage.getItem('token');  // Obtener el token de localStorage
@@ -152,4 +148,29 @@ export const deleteUser = async (id) => {
         return [];
     }
 };
+
+// 🔹 Solicitar recuperación de contraseña
+export const resetPassword = async (token, newPassword) => {
+  try {
+    const response = await axios.post(`${API_URL}/reset-password`, { token, newPassword });
+    return response.data;
+  } catch (error) {
+    console.error("Error en resetPassword:", error);
+    throw error;
+  }
+};
+
+// 🔹 Solicitar recuperación de contraseña
+export const requestPasswordReset = async (email) => {
+  try {
+    const response = await axios.post(`${API_URL}/forgot-password`, { email });
+    return response.data;
+  } catch (error) {
+    console.error("Error en requestPasswordReset:", error);
+    throw error;
+  }
+};
+
+
+
 

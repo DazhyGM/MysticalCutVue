@@ -7,6 +7,11 @@ const authenticateToken = require('../middlewares/authMiddleware');
 router.post('/users/register', userController.registerUser);
 router.post('/login', userController.loginUser);
 
+//Rutas para resetear contraseña
+router.post('/forgot-password', userController.forgotPassword);
+router.post('/reset-password', userController.resetPassword);
+router.get('/reset-password/:token', userController.showResetPasswordForm);
+
 // Rutas protegidas
 router.get('/profile', authenticateToken, userController.getProfile); 
 router.get('/users', authenticateToken, userController.getUsers);

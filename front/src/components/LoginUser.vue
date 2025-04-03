@@ -22,7 +22,7 @@
               <button type="submit" class="btn btn-black w-100">Iniciar Sesión</button>
   
               <div class="links text-center mt-3">
-                  <a href="/login/viewLostPassword">Recuperar Contraseña</a>
+                  <a href="/forgotPassword">Recuperar Contraseña</a>
                   <a href="/register">¿No tienes Usuario? Regístrate aquí</a>
               </div>
           </form>

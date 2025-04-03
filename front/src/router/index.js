@@ -13,7 +13,9 @@ import EditPerfil from '../components/EditPerfil.vue';
 import ErrorRole from '../components/ErrorRole.vue'; //🛑
 import ErrorUserBlock from '../components/ErrorUserBlock.vue'; //🛑
 import ErrorPNF from '../components/ErrorPNF.vue'; //🛑
-import UsersInactives from '../components/UsersInactives.vue'; //🛑
+import UsersInactives from '../components/UsersInactives.vue'; 
+import ForgotPassword from '../components/ForgotPassword.vue'; 
+import ResetPassword from '../components/ResetPassword.vue';
 
 
 
@@ -34,7 +36,9 @@ const routes = [
   { path: '/errorRole', component: ErrorRole, meta: { title: 'Error 404 | MysticalCut' } },
   { path: '/errorUserBlock', component: ErrorUserBlock, meta: { title: 'Error | MysticalCut' } },
   { path: '/errorPNF', component: ErrorPNF, meta: { title: 'Error | MysticalCut' } },
-  { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut' } }
+  { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut' } },
+  { path: '/forgotPassword', component: ForgotPassword, meta: { title: 'Recuperar Contraseña | MysticalCut' } },
+  { path: '/reset-password/:token', component: ResetPassword, meta: { title: 'Resetear Contraseña | MysticalCut' } },
 ];
 
 

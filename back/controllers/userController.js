@@ -2,6 +2,16 @@ const db = require('../config/db');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE';
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
+
+const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+        user: 'kevinsabogal24@gmail.com', // Reemplaza con tus credenciales
+        pass: 'wwqc rxvl xmqi mocs' // Usa variables de entorno en producción
+    }
+});
 
 // 🔹 Registrar usuario
 exports.registerUser = async (req, res) => {
@@ -266,6 +276,93 @@ exports.getInactiveUsers = (req, res) => {
         }
         res.json(results);  // Devuelve solo los usuarios inactivos
     });
+};
+
+//Recuperar contraseña
+exports.forgotPassword = (req, res) => {
+    const { email } = req.body;
+
+    const query = 'SELECT user_id FROM user WHERE user_email = ?';
+    db.query(query, [email], (err, results) => {
+        if (err) {
+            console.error('❌ Error en la consulta:', err);
+            return res.status(500).json({ error: 'Error en el servidor' });
+        }
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'Correo no registrado' });
+        }
+
+        const userId = results[0].user_id;
+        const token = crypto.randomBytes(32).toString('hex'); 
+        const expires = Date.now() + 3600000; // Expira en 1 hora
+
+        const insertQuery = 'UPDATE user SET reset_token = ?, reset_token_expires = ? WHERE user_id = ?';
+        db.query(insertQuery, [token, expires, userId], (err) => {
+            if (err) {
+                console.error('❌ Error al guardar el token en la BD:', err);
+                return res.status(500).json({ error: 'Error al guardar el token' });
+            }
+
+            const resetLink = `http://localhost:8080/reset-password/${token}`;;
+            const mailOptions = {
+                from: 'kevinsabogal24@gmail.com',
+                to: email,
+                subject: 'Recuperación de contraseña',
+                html: `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
+                       <a href="${resetLink}">${resetLink}</a>
+                       <p>El enlace expira en 1 hora.</p>`
+            };
+
+            transporter.sendMail(mailOptions, (err) => {
+                if (err) {
+                    console.error('❌ Error al enviar el correo:', err);
+                    return res.status(500).json({ error: 'Error al enviar el correo' });
+                }
+                console.log('✅ Correo enviado con éxito a:', email);
+                res.json({ message: 'Correo enviado con éxito' });
+            });
+        });
+    });
+};
+
+
+
+//Metodo para la nueva contraseña
+exports.resetPassword = async (req, res) => {
+    const { token, newPassword } = req.body;
+
+    const query = 'SELECT user_id FROM user WHERE reset_token = ? AND reset_token_expires > ?';
+    db.query(query, [token, Date.now()], async (err, results) => {
+        if (err) return res.status(500).json({ error: 'Error en el servidor' });
+        if (results.length === 0) return res.status(400).json({ error: 'Token inválido o expirado' });
+
+        const userId = results[0].user_id;
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        const updateQuery = 'UPDATE user SET user_password = ?, reset_token = NULL, reset_token_expires = NULL WHERE user_id = ?';
+        db.query(updateQuery, [hashedPassword, userId], (err) => {
+            if (err) return res.status(500).json({ error: 'Error al actualizar la contraseña' });
+            res.json({ message: 'Contraseña actualizada correctamente' });
+        });
+    });
+};
+
+exports.showResetPasswordForm = async (req, res) => {
+    try {
+        const { token } = req.params;
+        // Verificar si el token es válido en la base de datos
+        const user = await User.findOne({ where: { reset_token: token } });
+
+        if (!user) {
+            return res.status(400).json({ message: "Token inválido o expirado." });
+        }
+
+        // Si el token es válido, redirige a la vista de cambio de contraseña en el frontend
+        res.redirect(`http://localhost:8080/reset-password/${token}`);
+    } catch (error) {
+        console.error("Error en showResetPasswordForm:", error);
+        res.status(500).json({ message: "Error en el servidor" });
+    }
 };
 
 
