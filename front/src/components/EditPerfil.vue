@@ -46,8 +46,7 @@
           <input type="password" id="password" v-model="form.password" />
           <label for="confirm-password">Confirmar Contraseña</label>
           <input type="password" id="confirm-password" v-model="form.confirmPassword" />
-        </div>
-        <!-- Selector de Rol -->
+          <!-- Selector de Rol -->
         <label for="role">Rol del Usuario</label>
         <select id="role" class="select-field" v-model="form.role" required :disabled="form.role !== 1">
           <option value="" disabled>Seleccione un rol</option>
@@ -55,6 +54,8 @@
             {{ role.name }}
           </option>
         </select>
+        </div>
+        
       </div>
 
       <button type="submit" class="btn button-registrar">Guardar Cambios</button>
