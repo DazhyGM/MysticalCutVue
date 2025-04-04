@@ -11,7 +11,7 @@
 
       <p>Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.</p>
       <form @submit.prevent="sendRecoveryEmail">
-        <input v-model="email" type="email" placeholder="Correo electrónico" required />
+        <input v-model="email" type="email" placeholder="Escribe aqui tu correo electrónico" required />
         <button class="btn botonav" type="submit">Enviar</button>
       </form>
       
@@ -49,6 +49,13 @@ export default {
     margin: auto;
     text-align: center;
   }
+
+  :placeholder-shown{
+  background-color: rgb(29, 27, 27);
+  border-radius: 10px;
+  text-align: center;
+}
+
   input, button {
     width: 100%;
     margin: 10px 0;

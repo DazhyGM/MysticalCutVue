@@ -10,8 +10,10 @@
       </ul>
     </header>
     <form @submit.prevent="resetPassword">
-      <input v-model="newPassword" type="password" placeholder="Nueva contraseña" required />
-      <input v-model="confirmPassword" type="password" placeholder="Confirmar contraseña" required />
+      <label for="password">Nueva Contraseña</label>
+      <input v-model="newPassword" type="password" placeholder="Escribe aqui tu nueva contraseña" required />
+      <label for="password">Confirmar Contraseña</label>
+      <input v-model="confirmPassword" type="password" placeholder="Confirma la contraseña" required />
       <button class="btn botonav" type="submit">Actualizar Contraseña</button>
     </form>
     <p v-if="message">{{ message }}</p>
@@ -56,8 +58,14 @@ export default {
 
 <style scoped>
 .container {
-  max-width: 400px;
+  max-width: 600px;
   margin: auto;
+  text-align: center;
+}
+
+:placeholder-shown{
+  background-color: rgb(29, 27, 27);
+  border-radius: 10px;
   text-align: center;
 }
 

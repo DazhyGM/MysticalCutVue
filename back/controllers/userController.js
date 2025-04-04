@@ -308,9 +308,10 @@ exports.forgotPassword = (req, res) => {
                 from: 'kevinsabogal24@gmail.com',
                 to: email,
                 subject: 'Recuperación de contraseña',
-                html: `<p>Haz clic en el siguiente enlace para restablecer tu contraseña:</p>
+                html: `<p>Bienvenido a Mystical Cut 💈💥</p>
+                        <p>Haz clic en el siguiente enlace para restablecer tu contraseña 😉:</p>
                        <a href="${resetLink}">${resetLink}</a>
-                       <p>El enlace expira en 1 hora.</p>`
+                       <p>Ingresa al enlace lo mas pronto posible y restablece tu contraseña, este expirara en 1 hora 😱🏃‍♂️.</p>`
             };
 
             transporter.sendMail(mailOptions, (err) => {
