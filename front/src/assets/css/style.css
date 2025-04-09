@@ -347,12 +347,7 @@
     text-align: center;
   }
   
-  /* Cards */
-  .card {
-    background-color: #111;
-    border: 1px solid #333;
-    color: #fff;
-  }
+
   
   .card-title {
     color: #CCAF54;

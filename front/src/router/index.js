@@ -17,6 +17,8 @@ import UsersInactives from '../components/UsersInactives.vue';
 import ForgotPassword from '../components/ForgotPassword.vue'; 
 import ResetPassword from '../components/ResetPassword.vue';
 
+import Service from '../components/ServicesBarber.vue';
+
 
 
 
@@ -39,6 +41,8 @@ const routes = [
   { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut' } },
   { path: '/forgotPassword', component: ForgotPassword, meta: { title: 'Recuperar Contraseña | MysticalCut' } },
   { path: '/reset-password/:token', component: ResetPassword, meta: { title: 'Resetear Contraseña | MysticalCut' } },
+
+  { path: '/Services', component: Service, meta: { title: 'Servicios | MysticalCut' } },
 ];
 
 

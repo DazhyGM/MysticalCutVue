@@ -1,10 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const db = require('./config/db');
-
 const userRoutes = require('./routes/userRoutes');
-
+const serviceRoutes = require('./routes/serviceRoutes');
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
@@ -13,6 +13,8 @@ const JWT_SECRET = 'W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE';
 
 // ✅ Usar '/api/users' para estructurar mejor las rutas
 app.use('/api/users', userRoutes);
+
+app.use('/api/services', serviceRoutes);
 
 app.get('/api/', (req, res) => {
   res.send('API funcionando correctamente 🚀');

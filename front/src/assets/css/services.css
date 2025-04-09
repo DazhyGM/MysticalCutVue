@@ -1,0 +1,183 @@
+.navbar-collapse {
+    text-align: center;
+  }
+  
+  .small-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .container4 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    margin-left: 170px;
+    margin-top: 20px;
+  }
+  
+  .container4 i {
+    font-size: 16px;
+    color: #D4AF37;
+  }
+  
+  .container5 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-right: 170px;
+    margin-top: -60px;
+  }
+  
+  .container5 i {
+    font-size: 16px;
+    color: #D4AF37;
+  }
+  
+  .switch-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .form-check-input:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  .form-check-input {
+    background-color: #ccc;
+    border-color: #ccc;
+  }
+  
+  .form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+  }
+  
+  .swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+  }
+  
+  .swal2-title,
+  .swal2-content {
+    color: #fff !important;
+  }
+  
+  .swal2-confirm,
+  .swal2-cancel {
+    color: #000 !important;
+  }
+  
+  .btn-agregar {
+    background-color: #CCAF54;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .btn-agregar:hover {
+    background-color: #9c8337;
+  }
+  
+  .category-title {
+    color: white;
+    font-size: 1.7rem;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  /* Botones */
+  .btn-view {
+    padding: 10px 30px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .btn-view:hover {
+    background-color: #2980b9;
+  }
+  
+  .btn-select {
+    padding: 10px 30px;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .btn-select:hover {
+    background-color: #1e8449;
+  }
+  
+  .btn-edit {
+    padding: 10px 30px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-edit:hover {
+    background-color: #b89a30;
+  }
+  
+  .btn-delete {
+    padding: 10px 30px;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-delete:hover {
+    background-color: #cc0000;
+  }
+  
+  /* Card contenedora */
+  .card {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  
+  /* Imagen del servicio */
+  .service-image {
+    flex-shrink: 0;
+    margin-right: 15px;
+  }
+  
+  /* Detalles del servicio */
+  .service-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  /* Botones dentro de la tarjeta */
+  .card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: flex-start;
+  }
+  
