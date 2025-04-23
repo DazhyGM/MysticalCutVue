@@ -4,10 +4,13 @@
       <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <div class="col-md-3 mb-2 mb-md-0">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125"
-            class="d-inline-block align-text-top" />
-        </div>
+  <router-link to="/Home">
+    <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
+  </router-link>
+</div>
 
+
+        
         <!-- 🔹 Menú filtrado según el rol -->
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li v-for="module in filteredModules" :key="module.module_route" class="nav-item">
@@ -96,7 +99,7 @@
       <div class="row row-cols-1 row-cols-md-4 g-8">
         <div v-for="service in services" :key="service.title" class="col">
           <div class="card">
-            <a href="/usuario/elegir-tipo-cita">
+            <a href="/services">
               <img :src="service.image" class="card-img-top" :alt="service.title" />
             </a>
             <div class="card-body">
@@ -107,8 +110,9 @@
         </div>
       </div>
       <div class="text-center mt-4">
-    <a href="/usuario/elegir-tipo-cita" class="btn btn-custom">Agenda tu cita</a>
-  </div>
+  <a href="/services" class="btn btn-custom">Agenda tu cita</a>
+</div>
+
     </div>
 
 <!--Seccion de Productos-->
@@ -234,7 +238,7 @@ const allModules = [
   { module_route: 'Users', role_module: 'Users', roles: ['Admin'] },
   { module_route: 'Services', role_module: 'Servicios', roles: ['Admin', 'Client'] },
   { module_route: 'Productos', role_module: 'Productos', roles: ['Admin', 'Client'] },
-  { module_route: 'Citas', role_module: 'Citas', roles: ['Employee', 'Client'] },
+  { module_route: 'Citas', role_module: 'Citas', roles: ['Employee', 'Client', 'Admin'] },
 ];
   
 // Filtrar los módulos según el rol del usuario

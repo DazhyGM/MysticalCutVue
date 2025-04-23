@@ -2,6 +2,7 @@
   <div class="container">
     <HeaderComponent />
 
+
     <div class="d-flex align-items-center justify-content-between w-100 mb-3">
       <router-link to="/AgregarUser" class="btn btn-agregar">
         <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
@@ -11,6 +12,16 @@
         <button class="btn">Ver usuarios inactivos</button>
       </router-link>
 
+      <!-- Filtro por rol -->
+      <div class="form-group me-3">
+        <select v-model="selectedRole" @change="filtrarPorRol" class="form-select">
+          <option value="">Todos los roles</option>
+          <option value="1">Administrador</option>
+          <option value="2">Empleado</option>
+          <option value="3">Cliente</option>
+        </select>
+
+      </div>
 
       <div class="input-group" style="max-width: 300px;">
         <input type="text" v-model="searchQuery" class="form-control" placeholder="Buscar usuario...">
@@ -21,6 +32,7 @@
         </ul>
       </div>
     </div>
+
 
     <div class="pedido-container" style="height: 400px; overflow: auto">
       <div v-for="user in filteredUsers" :key="user.user_id" class="pedido-box">
@@ -63,7 +75,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from "vue-router";
-import { getUsers, deleteUser, updateUserStatus } from '@/services/api';
+import { getUsers, deleteUser, updateUserStatus, filterUsersByRole } from '@/services/api';
 import '@/assets/css/register.css';
 import '@/assets/css/usersInfo.css';
 import HeaderComponent from '@/components/HeaderComponent.vue';
@@ -72,6 +84,8 @@ import FooterComponent from '@/components/FooterComponent.vue';
 const router = useRouter();
 const users = ref([]);
 const searchQuery = ref("");
+const selectedRole = ref(""); // Nuevo: filtro por rol
+
 
 // Cargar usuarios
 const loadUsers = async () => {
@@ -88,10 +102,28 @@ const loadUsers = async () => {
 
 // Filtrar usuarios, excluyendo solo a los inactivos (status === 3)
 const filteredUsers = computed(() => {
-  return users.value.filter(user => user.userStatus_fk !== 3 &&
+  return users.value.filter(user =>
+    user.userStatus_fk !== 3 &&
+    (selectedRole.value === "" || user.role_fk === Number(selectedRole.value)) &&
     (user.full_name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase())));
+      user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase()))
+  );
 });
+
+const filtrarPorRol = async () => {
+  try {
+    if (selectedRole.value === "") {
+      await loadUsers();  // Si no hay filtro, cargar todos
+    } else {
+      const data = await filterUsersByRole(selectedRole.value);
+      console.log("Usuarios filtrados:", data);
+      users.value = Array.isArray(data) ? data : [];  // Asegurarse de que sea un arreglo
+    }
+  } catch (error) {
+    console.error("Error al filtrar por rol:", error);
+  }
+};
+
 
 // Cambiar el estado del usuario entre Activo y Bloqueado
 const toggleUserStatus = async (user) => {
@@ -117,7 +149,7 @@ const confirmDelete = async (id) => {
     try {
       await deleteUser(id);
       users.value = users.value.filter(user => user.user_id !== id);
-      alert("Usuario eliminado exitosamente.");
+      alert("✅ Usuario eliminado exitosamente.");
     } catch (error) {
       console.error("Error al eliminar usuario:", error);
       alert("Hubo un error al intentar eliminar el usuario.");

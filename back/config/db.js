@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host: 'localhost',       // Servidor local
     user: 'root',            // Usuario de MySQL
     password: '',            // Contraseña 
-    database: 'crud-php-app' // Nombre de la base de datos
+    database: 'mysticalcut-db' // Nombre de la base de datos
 });
 
 db.connect(err => {

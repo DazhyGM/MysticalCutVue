@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <HeaderComponent />
+    
 
     <!-- Profile Section -->
     <div class="profile-container d-flex align-items-center justify-content-center">
@@ -22,9 +23,12 @@
       <router-link :to="`/EditPerfil/${user.id}`" class="btn btn-icon">
         <img src="/img/background/editar_perfil_2.png"> Editar
       </router-link>
-      <button v-if="['Cliente', 'Empleado'].includes(user.role)" class="btn botonav" @click="goMisCitas">Mis citas</button>
-      <button v-if="['Administrador', 'Cliente', 'Empleado'].includes(user.role)" class="btn botonav" @click="goBack">Regresar</button>
+      <button v-if="['Cliente', 'Empleado', 'Administrador'].includes(user.role)" class="btn botonav-citas" @click="goMisCitas">Mis citas</button>
+      <button class="btn botonav-delete" @click="confirmDelete"> Eliminar cuenta </button>
+      
+
     </div>
+    <button v-if="['Administrador', 'Cliente', 'Empleado'].includes(user.role)" class="btn back-button" @click="goBack">Regresar</button>
 
     <FooterComponent />
   </div>
@@ -33,7 +37,7 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
-import { getUserData } from "@/services/api"; 
+import { getUserData, deleteAccount } from "@/services/api"; 
 import '@/assets/css/perfilUsuario.css';
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
@@ -97,13 +101,29 @@ onUnmounted(() => {
   document.removeEventListener("click", closeMenu);
 });
 
+const confirmDelete = async () => {
+  const confirmed = window.confirm("¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.");
+  if (!confirmed) return;
+
+  try {
+    const token = localStorage.getItem("token");
+    await deleteAccount(user.value.id, token);
+    alert("Cuenta eliminada exitosamente. ¡Hasta pronto!");
+    localStorage.removeItem("token");
+    router.push("/");
+  } catch (error) {
+    console.error("❌ Error al eliminar la cuenta:", error);
+    alert("Hubo un problema al intentar eliminar tu cuenta.");
+  }
+};
+
 // 🔹 Función para regresar a la página anterior
 const goBack = () => {
   router.push('/Home');
 };
 
+// 🔹 Función para redirigir a la página de Citas
 const goMisCitas = () => {
-  router.push('/Home');
+  router.push('/Citas'); // Redirige a la ruta '/Citas'
 };
-
 </script>

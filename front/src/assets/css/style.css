@@ -63,6 +63,29 @@
     color: black;
     margin-left: 10px;
   }
+
+  .botonav-delete:hover {
+    background-color: #ff0000;
+    color: black;
+    margin-left: 10px;
+  }
+  .botonav-delete {
+    background-color: #f32f2f;
+    color: black;
+    margin-left: 10px;
+  }
+
+  .botonav-citas:hover {
+    background-color: #0051ff;
+    color: black;
+    margin-left: 10px;
+  }
+
+  .botonav-citas {
+    background-color: #3d71e2;
+    color: black;
+    margin-left: 10px;
+  }
   
   .login-container {
     background-color: #111;
@@ -151,8 +174,6 @@
     border-radius: 5px;
     cursor: pointer;
     color: #000;
-    font-weight: bold;
-    font-size: 14px;
     margin-top: 15px;
     margin: 0 auto;
     text-align: center;

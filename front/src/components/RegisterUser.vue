@@ -2,8 +2,11 @@
   <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
-        <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-      </div>
+  <router-link to="/Home">
+    <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
+  </router-link>
+</div>
+
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Registrarse</h1>
       </ul>

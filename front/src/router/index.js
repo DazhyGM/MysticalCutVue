@@ -12,12 +12,21 @@ import AgregarUser from '../components/AgregarUser.vue';
 import EditPerfil from '../components/EditPerfil.vue';
 import ErrorRole from '../components/ErrorRole.vue'; //🛑
 import ErrorUserBlock from '../components/ErrorUserBlock.vue'; //🛑
+import ErrorUserDeleted from '../components/ErrorUserDeleted.vue'; //🛑
 import ErrorPNF from '../components/ErrorPNF.vue'; //🛑
 import UsersInactives from '../components/UsersInactives.vue'; 
 import ForgotPassword from '../components/ForgotPassword.vue'; 
 import ResetPassword from '../components/ResetPassword.vue';
 
 import Service from '../components/ServicesBarber.vue';
+import CrearServicios from '@/components/CrearServicios.vue';
+import EditarServicios from '@/components/EditarServicios.vue';
+import ServicesInactivos from '@/components/ServicesInactivos.vue';
+import ViewService from '@/components/ViewService.vue';
+import SeleccionarBarbero from '@/components/SeleccionarBarbero.vue';
+import CalendarioCitas from '@/components/CalendarioCitas.vue';
+import FacturaServicios from '@/components/FacturaServicios.vue';
+import CitasPendientes from '@/components/CitasPendientes.vue';
 
 
 
@@ -37,12 +46,21 @@ const routes = [
   { path: '/EditPerfil/:id', component: EditPerfil, meta: { title: 'Editar | MysticalCut', requiresAuth: true } },
   { path: '/errorRole', component: ErrorRole, meta: { title: 'Error 404 | MysticalCut' } },
   { path: '/errorUserBlock', component: ErrorUserBlock, meta: { title: 'Error | MysticalCut' } },
+  { path: '/errorUserDeleted', component: ErrorUserDeleted, meta: { title: 'Error | MysticalCut' } },
   { path: '/errorPNF', component: ErrorPNF, meta: { title: 'Error | MysticalCut' } },
   { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut' } },
   { path: '/forgotPassword', component: ForgotPassword, meta: { title: 'Recuperar Contraseña | MysticalCut' } },
   { path: '/reset-password/:token', component: ResetPassword, meta: { title: 'Resetear Contraseña | MysticalCut' } },
 
   { path: '/Services', component: Service, meta: { title: 'Servicios | MysticalCut' } },
+  { path: '/Create-Services', component: CrearServicios , meta: { title: 'Crear Servicios | MysticalCut' } },
+  { path: '/Editar-Services/:id', component: EditarServicios , meta: { title: 'Editar Servicios | MysticalCut' } },
+  { path: '/Services-Inactivos', component: ServicesInactivos , meta: { title: 'Servicios inactivos| MysticalCut' } },
+  { path: '/View-Service/:id', component: ViewService , meta: { title: 'Ver Servicios | MysticalCut' } },
+  { path: '/Select-Barbero', component: SeleccionarBarbero , meta: { title: 'Seleccionar Barbero | MysticalCut' } },
+  { path: '/Calendario', component: CalendarioCitas , meta: { title: 'Calendario | MysticalCut' } },
+  { path: '/FacturaServicios', component: FacturaServicios , meta: { title: 'factura | MysticalCut' } },
+  { path: '/Citas', component: CitasPendientes , meta: { title: 'Citas | MysticalCut', requiresAuth: true } }
 ];
 
 

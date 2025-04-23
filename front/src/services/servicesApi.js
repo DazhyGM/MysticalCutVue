@@ -19,9 +19,16 @@ export const getServiceById = async (id) => {
 };
 
 export const createService = async (serviceData) => {
-  const response = await axios.post(SERVICE_API_URL, serviceData, getAuthHeaders());
+  const token = localStorage.getItem('token');
+  const response = await axios.post(SERVICE_API_URL, serviceData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'multipart/form-data'
+    }
+  });
   return response.data;
 };
+
 
 export const updateService = async (id, updatedData) => {
   const response = await axios.put(`${SERVICE_API_URL}/${id}`, updatedData, getAuthHeaders());
@@ -30,5 +37,15 @@ export const updateService = async (id, updatedData) => {
 
 export const deleteService = async (id) => {
   const response = await axios.delete(`${SERVICE_API_URL}/${id}`, getAuthHeaders());
+  return response.data;
+};
+
+export const getInactiveServices = async () => {
+  const response = await axios.get(`${SERVICE_API_URL}/inactive`, getAuthHeaders());
+  return response.data;
+};
+
+export const activateService = async (id) => {
+  const response = await axios.put(`${SERVICE_API_URL}/activate/${id}`, {}, getAuthHeaders());
   return response.data;
 };
