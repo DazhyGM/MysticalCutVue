@@ -1,0 +1,110 @@
+[
+  {
+    "line": 4,
+    "elements": [
+      {
+        "line": 7,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Antecedentes",
+        "steps": [
+          {
+            "result": {
+              "duration": 6282286201,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "que el visitante está en la página de Mystical e ingresa a iniciarsesion",
+            "match": {
+              "location": "LoginStepsdefinitions.queElVisitanteEstáEnLaPáginaDeMysticalEIngresaAIniciarsesion()"
+            },
+            "keyword": "Dado "
+          },
+          {
+            "result": {
+              "duration": 2828988900,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "ingresa las credenciales básicas:",
+            "match": {
+              "location": "LoginStepsdefinitions.ingresaLasCredencialesBásicas(CredencialesLogin\u003e)"
+            },
+            "rows": [
+              {
+                "cells": [
+                  "correo",
+                  "contraseña"
+                ]
+              },
+              {
+                "cells": [
+                  "leonoscarandres04@gmail.com",
+                  "12345678"
+                ]
+              }
+            ],
+            "keyword": "Cuando "
+          }
+        ]
+      },
+      {
+        "before": [
+          {
+            "result": {
+              "duration": 113177801,
+              "status": "passed"
+            },
+            "match": {
+              "location": "PreparacionEscenario.sepUp()"
+            }
+          }
+        ],
+        "line": 14,
+        "name": "Eliminar un producto que se encuentren agregados en la pagina MysticalCut",
+        "description": "",
+        "id": "entrar-al-apartado-de-usuarios-y-visualizar-todos-los-usuarios-registrados;eliminar-un-producto-que-se-encuentren-agregados-en-la-pagina-mysticalcut",
+        "type": "scenario",
+        "keyword": "Escenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2590488300,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "complete el inicio de sesion, se dirigira al apartado productos y podra ver todos los productos con su boton eliminar",
+            "match": {
+              "location": "EliminarProductoStepDefinitions.completeElInicioDeSesionSeDirigiraAlApartadoProductosYPodraVerTodosLosProductosConSuBotonEliminar()"
+            },
+            "keyword": "Cuando "
+          },
+          {
+            "result": {
+              "duration": 4529500,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "Verificar que el producto se encuentre inactivo en MysticalCut",
+            "match": {
+              "location": "EliminarProductoStepDefinitions.verificarQueElProductoSeEncuentreInactivoEnMysticalCut()"
+            },
+            "keyword": "Entonces "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@registro"
+          }
+        ]
+      }
+    ],
+    "name": "Entrar al apartado de usuarios y visualizar todos los usuarios registrados",
+    "description": "",
+    "id": "entrar-al-apartado-de-usuarios-y-visualizar-todos-los-usuarios-registrados",
+    "keyword": "Característica",
+    "uri": "src/test/resources/features/EliminarProducto.feature",
+    "tags": []
+  }
+]

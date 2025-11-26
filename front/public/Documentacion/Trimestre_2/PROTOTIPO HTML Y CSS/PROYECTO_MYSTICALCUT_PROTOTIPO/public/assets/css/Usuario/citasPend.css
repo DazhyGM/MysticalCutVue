@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: Amasis_MT_Std_Black;
+}
+.btn-cancelar img, .btn-chulo img {
+    width: 24px; /* Ajusta el tamaño de los íconos según lo necesites */
+    height: 24px;
+}
+
+.btn-cancelar {
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los íconos */
+}
+.btn-chulo{
+    width: 30px;
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los íconos */
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+.back-button0{
+    background-color: #11111100;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+

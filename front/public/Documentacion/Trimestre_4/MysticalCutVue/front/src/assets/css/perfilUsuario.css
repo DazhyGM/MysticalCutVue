@@ -1,0 +1,29 @@
+.profile-container {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar en la pantalla */
+    gap: 20px; /* Espaciado entre imagen y datos */
+    background: #000000; /* Fondo sutil */
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    width: 50%; /* O ajusta según el tamaño que prefieras */
+    margin: auto; /* Centrar horizontalmente */
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.profile-image img {
+    border-radius: 50%; /* Hace la imagen redonda */
+}
+
+.profile-info {
+    font-size: 25px;
+    display: flex;
+    flex-direction: column; /* Asegura que cada dato quede en una línea */
+    gap: 10px; /* Espaciado entre cada dato */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+}
+.back-button-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: 20px; /* Espacio superior */
+}

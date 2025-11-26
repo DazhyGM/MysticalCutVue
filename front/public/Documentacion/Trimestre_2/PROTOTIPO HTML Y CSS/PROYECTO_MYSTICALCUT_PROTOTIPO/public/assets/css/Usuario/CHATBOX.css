@@ -1,0 +1,76 @@
+.chat-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    width: 60px;
+    /* Ajusta el tamaño del contenedor si es necesario */
+    height: 60px;
+    /* Ajusta el tamaño del contenedor si es necesario */
+}
+
+/* Estilos para la imagen del ícono de chat */
+.chat-icon-img {
+    width: 180%;
+    /* Ajusta el tamaño de la imagen */
+    height: 170%;
+    /* Hace que la imagen ocupe todo el contenedor */
+    object-fit: contain;
+    /* Asegura que la imagen se ajuste al contenedor sin deformarse */
+    transform: translateY(-70px);
+    /* Ajusta este valor según sea necesario para subir la imagen */
+}
+
+/* Estilos para el chatbox */
+.chatbox-container {
+    display: none;
+    position: fixed;
+    bottom: 170px;
+    /* Ajusta este valor para subir el chatbox */
+    right: 20px;
+    width: 350px;
+    /* Aumentar el ancho del chatbox */
+    border: 2px solid #d4af37;
+    /* Borde dorado */
+    background-color: #ffffff;
+    /* Fondo negro */
+    color: #000000;
+    /* Texto blanco */
+    border-radius: 8px;
+    z-index: 1000;
+}
+
+.chatbox-header {
+    background-color: #d4af37;
+    /* Fondo dorado */
+    padding: 10px;
+    text-align: center;
+}
+
+.chatbox-body {
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.chatbox-footer {
+    padding: 10px;
+    display: flex;
+}
+
+.chatbox-footer input {
+    flex: 1;
+    padding: 5px;
+    font-size: 14px;
+}
+
+.chatbox-footer button {
+    margin-left: 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    /* Asegura que el texto no se divida */
+}

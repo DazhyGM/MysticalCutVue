@@ -1,18 +1,18 @@
 <template>
+  <div class="container-scaled">
   <div class="container">
     <!-- HEADER -->
     <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
-  <router-link to="/Home">
-    <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-  </router-link>
-</div>
+        <router-link to="/Home">
+          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
+        </router-link>
+      </div>
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li v-for="module in roleModules" :key="module.module_route" class="nav-item">
           <a class="nav-link" :href="`/${module.module_route}`">{{ module.role_module }}</a>
         </li>
       </ul>
-
       <div class="col-md-3 text-end">
         <div class="dropdown">
           <button class="btn dropdown-toggle" @click="toggleMenu">
@@ -26,9 +26,6 @@
           </ul>
         </div>
       </div>
-      <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Servicios</h1>
-      </ul>
     </header>
 
     <!-- NAV DE CATEGORÍAS -->
@@ -60,6 +57,7 @@
                 <div class="card-body d-flex">
                   <div class="service-image">
                     <img :src="getServiceImage(service.image)" :alt="service.name_service" class="img-fluid" style="max-width: 150px; margin-right: 15px;" />
+
                   </div>
                   <div class="service-details">
                     <h5 class="card-title">{{ service.name_service }}</h5>
@@ -78,15 +76,20 @@
         </div>
       </div>
 
-      <!-- SERVICIOS SELECCIONADOS (solo cliente) -->
+      <!-- SERVICIOS SELECCIONADOS + RESUMEN DE USUARIO -->
       <div v-if="userRole === 'Client' && selectedServices.length" class="selected-service-box card text-white bg-dark p-4">
         <h4 class="mb-3">Servicios Seleccionados</h4>
         <ul class="list-unstyled">
-          <li v-for="service in selectedServices" :key="service.id_services" class="mb-2">
-            <strong>{{ service.name_service }}</strong>
+          <li v-for="service in selectedServices" :key="service.id_services" class="mb-3">
+            <strong>{{ service.name_service }}</strong><br />
+            <span>Duración: {{ service.estimated_time }}</span><br />
           </li>
         </ul>
         <p class="mt-3"><strong>Total:</strong> ${{ totalPrice }}</p>
+
+        <hr />
+        
+
         <div class="d-flex justify-content-between mt-3">
           <button class="btn btn-danger" @click="clearAllSelected">Eliminar selección</button>
           <button class="btn btn-success" @click="goToSelectBarbero">Continuar</button>
@@ -96,12 +99,13 @@
 
     <!-- BOTÓN REGRESAR -->
     <div class="btn-regresar mt-3 text-center">
-      <button class="btn back-button" @click="goBack">Regresar</button>
+      <button class="btn btn-secondary" @click="goBack">Regresar</button>
     </div>
 
     <footer class="py-3 my-4">
       <p class="text-center text-white">© 2024 www.mysticalcut.com, Inc</p>
     </footer>
+  </div>
   </div>
 </template>
 
@@ -110,24 +114,23 @@ import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getAllServices, deleteService } from '@/services/servicesApi';
 import axios from 'axios';
-import '@/assets/css/style.css';
-import '@/assets/css/services.css';
 
 const router = useRouter();
 const services = ref([]);
 const selectedServices = ref([]);
 const isMenuOpen = ref(false);
-const user = ref({ full_name: '', user_id: null });
+const user = ref({ full_name: '', user_id: null, user_email: '' });
 const roleModules = ref([]);
 const userRole = ref('');
 
-// Funciones
+// Funciones menú y navegación
 const toggleMenu = () => isMenuOpen.value = !isMenuOpen.value;
 const closeMenu = (event) => { if (!event.target.closest('.dropdown')) isMenuOpen.value = false; };
 const logout = () => { localStorage.removeItem('token'); router.push('/'); };
 const goToProfile = () => router.push('/perfil');
 const goBack = () => router.push('/Home');
 
+// Obtener usuario y servicios
 onMounted(() => {
   fetchServices();
   fetchUserData();
@@ -144,6 +147,7 @@ const fetchUserData = async () => {
     user.value = {
       full_name: data.full_name || 'Usuario',
       user_id: data.user_id,
+      user_email: data.user_email || '',
       modules: data.modules || []
     };
     roleModules.value = user.value.modules;
@@ -163,23 +167,30 @@ const fetchServices = async () => {
   }
 };
 
-  const servicesByCategory = computed(() => {
-    const categorized = {};
-    services.value.forEach(service => {
-      const category = service.category_name || "Otros";
-      if (!categorized[category]) categorized[category] = [];
-      categorized[category].push(service);
-    });
-    return categorized;
+const servicesByCategory = computed(() => {
+  const categorized = {};
+  services.value.forEach(service => {
+    const category = service.category_name || "Otros";
+    if (!categorized[category]) categorized[category] = [];
+    categorized[category].push(service);
   });
+  return categorized;
+});
 
 const getCategoryId = (category) => category.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
-const getServiceImage = (image) => image ? `/background/${image}` : '/img/background/combo01.png';
-const selectService = (service) => { selectedServices.value = [service]; };
-const clearAllSelected = () => selectedServices.value = [];
 
+// ✅ Esta función ahora busca en el backend si existe imagen, si no, pone una por defecto
+const getServiceImage = (image) =>
+  image ? `http://localhost:5000/uploads/${image}` : '/img/background/combo01.png';
+
+const selectService = (service) => {
+  console.log("Servicio seleccionado:", service);
+  selectedServices.value = [service];
+};
+const clearAllSelected = () => selectedServices.value = [];
 const totalPrice = computed(() => selectedServices.value.reduce((sum, s) => sum + parseFloat(s.price || 0), 0).toFixed(2));
 
+// Eliminar servicio
 const confirmDelete = async (id) => {
   if (!id) return alert("ID de servicio inválido.");
   if (!confirm('¿Estás seguro de eliminar este servicio?')) return;
@@ -193,31 +204,33 @@ const confirmDelete = async (id) => {
   }
 };
 
+// Guardar servicio + usuario en localStorage
 const goToSelectBarbero = () => {
   if (!user.value.user_id) return alert("No se ha podido obtener el ID del usuario.");
-  router.push({
-    path: '/Select-Barbero',
-    query: {
-      servicios: JSON.stringify(selectedServices.value),
-      user_id: user.value.user_id,
-      user_name: user.value.full_name
-    }
-  });
+
+  localStorage.setItem('selectedService', JSON.stringify(selectedServices.value));
+  localStorage.setItem('userName', user.value.full_name);
+  localStorage.setItem('userId', user.value.user_id);
+  localStorage.setItem('userEmail', user.value.user_email);
+
+  router.push('/Select-Barbero');
 };
 </script>
 
+
 <style scoped>
+
 .category-nav {
   position: sticky;
   top: 0;
-  z-index: 100; /* Bajar el z-index de la barra de categorías */
+  z-index: 100;
   background-color: #000000;
   padding: 10px 0;
   border-bottom: 1px solid #444;
 }
 
 .col-md-3.text-end .dropdown {
-  z-index: 200; /* Aumentar el z-index del dropdown para que esté por encima de las categorías */
+  z-index: 200;
 }
 
 .category-nav .nav-link {
@@ -271,30 +284,8 @@ const goToSelectBarbero = () => {
   padding: 5px 10px;
 }
 
-.btn-view {
-  background-color: #CCAF54;
-  color: #000;
-  border: none;
-  font-weight: bold;
-}
-
-.btn-view:hover {
-  background-color: #FFD700;
-  color: #fff;
-}
-
-.btn-select {
-  background-color: #CCAF54;
-  color: #000;
-  border: none;
-  font-weight: bold;
-}
-
-.btn-select:hover {
-  background-color: #FFD700;
-  color: #fff;
-}
-
+.btn-view,
+.btn-select,
 .btn-edit {
   background-color: #CCAF54;
   color: #000;
@@ -302,6 +293,8 @@ const goToSelectBarbero = () => {
   font-weight: bold;
 }
 
+.btn-view:hover,
+.btn-select:hover,
 .btn-edit:hover {
   background-color: #FFD700;
   color: #fff;

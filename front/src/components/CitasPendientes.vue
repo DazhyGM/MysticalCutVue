@@ -1,6 +1,5 @@
 <template>
   <div class="container text-white">
-    <!-- Encabezado -->
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
         <router-link to="/Home">
@@ -13,7 +12,6 @@
       </ul>
     </header>
 
-    <!-- Tabla de citas -->
     <div class="table-responsive">
       <table class="table table-dark table-striped">
         <thead>
@@ -63,12 +61,10 @@
       </table>
     </div>
 
-    <!-- Botón regresar -->
     <div class="text-center my-4">
       <button class="btn back-button" @click="$router.push('/Home')">Regresar</button>
     </div>
 
-    <!-- Footer -->
     <footer class="py-3 my-4">
       <p class="text-center text-white">© 2024 www.mysticalcut.com, Inc</p>
     </footer>
@@ -106,7 +102,6 @@ export default {
         this.userId = userData.user_id;
         this.userRole = userData.role;
 
-        // Si el rol es admin, no pasamos user_id ni barber_id
         const citasData = await getQuotesWithServiceDetails(this.userRole === 'admin' ? null : this.userId);
         this.citas = citasData;
       } catch (error) {
@@ -129,8 +124,9 @@ export default {
     async cancelarCita(id) {
       try {
         await cancelQuote(id);
-        this.cargarCitas();
         alert('Cita cancelada con éxito');
+        // Redirige a /Home después de cancelar
+        this.$router.push('/Home'); 
       } catch (error) {
         console.error('❌ Error al cancelar cita:', error);
         alert('No se pudo cancelar la cita.');
@@ -139,8 +135,9 @@ export default {
     async finalizarCita(id) {
       try {
         await finishQuote(id);
-        this.cargarCitas();
         alert('Cita finalizada con éxito');
+        // Redirige a /Home después de finalizar
+        this.$router.push('/Home'); 
       } catch (error) {
         console.error('❌ Error al finalizar cita:', error);
         alert('No se pudo finalizar la cita.');

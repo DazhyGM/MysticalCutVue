@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "674f48e3366adebbe2490531"
+  },
+  "id_categoria": 1,
+  "nombre": "Cortes de Cabello"
+},
+{
+  "_id": {
+    "$oid": "674f48e3366adebbe2490532"
+  },
+  "id_categoria": 2,
+  "nombre": "Afeitado"
+},
+{
+  "_id": {
+    "$oid": "674f48e3366adebbe2490533"
+  },
+  "id_categoria": 3,
+  "nombre": "Tintes y Coloracion"
+},
+{
+  "_id": {
+    "$oid": "674f48e3366adebbe2490534"
+  },
+  "id_categoria": 4,
+  "nombre": "Tratamientos Capilares"
+},
+{
+  "_id": {
+    "$oid": "674f48e3366adebbe2490535"
+  },
+  "id_categoria": 5,
+  "nombre": "Productos de Estilo"
+}]

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../../public/assets/img/LOGOHEADERTRANS.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+    <title>Procesar pago</title>
+    <link rel="stylesheet" href="../../../public/assets/css/Usuario/index.css">
+    <link rel="stylesheet" href="../../../public/assets/css/Usuario/stylesProcesarpago.css">
+</head>
+
+<body>
+    <div class="container">
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <img src="../../../public/assets/img/LOGO.png" alt="" width="125" height="125"
+                    class="d-inline-block align-text-top">
+            </div>
+            <ul class="nav col-12 justify-content-center mx-auto">
+                <h1>Métodos de pago</h1>
+            </ul>
+        </header>
+    </div>
+
+    <div class="recover-container">
+        <form class="recover-form">
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <label>
+                        <input type="radio" name="doc-type" value="Tarjeta debito" onclick="mostrarCamposTarjeta()">
+                        Tarjeta debito
+                    </label>
+                    <label>
+                        <input type="radio" name="doc-type" value="Tarjeta credito" onclick="mostrarCamposTarjeta()">
+                        Tarjeta credito
+                    </label>
+                    <label>
+                        <input type="radio" name="doc-type" value="PayPal" onclick="ocultarCamposTarjeta()"> PayPal
+                    </label>
+                    <label>
+                        <input type="radio" name="doc-type" value="Transferencia bancaria"
+                            onclick="ocultarCamposTarjeta()"> Transferencia bancaria
+                    </label>
+                    <label>
+                        <input type="radio" name="doc-type" value="PSE" onclick="ocultarCamposTarjeta()"> PSE
+                    </label>
+                    <label>
+                        <input type="radio" name="doc-type" value="Nequi" onclick="ocultarCamposTarjeta()"> Nequi
+                    </label>
+                    <label>
+                        <input type="radio" name="doc-type" value="Daviplata" onclick="ocultarCamposTarjeta()">
+                        Daviplata
+                    </label>
+                    <td><a class="btn button-efectivo" onclick="pagoEfectivo()">Efectivo</a></td>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div id="campos-tarjeta" style="display:none;">
+                        <label for="id-number" class="icono1">Número de la tarjeta <img
+                                src="../../../public/assets/img/metodos de pago.png" width="100px"></label>
+                        <input type="text" id="id-number" name="id-number">
+
+                        <label for="expiration">MM/AA</label>
+                        <input type="text" id="expiration" name="expiration">
+
+                        <label for="cvv">CVV</label>
+                        <input type="password" id="cvv" name="cvv">
+
+                        <label for="titular">Nombre del titular</label>
+                        <input type="text" id="titular" name="titular">
+
+                        <label for="cuotas">Cuotas</label>
+                        <select id="cuotas" name="cuotas">
+                            <option value="" disabled selected>Selecciona cuotas</option>
+                            <option value="1">1 Cuota</option>
+                            <option value="2">2 Cuotas</option>
+                            <option value="3">3 Cuotas</option>
+                            <option value="4">4 Cuotas</option>
+                            <option value="5">5 Cuotas</option>
+                            <option value="6">6 Cuotas</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <td><a class="btn submit-button" onclick="pagoTarjeta()">Pagar</a></td>
+        </form>
+        <button class="back-button" onclick="window.location.href='CarritoDeCompras.html';">Regresar</button>
+    </div>
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        </ul>
+        <p class="text-center text-white"></p>
+    </footer>
+</body>
+<script src="../../../public/assets/js/Usuario/pagoEfectivo.js"></script>
+<script src="../../../public/assets/js/Usuario/pagoTarjeta.js"></script>
+<script src="../../../public/assets/js/Usuario/MetodosDepago.js"></script>
+
+</html>

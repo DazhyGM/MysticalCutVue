@@ -1,0 +1,50 @@
+/*Cuadra placticamente todo el formulario de MensajeConfi*/
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.logo {
+    width: 70px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #D4AF37;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+
+
+.back-button {
+    padding: 7px 15px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+
+
+
+/* Para cuadrar la caja de recuperar contraseña*/
+
+.login-container1 {
+    background-color: #111;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 600px; 
+    margin: auto;
+    margin-top: 50px;
+}

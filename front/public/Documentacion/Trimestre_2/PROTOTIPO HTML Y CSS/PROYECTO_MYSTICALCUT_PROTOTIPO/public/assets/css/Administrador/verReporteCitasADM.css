@@ -1,0 +1,149 @@
+.container1 {
+    display: flex;
+    justify-content: center;
+    /* Alinea los elementos a los bordes del contenedor */
+    align-items: flex-start;
+    /* Alinea verticalmente al inicio del contenedor */
+    padding: 150px;
+    margin-top: -80px;
+    /* Ajusta este valor según sea necesario para mover el contenedor hacia arriba */
+}
+
+.container2 {
+    display: flex;
+    justify-content: flex-end;
+    /* Alinea el contenedor a la derecha */
+    align-items: flex-start;
+    /* Alinea verticalmente al inicio del contenedor */
+    padding: 50px;
+}
+
+.sidebar {
+    flex: 0 0 300px;
+    /* Define un ancho fijo para la barra lateral */
+    margin-right: 20px;
+    /* Espacio entre la gráfica y la tabla */
+}
+
+.sidebar img {
+    width: 100%;
+    /* Ajusta la imagen para que ocupe todo el ancho de la barra lateral */
+    height: auto;
+    border: 2px solid #CCAF54;
+}
+
+.content {
+    flex: 1;
+    /* Permite que la tabla ocupe el espacio restante */
+    max-width: calc(100% - 240px);
+    /* Ajusta el ancho máximo teniendo en cuenta el ancho de la barra lateral y el margen */
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.user-table th,
+.user-table td {
+    border: 2px solid #D4AF37;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-table th {
+    background-color: #222;
+}
+
+.user-table td button {
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.pagination button {
+    background-color: #CCAF54;
+    border: 1px solid #000;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.pagination input {
+    width: 30px;
+    text-align: center;
+    margin: 0 10px;
+    background-color: #fff;
+    border: 1px solid #000;
+    margin-top: inherit;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+#calendarContainer {
+    display: none;
+    position: absolute;
+    top: 100px;
+    /* Ajusta según la posición del ícono */
+    right: 50px;
+    /* Ajusta según la posición del ícono */
+    border: 1px solid #CCAF54;
+    background-color: #000000;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+#calendar {
+    width: 100%;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.calendar-table th,
+.calendar-table td {
+    padding: 5px;
+    text-align: center;
+}
+
+.calendar-table th {
+    background-color: #000000;
+}
+
+/* Estilo para asegurar que la imagen ocupe todo el modal */
+.modal-dialog {
+    max-width: 40%;
+    /* El modal ocupa el 90% del ancho de la pantalla */
+    max-height: 80%;
+    /* El modal ocupa el 90% de la altura de la pantalla */
+}
+
+.modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+#modalImage {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.modal-title {
+    color: black;
+    /* Cambia el color del título a negro */
+}

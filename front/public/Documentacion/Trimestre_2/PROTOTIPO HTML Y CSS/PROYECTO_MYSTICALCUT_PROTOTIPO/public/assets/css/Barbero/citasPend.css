@@ -1,0 +1,88 @@
+.table {
+    border: 2px solid #D4AF37; /* Borde dorado alrededor de la tabla */
+}
+
+.table th, .table td {
+    border: 1px solid #D4AF37; /* Bordes dorados para las celdas */
+}
+
+.btn-cancelar img, .btn-chulo img {
+    width: 24px; /* Ajusta el tamaño de los íconos según lo necesites */
+    height: 24px;
+}
+
+.btn-cancelar {
+    display: inline-block;
+    margin-right: 10px; /* Espacio entre los íconos */
+}
+
+.btn-chulo {
+    display: inline-block;
+}
+.back-button {
+    background-color: #ffffff; /* Color dorado para el fondo del botón */
+    border: 2px solid #000000; /* Borde dorado */
+    color: #000000; /* Color del texto blanco */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita en el texto */
+    margin-top: -90px;
+}
+
+.container1 {
+    text-align: center; /* Centra el contenido en el contenedor */
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+/* Cambia el color de fondo de la tabla */
+.table {
+    background-color: #000000; /* Fondo oscuro para la tabla */
+    border: 2px solid #d4af37; /* Borde dorado alrededor de la tabla */
+    color: #fff; /* Color del texto blanco */
+}
+
+/* Cambia el color de los encabezados de la tabla */
+.table thead th {
+    background-color: #000000; /* Fondo más oscuro para los encabezados */
+    color: #d4af37; /* Color dorado para el texto de los encabezados */
+}
+
+/* Cambia el color de las celdas de la tabla */
+.table tbody td {
+    background-color: #000000; /* Fondo de las celdas en un tono gris oscuro */
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+.swal2-select {
+    background-color: black;
+    color: white;
+    border: 1px solid #CCAF54; /* Borde dorado */
+}
+
+.swal2-select option {
+    background-color: black;
+    color: white;
+}
+
+/* Estilo para el botón de Resumen Días */
+.resumen-dias {
+    background-color: #D4AF37; /* Color dorado para el fondo del botón */
+    border: 2px solid #000000; /* Borde dorado */
+    color: #000000; /* Color del texto negro */
+    padding: 10px 20px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita en el texto */
+    margin-bottom: 10px; /* Espacio debajo del botón para separarlo del botón de regresar */
+}

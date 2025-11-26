@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
-const authenticateToken = require('../middlewares/authMiddleware');
+const authenticate = require('../middlewares/authenticate');
 
 /**
  * @swagger
@@ -144,7 +144,7 @@ router.get('/reset-password/:token', userController.showResetPasswordForm);
  *       200:
  *         description: Perfil obtenido
  */
-router.get('/profile', authenticateToken, userController.getProfile);
+router.get('/profile',authenticate, userController.getProfile);
 
 /**
  * @swagger
@@ -158,7 +158,7 @@ router.get('/profile', authenticateToken, userController.getProfile);
  *       200:
  *         description: Lista de usuarios
  */
-router.get('/users', authenticateToken, userController.getUsers);
+router.get('/users', authenticate, userController.getUsers);
 
 /**
  * @swagger
@@ -178,7 +178,7 @@ router.get('/users', authenticateToken, userController.getUsers);
  *       200:
  *         description: Usuario obtenido
  */
-router.get('/users/:id', authenticateToken, userController.getUserById);
+router.get('/users/:id', authenticate, userController.getUserById);
 
 /**
  * @swagger
@@ -192,7 +192,7 @@ router.get('/users/:id', authenticateToken, userController.getUserById);
  *       200:
  *         description: Lista de usuarios inactivos
  */
-router.get('/inactives', authenticateToken, userController.getInactiveUsers);
+router.get('/inactives',authenticate, userController.getInactiveUsers);
 
 /**
  * @swagger
@@ -217,7 +217,7 @@ router.get('/inactives', authenticateToken, userController.getInactiveUsers);
  *       200:
  *         description: Usuario actualizado
  */
-router.put('/users/:id', authenticateToken, userController.updateUser);
+router.put('/users/:id',authenticate, userController.updateUser);
 
 /**
  * @swagger
@@ -237,7 +237,7 @@ router.put('/users/:id', authenticateToken, userController.updateUser);
  *       200:
  *         description: Estado del usuario actualizado
  */
-router.put('/users/status/:id', authenticateToken, userController.updateUserStatus);
+router.put('/users/status/:id', authenticate, userController.updateUserStatus);
 
 /**
  * @swagger
@@ -256,8 +256,8 @@ router.put('/users/status/:id', authenticateToken, userController.updateUserStat
  *     responses:
  *       200:
  *         description: Usuario eliminado
- */
-router.delete('/users/:id', authenticateToken, userController.deleteUser);
+ */userController
+router.delete('/users/:id', authenticate, userController.deleteUser);
 
 /**
  * @swagger
@@ -271,7 +271,7 @@ router.delete('/users/:id', authenticateToken, userController.deleteUser);
  *       200:
  *         description: Lista de barberos
  */
-router.get('/barbers', authenticateToken, userController.getBarbers);
+router.get('/barbers', authenticate, userController.getBarbers);
 
 /**
  * @swagger
@@ -293,7 +293,7 @@ router.get('/barbers', authenticateToken, userController.getBarbers);
  *       200:
  *         description: Perfil encontrado
  */
-router.post('/profile-by-email', authenticateToken, userController.getUserByEmail);
+router.post('/profile-by-email', authenticate, userController.getUserByEmail);
 
 /**
  * @swagger
@@ -320,7 +320,7 @@ router.post('/profile-by-email', authenticateToken, userController.getUserByEmai
  *       500:
  *         description: Error del servidor
  */
-router.get('/role/:role', authenticateToken, userController.filterUsersByRole);
+router.get('/role/:role', authenticate, userController.filterUsersByRole);
 
 /**
  * @swagger
@@ -347,7 +347,7 @@ router.get('/role/:role', authenticateToken, userController.filterUsersByRole);
  *       500:
  *         description: Error al eliminar la cuenta
  */
-router.put("/:id/delete", authenticateToken, userController.deleteAccount);
+router.put("/:id/delete", authenticate, userController.deleteAccount);
 
 
 

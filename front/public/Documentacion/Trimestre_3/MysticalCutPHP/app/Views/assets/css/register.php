@@ -1,0 +1,1 @@
+<link href="<?= FOLDER_PUBLIC_ASSETS ?>/css/register.css" rel="stylesheet">

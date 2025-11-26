@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const serviceController = require('../controllers/serviceController');
 const authenticateToken = require('../middlewares/authMiddleware');
-const upload = require('../middlewares/upload');
+const upload = require('../middlewares/upload');    
 
 /**
  * @swagger

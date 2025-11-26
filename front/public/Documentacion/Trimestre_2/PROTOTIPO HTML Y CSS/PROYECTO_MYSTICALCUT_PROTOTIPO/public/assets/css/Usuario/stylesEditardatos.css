@@ -1,0 +1,103 @@
+
+
+    .container1 {
+        max-width: 900px;
+        margin:auto;
+        padding: 5px;
+    }
+
+    .header-logo img {
+        width: 150px;
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background-color: #111;
+        padding: 30px;
+        border-radius: 10px;
+    }
+
+    .form-container input {
+        background-color: #222;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form-container label {
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .edit-btn {
+        background-color: #444;
+        border: none;
+        padding: 5px;
+        margin-left: 10px;
+        border-radius: 50%;
+    }
+
+    .edit-btn i {
+        color: white;
+    }
+
+    .profile-icon {
+        font-size: 3rem;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .back-button {
+        background-color: #444;
+        border: none;
+        padding: 10px 20px;
+        color: white;
+        border-radius: 5px;
+    }
+
+    .logout-btn {
+        background-color: #fffdf8;
+        border: none;
+        padding: 10px 20px;
+        color: black;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+    .confirm-btn {
+        background-color: #ccaf54;
+        border: none;
+        padding: 10px 20px;
+        color: black;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    footer {
+        margin-top: auto;
+        background-color: #000000;
+        padding: 10px 0;
+    }
+    .swal2-popup {
+        background-color: #000 !important;
+        border: 2px solid #CCAF54;
+    }
+    
+    .swal2-title,
+    .swal2-content {
+        color: #fff !important;
+    }
+    
+    .swal2-confirm,
+    .swal2-cancel {
+        color: #000 !important;
+    }
+    
+    
+
+    
+    
+
+   

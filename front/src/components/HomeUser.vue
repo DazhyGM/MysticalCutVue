@@ -4,13 +4,12 @@
       <header
         class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
         <div class="col-md-3 mb-2 mb-md-0">
-  <router-link to="/Home">
-    <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-  </router-link>
-</div>
+          <router-link to="/Home">
+            <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125"
+              class="d-inline-block align-text-top" />
+          </router-link>
+        </div>
 
-
-        
         <!-- 🔹 Menú filtrado según el rol -->
         <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
           <li v-for="module in filteredModules" :key="module.module_route" class="nav-item">
@@ -92,7 +91,7 @@
       </button>
     </div>
 
-<!--Seccion de servicios-->
+    <!--Seccion de servicios-->
 
     <div class="container section">
       <h2 class="section-title">Servicios</h2>
@@ -110,19 +109,19 @@
         </div>
       </div>
       <div class="text-center mt-4">
-  <a href="/services" class="btn btn-custom">Agenda tu cita</a>
-</div>
+        <a href="/services" class="btn btn-custom">Agenda tu cita</a>
+      </div>
 
     </div>
 
-<!--Seccion de Productos-->
+    <!--Seccion de Productos-->
 
     <div class="container section">
       <h2 class="section-title">Productos</h2>
       <div class="row row-cols-1 row-cols-md-4 g-8">
         <div v-for="product in products" :key="product.title" class="col">
           <div class="card">
-            <a href="/usuario/productos">
+            <a href="/Products">
               <img :src="product.image" class="card-img-top" :alt="product.title" />
             </a>
             <div class="card-body">
@@ -133,9 +132,9 @@
         </div>
       </div>
       <!-- Botón para elegir un producto con más espacio abajo -->
-<div class="text-center mt-4 mb-4">
-  <a href="/usuario/productos" class="btn btn-custom">Elige un producto</a>
-</div>
+      <div class="text-center mt-4 mb-4">
+        <a href="/Products" class="btn btn-custom">Elige un producto</a>
+      </div>
 
     </div>
 
@@ -183,7 +182,7 @@ import '@/assets/css/footer.css';
 
 const router = useRouter();
 const isMenuOpen = ref(false);
-const user = ref({ full_name: '', role: '' }); // ✅ Define `user` antes de usarlo
+const user = ref({ full_name: '', role: '' });
 
 // Función para alternar el menú
 const toggleMenu = () => {
@@ -234,13 +233,15 @@ const goToProfile = () => {
 
 // 🔹 Definir los módulos y qué roles pueden verlos
 const allModules = [
-  { module_route: 'Home', role_module: 'Home', roles: ['Admin', 'Client', 'Employee'] },
-  { module_route: 'Users', role_module: 'Users', roles: ['Admin'] },
+  { module_route: 'Home', role_module: 'Inicio', roles: ['Admin', 'Client', 'Employee'] },
+  { module_route: 'Users', role_module: 'Usuarios', roles: ['Admin'] },
   { module_route: 'Services', role_module: 'Servicios', roles: ['Admin', 'Client'] },
-  { module_route: 'Productos', role_module: 'Productos', roles: ['Admin', 'Client'] },
-  { module_route: 'Citas', role_module: 'Citas', roles: ['Employee', 'Client', 'Admin'] },
+  { module_route: 'Products', role_module: 'Productos', roles: ['Admin', 'Client'] },
+  { module_route: 'Citas', role_module: 'Citas', roles: ['Employee', 'Client'] },
+  { module_route: 'Reportes', role_module: 'Reportes', roles: ['Admin'] },
+
 ];
-  
+
 // Filtrar los módulos según el rol del usuario
 const filteredModules = computed(() => {
   if (!user.value.role) return [];
@@ -299,5 +300,3 @@ export default {
   }
 };
 </script>
-
-

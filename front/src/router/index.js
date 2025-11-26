@@ -27,6 +27,16 @@ import SeleccionarBarbero from '@/components/SeleccionarBarbero.vue';
 import CalendarioCitas from '@/components/CalendarioCitas.vue';
 import FacturaServicios from '@/components/FacturaServicios.vue';
 import CitasPendientes from '@/components/CitasPendientes.vue';
+import Reportes from '@/components/Reportes.vue';
+
+
+import Products from '../components/ProductsView.vue';
+import ProductsInactives from '../components/ProductsInactives.vue';
+import CrearProducto from '@/components/CrearProducto.vue';
+import EditarProducto from '@/components/EditarProducto.vue';
+import CartView from '@/components/CartView.vue';
+
+
 
 
 
@@ -35,8 +45,8 @@ const routes = [
   { path: '/', component: Index, meta: { title: 'Inicio | MysticalCut' } },
   { path: '/Login', component: Login, meta: { title: 'Login | MysticalCut' } },
   { path: '/Home', component: Home, meta: { title: 'Home | MysticalCut', requiresAuth: true } },
-  { path: '/error', component: Error404, meta: { title: 'Error 404 | MysticalCut' } }, // Ruta de error
-  { path: '/:pathMatch(.*)*', redirect: '/errorPNF' }, // Captura cualquier otra ruta inválida
+  { path: '/error', component: Error404, meta: { title: 'Error 404 | MysticalCut' } },
+  { path: '/:pathMatch(.*)*', redirect: '/errorPNF' },
   { path: '/Users', component: Users, meta: { title: 'Users | MysticalCut', requiresAuth: true, role: 'Admin' } },
   { path: '/Perfil', component: Perfil, meta: { title: 'Perfil | MysticalCut', requiresAuth: true } },
   { path: '/Register', component: Register, meta: { title: 'Registrate | MysticalCut'} },
@@ -48,7 +58,7 @@ const routes = [
   { path: '/errorUserBlock', component: ErrorUserBlock, meta: { title: 'Error | MysticalCut' } },
   { path: '/errorUserDeleted', component: ErrorUserDeleted, meta: { title: 'Error | MysticalCut' } },
   { path: '/errorPNF', component: ErrorPNF, meta: { title: 'Error | MysticalCut' } },
-  { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut' } },
+  { path: '/usersInactives', component: UsersInactives, meta: { title: 'Usuarios Inactivos | MysticalCut', requiresAuth: true, role: 'Admin' } },
   { path: '/forgotPassword', component: ForgotPassword, meta: { title: 'Recuperar Contraseña | MysticalCut' } },
   { path: '/reset-password/:token', component: ResetPassword, meta: { title: 'Resetear Contraseña | MysticalCut' } },
 
@@ -60,7 +70,19 @@ const routes = [
   { path: '/Select-Barbero', component: SeleccionarBarbero , meta: { title: 'Seleccionar Barbero | MysticalCut' } },
   { path: '/Calendario', component: CalendarioCitas , meta: { title: 'Calendario | MysticalCut' } },
   { path: '/FacturaServicios', component: FacturaServicios , meta: { title: 'factura | MysticalCut' } },
-  { path: '/Citas', component: CitasPendientes , meta: { title: 'Citas | MysticalCut', requiresAuth: true } }
+  { path: '/Citas', component: CitasPendientes , meta: { title: 'Citas | MysticalCut', requiresAuth: true } },
+  { path: '/Reportes', component: Reportes , meta: { title: 'Reportes | MysticalCut', requiresAuth: true, role: 'Admin'  } },
+
+  { path: '/Products', component: Products, meta: { title: 'Productos | MysticalCut', requiresAuth: true} },
+  { path: '/ProductsInactives', component: ProductsInactives, meta: { title: 'Productos inactivos | MysticalCut', requiresAuth: true} },
+  { path: '/Create-Products', component: CrearProducto, meta: { title: 'Crear Productos | MysticalCut', requiresAuth: true} },
+  { path: '/Edit-Products/:id', component: EditarProducto, meta: { title: 'Editar Productos | MysticalCut', requiresAuth: true} },
+  { path: '/Cart', component: CartView, meta: { title: 'Editar Productos | MysticalCut', requiresAuth: true} },
+
+
+
+
+
 ];
 
 

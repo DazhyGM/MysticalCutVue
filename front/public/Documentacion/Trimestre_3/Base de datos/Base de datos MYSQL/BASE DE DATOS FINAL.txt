@@ -1,0 +1,448 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 22-11-2024 a las 23:51:21
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `crud-php-app`
+--
+CREATE DATABASE IF NOT EXISTS `crud-php-app` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `crud-php-app`;
+
+DELIMITER $$
+--
+-- Procedimientos
+--
+DROP PROCEDURE IF EXISTS `sp_role_module`$$
+CREATE PROCEDURE `sp_role_module` (IN `idRole` INT)   BEGIN
+SELECT ROL.role_name AS `role_fk`,MD.module_name AS `role_module`,MD.module_icon,MD.module_description, MD.module_route FROM role_module AS RM 
+INNER JOIN role AS ROL ON RM.role_fk=ROL.role_id
+INNER JOIN module AS MD ON RM.module_fk=MD.module_id
+WHERE ROL.role_id=idRole;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_user_all`$$
+CREATE PROCEDURE `sp_user_all` ()   BEGIN
+SELECT `user_id`,`user_user`,`user_password`, UST.userStatus_name AS `userStatus_fk`, ROL.role_name AS `role_fk` FROM `user` AS US  
+INNER JOIN role AS ROL ON US.role_fk=ROL.role_id
+INNER JOIN userstatus AS UST  ON US.userStatus_fk=UST.userStatus_id;
+END$$
+
+DROP PROCEDURE IF EXISTS `sp_user_search`$$
+CREATE PROCEDURE `sp_user_search` (IN `dataSearch` VARCHAR(60))   BEGIN
+SELECT `user_id`,`user_user`,`user_password`, UST.userStatus_name AS `userStatus_fk`, ROL.role_name AS `role_fk` FROM `user` AS US  
+INNER JOIN role AS ROL ON US.role_fk=ROL.role_id
+INNER JOIN userstatus AS UST  ON US.userStatus_fk=UST.userStatus_id 
+WHERE ROL.role_name=dataSearch OR UST.userStatus_name=dataSearch OR US.user_user=dataSearch;
+END$$
+
+DELIMITER ;
+
+--
+-- Estructura de tabla para la tabla `module`
+--
+
+DROP TABLE IF EXISTS `module`;
+CREATE TABLE IF NOT EXISTS `module` (
+  `module_id` int(11) NOT NULL AUTO_INCREMENT,
+  `module_name` varchar(20) NOT NULL,
+  `module_route` varchar(20) NOT NULL,
+  `module_icon` varchar(40) NOT NULL,
+  `module_description` varchar(200) NOT NULL,
+  PRIMARY KEY (`module_id`),
+  UNIQUE KEY `module_name` (`module_name`),
+  UNIQUE KEY `module_route` (`module_route`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcado de datos para la tabla `module`
+--
+
+INSERT INTO `module` (`module_id`, `module_name`, `module_route`, `module_icon`, `module_description`) VALUES
+(1, 'Home', 'home/dashboard', '<i class=\"bi bi-house-fill\"></i>', 'This is module home'),
+(2, 'User', 'user/index', '<i class=\"bi bi-person-badge-fill\"></i>', 'This is module user');
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role`
+--
+
+DROP TABLE IF EXISTS `role`;
+CREATE TABLE IF NOT EXISTS `role` (
+  `role_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY `role_name` (`role_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+-- Volcado de datos para la tabla `role`
+--
+
+INSERT INTO `role` (`role_id`, `role_name`) VALUES
+(1, 'Admin'),
+(2, 'Employee'),
+(3, 'Client');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `role_module`
+--
+
+DROP TABLE IF EXISTS `role_module`;
+CREATE TABLE IF NOT EXISTS `role_module` (
+  `roleModule_id` int(11) NOT NULL AUTO_INCREMENT,
+  `role_fk` int(11) NOT NULL,
+  `module_fk` int(11) NOT NULL,
+  PRIMARY KEY (`roleModule_id`),
+  KEY `role_module_role` (`role_fk`),
+  KEY `role_module_module` (`module_fk`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcado de datos para la tabla `role_module`
+--
+
+INSERT INTO `role_module` (`roleModule_id`, `role_fk`, `module_fk`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 1),
+(4, 3, 1);
+
+
+
+-- Estructura de tabla para la tabla `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_email` varchar(30) NOT NULL,
+  `user_password` varchar(256) NOT NULL,
+  `document_type` enum('Cédula de Ciudadanía', 'Tarjeta de Identidad', 'Cédula de Extranjería') NOT NULL,
+  `document_number` varchar(20) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `address` varchar(150) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `userStatus_fk` int(11) NOT NULL,
+  `role_fk` int(11) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `user_email` (`user_email`),
+  UNIQUE KEY `document_number` (`document_number`),
+  KEY `user_role` (`role_fk`),
+  KEY `user_status` (`userStatus_fk`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Volcado de datos para la tabla `user`
+--
+INSERT INTO `user` (`user_id`,`user_email`, `user_password`, `document_type`, `document_number`, `full_name`, `address`, `phone`, `userStatus_fk`, `role_fk`
+) VALUES 
+('1','kevinsabogal24@gmail.com', '12345','Cédula de Ciudadanía','1000619691','Kevin David Sabogal','Calle Principal #1234','3003113203', 1, 2),
+('2','andresecasvar05@gmail.com','123456','Cédula de Ciudadanía','1011200996','Andres Esteban Castañeda','Calle Principal #1235','3175248114', 1, 2),
+('3','leonoscarandres04@gmail.com','1234567','Cédula de Ciudadanía','1022933160','Oscar Andres Leon','Calle Principal #1236','3209241730', 1, 2),
+('4','hharold855@gmail.com', '12345678','Cédula de Ciudadanía','1022938044','Harold David Hernandez','Calle Principal #1237','3212709274', 1, 2),
+('5','prueba@gmail.com', '123456789','Cédula de Ciudadanía','1237856337','trabajo de prueba','Calle Principal #12378','323456789', 1, 2);
+
+
+--
+-- Estructura de tabla para la tabla `userstatus`
+--
+
+DROP TABLE IF EXISTS `userstatus`;
+CREATE TABLE IF NOT EXISTS `userstatus` (
+  `userStatus_id` int(11) NOT NULL AUTO_INCREMENT,
+  `userStatus_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`userStatus_id`),
+  UNIQUE KEY `userStatus_name` (`userStatus_name`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+--
+-- Volcado de datos para la tabla `userstatus`
+--
+
+INSERT INTO `userstatus` (`userStatus_id`, `userStatus_name`) VALUES
+(1, 'Active'),
+(2, 'Inactive'),
+(3, 'Blocked');
+
+--
+-- Estructura de tabla para la tabla `Facture`
+--
+
+CREATE TABLE Facture (
+    `id_facture` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `date` DATE NOT NULL,
+    `total_value` FLOAT NOT NULL,
+    `user_fk` INT
+);
+ALTER TABLE Facture
+ADD CONSTRAINT fk_factura_usuario 
+FOREIGN KEY (`user_fk`) REFERENCES user (`user_id`);
+
+
+--
+-- Volcado de datos para la tabla `facture`
+--
+
+INSERT INTO Facture (`id_facture`,`date`, `total_value`, `user_fk`) 
+VALUES 
+('1','2024-12-03', 150.75, 1), 
+('2','2024-12-03', 180.75, 1), 
+('3','2024-12-03', 160.75, 1), 
+('4','2024-12-04', 250.00, 1),
+('5','2024-12-04', 350.00, 1);
+
+--
+-- Estructura de tabla para la tabla `category_product`
+--
+
+CREATE TABLE `category_product` (
+    `id_category` INT NOT NULL PRIMARY KEY,
+    `name` VARCHAR(100)
+);
+
+--
+-- Volcado de datos para la tabla category_product`
+--
+
+INSERT INTO `category_product` (`id_category`, `name`)
+VALUES 
+(1, 'Cortes de Cabello'),
+(2, 'Afeitado'),
+(3, 'Tintes y Coloración'),
+(4, 'Tratamientos Capilares'),
+(5, 'Productos de Estilo');
+
+--
+-- Estructura de tabla para la tabla `product`
+--
+
+CREATE TABLE product (
+    id_product INT NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price FLOAT NOT NULL,
+    description VARCHAR(255),
+    amount INT NOT NULL,
+    id_category INT
+);
+ALTER TABLE Product
+ADD CONSTRAINT fk_categoria 
+FOREIGN KEY (id_category) REFERENCES category_product(id_category);
+
+--
+-- Volcado de datos para la tabla product`
+--
+INSERT INTO `product` (`id_product`, `name`, `price`, `description`, `amount`, `id_category`)
+VALUES 
+(1, 'Corte Clásico', 15.00, 'Corte de cabello tradicional', 10, 1),
+(2, 'Afeitado Tradicional', 10.00, 'Afeitado con navaja y toalla caliente', 15, 2),
+(3, 'Tinte para Cabello', 30.00, 'Tinte permanente para cabello', 5, 3),
+(4, 'Tratamiento de Keratina', 50.00, 'Hidratación profunda con keratina', 3, 4),
+(5, 'Pomada para el Cabello', 12.00, 'Pomada con fijación media para peinado', 20, 5);
+
+--
+-- Estructura de tabla para la tabla `Product_invoice_detail`
+--
+
+CREATE TABLE Product_invoice_detail (
+    amount INT NOT NULL,
+    price FLOAT,
+    id_facture INT NOT NULL,
+    id_product INT NOT NULL
+);
+ALTER TABLE Product_invoice_detail
+ADD CONSTRAINT fk_product_invoice_detail
+FOREIGN KEY (id_facture) REFERENCES facture(id_facture),
+ADD CONSTRAINT fk_detail_invoice_product_product
+FOREIGN KEY (id_product) REFERENCES product(id_product);
+
+--
+-- Volcado de datos para la tabla `Product_invoice_detail`
+--
+
+INSERT INTO `Product_invoice_detail` (`amount`, `price`, `id_facture`, `id_product`)
+VALUES
+(2, 30.00, 1, 1), 
+(1, 20.00, 2, 2), 
+(3, 36.00, 3, 3), 
+(1, 18.00, 4, 4), 
+(2, 100.00, 5, 5); 
+
+--
+-- Estructura de tabla para la tabla `Category_Services`
+--
+
+CREATE TABLE Category_Services (
+    id_category_services INT NOT NULL PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+--
+-- Volcado de datos para la tabla `Category_Services`
+--
+
+INSERT INTO `Category_Services` (`id_category_services`, `name`)
+VALUES 
+(1, 'Cortes de Cabello'),
+(2, 'Afeitado y Barba'),
+(3, 'Coloración y Tintes'),
+(4, 'Tratamientos Capilares'),
+(5, 'Servicios para Niños');
+
+
+
+--
+-- Estructura de tabla para la tabla `services`
+--
+
+CREATE TABLE services(
+    id_services INT NOT NULL PRIMARY KEY,
+    name VARCHAR(100),
+    estimated_time TIME,
+    price FLOAT,
+    id_category_services INT NOT NULL 
+);
+ALTER TABLE services
+ADD CONSTRAINT fk_categoria_Servicios
+FOREIGN KEY (id_category_services) REFERENCES Category_Services(id_category_services);
+
+
+--
+-- Volcado de datos para la tabla `services`
+--
+
+INSERT INTO `services` (`id_services`, `name`, `estimated_time`, `price`, `id_category_services`)
+VALUES 
+(1, 'Corte Clásico', '00:30:00', 15.00, 1), 
+(2, 'Afeitado Tradicional', '00:20:00', 10.00, 2), 
+(3, 'Tinte Capilar', '01:00:00', 40.00, 3), 
+(4, 'Tratamiento Hidratante', '00:45:00', 25.00, 4),
+(5, 'Corte Infantil', '00:25:00', 12.00, 5); 
+
+
+--
+-- Estructura de tabla para la tabla `quotes`
+--
+
+CREATE TABLE `quotes` (
+    `id_quotes` INT NOT NULL PRIMARY KEY,
+    `date_time` TIMESTAMP NOT NULL,
+    `end_time` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP,
+    `state_quotes` VARCHAR(50),
+    `user_id` INT
+);
+ALTER TABLE quotes
+ADD CONSTRAINT fk_appointment_user
+FOREIGN KEY (user_id) REFERENCES user(user_id);
+
+--
+-- Volcado de datos para la tabla `quotes`
+--
+
+INSERT INTO `quotes` (`id_quotes`, `date_time`, `end_time`, `state_quotes`, `user_id`)
+VALUES 
+(1, '2024-12-03 10:00:00', '2024-12-03 10:30:00', 'Confirmada', 1),
+(2, '2024-12-03 11:00:00', '2024-12-03 11:45:00', 'Pendiente', 2),
+(3, '2024-12-03 14:00:00', '2024-12-03 14:30:00', 'Cancelada', 3),
+(4, '2024-12-04 09:30:00', '2024-12-04 10:00:00', 'Confirmada', 4),
+(5, '2024-12-04 15:00:00', '2024-12-04 15:30:00', 'Confirmada', 5);
+
+
+--
+-- Estructura de tabla para la tabla `type_of_quotes`
+--
+
+CREATE TABLE type_of_quotes (
+    id_quotes INT NOT NULL,
+    id_services INT NOT NULL,
+    barber INT
+);
+ALTER TABLE type_of_quotes
+ADD CONSTRAINT 
+fk_type_citation_citation
+FOREIGN KEY (id_quotes) REFERENCES quotes (id_quotes),
+ADD CONSTRAINT fk_type_appointment_service
+FOREIGN KEY (id_services) REFERENCES services (id_services);
+
+--
+-- Volcado de datos para la tabla `type_of_quotes`
+--
+
+INSERT INTO `type_of_quotes` (`id_quotes`, `id_services`, `barber`)
+VALUES
+(1, 1, 101),
+(2, 2, 102), 
+(3, 3, 103), 
+(4, 4, 104), 
+(5, 5, 105); 
+
+
+--
+-- Estructura de tabla para la tabla `Service_invoice_detail`
+--
+
+
+CREATE TABLE Service_invoice_detail(
+    amount INT NOT NULL,
+    price FLOAT,
+    id_facture INT NOT NULL,
+    id_services INT NOT NULL
+);
+
+ALTER TABLE Service_invoice_detail
+ADD CONSTRAINT fk_service_invoice_detail
+FOREIGN KEY (id_facture) REFERENCES facture(id_facture),
+ADD CONSTRAINT fk_detail_invoice_service_service
+FOREIGN KEY (id_services) REFERENCES services(id_services);
+
+--
+-- Volcado de datos para la tabla `Service_invoice_detail`
+--
+
+INSERT INTO `Service_invoice_detail` (`amount`, `price`, `id_facture`, `id_services`)
+VALUES
+(1, 15.00, 1, 1), 
+(1, 10.00, 2, 2), 
+(2, 80.00, 3, 3), 
+(1, 25.00, 4, 4), 
+(3, 36.00, 5, 5); 
+
+
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `role_module`
+--
+ALTER TABLE `role_module`
+  ADD CONSTRAINT `role_module_module` FOREIGN KEY (`module_fk`) REFERENCES `module` (`module_id`),
+  ADD CONSTRAINT `role_module_role` FOREIGN KEY (`role_fk`) REFERENCES `role` (`role_id`);
+
+--
+-- Filtros para la tabla `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_role` FOREIGN KEY (`role_fk`) REFERENCES `role` (`role_id`),
+  ADD CONSTRAINT `user_status` FOREIGN KEY (`userStatus_fk`) REFERENCES `userstatus` (`userStatus_id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

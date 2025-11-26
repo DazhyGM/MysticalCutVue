@@ -147,7 +147,7 @@ export default {
         const updateData = {
           full_name: form.fullName,
           address: form.address,
-          email: form.email,
+          user_email: form.email,
           phone: form.phone,
           role_fk: form.role
         };

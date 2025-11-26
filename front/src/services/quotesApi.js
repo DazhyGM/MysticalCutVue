@@ -108,3 +108,21 @@ export const sendQuoteEmail = async (emailData) => {
     throw error;
   }
 };
+
+
+// 🔹 Nuevo método: Obtener citas para reportes por rango de fechas
+export const getReportQuotes = async (startDate, endDate) => {
+  try {
+    const response = await axios.get(`${QUOTES_API_URL}/reports`, {
+      params: {
+        startDate,
+        endDate
+      },
+      ...getAuthHeaders()
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener citas para reportes:', error.response?.data || error.message);
+    throw error;
+  }
+};

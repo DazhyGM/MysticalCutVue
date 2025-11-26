@@ -1,0 +1,194 @@
+
+.custom-header h1 {
+    color: #D4AF37;
+    text-align: center;
+    font-size: 36px;
+    margin: 0;
+}
+
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-container {
+    display: flex;
+    gap: 20px; /* Espacio entre productos */
+    flex-wrap: nowrap; /* Todos los productos en una sola fila */
+    overflow-x: auto; /* Permite desplazamiento horizontal si hay demasiados productos */
+    padding-bottom: 20px; /* Espacio adicional debajo de los productos */
+    width: 100%;
+    max-width: 1200px;
+}
+
+.products {
+    display: flex;
+    gap: 0px;
+}
+
+
+.product {
+    background-color: #222;
+    border: 3px solid #444;
+    border-radius: 1px;
+    padding: 25px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    background-color: #444;
+    margin-bottom: 10px;
+}
+
+.product p {
+    margin: 10px 0;
+    color: #fff;
+}
+
+.add-to-cart {
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 10%;
+    color: #000;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.container3 {
+    text-align: center;
+}
+
+.new-button {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: center;
+}
+
+.small-icon {
+    width: 50px; /* Ancho deseado */
+    height: 50px; /* Altura deseada */
+}
+
+.container4 {
+
+    justify-content: flex-start; /* Alinea ambos elementos a la izquierda */
+    align-items: center; /* Alinea verticalmente el ícono y el botón */
+    margin-left: 170px; /* Ajusta el valor según cuánto deseas mover todo hacia la derecha */
+
+}
+
+.container4 i {
+    font-size: 16px; /* Tamaño del ícono, ajústalo según tus necesidades */
+    color: #D4AF37; /* Color del ícono, ajusta según tus necesidades */
+}
+
+.boton1{
+    padding: 10px 30px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px;
+    justify-content: flex-start;
+}
+.boton2{
+    padding: 10px 30px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    margin-right: 20px; /* Ajusta el espacio entre la imagen y el botón */
+}
+
+
+
+.container5 {
+    display: flex;
+    justify-content: flex-end; /* Alinea ambos elementos a la derecha */
+    align-items: center; /* Alinea verticalmente el ícono y el botón */
+    margin-right: 170px;
+}
+
+.container5 i {
+    font-size: 16px; /* Tamaño del ícono, ajústalo según tus necesidades */
+    color: #D4AF37; /* Color del ícono, ajusta según tus necesidades */
+}
+
+.product {
+    position: relative;
+    padding-bottom: 30px; /* Espacio para el checkbox */
+}
+
+.product-checkbox {
+    position: absolute;
+    bottom: 2%;
+    left: 90px; /* Ajusta este valor para centrar o mover horizontalmente */
+    width: 20px;
+    height: 20px;
+
+}
+.container-buttons {
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos */
+    margin: 0 170px; /* Margen a los lados */
+    align-items: center; /* Alineación vertical */
+}
+
+.boton1, .boton2 {
+    padding: 10px 30px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px; /* Espaciado entre el botón y el icono */
+    cursor: pointer; /* Estilo del cursor */
+}
+.form-check-input:checked {
+    background-color: #28a745; /* Color verde al activarse */
+    border-color: #28a745;    /* Bordes verdes */ 
+}
+
+.form-check-input {
+    background-color: #ccc; /* Color gris al estar desactivado */
+    border-color: #ccc;    /* Bordes grises */
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Sombra verde cuando se enfoca */
+}
+.switch-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Ajusta según tu preferencia */
+}
+
+
+.small-icon {
+    width: 50px; /* Tamaño del icono */
+    height: 50px; /* Tamaño del icono */
+    margin: 0 10px; /* Espaciado entre el icono y el botón */
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}

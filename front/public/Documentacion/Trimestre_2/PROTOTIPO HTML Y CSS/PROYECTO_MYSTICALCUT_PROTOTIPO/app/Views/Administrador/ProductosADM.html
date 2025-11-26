@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../../public/assets/img/LOGOHEADERTRANS.png">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Añadir SweetAlert2 -->
+    <title>Productos</title>
+    <link rel="stylesheet" href="../../../public/assets/css/Administrador/index.css">
+    <link rel="stylesheet" href="../../../public/assets/css/Administrador/editarProductos.css">
+</head>
+<body>
+    <div class="container">
+        <header class="custom-header d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <img src="../../../public/assets/img/LOGO.png" alt width="125" height="125"
+                    class="d-inline-block align-text-top">
+            </div>
+            <div class="col-md-6 d-flex justify-content-center">
+                <h1>Productos</h1>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-items-center">
+                <a href="verPerfilADM.html" class="textnav">
+                    <img src="../../../public/assets/img/salida.png" alt="Cart" class="icon" width="60" height="60">
+                </a>
+            </div>
+        </header>
+    </div>
+
+    <div class="container">
+        <div class="container-buttons d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="../../../public/assets/img/editar perfil 2.png" alt="Descripción de la imagen" class="small-icon">
+                <button onclick="window.location.href='agregarProductoADM.html'" class="boton1" id="add-product">Agregar</button>
+            </div>
+            <div class="d-flex align-items-center">
+                <button class="boton2" id="delete-product">Eliminar</button>
+                <img src="../../../public/assets/img/Signodecancelacion.png" alt="Descripción de la imagen" class="small-icon">
+            </div>
+        </div>
+        <i class="fas fa-shopping-cart cart-icon"></i>
+        <div class="main-content">
+            <div class="product-container">
+                <div class="products">
+                    <!-- Primer contenedor de productos -->
+                    <div class="category">
+                        <div class="category-content">
+                            <div class="product" data-service-id="Minoxidil pelo">
+                                <img src="../../../public/assets/img/minoxidilpelo.jpg" alt="Minoxidil pelo">
+                                <h2>Minoxidil</h2>
+                                <p>Caida Cabello </p>
+                                <p>$30.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button>       
+                                <input type="checkbox" class="select-service" data-service-id="Minoxidil pelo">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product" data-service-id="Tratamiento">
+                                <img src="../../../public/assets/img/tratamiento.jpg" alt="Tratamiento">
+                                <h2>Tratamiento</h2>
+                                <p>Capilar</p>
+                                <p>$25.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Tratamiento">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-content">
+                            <div class="product" data-service-id="Minoxidil barba">
+                                <img src="../../../public/assets/img/minoxidilbarba.jpg" alt="Minoxidil barba">
+                                <h2>Minoxidil</h2>
+                                <p>Caida de Barba</p>
+                                <p>$30.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Minoxidil barba">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product" data-service-id="Crema">
+                                <img src="../../../public/assets/img/cremabarba.jpg" alt="Crema">
+                                <h2>Crema</h2>
+                                <p>Crema facial</p>
+                                <p>$15.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Crema">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-content">
+                            <div class="product" data-service-id="Cera brillante">
+                                <img src="../../../public/assets/img/cerabrillante.jpg" alt="Cera brillante">
+                                <h2>Cera</h2>
+                                <p>Cera brillante</p>
+                                <p>$25.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Cera brillante">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product" data-service-id="Cera mate">
+                                <img src="../../../public/assets/img/ceramate.jpg" alt="Cera mate">
+                                <h2>Cera</h2>
+                                <p>Cera Mate</p>
+                                <p>$20.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Cera mate">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-content">
+                            <div class="product" data-service-id="Cepillo barba">
+                                <img src="../../../public/assets/img/cepillobarba.jpg" alt="Cepillo barba">
+                                <h2>Cepillo</h2>
+                                <p>Barba</p>
+                                <p>$12.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Cepillo barba">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product" data-service-id="Cepillo pelo">
+                                <img src="../../../public/assets/img/cepillopelo.jpg" alt="Cepillo pelo">
+                                <h2>Cepillo</h2>
+                                <p>Cabello</p>
+                                <p>$14.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Cepillo pelo">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-content">
+                            <div class="product" data-service-id="Shaver">
+                                <img src="../../../public/assets/img/shaver.jpg" alt="Shaver">
+                                <h2>Shaver</h2>
+                                <p>Patillera</p>
+                                <p>$80.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Shaver">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product" data-service-id="Maquina">
+                                <img src="../../../public/assets/img/maquina.jpg" alt="Maquina">
+                                <h2>Maquina</h2>
+                                <p>Maquina</p>
+                                <p>$120.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Maquina">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category">
+                        <div class="category-content">
+                            <div class="product" data-service-id="Shampoo caída cabello">
+                                <img src="../../../public/assets/img/shampoocaida.jpg" alt="Shampoo caída cabello">
+                                <h2>Shampoo</h2>
+                                <p>Caída cabello</p>
+                                <p>$15.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Shampoo caída cabello">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product" data-service-id="Shampoo crecimiento">
+                                <img src="../../../public/assets/img/shampoocrecimiento.jpg" alt="Shampoo crecimiento">
+                                <h2>Shampoo</h2>
+                                <p>Crecimiento</p>
+                                <p>$18.000</p>
+                                <button class="add-to-cart" onclick="window.location.href='editarProductosADM.html'">Editar</button> 
+                                <input type="checkbox" class="select-service" data-service-id="Shampoo crecimiento">
+                                <div class="switch-container">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="toggleActivo" onchange="toggleConfirmation(event)">
+                                        <label class="form-check-label" for="toggleInactivo"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../../../public/assets/js/Administrador/eliminarProducto.js"></script>
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        </ul>
+        <p class="text-center text-white"></p>
+    </footer>   
+</body>
+<script src="../../../public/assets/js/Administrador/hab_InhabProductoADM.js"></script>
+</html>

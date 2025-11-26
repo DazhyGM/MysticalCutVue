@@ -1,30 +1,8 @@
-const db = require('../config/db');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const ServiceModel = require('../models/serviceModel');
 
-// 🔥 Definir JWT_SECRET directamente en este archivo
-const JWT_SECRET = 'W9mX7Pq2fG8kY6NvB3rH4tL5zA1J0CDE';
-
-// 🔹 Obtener todos los servicios (activos)
+// 🔹 Obtener todos los servicios activos
 exports.getAllServices = (req, res) => {
-  const query = `
-      SELECT 
-          s.id_services, 
-          s.name_service, 
-          s.description, 
-          s.estimated_time, 
-          s.price, 
-          s.id_category_services, 
-          cs.name AS category_name,
-          s.id_status,
-          ss.name_status
-      FROM services s
-      INNER JOIN category_services cs ON s.id_category_services = cs.id_category_services
-      INNER JOIN service_status ss ON s.id_status = ss.id_status
-      WHERE s.id_status = 1
-  `;
-
-  db.query(query, (err, results) => {
+  ServiceModel.getAllActiveServices((err, results) => {
     if (err) {
       console.error('Error al obtener los servicios:', err);
       return res.status(500).json({ error: 'Error al obtener los servicios' });
@@ -36,7 +14,7 @@ exports.getAllServices = (req, res) => {
 // 🔹 Obtener un servicio por ID
 exports.getServiceById = (req, res) => {
   const { id } = req.params;
-  db.query('SELECT * FROM services WHERE id_services = ?', [id], (err, result) => {
+  ServiceModel.getServiceById(id, (err, result) => {
     if (err) {
       console.error('Error al obtener el servicio:', err);
       return res.status(500).json({ message: 'Error al obtener el servicio' });
@@ -48,17 +26,14 @@ exports.getServiceById = (req, res) => {
   });
 };
 
-// 🔹 Crear un nuevo servicio
+// 🔹 Crear nuevo servicio
 exports.createService = (req, res) => {
   const { name_service, description, estimated_time, price, id_category_services, id_status } = req.body;
   const image = req.file ? req.file.filename : null;
 
-  const query = `
-    INSERT INTO services 
-    (name_service, description, estimated_time, price, id_category_services, id_status, image) 
-    VALUES (?, ?, ?, ?, ?, ?, ?)
-  `;
-  db.query(query, [name_service, description, estimated_time, price, id_category_services, id_status, image], (err) => {
+  const data = [name_service, description, estimated_time, price, id_category_services, id_status, image];
+
+  ServiceModel.createService(data, (err) => {
     if (err) {
       console.error('Error al crear el servicio:', err);
       return res.status(500).json({ message: 'Error al crear el servicio' });
@@ -67,14 +42,12 @@ exports.createService = (req, res) => {
   });
 };
 
-
-// 🔹 Actualizar un servicio
+// 🔹 Actualizar servicio
 exports.updateService = (req, res) => {
   const { id } = req.params;
   const { name_service, description, estimated_time, price, id_category_services, id_status } = req.body;
   const image = req.file ? req.file.filename : null;
 
-  // 🔹 Armar la query dinámicamente
   let query = `
     UPDATE services 
     SET name_service = ?, description = ?, estimated_time = ?, price = ?, 
@@ -82,7 +55,6 @@ exports.updateService = (req, res) => {
   `;
   const params = [name_service, description, estimated_time, price, id_category_services, id_status];
 
-  // 🔸 Solo añadir el campo 'image' si fue enviado
   if (image) {
     query += `, image = ?`;
     params.push(image);
@@ -91,7 +63,7 @@ exports.updateService = (req, res) => {
   query += ` WHERE id_services = ?`;
   params.push(id);
 
-  db.query(query, params, (err) => {
+  ServiceModel.updateService(query, params, (err) => {
     if (err) {
       console.error('Error al actualizar el servicio:', err);
       return res.status(500).json({ message: 'Error al actualizar el servicio' });
@@ -100,12 +72,10 @@ exports.updateService = (req, res) => {
   });
 };
 
-
-
-// 🔹 Eliminar un servicio (cambiar estado a inactivo)
+// 🔹 Eliminar servicio (cambiar estado a inactivo)
 exports.deleteService = (req, res) => {
   const { id } = req.params;
-  db.query('UPDATE services SET id_status = 2 WHERE id_services = ?', [id], (err, result) => {
+  ServiceModel.deleteService(id, (err, result) => {
     if (err) {
       console.error('Error al eliminar el servicio:', err);
       return res.status(500).json({ message: 'Error al eliminar el servicio' });
@@ -119,39 +89,19 @@ exports.deleteService = (req, res) => {
 
 // 🔹 Obtener servicios inactivos
 exports.getInactiveServices = (req, res) => {
-  const query = `
-      SELECT 
-          s.id_services, 
-          s.name_service, 
-          s.description, 
-          s.estimated_time, 
-          s.price, 
-          s.id_category_services, 
-          cs.name AS category_name,
-          s.id_status,
-          ss.name_status
-      FROM services s
-      INNER JOIN category_services cs ON s.id_category_services = cs.id_category_services
-      INNER JOIN service_status ss ON s.id_status = ss.id_status
-      WHERE s.id_status = 2
-  `;
-
-  db.query(query, (err, results) => {
+  ServiceModel.getInactiveServices((err, results) => {
     if (err) {
       console.error('Error al obtener los servicios inactivos:', err);
       return res.status(500).json({ error: 'Error al obtener los servicios inactivos' });
     }
-
-    console.log('🧪 Servicios inactivos encontrados:', results); // 👈 Agregado para debug
     res.json(results);
   });
 };
 
-
 // 🔹 Reactivar un servicio
 exports.activateService = (req, res) => {
   const { id } = req.params;
-  db.query('UPDATE services SET id_status = 1 WHERE id_services = ?', [id], (err, result) => {
+  ServiceModel.activateService(id, (err, result) => {
     if (err) {
       console.error('Error al activar el servicio:', err);
       return res.status(500).json({ message: 'Error al activar el servicio' });

@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "6750c6fe5072e9c814f8fa95"
+  },
+  "id_category_services": 1,
+  "name": "Cortes de Cabello"
+},
+{
+  "_id": {
+    "$oid": "6750c6fe5072e9c814f8fa96"
+  },
+  "id_category_services": 2,
+  "name": "Afeitado y Barba"
+},
+{
+  "_id": {
+    "$oid": "6750c6fe5072e9c814f8fa97"
+  },
+  "id_category_services": 3,
+  "name": "Coloración y Tintes"
+},
+{
+  "_id": {
+    "$oid": "6750c6fe5072e9c814f8fa98"
+  },
+  "id_category_services": 4,
+  "name": "Tratamientos Capilares"
+},
+{
+  "_id": {
+    "$oid": "6750c6fe5072e9c814f8fa99"
+  },
+  "id_category_services": 5,
+  "name": "Servicios para Niños"
+}]

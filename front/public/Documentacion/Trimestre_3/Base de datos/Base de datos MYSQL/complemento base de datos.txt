@@ -1,0 +1,195 @@
+--
+-- Estructura de tabla para la tabla `product`
+--
+
+CREATE TABLE product (
+    id_product INT NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    price FLOAT NOT NULL,
+    description VARCHAR(255),
+    amount INT NOT NULL,
+    id_category INT
+);
+ALTER TABLE Product
+ADD CONSTRAINT fk_categoria 
+FOREIGN KEY (id_category) REFERENCES category_product(id_category);
+
+--
+-- Volcado de datos para la tabla product`
+--
+INSERT INTO `product` (`id_product`, `name`, `price`, `description`, `amount`, `id_category`)
+VALUES 
+(1, 'Corte Clásico', 15.00, 'Corte de cabello tradicional', 10, 1),
+(2, 'Afeitado Tradicional', 10.00, 'Afeitado con navaja y toalla caliente', 15, 2),
+(3, 'Tinte para Cabello', 30.00, 'Tinte permanente para cabello', 5, 3),
+(4, 'Tratamiento de Keratina', 50.00, 'Hidratación profunda con keratina', 3, 4);
+(5, 'Pomada para el Cabello', 12.00, 'Pomada con fijación media para peinado', 20, 5),
+
+--
+-- Estructura de tabla para la tabla `Product_invoice_detail`
+--
+
+CREATE TABLE Product_invoice_detail (
+    amount INT NOT NULL,
+    price FLOAT,
+    id_facture INT NOT NULL,
+    id_product INT NOT NULL
+);
+ALTER TABLE Product_invoice_detail
+ADD CONSTRAINT fk_product_invoice_detail
+FOREIGN KEY (id_facture) REFERENCES facture(id_facture),
+ADD CONSTRAINT fk_detail_invoice_product_product
+FOREIGN KEY (id_product) REFERENCES product(id_product);
+
+--
+-- Volcado de datos para la tabla `Product_invoice_detail`
+--
+
+INSERT INTO `Product_invoice_detail` (`amount`, `price`, `id_facture`, `id_product`)
+VALUES
+(2, 30.00, 1, 1), -- Dos cortes clásicos en la factura 1
+(1, 20.00, 2, 2), -- Un corte fade en la factura 2
+(3, 36.00, 3, 3), -- Tres pomadas para el cabello en la factura 3
+(1, 18.00, 4, 4); -- Un aceite para barba en la factura 4
+(2, 100.00, 5, 5); -- Dos tratamientos de keratina en la factura 5
+
+--
+-- Estructura de tabla para la tabla `Category_Services`
+--
+
+CREATE TABLE Category_Services (
+    id_category_services INT NOT NULL PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+--
+-- Volcado de datos para la tabla `Category_Services`
+--
+
+INSERT INTO `Category_Services` (`id_category_services`, `name`)
+VALUES 
+(1, 'Cortes de Cabello'),
+(2, 'Afeitado y Barba'),
+(3, 'Coloración y Tintes'),
+(4, 'Tratamientos Capilares'),
+(5, 'Servicios para Niños');
+
+
+
+--
+-- Estructura de tabla para la tabla `services`
+--
+
+CREATE TABLE services(
+    id_services INT NOT NULL PRIMARY KEY,
+    name VARCHAR(100),
+    estimated_time TIME,
+    price FLOAT,
+    id_category_services INT NOT NULL 
+);
+ALTER TABLE services
+ADD CONSTRAINT fk_categoria_Servicios
+FOREIGN KEY (id_category_services) REFERENCES Category_Services(id_category_services);
+
+
+--
+-- Volcado de datos para la tabla `services`
+--
+
+INSERT INTO `services` (`id_services`, `name`, `estimated_time`, `price`, `id_category_services`)
+VALUES 
+(1, 'Corte Clásico', '00:30:00', 15.00, 1), 
+(2, 'Afeitado Tradicional', '00:20:00', 10.00, 2), 
+(3, 'Tinte Capilar', '01:00:00', 40.00, 3), 
+(4, 'Tratamiento Hidratante', '00:45:00', 25.00, 4),
+(5, 'Corte Infantil', '00:25:00', 12.00, 5); 
+
+
+--
+-- Estructura de tabla para la tabla `quotes`
+--
+
+CREATE TABLE `quotes` (
+    `id_quotes` INT NOT NULL PRIMARY KEY,
+    `date_time` TIMESTAMP NOT NULL,
+    `end_time` TIMESTAMP NOT NULL DEFAULT  CURRENT_TIMESTAMP,
+    `state_quotes` VARCHAR(50),
+    `user_id` INT
+);
+ALTER TABLE quotes
+ADD CONSTRAINT fk_appointment_user
+FOREIGN KEY (user_id) REFERENCES user(user_id);
+
+--
+-- Volcado de datos para la tabla `quotes`
+--
+
+INSERT INTO `quotes` (`id_quotes`, `date_time`, `end_time`, `state_quotes`, `user_id`)
+VALUES 
+(1, '2024-12-03 10:00:00', '2024-12-03 10:30:00', 'Confirmada', 1),
+(2, '2024-12-03 11:00:00', '2024-12-03 11:45:00', 'Pendiente', 2),
+(3, '2024-12-03 14:00:00', '2024-12-03 14:30:00', 'Cancelada', 3),
+(4, '2024-12-04 09:30:00', '2024-12-04 10:00:00', 'Confirmada', 4),
+(5, '2024-12-04 15:00:00', '2024-12-04 15:30:00', 'Confirmada', 5);
+
+
+--
+-- Estructura de tabla para la tabla `type_of_quotes`
+--
+
+CREATE TABLE type_of_quotes (
+    id_quotes INT NOT NULL,
+    id_services INT NOT NULL,
+    barber INT
+);
+ALTER TABLE type_of_quotes
+ADD CONSTRAINT 
+fk_type_citation_citation
+FOREIGN KEY (id_quotes) REFERENCES quotes (id_quotes),
+ADD CONSTRAINT fk_type_appointment_service
+FOREIGN KEY (id_services) REFERENCES services (id_services);
+
+--
+-- Volcado de datos para la tabla `type_of_quotes`
+--
+
+INSERT INTO `type_of_quotes` (`id_quotes`, `id_services`, `barber`)
+VALUES
+(1, 1, 101),
+(2, 2, 102), 
+(3, 3, 103), 
+(4, 4, 104), 
+(5, 5, 105); 
+
+
+--
+-- Estructura de tabla para la tabla `Service_invoice_detail`
+--
+
+
+CREATE TABLE Service_invoice_detail(
+    amount INT NOT NULL,
+    price FLOAT,
+    id_facture INT NOT NULL,
+    id_services INT NOT NULL
+);
+
+ALTER TABLE Service_invoice_detail
+ADD CONSTRAINT fk_service_invoice_detail
+FOREIGN KEY (id_facture) REFERENCES facture(id_facture),
+ADD CONSTRAINT fk_detail_invoice_service_service
+FOREIGN KEY (id_services) REFERENCES services(id_services);
+
+--
+-- Volcado de datos para la tabla `Service_invoice_detail`
+--
+
+INSERT INTO `Service_invoice_detail` (`amount`, `price`, `id_facture`, `id_services`)
+VALUES
+(1, 15.00, 1, 1), 
+(1, 10.00, 2, 2), 
+(2, 80.00, 3, 3), 
+(1, 25.00, 4, 4), 
+(3, 36.00, 5, 5); 
+
+

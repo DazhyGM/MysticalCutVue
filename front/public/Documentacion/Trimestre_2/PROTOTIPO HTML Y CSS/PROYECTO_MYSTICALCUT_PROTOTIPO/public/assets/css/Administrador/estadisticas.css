@@ -1,0 +1,30 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.option img {
+    max-height: 300px; /* Ajusta la altura máxima según sea necesario */
+    max-width: 100%;   /* Asegura que la imagen no exceda el ancho del contenedor */
+    object-fit: cover;
+    border: 2px solid #fff;
+    background-color: #fff;
+}
+
+.logo img {
+    width: 100px;
+}
+
+.row.justify-content-center .col-md-2 {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+}

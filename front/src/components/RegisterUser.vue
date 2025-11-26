@@ -47,6 +47,8 @@
       </div>
 
       <button type="submit" class="btn button-registrar">Registrarse</button>
+      <p v-if="errorMessage" class="error-text">{{ errorMessage }}</p>
+
     </form>
     <button class="back-button" @click="goBack">Regresar</button>
   </div>
@@ -56,10 +58,9 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
-import axios from 'axios'; // Importamos axios para hacer la petición HTTP
+import { reactive, ref } from 'vue';
+import axios from 'axios';
 import '@/assets/css/register.css';
-
 
 export default {
   setup() {
@@ -72,23 +73,78 @@ export default {
       phone: '',
       password: '',
       confirmPassword: '',
-      role: 3 // Por defecto, asignamos el rol de usuario normal
+      role: 3
     });
 
-    const confirmRegistro = async () => {
-  console.log('Formulario completo:', form); // Imprime el objeto entero
+    const errorMessage = ref('');
 
-  console.log('Contraseña ingresada:', form.password);
-  console.log('Confirmación ingresada:', form.confirmPassword);
+    const confirmRegistro = async () => {
+  errorMessage.value = '';
 
   const trimmedPassword = form.password.trim();
   const trimmedConfirmPassword = form.confirmPassword.trim();
 
-  console.log('Contraseña sin espacios:', trimmedPassword);
-  console.log('Confirmación sin espacios:', trimmedConfirmPassword);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+
+  // Validaciones 
+  if (!form.docType) {
+    errorMessage.value = 'Por favor selecciona el tipo de documento.';
+    return;
+  }
+
+  if (!form.fullName.trim()) {
+    errorMessage.value = 'El nombre completo es obligatorio.';
+    return;
+  }
+
+  if (!form.email.trim()) {
+    errorMessage.value = 'El correo electrónico es obligatorio.';
+    return;
+  }
+
+  if (!emailRegex.test(form.email)) {
+    errorMessage.value = 'El correo electrónico no tiene un formato válido.';
+    return;
+  }
+
+  if (!form.idNumber.trim()) {
+    errorMessage.value = 'El número de documento es obligatorio.';
+    return;
+  }
+
+  if (!/^\d+$/.test(form.idNumber.trim())) {
+    errorMessage.value = 'El número de documento solo debe contener números.';
+    return;
+  }
+
+  if (!form.address.trim()) {
+    errorMessage.value = 'La dirección es obligatoria.';
+    return;
+  }
+
+  if (!form.phone.trim()) {
+    errorMessage.value = 'El teléfono es obligatorio.';
+    return;
+  }
+
+  if (!/^\d+$/.test(form.phone.trim())) {
+  errorMessage.value = 'El teléfono solo debe contener números.';
+  return;
+  }
+
+  if (!trimmedPassword || !trimmedConfirmPassword) {
+    errorMessage.value = 'Ambos campos de contraseña son obligatorios.';
+    return;
+  }
 
   if (trimmedPassword !== trimmedConfirmPassword) {
-    alert('Las contraseñas no coinciden');
+    errorMessage.value = 'Las contraseñas no coinciden.';
+    return;
+  }
+
+  if (!passwordRegex.test(trimmedPassword)) {
+    errorMessage.value = 'La contraseña debe tener mínimo 8 caracteres, incluyendo una mayúscula, una minúscula, un número y un símbolo.';
     return;
   }
 
@@ -105,11 +161,10 @@ export default {
     });
 
     alert(response.data.message);
-    console.log(response.data);
-    window.location.href = '/Login'; 
+    window.location.href = '/Login';
   } catch (error) {
     console.error(error);
-    alert('Hubo un error al registrar el usuario');
+    errorMessage.value = error.response?.data?.message || 'Hubo un error al registrar el usuario.';
   }
 };
 
@@ -119,8 +174,9 @@ export default {
       window.location.href = '/';
     };
 
-    return { form, confirmRegistro, goBack };
+    return { form, confirmRegistro, goBack, errorMessage };
   }
 };
+
 </script>
 

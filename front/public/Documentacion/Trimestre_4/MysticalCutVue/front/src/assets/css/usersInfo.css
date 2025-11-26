@@ -1,0 +1,127 @@
+.pedido-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.pedido-box {
+    background-color: #333;
+    border: 2px solid #CCAF54;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    padding: 15px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Importante para posicionamiento absoluto */
+}
+
+.pedido-box h5 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.pedido-box a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #CCAF54;
+}
+
+.back-button {
+    background-color: #CCAF54;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-icon {
+    background-color: #CCAF54;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Ajusta según sea necesario */
+    border: none;
+    cursor: pointer;
+}
+
+.btn-icon img {
+    width: 24px; /* Ajusta el tamaño del icono */
+    height: 24px;
+    object-fit: contain; /* Mantiene la proporción */
+}
+
+
+.bi-person-circle{
+    background-color: #ffffff;
+    color: #CCAF54;
+}
+
+.icon-usuario-container {
+    position: relative;
+    left: 20px; /* Ajusta este valor para mover el icono a la derecha */
+    border: 2px solid #CCAF54; /* Añade borde del color deseado */
+    border-radius: 20%;
+    padding: 7px;
+}
+
+.icon-usuario {
+
+    width: 100%;
+    padding: 7px;
+}
+.form-check-input:checked {
+    background-color: #28a745; /* Color verde al activarse */
+    border-color: #28a745;    /* Bordes verdes */
+    display: flex; 
+}
+
+.form-check-input {
+    background-color: #ccc; /* Color gris al estar desactivado */
+    border-color: #ccc;    /* Bordes grises */
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Sombra verde cuando se enfoca */
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+.btn-agregar{
+    background-color: #CCAF54;
+}
+.btn-agregar:hover{
+    background-color: #9c8337;
+}
+.search-filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  

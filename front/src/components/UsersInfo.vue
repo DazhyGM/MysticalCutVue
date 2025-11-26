@@ -1,45 +1,51 @@
 <template>
-  <div class="container">
+  <div class="container my-3">
     <HeaderComponent />
 
+    <!-- FILTROS Y BUSCADOR -->
+    <div class="row mb-3 gy-2">
+      <div class="col-12 col-md-3">
+        <router-link to="/AgregarUser" class="btn btn-agregar w-100 d-flex align-items-center justify-content-center">
+          <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
+          Agregar
+        </router-link>
+      </div>
 
-    <div class="d-flex align-items-center justify-content-between w-100 mb-3">
-      <router-link to="/AgregarUser" class="btn btn-agregar">
-        <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
-        Agregar
-      </router-link>
-      <router-link to="/usersInactives" class="btn botonav">
-        <button class="btn">Ver usuarios inactivos</button>
-      </router-link>
+      <div class="col-12 col-md-3">
+        <router-link to="/usersInactives" class="btn botonav w-100">
+          Ver usuarios inactivos
+        </router-link>
+      </div>
 
-      <!-- Filtro por rol -->
-      <div class="form-group me-3">
-        <select v-model="selectedRole" @change="filtrarPorRol" class="form-select">
+      <div class="col-12 col-md-3">
+        <select v-model="selectedRole" @change="filtrarPorRol" class="form-select w-100">
           <option value="">Todos los roles</option>
           <option value="1">Administrador</option>
           <option value="2">Empleado</option>
           <option value="3">Cliente</option>
         </select>
-
       </div>
 
-      <div class="input-group" style="max-width: 300px;">
-        <input type="text" v-model="searchQuery" class="form-control" placeholder="Buscar usuario...">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"></button>
-        <ul class="dropdown-menu dropdown-menu-end">
-          <li><a class="dropdown-item" href="#" @click.prevent="sortUsers('asc')">A......Z</a></li>
-          <li><a class="dropdown-item" href="#" @click.prevent="sortUsers('desc')">Z......A</a></li>
-        </ul>
+      <div class="col-12 col-md-3">
+        <div class="input-group">
+          <input type="text" v-model="searchQuery" class="form-control" placeholder="Buscar usuario...">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"></button>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#" @click.prevent="sortUsers('asc')">A......Z</a></li>
+            <li><a class="dropdown-item" href="#" @click.prevent="sortUsers('desc')">Z......A</a></li>
+          </ul>
+        </div>
       </div>
     </div>
 
-
-    <div class="pedido-container" style="height: 400px; overflow: auto">
+    <!-- LISTADO DE USUARIOS -->
+    <div class="pedido-container">
       <div v-for="user in filteredUsers" :key="user.user_id" class="pedido-box">
         <div class="icon-usuario-container">
           <img src="/img/logos/person-circle.svg" class="btn icon-usuario">
         </div>
-        <h5>{{ user.full_name }}</h5>
+
+        <h5 class="mb-2">{{ user.full_name }}</h5>
 
         <div class="icon-container">
           <router-link :to="`/EditUser/${user.user_id}`" class="btn btn-icon">
@@ -52,18 +58,25 @@
             <img src="/img/logos/x-circle.svg">
           </button>
 
-          <div class="form-check form-switch d-flex justify-content-end">
-            <input class="form-check-input" type="checkbox" :checked="user.userStatus_fk === 1"
-              @change="toggleUserStatus(user)" :disabled="user.userStatus_fk === 3" :class="{
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              :checked="user.userStatus_fk === 1"
+              @change="toggleUserStatus(user)"
+              :disabled="user.userStatus_fk === 3"
+              :class="{
                 'active-switch': user.userStatus_fk === 1,
                 'blocked-switch': user.userStatus_fk === 2,
                 'disabled-switch': user.userStatus_fk === 3,
-              }" />
+              }"
+            />
           </div>
         </div>
       </div>
     </div>
 
+    <!-- BOTÓN REGRESAR -->
     <div class="btn-regresar mt-3">
       <button class="btn back-button" @click="goBack">Regresar</button>
     </div>
@@ -84,23 +97,18 @@ import FooterComponent from '@/components/FooterComponent.vue';
 const router = useRouter();
 const users = ref([]);
 const searchQuery = ref("");
-const selectedRole = ref(""); // Nuevo: filtro por rol
-
+const selectedRole = ref("");
 
 // Cargar usuarios
 const loadUsers = async () => {
   try {
     users.value = await getUsers();
-    console.log("Usuarios cargados:", users.value);
-    users.value.forEach(user => {
-      console.log("Estado del usuario:", user.userStatus_fk);
-    });
   } catch (error) {
     console.error("Error al obtener usuarios:", error);
   }
 };
 
-// Filtrar usuarios, excluyendo solo a los inactivos (status === 3)
+// Filtrado de usuarios activos y búsqueda
 const filteredUsers = computed(() => {
   return users.value.filter(user =>
     user.userStatus_fk !== 3 &&
@@ -110,40 +118,36 @@ const filteredUsers = computed(() => {
   );
 });
 
+// Filtro por rol
 const filtrarPorRol = async () => {
   try {
     if (selectedRole.value === "") {
-      await loadUsers();  // Si no hay filtro, cargar todos
+      await loadUsers();
     } else {
       const data = await filterUsersByRole(selectedRole.value);
-      console.log("Usuarios filtrados:", data);
-      users.value = Array.isArray(data) ? data : [];  // Asegurarse de que sea un arreglo
+      users.value = Array.isArray(data) ? data : [];
     }
   } catch (error) {
     console.error("Error al filtrar por rol:", error);
   }
 };
 
-
-// Cambiar el estado del usuario entre Activo y Bloqueado
+// Cambiar estado del usuario
 const toggleUserStatus = async (user) => {
   const newStatus = user.userStatus_fk === 1 ? 2 : 1;
   try {
     const response = await updateUserStatus(user.user_id, newStatus);
     if (response && response.message) {
-      console.log(`Estado de ${user.full_name} cambiado a ${newStatus}`);
       user.userStatus_fk = newStatus;
     } else {
-      console.error("Error: No se recibió confirmación del backend.");
       alert("Error al actualizar el estado del usuario.");
     }
   } catch (error) {
-    console.error("Error al actualizar el estado del usuario:", error);
     alert("Hubo un error al cambiar el estado del usuario.");
   }
 };
 
-// Confirmar eliminación de un usuario
+// Confirmar eliminación
 const confirmDelete = async (id) => {
   if (window.confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
     try {
@@ -151,7 +155,6 @@ const confirmDelete = async (id) => {
       users.value = users.value.filter(user => user.user_id !== id);
       alert("✅ Usuario eliminado exitosamente.");
     } catch (error) {
-      console.error("Error al eliminar usuario:", error);
       alert("Hubo un error al intentar eliminar el usuario.");
     }
   }
@@ -162,7 +165,7 @@ const sortUsers = (order) => {
   users.value.sort((a, b) => order === "asc" ? a.full_name.localeCompare(b.full_name) : b.full_name.localeCompare(a.full_name));
 };
 
-// Navegar a la página de inicio
+// Regresar
 const goBack = () => {
   router.push('/Home');
 };
@@ -171,24 +174,26 @@ onMounted(loadUsers);
 </script>
 
 <style scoped>
+.pedido-container {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
 .pedido-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.icon-usuario-container {
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
 .icon-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-}
-
-.form-check.form-switch {
-  margin-left: 10px;
+  align-items: center;
 }
 
 .form-check-input {
@@ -213,15 +218,26 @@ onMounted(loadUsers);
 
 .form-check-input:focus {
   outline: none;
-  /* Elimina el borde de enfoque */
   box-shadow: none;
-  /* Elimina el sombreado de enfoque */
 }
 
 .form-check-input:active {
   appearance: none;
-  /* Elimina los estilos predeterminados del navegador */
   box-shadow: none;
-  /* Elimina el sombreado azul al hacer clic */
+}
+
+@media (max-width: 768px) {
+  .pedido-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .icon-container {
+    justify-content: flex-start;
+  }
+
+  .btn-regresar button {
+    width: 100%;
+  }
 }
 </style>

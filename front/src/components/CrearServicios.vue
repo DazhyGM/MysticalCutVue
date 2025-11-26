@@ -99,6 +99,8 @@ export default {
   setup() {
     const router = useRouter();
     const imagePreview = ref(null);
+    const selectedImageFile = ref(null); // Archivo real
+
     const form = ref({
       name_service: '',
       description: '',
@@ -115,7 +117,8 @@ export default {
     const handleImageUpload = (e) => {
       const file = e.target.files[0];
       if (file) {
-        form.value.image = file.name;
+        selectedImageFile.value = file;
+        form.value.image = file.name; // Opcional: nombre del archivo
         imagePreview.value = URL.createObjectURL(file);
       }
     };
@@ -124,23 +127,33 @@ export default {
       message.value = '';
       error.value = '';
 
-      // Validación de campos requeridos
+      // Validación
       if (
         !form.value.name_service.trim() ||
         !form.value.description.trim() ||
         !form.value.estimated_time.trim() ||
         !form.value.price ||
         !form.value.id_category_services ||
-        !form.value.image
+        !selectedImageFile.value
       ) {
         error.value = 'Por favor, complete todos los campos antes de continuar.';
         return;
       }
 
       try {
-        await createService(form.value);
+        const formData = new FormData();
+        formData.append('name_service', form.value.name_service);
+        formData.append('description', form.value.description);
+        formData.append('estimated_time', form.value.estimated_time);
+        formData.append('price', form.value.price);
+        formData.append('id_category_services', form.value.id_category_services);
+        formData.append('id_status', form.value.id_status);
+        formData.append('image', selectedImageFile.value); // El archivo real
+
+        await createService(formData); // Asegúrate de usar fetch o axios que soporte FormData
         message.value = 'Servicio creado correctamente.';
-        // Reiniciar formulario
+
+        // Reset
         form.value = {
           name_service: '',
           description: '',
@@ -150,7 +163,9 @@ export default {
           id_status: 1,
           image: ''
         };
+        selectedImageFile.value = null;
         imagePreview.value = null;
+
       } catch (err) {
         console.error(err);
         error.value = 'Error al crear el servicio.';
@@ -173,6 +188,7 @@ export default {
   }
 };
 </script>
+
 
 <style scoped>
 

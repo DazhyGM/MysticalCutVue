@@ -1,0 +1,426 @@
+Se crea base de datos MistycalCut:
+
+Colección Module
+
+[
+  {
+    "module_id": 1,
+    "module_name": "Home",
+    "module_route": "home/dashboard",
+    "module_icon": "<i class=\"bi bi-house-fill\"></i>",
+    "module_description": "This is module home"
+  },
+  {
+    "module_id": 2,
+    "module_name": "User",
+    "module_route": "user/index",
+    "module_icon": "<i class=\"bi bi-person-badge-fill\"></i>",
+    "module_description": "This is module user"
+  }
+]
+
+Colección role
+
+[
+  {
+    "role_id": 1,
+    "role_name": "Admin"
+  },
+  {
+    "role_id": 2,
+    "role_name": "Employee"
+  },
+  {
+    "role_id": 3,
+    "role_name": "Client"
+  }
+]
+
+Colección role_module
+
+[
+  { "roleModule_id": 1, "role_fk": 1, "module_fk": 1 },
+  { "roleModule_id": 2, "role_fk": 1, "module_fk": 2 },
+  { "roleModule_id": 3, "role_fk": 2, "module_fk": 1 },
+  { "roleModule_id": 4, "role_fk": 3, "module_fk": 1 }
+]
+
+Colección user
+
+[
+  {
+    "user_id": 1,
+    "user_email": "kevinsabogal24@gmail.com",
+    "user_password": "12345",
+    "document_type": "Cédula de Ciudadanía",
+    "document_number": "1000619691",
+    "full_name": "Kevin David Sabogal",
+    "address": "Calle Principal #1234",
+    "phone": "3003113203",
+    "userStatus_fk": 1,
+    "role_fk": 2
+  },
+  {
+    "user_id": 2,
+    "user_email": "andresecasvar05@gmail.com",
+    "user_password": "123456",
+    "document_type": "Cédula de Ciudadanía",
+    "document_number": "1011200996",
+    "full_name": "Andres Esteban Castañeda",
+    "address": "Calle Principal #1235",
+    "phone": "3175248114",
+    "userStatus_fk": 1,
+    "role_fk": 2
+  },
+  {
+    "user_id": 3,
+    "user_email": "leonoscarandres04@gmail.com",
+    "user_password": "1234567",
+    "document_type": "Cédula de Ciudadanía",
+    "document_number": "1022933160",
+    "full_name": "Oscar Andres Leon",
+    "address": "Calle Principal #1236",
+    "phone": "3209241730",
+    "userStatus_fk": 1,
+    "role_fk": 2
+  },
+  {
+    "user_id": 4,
+    "user_email": "hharold855@gmail.com",
+    "user_password": "12345678",
+    "document_type": "Cédula de Ciudadanía",
+    "document_number": "1022938044",
+    "full_name": "Harold David Hernandez",
+    "address": "Calle Principal #1237",
+    "phone": "3212709274",
+    "userStatus_fk": 1,
+    "role_fk": 2
+  },
+  {
+    "user_id": 5,
+    "user_email": "prueba@gmail.com",
+    "user_password": "123456789",
+    "document_type": "Cédula de Ciudadanía",
+    "document_number": "1237856337",
+    "full_name": "trabajo de prueba",
+    "address": "Calle Principal #12378",
+    "phone": "323456789",
+    "userStatus_fk": 1,
+    "role_fk": 2
+  }
+]
+
+Colección userstatus
+
+[
+  {
+    "userStatus_id": 1,
+    "userStatus_name": "Active"
+  },
+  {
+    "userStatus_id": 2,
+    "userStatus_name": "Inactive"
+  },
+  {
+    "userStatus_id": 3,
+    "userStatus_name": "Blocked"
+  }
+]
+
+Colección facture
+
+[
+  {
+    "id_facture": 1,
+    "date": "2024-12-03",
+    "total_value": 150.75,
+    "user_fk": 1
+  },
+  {
+    "id_facture": 2,
+    "date": "2024-12-03",
+    "total_value": 180.75,
+    "user_fk": 1
+  },
+  {
+    "id_facture": 3,
+    "date": "2024-12-03",
+    "total_value": 160.75,
+    "user_fk": 1
+  },
+  {
+    "id_facture": 4,
+    "date": "2024-12-04",
+    "total_value": 250.00,
+    "user_fk": 1
+  },
+  {
+    "id_facture": 5,
+    "date": "2024-12-04",
+    "total_value": 350.00,
+    "user_fk": 1
+  }
+]
+
+Colección category_product
+
+[
+  { "id_category": 1, "name": "Cortes de Cabello" },
+  { "id_category": 2, "name": "Afeitado" },
+  { "id_category": 3, "name": "Tintes y Coloracion" },
+  { "id_category": 4, "name": "Tratamientos Capilares" },
+  { "id_category": 5, "name": "Productos de Estilo" }
+]
+
+Colección product
+
+[
+  {
+    "id_product": 1,
+    "name": "Corte Clásico",
+    "price": 15.00,
+    "description": "Corte de cabello tradicional",
+    "amount": 10,
+    "id_category": 1
+  },
+  {
+    "id_product": 2,
+    "name": "Afeitado Tradicional",
+    "price": 10.00,
+    "description": "Afeitado con navaja y toalla caliente",
+    "amount": 15,
+    "id_category": 2
+  },
+  {
+    "id_product": 3,
+    "name": "Tinte para Cabello",
+    "price": 30.00,
+    "description": "Tinte permanente para cabello",
+    "amount": 5,
+    "id_category": 3
+  },
+  {
+    "id_product": 4,
+    "name": "Tratamiento de Keratina",
+    "price": 50.00,
+    "description": "Hidratación profunda con keratina",
+    "amount": 3,
+    "id_category": 4
+  },
+  {
+    "id_product": 5,
+    "name": "Pomada para el Cabello",
+    "price": 12.00,
+    "description": "Pomada con fijación media para peinado",
+    "amount": 20,
+    "id_category": 5
+  }
+]
+
+Colección Product_invoice_detail
+
+[
+  {
+    "amount": 2,
+    "price": 30.00,
+    "id_facture": 1,
+    "id_product": 1
+  },
+  {
+    "amount": 1,
+    "price": 20.00,
+    "id_facture": 2,
+    "id_product": 2
+  },
+  {
+    "amount": 3,
+    "price": 36.00,
+    "id_facture": 3,
+    "id_product": 3
+  },
+  {
+    "amount": 1,
+    "price": 18.00,
+    "id_facture": 4,
+    "id_product": 4
+  },
+  {
+    "amount": 2,
+    "price": 100.00,
+    "id_facture": 5,
+    "id_product": 5
+  }
+]
+
+Colección Category_Services
+
+[
+  {
+    "id_category_services": 1,
+    "name": "Cortes de Cabello"
+  },
+  {
+    "id_category_services": 2,
+    "name": "Afeitado y Barba"
+  },
+  {
+    "id_category_services": 3,
+    "name": "Coloración y Tintes"
+  },
+  {
+    "id_category_services": 4,
+    "name": "Tratamientos Capilares"
+  },
+  {
+    "id_category_services": 5,
+    "name": "Servicios para Niños"
+  }
+]
+
+Colección services
+
+[
+  {
+    "id_services": 1,
+    "name": "Corte Clásico",
+    "estimated_time": "00:30:00",
+    "price": 15.00,
+    "id_category_services": 1
+  },
+  {
+    "id_services": 2,
+    "name": "Afeitado Tradicional",
+    "estimated_time": "00:20:00",
+    "price": 10.00,
+    "id_category_services": 2
+  },
+  {
+    "id_services": 3,
+    "name": "Tinte Capilar",
+    "estimated_time": "01:00:00",
+    "price": 40.00,
+    "id_category_services": 3
+  },
+  {
+    "id_services": 4,
+    "name": "Tratamiento Hidratante",
+    "estimated_time": "00:45:00",
+    "price": 25.00,
+    "id_category_services": 4
+  },
+  {
+    "id_services": 5,
+    "name": "Corte Infantil",
+    "estimated_time": "00:25:00",
+    "price": 12.00,
+    "id_category_services": 5
+  }
+]
+
+Colección quotes
+
+[
+  {
+    "id_quotes": 1,
+    "date_time": "2024-12-03T10:00:00Z",
+    "end_time": "2024-12-03T10:30:00Z",
+    "state_quotes": "Confirmada",
+    "user_id": 1
+  },
+  {
+    "id_quotes": 2,
+    "date_time": "2024-12-03T11:00:00Z",
+    "end_time": "2024-12-03T11:45:00Z",
+    "state_quotes": "Pendiente",
+    "user_id": 2
+  },
+  {
+    "id_quotes": 3,
+    "date_time": "2024-12-03T14:00:00Z",
+    "end_time": "2024-12-03T14:30:00Z",
+    "state_quotes": "Cancelada",
+    "user_id": 3
+  },
+  {
+    "id_quotes": 4,
+    "date_time": "2024-12-04T09:30:00Z",
+    "end_time": "2024-12-04T10:00:00Z",
+    "state_quotes": "Confirmada",
+    "user_id": 4
+  },
+  {
+    "id_quotes": 5,
+    "date_time": "2024-12-04T15:00:00Z",
+    "end_time": "2024-12-04T15:30:00Z",
+    "state_quotes": "Confirmada",
+    "user_id": 5
+  }
+]
+
+Colección type_of_quotes
+
+[
+  {
+    "id_quotes": 1,
+    "id_services": 1,
+    "barber": 101
+  },
+  {
+    "id_quotes": 2,
+    "id_services": 2,
+    "barber": 102
+  },
+  {
+    "id_quotes": 3,
+    "id_services": 3,
+    "barber": 103
+  },
+  {
+    "id_quotes": 4,
+    "id_services": 4,
+    "barber": 104
+  },
+  {
+    "id_quotes": 5,
+    "id_services": 5,
+    "barber": 105
+  }
+]
+
+Colección Service_invoice_detail
+
+[
+  {
+    "amount": 1,
+    "price": 15.00,
+    "id_facture": 1,
+    "id_services": 1
+  },
+  {
+    "amount": 1,
+    "price": 10.00,
+    "id_facture": 2,
+    "id_services": 2
+  },
+  {
+    "amount": 2,
+    "price": 80.00,
+    "id_facture": 3,
+    "id_services": 3
+  },
+  {
+    "amount": 1,
+    "price": 25.00,
+    "id_facture": 4,
+    "id_services": 4
+  },
+  {
+    "amount": 3,
+    "price": 36.00,
+    "id_facture": 5,
+    "id_services": 5
+  }
+]
+
+
+

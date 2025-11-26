@@ -1,0 +1,120 @@
+h1 {
+    text-align: center;
+    color: #CCAF54;
+}
+
+.edit-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 30px;
+    color: #fff;
+}
+
+.image-placeholder {
+    background-color: #333;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #666;
+    margin-bottom: 15px;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.precio-label {
+    display: block;
+    color: #CCAF54;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.precio-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.edit-form label {
+    color: #CCAF54;
+}
+
+.edit-form input {
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+}
+
+.edit-form select {
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+}
+
+.edit-button {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.additional-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+.boton1{
+    padding: 10px 30px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    margin-left: 220px;
+    margin-top: 30px;
+
+}
+.boton2{
+    padding: 10px 30px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 580px;
+    margin-top: 30px;
+
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}

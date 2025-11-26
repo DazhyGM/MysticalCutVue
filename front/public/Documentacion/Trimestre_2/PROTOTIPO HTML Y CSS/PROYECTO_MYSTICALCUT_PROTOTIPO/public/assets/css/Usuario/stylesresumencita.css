@@ -1,0 +1,132 @@
+body {
+    background-color: #000000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Amasis_MT_Std_Black;
+}
+
+.container {
+    background-color: #111;
+    padding: 80px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+    text-align: center;
+}
+.login-container {
+    background-color: #111;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    margin-top: 50px;
+}
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
+    font-size: 16px;
+}
+
+h2 {
+    color: #D4AF37;
+    font-size: 36px;
+    margin: 0;
+}
+
+.service-summary {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+.service-summary p {
+    
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+
+.confirm-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: Amasis_MT_Std_Black;
+}
+
+
+.back-button {
+    position: absolute;
+    top: 30px;
+    left: 6px; /* Reduce este valor para mover el botón más hacia la izquierda */
+    padding: 7px 15px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+
+.service-summary h3 {
+    margin-top: 0;
+    color: #D4AF37; /* Color dorado para el texto */
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px; /* Espacio entre el texto y el borde */
+    border: 2px solid #D4AF37; /* Borde dorado alrededor del h3 */
+    border-radius: 5px; /* Bordes redondeados para el cuadro */
+    background-color: #222; /* Fondo para el área del h3, opcional */
+}
+.price-summary {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.label {
+    text-align: left;
+}
+
+.price {
+    text-align: right;
+    margin-left: auto; /* Asegura que el precio esté completamente a la derecha */
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+    font-family: Amasis_MT_Std_Black;
+}

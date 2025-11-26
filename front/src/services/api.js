@@ -1,6 +1,36 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/api/users';
+const API = axios.create({
+  baseURL: 'http://localhost:5000/api',
+});
+
+// 🔐 Interceptor para agregar token a cada request
+API.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
+// 🔄 Interceptor de respuesta para manejar errores 401 automáticamente
+API.interceptors.response.use(
+  response => response,
+  async (error) => {
+    if (error.response && error.response.status === 401) {
+      console.warn("⚠️ Token inválido o expirado");
+      localStorage.removeItem('token');
+      window.location.href = '/login'; // o la ruta de login que tengas
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default API;
 
 // 🔹 Registrar usuario
 export const registerUser = async (userData) => {
@@ -27,7 +57,7 @@ export const login = async (email, password) => {
 // 🔹 Obtener datos del usuario autenticado
 export const getUserData = async (token) => {
     try {
-        const response = await axios.get(`${API_URL}/profile`, {
+        const response = await API.get(`${API_URL}/profile`, {
             headers: { Authorization: `Bearer ${token}` },
         });
         return response.data;
@@ -43,7 +73,7 @@ export const getUserData = async (token) => {
 export const getUsers = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get(`${API_URL}/users`, {
+      const response = await API.get(`${API_URL}/users`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -62,7 +92,7 @@ export const getUsers = async () => {
 export const getUserById = async (userId) => {
   try {
     const token = localStorage.getItem('token');
-    const response = await axios.get(`${API_URL}/users/${userId}`, {
+    const response = await API.get(`${API_URL}/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -78,7 +108,7 @@ export const getUserById = async (userId) => {
 // 🔹 Actualizar usuario
 export const updateUser = async (id, userData) => {
     try {
-        const response = await axios.put(`${API_URL}/${id}`, userData);
+        const response = await API.put(`${API_URL}/${id}`, userData);
         return response.data;
     } catch (error) {
         throw 'Error al actualizar el usuario';
@@ -90,7 +120,7 @@ export const updateUserStatus = async (id, status) => {
   try {
     const token = localStorage.getItem('token');
 
-    const response = await axios.put(
+    const response = await API.put(
       `${API_URL}/users/status/${id}`,
       { userStatus_fk: status },
       {
@@ -115,7 +145,7 @@ export const deleteUser = async (id) => {
     }
   
     try {
-      await axios.delete(`http://localhost:5000/api/users/users/${id}`, {
+      await API.delete(`${API_URL}/users/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,  // Incluir el token en los encabezados
         }
@@ -130,7 +160,7 @@ export const deleteUser = async (id) => {
   export const getInactiveUsers = async () => {
     const token = localStorage.getItem('token'); // Obtén el token almacenado
     try {
-        const response = await fetch('http://localhost:5000/api/users/inactives', {
+        const response = await fetch(`${API_URL}/inactives`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`, // Enviar el token

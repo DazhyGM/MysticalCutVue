@@ -1,0 +1,139 @@
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -80px; /* Ajusta este valor según sea necesario para subir el contenedor */
+}
+
+#facturaForm {
+    background-color: #000000;
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #CCAF54; /* Borde dorado */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 30px;
+    color: #CCAF54;
+}
+
+.producto {
+    align-items: center;
+}
+
+.eliminar-producto, .ingresar {
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.eliminar-producto {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+.ingresar {
+    background-color: #CCAF54;
+    border-color: #CCAF54;
+    color: #000000;
+    border: 1px solid #000000;
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+input[type="text"], input[type="number"], input[type="date"] {
+    background-color: #202020; /* Fondo negro */
+    border: 2px solid #CCAF54; /* Borde dorado */
+    color: #ffffff; /* Texto en blanco */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input[type="text"]::placeholder, input[type="number"]::placeholder {
+    color: #CCAF54; /* Color de los placeholders en dorado */
+}
+/* Estilos personalizados para Flatpickr */
+.flatpickr-calendar {
+    background-color: black !important; /* Fondo del calendario */
+    color: white !important; /* Color del texto general */
+}
+
+.flatpickr-month {
+    color: white !important; /* Color del mes */
+    background-color: black !important; /* Fondo del desplegable del mes */
+}
+
+.flatpickr-year {
+    color: white !important; /* Color del año */
+    background-color: black !important; /* Fondo del desplegable del año */
+}
+
+.flatpickr-day {
+    color: #CCAF54 !important; /* Color de los números de los días */
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.today {
+    background-color: #CCAF54 !important; /* Fondo de los días seleccionados */
+    color: black !important; /* Color del texto de los días seleccionados */
+}
+
+/* Fondo del selector de meses y años */
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    background-color: black !important;
+    color: white !important;
+}
+
+.flatpickr-months .flatpickr-prev-month:hover,
+.flatpickr-months .flatpickr-next-month:hover {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+.flatpickr-months .flatpickr-months .flatpickr-months-list {
+    background-color: black !important;
+}
+
+.flatpickr-months .flatpickr-months .flatpickr-months-list .flatpickr-month {
+    color: rgb(0, 0, 0) !important;
+    background-color: black !important;
+}
+
+.flatpickr-months .flatpickr-months .flatpickr-months-list .flatpickr-month:hover {
+    background-color: rgb(0, 0, 0) !important;
+}
+
+
+.btn-agregar {
+    margin-left: 10px;
+}
+
+.select-container {
+    position: relative;
+}
+
+.select-container select {
+    width: 100%;
+    z-index: 10;
+}
+.btn-agregar {
+    margin-left: 10px;
+    color: blue;
+}

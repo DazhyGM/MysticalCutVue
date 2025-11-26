@@ -1,0 +1,199 @@
+.container {
+    background-color: #000000;
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar {
+    width: 100%;
+    background-color: #222;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.month {
+    font-size: 18px;
+}
+
+.prev, .next {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+    color: #fff;
+}
+
+.time-slot {
+    background-color: #D4AF37;
+    color: #000;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.appointment-summary, .service-summary {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+
+.confirm-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #D4AF37;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+
+.back-button {
+    position: absolute;
+    top: 250px;
+    left: 50px;
+    padding: 7px 15px;
+    background-color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+.right-column {
+    margin-top: 20px; /* Ajusta este valor para mover el cuadro más abajo */
+    padding-top: 20px; /* Ajusta o elimina según sea necesario */
+    /* Otros estilos existentes */
+}
+
+/* Estilos adicionales si necesitas personalizar más el diseño */
+.service-summary {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    text-align: left;
+}
+/* Estilos generales */
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+.header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-column {
+    width: 60%;
+}
+
+.right-column {
+    width: 35%;
+    position: relative;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.calendar {
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+}
+
+.day-name {
+    font-weight: bold;
+}
+
+.time-slots {
+    max-height: 200px; /* Limitar la altura para mostrar 5 horas */
+    overflow-y: scroll; /* Permitir desplazamiento vertical */
+    border: 1px solid #ccc; /* Borde opcional */
+    padding: 10px;
+}
+
+.time-slot {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.time-slot:hover {
+    background-color: #f0f0f0; /* Efecto hover */
+}
+
+.service-summary {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 30px; /* Ajusta esta distancia según necesites */
+}
+
+.cost-summary {
+    margin-top: 20px;
+}
+
+
+.confirm-button:hover {
+    background-color: #ccc;
+}
+.selected {
+    background-color: #D4AF37; /* Color de fondo para el día/hora seleccionados */
+    color: #000;
+}

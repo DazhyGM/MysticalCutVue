@@ -1,0 +1,153 @@
+/*Iconos de usuario y del carrito */
+
+/* Estilos para los nuevos iconos */
+.icon {
+    width: 80px; /* Ajusta el tamaño según sea necesario */
+    height: 80px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+.icon:hover {
+    opacity: 0.8; /* Opcional: agregue un efecto de desplazamiento */
+}
+
+/* Ajustar el menú desplegable para que coincida con los nuevos íconos */
+.dropdown-menu {
+    background-color: #111;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+    color: #CCAF54;
+    padding: 10px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: #222;
+    color: #fff;
+}
+
+.dropdown-divider {
+    border-color: #444;
+}
+
+/* Centering the back-button2 */
+.back-button2 {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block; /* Ensures the button takes full width of the parent */
+    margin: 20px auto; /* Adds space at the top and centers the button horizontally */
+}
+
+/**/
+
+h1 {
+    text-align: center;
+    color: #CCAF54;
+}
+
+.edit-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-top: 30px;
+    color: #fff;
+}
+
+.image-placeholder {
+    background-color: #333;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #666;
+    margin-bottom: 15px;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.precio-label {
+    display: block;
+    color: #CCAF54;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.precio-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.edit-form label {
+    color: #CCAF54;
+}
+
+.edit-form input {
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+}
+.edit-form select {
+    padding: 10px;
+    border: 1px solid #666;
+    background-color: #222;
+    color: #fff;
+}
+
+.profile-button {
+    background-color: #CCAF54;
+    color: #000000;
+    border: 2px solid #CCAF54;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-button:hover {
+    background-color: #9c8337;
+    color: #000;
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+
+
+
+
+
+

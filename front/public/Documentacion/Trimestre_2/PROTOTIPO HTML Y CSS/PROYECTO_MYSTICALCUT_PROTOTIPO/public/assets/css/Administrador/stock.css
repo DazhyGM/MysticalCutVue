@@ -1,0 +1,130 @@
+body {
+
+    margin: 40px;
+    background-color: #000; /* Fondo negro para la página */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0; /* Eliminar margen predeterminado del body */
+}
+
+table {
+    width: 60%; /* Ajustar ancho según necesidad */
+    border-collapse: collapse;
+    border: 2px solid #CCAF54; /* Borde dorado */
+    background-color: #000000ca; /* Fondo negro para la tabla */
+    color: #FFF; /* Texto blanco */
+    margin-top: 30px;
+}
+
+th, td {
+    border: 1px solid #CCAF54; /* Borde dorado para celdas */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #CCAF54; /* Fondo gris oscuro para encabezados */
+    font-weight: bold;
+    color: #000000;
+}
+
+tr:nth-child(even) {
+    background-color: #000000; /* Fondo negro ligeramente diferente para filas pares */
+}
+
+tr:hover {
+    background-color: #000000; /* Fondo gris oscuro cuando se pasa el ratón */
+}
+
+.btn2 {
+    background-color: #CCAF54; /* Fondo dorado para botones */
+    color: #CCAF54; /* Texto negro */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.btn1 {
+    background-color: #ff0000; /* Fondo dorado para botones */
+    color: #000000; /* Texto negro */
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    text-align: center;
+
+}
+.btn1:hover {
+    background-color: #b80c0c;
+}
+
+.btn {
+    margin: 0; /* Elimina el margen del botón */
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 5px 10px;
+}
+
+.btn-regresar {
+
+    color: #000000;
+    border: 1px solid #ffffff;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    border-radius: 5px; /* Bordes curvos */
+}
+/* Botón de "Ingresar Facturas" */
+.btn-container1 {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-factura {
+    background-color: #CCAF54;
+    border-color: #CCAF54;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 900px; /* Ajusta este valor si también necesitas moverlo a la izquierda */
+}
+.action-container {
+    display: flex;
+    align-items: center; /* Alinea los elementos verticalmente */
+    gap: 10px; /* Espacio entre el botón y el switch */
+}
+
+.action-container .form-check {
+    margin-left: 0; /* Asegúrate de que no se mueva a la derecha */
+}
+
+
+.form-check-input:checked {
+    background-color: #28a745; /* Color verde al activarse */
+    border-color: #28a745;    /* Bordes verdes */ 
+}
+
+.form-check-input {
+    background-color: #ccc; /* Color gris al estar desactivado */
+    border-color: #ccc;    /* Bordes grises */
+}
+
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25); /* Sombra verde cuando se enfoca */
+}
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+

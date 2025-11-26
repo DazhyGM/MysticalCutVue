@@ -478,3 +478,8 @@
     background-color: #333;
     color: #fff;
   }
+  .error-text {
+  color: red;
+  margin-top: 10px;
+  font-weight: bold;
+}

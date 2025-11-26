@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../../public/assets/img/LOGOHEADERTRANS.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Perfil admin</title>
+    <link rel="stylesheet" href="../../../public/assets/css/Administrador/index.css">
+    <link rel="stylesheet" href="../../../public/assets/css/Administrador/verPerfilADM.css">
+</head>
+
+<body>
+    <div class="container">
+        <header
+            class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <div class="col-md-3 mb-2 mb-md-0">
+                <a href="../../Views/Usuario/crear nuevo producto.html">
+                    <img src="../../../public/assets/img/LOGO.png" alt="Logo" width="125" height="125">
+                </a>
+            </div>
+
+
+            <div class="col-md-3 text-end">
+                <div class="dropdown d-inline">
+                    <a href="#" class="textnav dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <img src="../../../public/assets/img/Icono usuario.png" alt="Profile" width="130" height="130"
+                            class="icon">
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                        <li><a class="dropdown-item" href="VerPerfilADM.html">Perfil</a></li>
+                        <li><a class="dropdown-item" href="estadisticasADM.html">Estadísticas</a></li>
+                        <li><a class="dropdown-item" href="stockADM.html">Stock</a></li>
+                        <li><a class="dropdown-item" href="verYCrearUsuarioADM.html">Usuarios</a></li>
+                        <li><a class="dropdown-item" href="ServiciosADM.html">Editar Servicios</a></li>
+                        <li><a class="dropdown-item" href="ProductosADM.html">Editar productos</a></li>
+                        <li><a class="dropdown-item" href="verPedido.html">Estado Pedidos</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="../Usuario/index.html">Cerrar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Profile Section -->
+        <div class="profile-container d-flex align-items-center">
+            <div class="profile-image">
+                <img src="../../../public/assets/img/Icono usuario.png" width="100px">
+            </div>
+            <div class="profile-info ms-4">
+                <div class="profile-name">Nombre: Fernando Jimenez</div>
+                <div class="profile-name">Correo: fernando12@gmail.com</div>
+                <div class="profile-name">Dirección: Ave Cra 45 #19</div>
+                <div class="profile-name">Teléfono: 3243564783</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <!-- Other content -->
+
+        <div class="menu-buttons">
+            <button class="menu-button">
+                <img src="../../../public/assets/img/estadisticas.png" alt="Estadísticas Icon" class="button-icon"
+                    onclick="window.location.href='estadisticasADM.html';"> Estadísticas
+            </button>
+            <button class="menu-button">
+                <img src="../../../public/assets/img/stock.png" alt="Stock Icon" class="button-icon"
+                    onclick="window.location.href='stockADM.html';"> Stock
+            </button>
+            <button class="menu-button">
+                <img src="../../../public/assets/img/usuarios.png" alt="Usuarios Icon" class="button-icon"
+                    onclick="window.location.href='verYCrearUsuarioADM.html';"> Usuarios
+            </button>
+            <button class="menu-button">
+                <img src="../../../public/assets/img/editar servicio.png" alt="Servicios Icon" class="button-icon"
+                    onclick="window.location.href='ServiciosADM.html';"> Editar Servicios
+            </button>
+            <button class="menu-button">
+                <img src="../../../public/assets/img/editar productos.png" alt="Productos Icon" class="button-icon"
+                    onclick="window.location.href='ProductosADM.html';"> Editar productos
+            </button>
+            <button class="menu-button">
+                <img src="../../../public/assets/img/estado pedido.png" alt="Pedidos Icon" class="button-icon"
+                    onclick="window.location.href='verPedido.html';"> Estado Pedidos
+            </button>
+        </div>
+    </div>
+
+
+    <div>
+        <button class="back-button2" onclick="window.location.href='paginaPrincipalADM.html';">Regresar</button>
+    </div>
+
+    </div>
+    <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
+    </footer>
+</body>
+
+</html>

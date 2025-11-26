@@ -244,4 +244,69 @@ router.get('/quotes', quotesController.getQuotesByBarberAndDate);
  */
 router.post('/send-email', quotesController.sendQuoteEmail);
 
+
+/**
+ * @swagger
+ * /api/quotes/reports:
+ *   get:
+ *     summary: Obtener citas para reportes (por día, semana, mes)
+ *     tags: [Citas]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: startDate
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Fecha de inicio del rango (YYYY-MM-DD)
+ *       - in: query
+ *         name: endDate
+ *         required: true
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Fecha de fin del rango (YYYY-MM-DD)
+ *     responses:
+ *       200:
+ *         description: Lista de citas para el reporte
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id_quotes:
+ *                     type: integer
+ *                   date_time:
+ *                     type: string
+ *                     format: date-time
+ *                   end_time:
+ *                     type: string
+ *                     format: date-time
+ *                   state_quotes:
+ *                     type: string
+ *                   name_service:
+ *                     type: string
+ *                   price:
+ *                     type: number
+ *                     format: float
+ *                   estimated_time:
+ *                     type: string
+ *                   barber_name:
+ *                     type: string
+ *                   client_name:
+ *                     type: string
+ *       400:
+ *         description: Faltan parámetros de fecha
+ *       403:
+ *         description: Acceso denegado (solo para administradores)
+ *       500:
+ *         description: Error al obtener citas para reportes
+ */
+
+router.get('/reports', authenticateToken, quotesController.getReportQuotes);
+
 module.exports = router;
