@@ -1,34 +1,6 @@
 <template>
   <div class="container-scaled-wrapper">
     <div class="container">
-      <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-        <div class="col-md-3 mb-2 mb-md-0">
-          <router-link to="/Home">
-            <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" />
-          </router-link>
-        </div>
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li v-for="module in roleModules" :key="module.module_route" class="nav-item">
-            <router-link class="nav-link" :to="`/${module.module_route}`">{{ module.role_module }}</router-link>
-          </li>
-        </ul>
-        <div class="col-md-3 text-end">
-          <div class="dropdown">
-            <button class="btn dropdown-toggle" @click="toggleMenu">
-              <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
-              {{ user?.full_name || 'Usuario' }}
-            </button>
-            <ul v-if="isMenuOpen" class="dropdown-menu dropdown-menu-end show">
-              <li><button class="dropdown-item" @click="goToProfile">Perfil</button></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><button class="dropdown-item" @click="logout">Cerrar Sesión</button></li>
-            </ul>
-          </div>
-        </div>
-        <ul class="nav col-12 justify-content-center mx-auto">
-          <h1>Productos</h1>
-        </ul>
-      </header>
 
       <div class="d-flex justify-content-between my-3" v-if="userRole === 'Admin'">
         <router-link to="/Create-Products" class="btn btn-agregar">
@@ -142,7 +114,6 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRouter } from "vue-router";
-import FooterComponent from "@/components/layout/FooterComponent.vue";
 import { getProducts, updateProductStatus } from "@/services/productsApi";
 import { addToCartAPI, getCartAPI, updateCartItemAPI } from "@/services/shoppingCartApi";
 import axios from 'axios';
@@ -153,13 +124,7 @@ const user = ref(JSON.parse(localStorage.getItem("user")));
 const roleModules = ref(JSON.parse(localStorage.getItem("roleModules")) || []);
 const userRole = ref('');
 
-const isMenuOpen = ref(false);
-const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value);
-const logout = () => {
-  localStorage.clear();
-  router.push("/");
-};
-const goToProfile = () => router.push("/perfil");
+
 const goBack = () => router.push("/Home");
 
 const getImageUrl = (imageName) => `http://localhost:5000/uploads/${imageName}`;

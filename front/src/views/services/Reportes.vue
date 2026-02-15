@@ -1,30 +1,5 @@
 <template>
   <div class="container text-white">
-    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <router-link to="/Home">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" />
-        </router-link>
-      </div>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <h1>Reportes de Citas</h1>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <div class="dropdown">
-          <button class="btn dropdown-toggle" @click="toggleMenu">
-            <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
-            {{ user?.full_name || 'Usuario' }}
-          </button>
-          <ul v-if="isMenuOpen" class="dropdown-menu dropdown-menu-end show">
-            <li><button class="dropdown-item" @click="goToProfile">Perfil</button></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><button class="dropdown-item" @click="logout">Cerrar Sesión</button></li>
-          </ul>
-        </div>
-      </div>
-    </header>
     <div class="mb-4">
       <div class="row g-3 align-items-end">
         <div class="col-md-3">
@@ -95,9 +70,6 @@
       <button class="btn back-button" @click="$router.push('/Home')">Regresar</button>
     </div>
 
-    <footer class="py-3 my-4">
-      <p class="text-center text-white">© 2024 www.mysticalcut.com, Inc</p>
-    </footer>
   </div>
 </template>
 

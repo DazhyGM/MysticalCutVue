@@ -1,10 +1,19 @@
 <template>
   <div id="app">
-    <HeaderComponent :isHome="$route.meta.isHome" />
+    
+    <template v-if="!$route.meta.hideLayout">
+      <HeaderComponent :isHome="$route.meta.isHome" />
+    </template>
+
     <router-view />
-    <FooterComponent />
+
+    <template v-if="!$route.meta.hideLayout">
+      <FooterComponent />
+    </template>
+
   </div>
 </template>
+
 
 
 <script>

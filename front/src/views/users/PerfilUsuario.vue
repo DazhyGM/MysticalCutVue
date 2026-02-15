@@ -1,9 +1,6 @@
 <template>
   <div class="container">
-    <HeaderComponent />
-    
 
-    <!-- Profile Section -->
     <div class="profile-container d-flex align-items-center justify-content-center">
       <div class="profile-image me-3">
         <img src="/img/background/Icono usuario.png" width="100px" alt="Usuario">
@@ -38,9 +35,6 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
 import { getUserData, deleteAccount } from "@/services/api"; 
-import '@/assets/css/perfilUsuario.css';
-import HeaderComponent from '@/components/layout/HeaderComponent.vue';
-import FooterComponent from '@/components/layout/FooterComponent.vue';
 
 const router = useRouter();
 const isMenuOpen = ref(false);
@@ -127,3 +121,7 @@ const goMisCitas = () => {
   router.push('/Citas'); // Redirige a la ruta '/Citas'
 };
 </script>
+
+<style scoped>
+@import '@/assets/css/perfilUsuario.css';
+</style>

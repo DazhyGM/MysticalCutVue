@@ -1,6 +1,5 @@
 <template>
   <div class="container my-3">
-    <HeaderComponent />
 
     <!-- FILTROS Y BUSCADOR -->
     <div class="row mb-3 gy-2">
@@ -91,8 +90,7 @@ import { useRouter } from "vue-router";
 import { getUsers, deleteUser, updateUserStatus, filterUsersByRole } from '@/services/api';
 import '@/assets/css/register.css';
 import '@/assets/css/usersInfo.css';
-import HeaderComponent from '@/components/layout/HeaderComponent.vue';
-import FooterComponent from '@/components/layout/FooterComponent.vue';
+
 
 const router = useRouter();
 const users = ref([]);
