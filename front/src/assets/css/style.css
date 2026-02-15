@@ -482,4 +482,18 @@
   color: red;
   margin-top: 10px;
   font-weight: bold;
+
+  .header-normal {
+  padding: 10px 0;
+}
+
+.header-home {
+  padding: 40px 0;
+  background-color: #000;
+}
+
+.hero-section {
+  margin-top: 20px;
+}
+
 }

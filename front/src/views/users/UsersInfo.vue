@@ -6,7 +6,7 @@
     <div class="row mb-3 gy-2">
       <div class="col-12 col-md-3">
         <router-link to="/AgregarUser" class="btn btn-agregar w-100 d-flex align-items-center justify-content-center">
-          <img src="../../../public/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
+          <img src="/img/logos/person-plus-fill.svg" style="width: 20px; height: 20px; margin-right: 5px;">
           Agregar
         </router-link>
       </div>

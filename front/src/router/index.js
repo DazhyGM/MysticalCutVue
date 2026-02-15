@@ -50,7 +50,7 @@ const ErrorPNF = () => import('@/views/errors/ErrorPNF.vue');
 const routes = [
   { path: '/', component: Index, meta: { title: 'Inicio | MysticalCut' } },
   { path: '/Login', component: Login, meta: { title: 'Login | MysticalCut' } },
-  { path: '/Home', component: Home, meta: { title: 'Home | MysticalCut', requiresAuth: true } },
+  { path: '/Home', component: Home, meta: { title: 'Home | MysticalCut', requiresAuth: true, isHome: true } },
   { path: '/error', component: ErrorAuth, meta: { title: 'Error 404 | MysticalCut' } },
   { path: '/:pathMatch(.*)*', redirect: '/errorPNF' },
   { path: '/Users', component: Users, meta: { title: 'Users | MysticalCut', requiresAuth: true, role: 'Admin' } },

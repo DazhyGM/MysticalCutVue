@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <!-- Contenedor principal con Vue Router -->
-    <router-view></router-view>
-
-   
+    <HeaderComponent :isHome="$route.meta.isHome" />
+    <router-view />
+    <FooterComponent />
   </div>
 </template>
 
+
 <script>
+import HeaderComponent from '@/components/layout/HeaderComponent.vue'
+import FooterComponent from '@/components/layout/FooterComponent.vue'
+
 export default {
-  name: 'App'
-};
+  components: {
+    HeaderComponent,
+    FooterComponent
+  }
+}
 </script>
