@@ -22,11 +22,11 @@ import Service from '../components/ServicesBarber.vue';
 import CrearServicios from '@/components/CrearServicios.vue';
 import EditarServicios from '@/components/EditarServicios.vue';
 import ServicesInactivos from '@/components/ServicesInactivos.vue';
-import ViewService from '@/components/ViewService.vue';
-import SeleccionarBarbero from '@/components/SeleccionarBarbero.vue';
-import CalendarioCitas from '@/components/CalendarioCitas.vue';
-import FacturaServicios from '@/components/FacturaServicios.vue';
-import CitasPendientes from '@/components/CitasPendientes.vue';
+import ViewService from '@/views/services/ViewService.vue';
+import SeleccionarBarbero from '@/views/services/SeleccionarBarbero.vue';
+import CalendarioCitas from '@/views/services/CalendarioCitas.vue';
+import FacturaServicios from '@/views/services/FacturaServicios.vue';
+import CitasPendientes from '@/views/services/CitasPendientes.vue';
 
 
 

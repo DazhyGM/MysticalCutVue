@@ -43,7 +43,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveServices, activateService } from '@/services/servicesApi';
-import FooterComponent from '@/components/FooterComponent.vue';
+import FooterComponent from '@/components/layout/FooterComponent.vue';
 import '@/assets/css/style.css';
 import '@/assets/css/usersInfo.css';
 

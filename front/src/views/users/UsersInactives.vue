@@ -53,7 +53,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveUsers, updateUserStatus } from '@/services/api';
-import FooterComponent from '@/components/FooterComponent.vue';
+import FooterComponent from '@/components/layout/FooterComponent.vue';
 import '@/assets/css/style.css';
 import '@/assets/css/usersInfo.css';
 

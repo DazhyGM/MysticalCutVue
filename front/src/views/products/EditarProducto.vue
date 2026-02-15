@@ -139,7 +139,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { getProductById, updateProduct } from "../services/productsApi"; // Asegúrate de que la ruta sea correcta
+import { getProductById, updateProduct } from "@/services/productsApi"; // Asegúrate de que la ruta sea correcta
 
 const route = useRoute();
 const router = useRouter();

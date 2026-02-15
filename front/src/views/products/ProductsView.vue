@@ -142,9 +142,9 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRouter } from "vue-router";
-import FooterComponent from "./FooterComponent.vue";
-import { getProducts, updateProductStatus } from "../services/productsApi";
-import { addToCartAPI, getCartAPI, updateCartItemAPI } from "../services/shoppingCartApi";
+import FooterComponent from "@/components/layout/FooterComponent.vue";
+import { getProducts, updateProductStatus } from "@/services/productsApi";
+import { addToCartAPI, getCartAPI, updateCartItemAPI } from "@/services/shoppingCartApi";
 import axios from 'axios';
 
 const router = useRouter();

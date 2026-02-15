@@ -1,43 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Index from '../components/HomeIndex.vue';
-import Login from '../components/LoginUser.vue';
-import Home from '../components/HomeUser.vue';
-import Error404 from '../components/ErrorAuth.vue'; // 🛑
-import Users from '../components/UsersInfo.vue';
-import Perfil from '../components/PerfilUsuario.vue';
-import Register from '../components/RegisterUser.vue';
-import EditUser from '../components/EditUsers.vue';
-import VerUser from '../components/VerUser.vue';
-import AgregarUser from '../components/AgregarUser.vue';
-import EditPerfil from '../components/EditPerfil.vue';
-import ErrorRole from '../components/ErrorRole.vue'; //🛑
-import ErrorUserBlock from '../components/ErrorUserBlock.vue'; //🛑
-import ErrorUserDeleted from '../components/ErrorUserDeleted.vue'; //🛑
-import ErrorPNF from '../components/ErrorPNF.vue'; //🛑
-import UsersInactives from '../components/UsersInactives.vue'; 
-import ForgotPassword from '../components/ForgotPassword.vue'; 
-import ResetPassword from '../components/ResetPassword.vue';
 
-import Service from '../components/ServicesBarber.vue';
-import CrearServicios from '@/components/CrearServicios.vue';
-import EditarServicios from '@/components/EditarServicios.vue';
-import ServicesInactivos from '@/components/ServicesInactivos.vue';
-import ViewService from '@/components/ViewService.vue';
-import SeleccionarBarbero from '@/components/SeleccionarBarbero.vue';
-import CalendarioCitas from '@/components/CalendarioCitas.vue';
-import FacturaServicios from '@/components/FacturaServicios.vue';
-import CitasPendientes from '@/components/CitasPendientes.vue';
-import Reportes from '@/components/Reportes.vue';
+//HOME
+const Index = () => import('@/views/home/HomeIndex.vue');
+const Home = () => import('@/views/home/HomeUser.vue');
 
+//AUTH
+const Login = () => import('@/views/auth/LoginUser.vue');
+const Register = () => import('@/views/auth/RegisterUser.vue');
+const ForgotPassword = () => import('@/views/auth/ForgotPassword.vue');
+const ResetPassword = () => import('@/views/auth/ResetPassword.vue');
 
-import Products from '../components/ProductsView.vue';
-import ProductsInactives from '../components/ProductsInactives.vue';
-import CrearProducto from '@/components/CrearProducto.vue';
-import EditarProducto from '@/components/EditarProducto.vue';
-import CartView from '@/components/CartView.vue';
+//USERS
+const Users = () => import('@/views/users/UsersInfo.vue');
+const Perfil = () => import('@/views/users/PerfilUsuario.vue');
+const EditUser = () => import('@/views/users/EditUsers.vue');
+const VerUser = () => import('@/views/users/VerUser.vue');
+const AgregarUser = () => import('@/views/users/AgregarUser.vue');
+const EditPerfil = () => import('@/views/users/EditPerfil.vue');
+const UsersInactives = () => import('@/views/users/UsersInactives.vue');
 
+//SERVICES
+const Service = () => import('@/views/services/ServicesBarber.vue');
+const CrearServicios = () => import('@/views/services/CrearServicios.vue');
+const EditarServicios = () => import('@/views/services/EditarServicios.vue');
+const ServicesInactivos = () => import('@/views/services/ServicesInactivos.vue');
+const ViewService = () => import('@/views/services/ViewService.vue');
+const SeleccionarBarbero = () => import('@/views/services/SeleccionarBarbero.vue');
+const CalendarioCitas = () => import('@/views/services/CalendarioCitas.vue');
+const FacturaServicios = () => import('@/views/services/FacturaServicios.vue');
+const CitasPendientes = () => import('@/views/services/CitasPendientes.vue');
+const Reportes = () => import('@/views/services/Reportes.vue');
 
+//PRODUCTS
+const Products = () => import('@/views/products/ProductsView.vue');
+const ProductsInactives = () => import('@/views/products/ProductsInactives.vue');
+const CrearProducto = () => import('@/views/products/CrearProducto.vue');
+const EditarProducto = () => import('@/views/products/EditarProducto.vue');
+const CartView = () => import('@/views/products/CartView.vue');
 
+//ERRORS
+const ErrorAuth = () => import('@/views/errors/ErrorAuth.vue');
+const ErrorRole = () => import('@/views/errors/ErrorRole.vue');
+const ErrorUserBlock = () => import('@/views/errors/ErrorUserBlock.vue');
+const ErrorUserDeleted = () => import('@/views/errors/ErrorUserDeleted.vue');
+const ErrorPNF = () => import('@/views/errors/ErrorPNF.vue');
 
 
 
@@ -45,7 +51,7 @@ const routes = [
   { path: '/', component: Index, meta: { title: 'Inicio | MysticalCut' } },
   { path: '/Login', component: Login, meta: { title: 'Login | MysticalCut' } },
   { path: '/Home', component: Home, meta: { title: 'Home | MysticalCut', requiresAuth: true } },
-  { path: '/error', component: Error404, meta: { title: 'Error 404 | MysticalCut' } },
+  { path: '/error', component: ErrorAuth, meta: { title: 'Error 404 | MysticalCut' } },
   { path: '/:pathMatch(.*)*', redirect: '/errorPNF' },
   { path: '/Users', component: Users, meta: { title: 'Users | MysticalCut', requiresAuth: true, role: 'Admin' } },
   { path: '/Perfil', component: Perfil, meta: { title: 'Perfil | MysticalCut', requiresAuth: true } },
@@ -78,9 +84,6 @@ const routes = [
   { path: '/Create-Products', component: CrearProducto, meta: { title: 'Crear Productos | MysticalCut', requiresAuth: true} },
   { path: '/Edit-Products/:id', component: EditarProducto, meta: { title: 'Editar Productos | MysticalCut', requiresAuth: true} },
   { path: '/Cart', component: CartView, meta: { title: 'Editar Productos | MysticalCut', requiresAuth: true} },
-
-
-
 
 
 ];

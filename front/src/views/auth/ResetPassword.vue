@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { resetPassword } from '../services/api.js'; // Importar la función correcta
+import { resetPassword } from '@/services/api.js'; // Importar la función correcta
 
 export default {
   data() {

@@ -15,7 +15,7 @@
       <div class="col-md-3 text-end">
         <div class="dropdown">
           <button class="btn dropdown-toggle" @click="toggleMenu">
-            <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
+            <img src="../../../public/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
             {{ user.full_name || 'Usuario' }}
           </button>
           <ul v-if="isMenuOpen" class="dropdown-menu dropdown-menu-end show">

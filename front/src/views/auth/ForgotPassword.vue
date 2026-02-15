@@ -23,7 +23,7 @@
   </template>
   
   <script>
-import { requestPasswordReset } from '../services/api';
+import { requestPasswordReset } from '@/services/api';
 
 export default {
   data() {

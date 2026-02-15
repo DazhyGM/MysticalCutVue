@@ -107,9 +107,9 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import FooterComponent from "./FooterComponent.vue";
-import { getProducts } from "../services/productsApi"; 
-import { getCartAPI, updateCartItemAPI, removeFromCartAPI } from "../services/shoppingCartApi";
+import FooterComponent from "@/components/layout/FooterComponent.vue";
+import { getProducts } from "@/services/productsApi"; 
+import { getCartAPI, updateCartItemAPI, removeFromCartAPI } from "@/services/shoppingCartApi";
 
 const router = useRouter();
 const products = ref([]);
