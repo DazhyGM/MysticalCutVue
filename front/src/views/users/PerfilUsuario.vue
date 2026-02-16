@@ -47,7 +47,7 @@ const roleMapping = {
   "Client": "Cliente"
 };
 
-// 🔥 Función para obtener los datos del usuario desde la API
+//Función para obtener los datos del usuario desde la API
 const fetchUserData = async () => {
   try {
     const token = localStorage.getItem("token");
@@ -77,20 +77,20 @@ const fetchUserData = async () => {
   }
 };
 
-// 🔹 Evento para cerrar el menú si se hace clic fuera
+//Evento para cerrar el menú si se hace clic fuera
 const closeMenu = (event) => {
   if (!event.target.closest(".dropdown")) {
     isMenuOpen.value = false;
   }
 };
 
-// 🔹 Agregar evento al montar el componente
+//Agregar evento al montar el componente
 onMounted(() => {
   document.addEventListener("click", closeMenu);
   fetchUserData(); // 👈 Llamamos a la función para obtener los datos del usuario
 });
 
-// 🔹 Eliminar evento al desmontar el componente
+//Eliminar evento al desmontar el componente
 onUnmounted(() => {
   document.removeEventListener("click", closeMenu);
 });
@@ -111,12 +111,12 @@ const confirmDelete = async () => {
   }
 };
 
-// 🔹 Función para regresar a la página anterior
+//Función para regresar a la página anterior
 const goBack = () => {
   router.push('/Home');
 };
 
-// 🔹 Función para redirigir a la página de Citas
+//Función para redirigir a la página de Citas
 const goMisCitas = () => {
   router.push('/Citas'); // Redirige a la ruta '/Citas'
 };
