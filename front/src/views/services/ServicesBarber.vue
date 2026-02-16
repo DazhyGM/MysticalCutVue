@@ -1,5 +1,10 @@
 <template>
   <div class="container-scaled">
+    <div class ="row mb-2">
+      <ul class="nav col-12 justify-content-center mx-auto">
+        <h1>Servicios</h1>
+      </ul>
+    </div>
   <div class="container">
 
 
@@ -18,7 +23,7 @@
         <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" style="width: 20px; height: 20px; margin-right: 5px;" />
         Agregar
       </router-link>
-      <router-link to="/Services-Inactivos" class="btn btn-secondary">Servicios Inactivos</router-link>
+      <router-link to="/Services-Inactivos" class="btn btn-agregar">Servicios Inactivos</router-link>
     </div>
 
     <!-- SERVICIOS -->
@@ -74,11 +79,11 @@
 
     <!-- BOTÓN REGRESAR -->
     <div class="btn-regresar mt-3 text-center">
-      <button class="btn btn-secondary" @click="goBack">Regresar</button>
+      <button class="btn back-button" @click="goBack">Regresar</button>
     </div>
 
     <footer class="py-3 my-4">
-      <p class="text-center text-white">© 2024 www.mysticalcut.com, Inc</p>
+      <p class="text-center text-white">© 2026 www.mysticalcut.com, Inc</p>
     </footer>
   </div>
   </div>
@@ -151,7 +156,6 @@ const servicesByCategory = computed(() => {
 
 const getCategoryId = (category) => category.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
 
-// ✅ Esta función ahora busca en el backend si existe imagen, si no, pone una por defecto
 const getServiceImage = (image) =>
   image ? `http://localhost:5000/uploads/${image}` : '/img/background/combo01.png';
 
@@ -237,11 +241,6 @@ const goToSelectBarbero = () => {
   z-index: 999;
 }
 
-.btn-regresar button {
-  font-size: 1rem;
-  padding: 10px 20px;
-}
-
 .service-image img {
   border-radius: 10px;
 }
@@ -268,7 +267,18 @@ const goToSelectBarbero = () => {
 .btn-view:hover,
 .btn-select:hover,
 .btn-edit:hover {
-  background-color: #FFD700;
+  background-color: #000000;
   color: #fff;
+}
+.btn-agregar {
+  background-color: #CCAF54;
+  color: #000;
+  border: none;
+  font-weight: bold;
+}
+.btn-agregar:hover {
+  background-color: #000000;
+  color: #ffffff;
+
 }
 </style>

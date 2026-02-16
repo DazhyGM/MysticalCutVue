@@ -38,7 +38,6 @@
             </ul>
           </div>
         </div>
-
       </header>
     </div>
 
@@ -196,11 +195,11 @@ const closeMenu = (event) => {
   }
 };
 
-// 🔹 Agregar evento al montar el componente
+// Agregar evento al montar el componente
 onMounted(() => {
   document.addEventListener("click", closeMenu);
 
-  // 🔹 Cargar usuario desde localStorage
+  // Cargar usuario desde localStorage
   const storedUser = localStorage.getItem('user');
   if (storedUser) {
     try {
@@ -245,8 +244,8 @@ const allModules = [
 // Filtrar los módulos según el rol del usuario
 const filteredModules = computed(() => {
   if (!user.value.role) return [];
-  console.log("🧐 Filtrando módulos para el rol:", user.value.role);
-  console.log("✅ Módulos filtrados:", filteredModules.value);
+  console.log("Filtrando módulos para el rol:", user.value.role);
+  console.log("Módulos filtrados:", filteredModules.value);
   return allModules.filter(module => module.roles.includes(user.value.role));
 });
 

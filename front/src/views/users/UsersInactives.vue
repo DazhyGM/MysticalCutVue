@@ -1,16 +1,5 @@
 <template>
   <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <router-link to="/Home">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-        </router-link>
-      </div>
-
-      <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Usuarios Inactivos</h1>
-      </ul>
-    </header>
 
     <div class="search-filter-container">
       <div class="input-group" style="max-width: 300px;">
@@ -45,7 +34,6 @@
       </div>
     </div>
 
-    <FooterComponent />
   </div>
 </template>
 
@@ -53,9 +41,6 @@
 import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveUsers, updateUserStatus } from '@/services/api';
-import FooterComponent from '@/components/layout/FooterComponent.vue';
-import '@/assets/css/style.css';
-import '@/assets/css/usersInfo.css';
 
 const router = useRouter();
 const inactiveUsers = ref([]);

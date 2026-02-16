@@ -3,14 +3,10 @@
     src: url('../fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf');
   }
   
-  /* Cudra el carrusel y que la pagina principal el titulo quede centrado */
   .carousel-item img {
     height: 610px;
-    /* Puedes ajustar esta altura según tu necesidad */
     object-fit: cover;
-    /* Para que la imagen se ajuste y no se deforme */
   }
-  
   
   .carousel-title {
     font-size: 2rem;
@@ -19,14 +15,13 @@
     text-align: center;
   }
   
-  /* Solo la primera imagen tendrá este estilo */
   .titulo1 {
     font-size: 2.5rem;
     font-weight: bold;
     position: absolute;
-    top: 50%; /* Centra verticalmente */
-    left: 50%; /* Centra horizontalmente */
-    transform: translate(-50%, -50%); /* Corrige el centrado */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     width: 100%;
     color: white;
@@ -34,15 +29,9 @@
     z-index: 10;
   }
   
-  
-  /* Asegurar que el contenedor padre tenga posición relativa */
   .carousel-item {
     position: relative;
   }
-  
-
-  
-
   
   body {
     background-color: #000000;
@@ -137,7 +126,7 @@
   .login-form button {
     width: 100%;
     padding: 12px;
-    background-color: #D4AF37;
+    background-color: #CCAF54;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -185,7 +174,6 @@
     color: #fff;
   }
   
-  /* Footer */
   footer {
     margin-top: auto;
     background-color: #00000000;
@@ -194,46 +182,34 @@
   
   footer h5 {
     color: #D4AF37;
-    /* Nombre de la barbería en dorado */
     margin-bottom: 10px;
-    /* Espaciado inferior */
   }
   
   footer p {
     margin-top: 10px;
-    /* Espaciado superior */
     margin-bottom: 0;
-    /* Sin espaciado inferior */
   }
   
   footer .nav-link {
     color: #D4AF37;
-    /* Color de los enlaces en dorado */
   }
   
   footer .nav-link:hover {
     color: #CCAF54;
-    /* Color de los enlaces al pasar el ratón */
   }
   
-  /* Ajuste para los iconos de redes sociales */
   .footer-social-icons {
     margin-top: 10px;
-    /* Espaciado superior */
   }
   
   .footer-social-icons a {
     color: #D4AF37;
-    /* Color de los iconos en dorado */
     font-size: 24px;
-    /* Tamaño de los iconos */
     margin: 0 10px;
-    /* Espaciado entre los iconos */
   }
   
   .footer-social-icons a:hover {
     color: #CCAF54;
-    /* Color de los iconos al pasar el ratón */
   }
   
   .icon {
@@ -246,7 +222,6 @@
   
   .icon:hover {
     opacity: 0.8;
-    /* Opcional: agregue un efecto de desplazamiento */
   }
   
   .btn-custom {
@@ -275,31 +250,22 @@
     font-size: 1.5rem;
     margin-bottom: 150px;
   }
-  
-  /* Ajuste para los iconos de redes sociales */
+
   .social-icon {
     width: 44px;
-    /* Tamaño de las imágenes de redes sociales */
     height: auto;
-    /* Mantiene la proporción de la imagen */
     margin: 0 5px;
-    /* Espaciado entre las imágenes */
   }
   
   .nav-link {
     padding: 10;
     color: #D4AF37;
-    /* Elimina el padding predeterminado */
   }
   
   .nav-link:hover {
     padding: 10;
     color: #7e6208;
-    /* Elimina el padding predeterminado */
   }
-  
-  
-  /* Para cuadrar la caja de recuperar contraseña*/
   
   .login-container1 {
     background-color: #111;
@@ -311,10 +277,6 @@
     margin-top: 50px;
   }
   
-  
-  
-  
-  /* Esto sirve para separar los contenidos y que no queden juntos, toca llamarlo con esas clases */
   .section {
     margin-bottom: 40px;
   }
@@ -327,16 +289,11 @@
     text-align: center;
     margin-top: 100px;
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.552);
-    /* Ajusta este valor según lo necesites */
   }
   
-  
-  
-  /* Boton que va debajo de los servicios y productos */
   .btn-custom {
     width: 100%;
     max-width: 100%;
-    /* Ajusta este valor según lo necesites */
     padding: 10px;
     background-color: #CCAF54;
     color: #000;
@@ -344,10 +301,8 @@
     font-weight: bold;
     border-radius: 5px;
     margin-top: 10px;
-  
   }
   
-  /* Navbar */
   .navbar {
     background-color: #222;
   }
@@ -360,7 +315,6 @@
     color: #D4AF37;
   }
   
-  /* Section Titles */
   .section-title {
     font-size: 2rem;
     font-weight: bold;
@@ -369,17 +323,13 @@
     text-align: center;
   }
   
-
-  
   .card-title {
     color: #CCAF54;
   }
   
-  /* Custom Button */
   .btn-custom {
     width: 100%;
     max-width: 100%;
-    /* Adjust this value as needed */
     padding: 10px;
     background-color: #CCAF54;
     color: #000;
@@ -389,7 +339,6 @@
     margin-top: 10px;
   }
   
-  /* Service Details Section */
   .custom-card {
     background-color: #111;
     border: 5px solid #333;
@@ -398,7 +347,6 @@
     border-radius: 5px;
     margin-top: 155px;
     position: fixed;
-  
   }
   
   #service-title {
@@ -434,32 +382,29 @@
     margin-left: 80px;
   }
   
-  /* Añadir estilo para hacer el texto del input más transparente */
   input::placeholder {
     color: rgba(255, 255, 255, 0.527);
-    /* Color del placeholder con transparencia */
   }
   
   #username {
     color: rgb(255, 255, 255);
-    /* Color del texto dentro del input con transparencia */
   }
   
   .dropdown {
-    position: relative; /* Para que el menú se posicione con respecto a este contenedor */
+    position: relative; 
   }
   
   .dropdown-menu {
     position: absolute;
     top: 100%;
-    right: 0;  /* 🔹 Alineado a la derecha */
-    margin-top: 5px; /* 🔹 Espaciado entre botón y menú */
+    right: 0;
+    margin-top: 5px;
     background-color: #141313;
     border: 0.5px solid rgba(255, 255, 255, 0.315);
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    min-width: 200px; /* 🔹 Evita que el menú sea demasiado estrecho */
+    min-width: 200px;
   }
   
   .dropdown-toggle{
@@ -496,5 +441,4 @@
 .hero-section {
   margin-top: 20px;
 }
-
 }

@@ -1,5 +1,10 @@
 <template>
   <div class="container text-white">
+    <div class ="row mb-3">
+      <ul class="nav col-12 justify-content-center mx-auto">
+        <h1>Reportes</h1>
+      </ul>
+    </div>
     <div class="mb-4">
       <div class="row g-3 align-items-end">
         <div class="col-md-3">

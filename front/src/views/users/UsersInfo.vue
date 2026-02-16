@@ -1,5 +1,10 @@
 <template>
   <div class="container my-3">
+    <div class ="row mb-3">
+      <ul class="nav col-12 justify-content-center mx-auto">
+        <h1>Usuarios</h1>
+      </ul>
+    </div>
 
     <!-- FILTROS Y BUSCADOR -->
     <div class="row mb-3 gy-2">
@@ -11,7 +16,7 @@
       </div>
 
       <div class="col-12 col-md-3">
-        <router-link to="/usersInactives" class="btn botonav w-100">
+        <router-link to="/usersInactives" class="btn btn-agregar w-100">
           Ver usuarios inactivos
         </router-link>
       </div>
@@ -58,18 +63,12 @@
           </button>
 
           <div class="form-check form-switch">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              :checked="user.userStatus_fk === 1"
-              @change="toggleUserStatus(user)"
-              :disabled="user.userStatus_fk === 3"
-              :class="{
+            <input class="form-check-input" type="checkbox" :checked="user.userStatus_fk === 1"
+              @change="toggleUserStatus(user)" :disabled="user.userStatus_fk === 3" :class="{
                 'active-switch': user.userStatus_fk === 1,
                 'blocked-switch': user.userStatus_fk === 2,
                 'disabled-switch': user.userStatus_fk === 3,
-              }"
-            />
+              }" />
           </div>
         </div>
       </div>
@@ -88,8 +87,8 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from "vue-router";
 import { getUsers, deleteUser, updateUserStatus, filterUsersByRole } from '@/services/api';
-import '@/assets/css/register.css';
 import '@/assets/css/usersInfo.css';
+
 
 
 const router = useRouter();
@@ -97,7 +96,6 @@ const users = ref([]);
 const searchQuery = ref("");
 const selectedRole = ref("");
 
-// Cargar usuarios
 const loadUsers = async () => {
   try {
     users.value = await getUsers();
@@ -106,7 +104,6 @@ const loadUsers = async () => {
   }
 };
 
-// Filtrado de usuarios activos y búsqueda
 const filteredUsers = computed(() => {
   return users.value.filter(user =>
     user.userStatus_fk !== 3 &&
@@ -116,7 +113,6 @@ const filteredUsers = computed(() => {
   );
 });
 
-// Filtro por rol
 const filtrarPorRol = async () => {
   try {
     if (selectedRole.value === "") {
@@ -130,7 +126,6 @@ const filtrarPorRol = async () => {
   }
 };
 
-// Cambiar estado del usuario
 const toggleUserStatus = async (user) => {
   const newStatus = user.userStatus_fk === 1 ? 2 : 1;
   try {
@@ -145,7 +140,6 @@ const toggleUserStatus = async (user) => {
   }
 };
 
-// Confirmar eliminación
 const confirmDelete = async (id) => {
   if (window.confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
     try {
@@ -158,12 +152,10 @@ const confirmDelete = async (id) => {
   }
 };
 
-// Ordenar usuarios
 const sortUsers = (order) => {
   users.value.sort((a, b) => order === "asc" ? a.full_name.localeCompare(b.full_name) : b.full_name.localeCompare(a.full_name));
 };
 
-// Regresar
 const goBack = () => {
   router.push('/Home');
 };
@@ -172,70 +164,8 @@ onMounted(loadUsers);
 </script>
 
 <style scoped>
-.pedido-container {
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
-.pedido-box {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-.icon-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-
 .form-check-input {
   width: 50px;
   height: 25px;
-}
-
-.form-check-input.active-switch {
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
-.form-check-input.blocked-switch {
-  background-color: #dc3545 !important;
-  border-color: #dc3545 !important;
-}
-
-.form-check-input.disabled-switch {
-  background-color: #6c757d !important;
-  border-color: #6c757d !important;
-}
-
-.form-check-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.form-check-input:active {
-  appearance: none;
-  box-shadow: none;
-}
-
-@media (max-width: 768px) {
-  .pedido-box {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .icon-container {
-    justify-content: flex-start;
-  }
-
-  .btn-regresar button {
-    width: 100%;
-  }
 }
 </style>

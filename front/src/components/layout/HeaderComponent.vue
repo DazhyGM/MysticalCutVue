@@ -36,7 +36,6 @@
         </ul>
       </div>
     </div>
-
   </div>
 </header>
 </template>
@@ -46,6 +45,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineProps } from 'vue'
+import '@/assets/css/footer.css';
 
 const props = defineProps({
   isHome: Boolean
