@@ -159,7 +159,7 @@
   .back-button {
     padding: 7px 15px;
     background-color: #CCAF54;
-    border: none;
+    border: 1px solid #D4AF37;
     border-radius: 5px;
     cursor: pointer;
     color: #000;
@@ -172,6 +172,7 @@
   .back-button:hover {
     background-color: #00000000;
     color: #fff;
+    border: 1px solid #D4AF37;
   }
   
   footer {

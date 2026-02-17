@@ -1,16 +1,10 @@
 <template>
   <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <router-link to="/Home">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-        </router-link>
-      </div>
+    <div class ="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Productos Inactivos</h1>
       </ul>
-    </header>
-
+    </div>
     <div class="content">
       <div class="product-grid">
         <div v-for="product in inactiveProducts" :key="product.id" class="pedido-box">
@@ -40,7 +34,6 @@
       </div>
     </div>
 
-    <FooterComponent />
   </div>
 </template>
 
@@ -48,8 +41,6 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveProducts, updateProductStatus } from '@/services/productsApi';
-import FooterComponent from '@/components/layout/FooterComponent.vue';
-import '@/assets/css/style.css';
 import '@/assets/css/usersInfo.css';
 
 const router = useRouter();
@@ -183,18 +174,6 @@ onMounted(loadInactiveProducts);
   text-align: center;
 }
 
-.back-button {
-  background-color: #444;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-}
-.back-button:hover {
-  background-color: #666;
-}
 .product-img {
   width: 100%;
   height: 160px;

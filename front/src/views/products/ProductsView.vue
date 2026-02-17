@@ -18,8 +18,6 @@
         </router-link>
       </div>
 
-      
-
       <div class="product-grid">
         <div class="product-card" v-for="product in products" :key="product.id_product">
           <img :src="getImageUrl(product.image)" alt="Imagen del producto" class="product-img" />
@@ -38,7 +36,7 @@
               <span class="slider round" :class="{ blocked: product.id_status === 2, active: product.id_status === 1 }"></span>
             </label>
 
-            <button class="btn-buy" @click="() => viewProductDetails(product)">Ver</button>
+            <button class="btn-view" @click="() => viewProductDetails(product)">Ver</button>
             <button class="btn-edit" @click="() => editProduct(product.id_product)" v-if="userRole === 'Admin'">Editar</button>
             <button class="btn-delete" @click="() => confirmInactivate(product.id_product)" v-if="userRole === 'Admin'">Eliminar</button>
           </div>
@@ -49,7 +47,6 @@
         <button class="btn back-button" @click="goBack">Regresar</button>
       </div>
 
-      <FooterComponent />
     </div>
   </div>
   
@@ -272,7 +269,6 @@ const confirmAddToCart = async () => {
     alert("Algunos productos no pudieron ser agregados/actualizados. Por favor, revisa las cantidades y disponibilidad.");
   }
 };
-
 
 // Modal functionality
 const showProductModal = ref(false);
