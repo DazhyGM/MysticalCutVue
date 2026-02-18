@@ -126,13 +126,14 @@
     color: #000 !important;
 }
 .btn-agregar{
-    background-color: #2d2d2d;
-    color: #d4af37;
+    background-color: #ccaf54;
+    color: #000000;
     border: 1px solid #d4af37;
 }
 .btn-agregar:hover{
-    background-color: #CCAF54;
-    color: #000000;
+    background-color: #2d2d2d;
+    color: #ffffff;
+    border: 1px solid #d4af37;
 }
 .search-filter-container {
     display: flex;

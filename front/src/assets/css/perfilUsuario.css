@@ -45,3 +45,28 @@
     margin: 15px auto 0 auto; 
 }
 
+.btn-delete {
+  background-color: #ff0000;
+  color: #000;
+  border: 1px solid #d43737;
+  font-weight: bold;
+}
+
+.btn-delete:hover {
+  background-color: #000000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+
+.btn-edit {
+  background-color: #ccaf54;
+  color: #000000;
+  border: 1px solid #ccaf54;
+  font-weight: bold;
+}
+.btn-edit:hover {
+  background-color: #000000;
+  color: #ccaf54;
+  border: 1px solid #ccaf54;
+}
+

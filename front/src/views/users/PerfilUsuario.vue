@@ -17,11 +17,11 @@
     </div>
 
     <div class="back-button-container">
-      <router-link :to="`/EditPerfil/${user.id}`" class="btn btn-icon">
+      <router-link :to="`/EditPerfil/${user.id}`" class="btn btn-icon btn-edit">
         <img src="/img/background/editar_perfil_2.png"> Editar
       </router-link>
       <button v-if="['Cliente', 'Empleado'  ].includes(user.role)" class="btn botonav-citas" @click="goMisCitas">Mis citas</button>
-      <button class="btn botonav-delete" @click="confirmDelete"> Eliminar cuenta </button>
+      <button class="btn btn-delete" @click="confirmDelete"> Eliminar cuenta </button>
       
 
     </div>

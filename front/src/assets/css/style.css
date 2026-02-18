@@ -158,11 +158,11 @@
   
   .back-button {
     padding: 7px 15px;
-    background-color: #CCAF54;
+    background-color: #000000;
     border: 1px solid #D4AF37;
     border-radius: 5px;
     cursor: pointer;
-    color: #000;
+    color: #CCAF54;
     margin-top: 15px;
     margin: 0 auto;
     text-align: center;
@@ -170,8 +170,8 @@
   }
   
   .back-button:hover {
-    background-color: #00000000;
-    color: #fff;
+    background-color: #CCAF54;
+    color: #000000;
     border: 1px solid #D4AF37;
   }
   

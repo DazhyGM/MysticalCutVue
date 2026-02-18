@@ -46,7 +46,7 @@
                       <router-link :to="`/View-Service/${service.id_services}`" class="btn btn-view me-2">Ver</router-link>
                       <button v-if="userRole === 'Client'" class="btn btn-select me-2" @click="selectService(service)">Seleccionar</button>
                       <router-link v-if="userRole === 'Admin'" :to="`/Editar-Services/${service.id_services}`" class="btn btn-edit me-2">Editar</router-link>
-                      <button v-if="userRole === 'Admin'" class="btn btn-danger" @click="confirmDelete(service.id_services)">Eliminar</button>
+                      <button v-if="userRole === 'Admin'" class="btn btn-delete" @click="confirmDelete(service.id_services)">Eliminar</button>
                     </div>
                   </div>
                 </div>
@@ -260,7 +260,7 @@ const goToSelectBarbero = () => {
 .btn-edit {
   background-color: #CCAF54;
   color: #000;
-  border: none;
+  border: 1px solid #D4AF37;
   font-weight: bold;
 }
 
@@ -268,17 +268,30 @@ const goToSelectBarbero = () => {
 .btn-select:hover,
 .btn-edit:hover {
   background-color: #000000;
-  color: #fff;
+  color: #ccaf54;
+  border: 1px solid #D4AF37;
 }
 .btn-agregar {
   background-color: #CCAF54;
   color: #000;
-  border: none;
+  border: 1px solid #D4AF37;
   font-weight: bold;
 }
 .btn-agregar:hover {
-  background-color: #000000;
+  background-color: #2d2d2d;
   color: #ffffff;
+  border: 1px solid #D4AF37;
+}
 
+.btn-delete {
+  background-color: #ff0000;
+  color: #000;
+  border: 1px solid #d43737;
+  font-weight: bold;
+}
+.btn-delete:hover {
+  background-color: #000000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
 }
 </style>

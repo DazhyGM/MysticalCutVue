@@ -53,9 +53,9 @@ const routes = [
 
   //Auth
   { path: '/Login', component: Login, meta: { title: 'Login | MysticalCut', hideLayout: true } },
-  { path: '/Register', component: Register, meta: { title: 'Registrate | MysticalCut'} },
-  { path: '/forgotPassword', component: ForgotPassword, meta: { title: 'Recuperar Contraseña | MysticalCut' } },
-  { path: '/reset-password/:token', component: ResetPassword, meta: { title: 'Resetear Contraseña | MysticalCut' } },
+  { path: '/Register', component: Register, meta: { title: 'Registrate | MysticalCut', hideLayout: true} },
+  { path: '/forgotPassword', component: ForgotPassword, meta: { title: 'Recuperar Contraseña | MysticalCut', hideLayout: true } },
+  { path: '/reset-password/:token', component: ResetPassword, meta: { title: 'Resetear Contraseña | MysticalCut', hideLayout: true } },
 
   //Users
   { path: '/Users', component: Users, meta: { title: 'Users | MysticalCut', requiresAuth: true, role: 'Admin' } },

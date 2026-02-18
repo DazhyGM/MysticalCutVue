@@ -1,5 +1,10 @@
 <template>
   <div class="container">
+    <div class ="row mb-2">
+      <ul class="nav col-12 justify-content-center mx-auto">
+        <h1>Editar perfil</h1>
+      </ul>
+    </div>
   </div>
 
   <div class="recover-container">
@@ -52,15 +57,14 @@
     </form>
     <button class="btn back-button" @click="goBack">Regresar</button>
   </div>
-  <footer class="py-3 my-4">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3"></ul>
-    </footer>
+
 </template>
 
 <script>
 import { reactive, ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
+import '@/assets/css/register.css';
 
 export default {
   setup() {
