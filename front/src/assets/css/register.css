@@ -67,7 +67,7 @@ h3 {
     width: 100%;
     padding: 12px;
     background-color: #CCAF54;
-    border: none;
+    border: 1px solid #D4AF37;
     border-radius: 5px;
     cursor: pointer;
     color: #000;
@@ -78,7 +78,9 @@ h3 {
 }
 
 .button-registrar:hover {
-    background-color: #b38b2e00;
+    background-color: #000000;
+    border: 1px solid #D4AF37;
+    color: #CCAF54;
 }
 
 .swal2-popup {

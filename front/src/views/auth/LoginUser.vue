@@ -20,7 +20,7 @@
         <label for="password">Contraseña</label>
         <input type="password" id="password" v-model="password" required placeholder="Ingresa tu contraseña" />
 
-        <button type="submit" class="btn btn-black w-100">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-iniciar w-100">Iniciar Sesión</button>
 
         <div class="links text-center mt-3">
           <a href="/forgotPassword">Recuperar Contraseña</a>
@@ -98,3 +98,21 @@ const logIn = async () => {
   }
 };
 </script>
+<style scoped>
+.btn-iniciar {
+  background-color: #ccaf54;
+  color: black;
+  border: 1px solid #D4AF37;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+.btn-iniciar:hover {
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  color: #CCAF54;
+}
+</style>

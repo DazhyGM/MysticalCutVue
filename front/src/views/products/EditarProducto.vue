@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class ="row mb-2">
+    <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Editar producto</h1>
       </ul>
@@ -11,90 +11,51 @@
         <div class="mb-3">
           <label class="form-label">Imagen actual:</label>
           <div class="image-placeholder mx-auto mb-3">
-            <img
-              v-if="product.image"
-              :src="getImageUrl(product.image)"
-              alt="Producto Actual"
-              class="preview-image"
-            />
-            <img
-              v-else
-              src="/img/background/signointerrogacion.jpg"
-              alt="Sin imagen"
-              class="preview-image"
-            />
+            <img v-if="product.image" :src="getImageUrl(product.image)" alt="Producto Actual" class="preview-image" />
+            <img v-else src="/img/background/signointerrogacion.jpg" alt="Sin imagen" class="preview-image" />
           </div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Previsualización de nueva imagen:</label>
           <div class="image-placeholder mx-auto mb-3">
-            <img
-              :src="newImagePreview || '/img/background/signointerrogacion.jpg'"
-              alt="Nueva imagen"
-              class="preview-image"
-            />
+            <img :src="newImagePreview || '/img/background/signointerrogacion.jpg'" alt="Nueva imagen"
+              class="preview-image" />
           </div>
           <label class="form-label">Nueva imagen (opcional):</label>
-          <input type="file" @change="onImageSelected" class="form-control custom-input" />
+          <input type="file" @change="onImageSelected" class="form-select custom-input" />
         </div>
 
         <div class="mb-3">
           <label class="block mb-1 form-label">Precio</label>
-          <input
-            v-model.number="product.price"
-            type="number"
-            min="1000"
-            step="500"
-            required
-            class="form-control custom-input"
-            placeholder="Precio"
-          />
+          <input v-model.number="product.price" type="number" min="1000" step="500" required
+            class="form-select custom-input" placeholder="Precio" />
         </div>
-        <div class="mb-3">
-          <label class="block mb-1 form-label">Cantidad</label>
-          <input
-            v-model.number="product.amount"
-            type="number"
-            min="1"
-            required
-            class="form-control custom-input"
-            placeholder="Cantidad"
-          />
-        </div>
+
       </div>
 
       <div class="col-md-5 offset-md-1">
         <form @submit.prevent="update" class="edit-form">
           <div class="mb-3">
+            <label class="block mb-1 form-label">Cantidad</label>
+            <input v-model.number="product.amount" type="number" min="1" required class="form-select custom-input"
+              placeholder="Cantidad" />
+          </div>
+          <div class="mb-3">
             <label class="block mb-1 form-label">Nombre</label>
-            <input
-              v-model="product.name"
-              type="text"
-              required
-              class="form-control custom-input"
-              placeholder="Nombre del producto"
-            />
+            <input v-model="product.name" type="text" required class="form-select custom-input"
+              placeholder="Nombre del producto" />
           </div>
 
           <div class="mb-3">
             <label class="block mb-1 form-label">Descripción</label>
-            <textarea
-              v-model="product.description"
-              required
-              rows="3"
-              class="form-control custom-input"
-              placeholder="Descripción del producto"
-            ></textarea>
+            <textarea v-model="product.description" required rows="3" class="form-select custom-input"
+              placeholder="Descripción del producto"></textarea>
           </div>
 
           <div class="mb-3">
             <label class="block mb-1 form-label">Categoría</label>
-            <select
-              v-model.number="product.id_category"
-              required
-              class="form-select custom-input"
-            >
+            <select v-model.number="product.id_category" required class="form-select custom-input">
               <option disabled value="">Seleccione una categoría</option>
               <option v-for="cat in categories" :key="cat.id" :value="cat.id">
                 {{ cat.name }}
@@ -111,16 +72,18 @@
             </select>
           </div>
 
-          <div class="d-flex justify-content-between mt-4">
-            <button type="submit" class="btn btn-add flex-grow-1 me-2">
-              Guardar cambios
-            </button>
-            <button type="button" @click="goBack" class="btn btn-secondary btn-regresar flex-grow-1">
-              Cancelar
-            </button>
-          </div>
+
         </form>
+        
       </div>
+      <div class="contenedor-botones">
+          <button type="submit" class="btn btn-add flex-grow-1 me-2">
+            Guardar cambios
+          </button>
+          <button type="button" @click="goBack" class="btn btn-secondary btn-regresar flex-grow-1">
+            Cancelar
+          </button>
+        </div>
     </div>
 
     <div class="text-center mt-3">
@@ -184,9 +147,9 @@ const loadProduct = async () => {
       newImage.value = null;
       newImagePreview.value = null;
     } else {
-        error.value = 'Producto no encontrado.';
-        // Opcional: Redirigir si el producto no se encuentra
-        // router.push('/Products');
+      error.value = 'Producto no encontrado.';
+      // Opcional: Redirigir si el producto no se encuentra
+      // router.push('/Products');
     }
   } catch (err) {
     console.error("Error al cargar el producto:", err);
@@ -246,7 +209,7 @@ const update = async () => {
 
     await updateProduct(route.params.id, formData);
     message.value = "Producto actualizado correctamente.";
-    
+
     // **Modificación aquí:** Redirigir a la vista anterior después de un breve retraso
     // Esto permite al usuario ver el mensaje de éxito antes de la redirección.
     setTimeout(() => {
@@ -279,20 +242,25 @@ onMounted(loadProduct);
 <style scoped>
 /* Estilos generales del contenedor y tipografía */
 .container {
-  background-color: #000; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
+  background-color: #000;
+  /* Fondo oscuro */
+  color: #fff;
+  /* Texto blanco */
   min-height: 100vh;
   padding: 1rem;
-  font-size: 13px; /* Consistencia en tamaño de fuente */
+  font-size: 13px;
+  /* Consistencia en tamaño de fuente */
 }
 
 /* Estilos para el Header */
 header {
-  border-bottom: 1px solid #333; /* Borde inferior sutil */
+  border-bottom: 1px solid #333;
+  /* Borde inferior sutil */
 }
 
 header h1 {
-  color: #ccaf54; /* Título dorado */
+  color: #ccaf54;
+  /* Título dorado */
   text-align: center;
   font-size: 24px;
   font-weight: bold;
@@ -302,40 +270,48 @@ header h1 {
 /* Contenedor principal del formulario */
 .edit-container {
   padding: 20px;
-  background-color: #1c1c1c; /* Fondo de la tarjeta central, un poco más claro que el body */
+  background-color: #1c1c1c;
+  /* Fondo de la tarjeta central, un poco más claro que el body */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-left: auto;
   margin-right: auto;
-  max-width: 900px; /* Ancho máximo para centrarlo */
-  align-items: flex-start; /* Alinea los elementos al inicio (arriba) */
+  max-width: 900px;
+  /* Ancho máximo para centrarlo */
+  align-items: flex-start;
+  /* Alinea los elementos al inicio (arriba) */
 }
 
 /* Estilos de imagen */
 .image-placeholder {
   width: 100%;
-  max-height: 170px; /* Altura máxima para la vista previa */
+  max-height: 170px;
+  /* Altura máxima para la vista previa */
   border: 2px solid #ccaf54;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 15px;
-  display: flex; /* Para centrar la imagen */
+  display: flex;
+  /* Para centrar la imagen */
   justify-content: center;
   align-items: center;
-  background-color: #222; /* Fondo para el placeholder vacío */
+  background-color: #222;
+  /* Fondo para el placeholder vacío */
 }
 
 .preview-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Para que la imagen cubra el espacio */
+  object-fit: cover;
+  /* Para que la imagen cubra el espacio */
 }
 
 /* Estilos de inputs y labels */
 .form-label {
   color: #ccaf54;
   font-size: 13px;
-  margin-bottom: 0.2rem; /* Espacio más compacto */
+  margin-bottom: 0.2rem;
+  /* Espacio más compacto */
 }
 
 .custom-input {
@@ -344,7 +320,8 @@ header h1 {
   border: 1px solid #ccaf54;
   font-size: 13px;
   padding: 6px 10px;
-  border-radius: 5px; /* Bordes ligeramente redondeados */
+  border-radius: 5px;
+  /* Bordes ligeramente redondeados */
 }
 
 .custom-input::placeholder {
@@ -353,16 +330,24 @@ header h1 {
 
 /* Estilo para el textarea */
 textarea.custom-input {
-  resize: vertical; /* Permitir redimensionar solo verticalmente */
-  min-height: 80px; /* Altura mínima para la descripción */
+  resize: vertical;
+  /* Permitir redimensionar solo verticalmente */
+  min-height: 80px;
+  /* Altura mínima para la descripción */
 }
 
-/* Botón de "Guardar cambios" (similar a btn-add) */
+.contenedor-botones {
+  display: flex;
+  justify-content: center;  
+  gap: 20px;               
+  margin-top: 20px;
+}
+
 .btn-add {
   background-color: #ccaf54;
   color: black;
-  border: none;
-  padding: 8px 0; /* padding vertical y horizontal 0 para que flex-grow lo controle */
+  border: 1px solid #D4AF37;
+  padding: 8px 0;
   font-size: 13px;
   font-weight: bold;
   transition: background-color 0.3s ease;
@@ -370,30 +355,38 @@ textarea.custom-input {
 }
 
 .btn-add:hover {
-  background-color: #b3953f;
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  color: #CCAF54;
 }
 
-/* Botón de "Cancelar" (similar a btn-regresar) */
 .btn-regresar {
-  background-color: #6c757d;
-  color: white;
-  padding: 8px 0; /* padding vertical y horizontal 0 para que flex-grow lo controle */
-  font-size: 13px;
-  border-radius: 5px;
-  border: none;
-  transition: background-color 0.3s ease;
+  background-color: #ff0000;
+  color: #000;
+  border: 1px solid #d43737;
+  font-weight: bold;
 }
 
 .btn-regresar:hover {
-  background-color: #5a6268;
+  background-color: #000000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
 }
 
-/* Mensajes de éxito/error */
+.btn-add,
+.btn-regresar {
+  padding: 6px 20px;  
+  font-size: 14px;
+  border-radius: 5px;
+  width: auto;       
+  max-width: 140px;   
+}
+
 .text-success {
-  color: #4CAF50; /* Verde más estándar */
+  color: #4CAF50;
 }
 
 .text-danger {
-  color: #d9534f; /* Rojo más estándar */
+  color: #d9534f;
 }
 </style>

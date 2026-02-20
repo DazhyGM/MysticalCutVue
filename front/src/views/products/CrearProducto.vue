@@ -1,25 +1,14 @@
 <template>
   <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <router-link to="/Home">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-        </router-link>
-      </div>
-
-      <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Crear Producto</h1>
-      </ul>
-    </header>
 
     <div class="row edit-container">
       <div class="col-md-5 text-center">
+        <label class="form-label">Imagen</label>
         <div class="image-placeholder mx-auto mb-3">
           <img :src="imagePreview || '/img/background/signointerrogacion.jpg'" alt="Preview" class="preview-image" />
         </div>
         <div class="mb-3">
-          <label class="form-label">Imagen</label>
-          <input type="file" @change="handleFileChange" accept="image/*" class="form-control custom-input" />
+          <input type="file" @change="handleFileChange" accept="image/*" class="form-select custom-input" />
         </div>
         <div class="mb-3">
           <label class="block mb-1 form-label">Precio</label>
@@ -29,7 +18,7 @@
             min="1000"
             step="500"
             required
-            class="form-control custom-input"
+            class="form-select custom-input"
             placeholder="Precio"
           />
         </div>
@@ -40,7 +29,7 @@
             type="number"
             min="1"
             required
-            class="form-control custom-input"
+            class="form-select custom-input"
             placeholder="Cantidad"
           />
         </div>
@@ -54,7 +43,7 @@
               v-model="form.name"
               type="text"
               required
-              class="form-control custom-input"
+              class="form-select custom-input"
               placeholder="Nombre del producto"
             />
           </div>
@@ -65,7 +54,7 @@
               v-model="form.description"
               required
               rows="3"
-              class="form-control custom-input"
+              class="form-select custom-input"
               placeholder="Descripción del producto"
             ></textarea>
           </div>
@@ -100,13 +89,11 @@
           </button>
         </form>
       </div>
+      
     </div>
-
-    <div class="text-center mt-3">
-      <router-link to="/Products" class="btn btn-secondary btn-regresar">
-        Regresar
-      </router-link>
-    </div>
+    <div class="btn-regresar mt-3">
+        <button class="btn back-button" @click="goBack">Regresar</button>
+      </div>
 
     <div class="text-center mt-3">
       <p v-if="message" class="text-success">{{ message }}</p>
@@ -120,6 +107,8 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router'; // Importar useRouter para la redirección
 import { createProduct } from '@/services/productsApi';
 
+const goBack = () => router.push("/Products"); // Función para redirigir a la página de productos
+
 const router = useRouter(); // Inicializar el router para la redirección
 
 const form = ref({
@@ -128,8 +117,8 @@ const form = ref({
   description: '',
   amount: 1,
   id_category: '',
-  image: null, // Este campo recibirá el objeto File
-  id_status: 1, // Se añade el estado por defecto
+  image: null,
+  id_status: 1,
 });
 
 const categories = ref([
@@ -140,9 +129,9 @@ const categories = ref([
   { id: 5, name: 'Productos de Estilo' },
 ]);
 
-const imagePreview = ref(null); // Para la URL de la vista previa de la imagen
-const message = ref(''); // Para mensajes de éxito
-const error = ref(''); // Para mensajes de error
+const imagePreview = ref(null);
+const message = ref('');
+const error = ref('');
 
 const handleFileChange = (e) => {
   const file = e.target.files[0];
@@ -185,22 +174,9 @@ const handleSubmit = async () => {
     await createProduct(form.value);
     message.value = 'Producto creado con éxito.';
 
-    // **MODIFICACIÓN AQUÍ:** Redirigir a la vista anterior después de un breve retraso
     setTimeout(() => {
-      router.push("/Products"); // Redirige a la ruta de tus productos
-    }, 1500); // Espera 1.5 segundos para que el usuario vea el mensaje
-
-    // Las siguientes líneas se pueden quitar si siempre rediriges
-    // form.value = {
-    //   name: '',
-    //   price: 1000,
-    //   description: '',
-    //   amount: 1,
-    //   id_category: '',
-    //   image: null,
-    //   id_status: 1,
-    // };
-    // imagePreview.value = null;
+      router.push("/Products"); 
+    }, 1500);
 
   } catch (err) {
     console.error('Error al crear producto:', err);
@@ -297,33 +273,20 @@ textarea.custom-input {
 .btn-add {
   background-color: #ccaf54;
   color: black;
-  border: none;
+  border: 1px solid #D4AF37;
   padding: 8px 0;
   font-size: 13px;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  border-radius: 5px; /* Bordes redondeados */
+  border-radius: 5px;
 }
 
 .btn-add:hover {
-  background-color: #b3953f;
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  color: #CCAF54;
 }
 
-/* Botón de "Regresar" */
-.btn-regresar {
-  margin-top: 12px;
-  background-color: #6c757d;
-  color: white;
-  padding: 6px 14px;
-  font-size: 13px;
-  border-radius: 5px; /* Bordes redondeados */
-  border: none; /* Eliminar borde de Bootstrap si lo tuviera */
-  transition: background-color 0.3s ease;
-}
-
-.btn-regresar:hover {
-  background-color: #5a6268;
-}
 
 /* Mensajes de éxito/error */
 .text-success {

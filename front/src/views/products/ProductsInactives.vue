@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class ="row mb-2">
+    <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Productos Inactivos</h1>
       </ul>
@@ -28,12 +28,10 @@
           </div>
         </div>
       </div>
-      
       <div class="text-center mt-4">
         <button class="btn back-button" @click="goBack">Regresar</button>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -41,7 +39,6 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveProducts, updateProductStatus } from '@/services/productsApi';
-import '@/assets/css/usersInfo.css';
 
 const router = useRouter();
 const inactiveProducts = ref([]);
@@ -80,20 +77,23 @@ onMounted(loadInactiveProducts);
 <style scoped>
 .activate-btn {
   position: absolute;
-  bottom: 1rem; 
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  /* estilos del botón */
-  background-color: #c2aa59;
+  background-color: #ccaf54;
   border: none;
   padding: 0.5rem 1rem;
   font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
 }
+
 .activate-btn:hover {
-  background-color: #8a7432;
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  color: #CCAF54;
 }
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, 250px);
@@ -101,7 +101,6 @@ onMounted(loadInactiveProducts);
   gap: 1rem;
   margin: 1rem auto;
   padding: 1rem;
-  height: 800px;
   overflow-y: auto;
   border-radius: 6px;
   background-color: #00000095;
@@ -139,7 +138,7 @@ onMounted(loadInactiveProducts);
 .info-title {
   font-weight: 700;
   color: #ccaf54;
-  min-height: 1.4rem; 
+  min-height: 1.4rem;
   margin-bottom: 0.3rem;
   text-align: center;
 }
@@ -150,11 +149,11 @@ onMounted(loadInactiveProducts);
   color: #fff;
   word-wrap: break-word;
   font-size: 0.9rem;
-  min-height: 1.4rem; 
+  min-height: 1.4rem;
 }
 
 .activate-btn {
-  margin-top: auto; 
+  margin-top: auto;
   background-color: #ccaf54;
   border: none;
   padding: 0.5rem 1rem;
