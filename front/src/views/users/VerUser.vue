@@ -1,8 +1,9 @@
 <template>
-  <div class="container">
-    
+  <div class="row mb-3">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1>Info Usuario</h1>
+    </ul>
   </div>
-
   <div class="recover-container">
     <form class="recover-form">
       <div v-if="isFormReady" class="row">
@@ -111,7 +112,7 @@ export default {
         user.address = userData.address || '';
         user.phone = userData.phone || '';
         user.role = userData.role_fk || '';
-        
+
         // Mapear el nombre del estado al español
         user.status = statusMap[userData.userStatus_name] || userData.userStatus_name;
 
@@ -144,3 +145,7 @@ export default {
 };
 
 </script>
+
+<style scoped>
+@import '@/assets/css/verUser.css';
+</style>

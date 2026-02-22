@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <div class="row mb-3">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1>Editar Usuario</h1>
+    </ul>
   </div>
 
   <div class="recover-container">
@@ -14,7 +17,8 @@
             <input type="radio" v-model="form.docType" value="2" disabled class="readonly-field" /> Tarjeta de Identidad
           </label>
           <label>
-            <input type="radio" v-model="form.docType" value="3" disabled class="readonly-field" /> Cédula de Extranjería
+            <input type="radio" v-model="form.docType" value="3" disabled class="readonly-field" /> Cédula de
+            Extranjería
           </label>
 
           <label for="full-name">Nombres y Apellidos</label>
@@ -40,15 +44,15 @@
           <label for="confirm-password">Confirmar Contraseña</label>
           <input type="password" id="confirm-password" v-model="form.confirmPassword" class="editable-field" />
           <label for="role">Rol del Usuario</label>
-        <select id="role" class="select-field" v-model="form.role" required>
-          <option value="" disabled>Seleccione un rol</option>
-          <option v-for="role in roles" :key="role.id" :value="role.id">
-            {{ role.name }}
-          </option>
-        </select>
+          <select id="role" class="select-field" v-model="form.role" required>
+            <option value="" disabled>Seleccione un rol</option>
+            <option v-for="role in roles" :key="role.id" :value="role.id">
+              {{ role.name }}
+            </option>
+          </select>
         </div>
 
-        
+
       </div>
 
       <button type="submit" class="btn button-registrar">Guardar Cambios</button>
@@ -167,32 +171,5 @@ export default {
 </script>
 
 <style scoped>
-/* 🔹 Estilos para los campos NO editables */
-.readonly-field {
-  background-color: #f0f0f000 !important; /* Color más claro */
-  color: #888 !important;
-  cursor: not-allowed;
-  border: 1px solid #ccc;
-}
-
-/* 🔹 Estilos para los campos editables */
-.editable-field {
-  background-color: #ffffff;
-  border: 2px solid #4CAF50;
-  transition: border 0.3s ease-in-out;
-}
-
-.editable-field:focus {
-  border-color: #45a049;
-}
-
-/* 🔹 Estilos para select */
-.select-field {
-  width: 100%;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-top: 5px;
-}
+@import '@/assets/css/register.css';
 </style>
