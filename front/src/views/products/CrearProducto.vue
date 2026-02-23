@@ -187,43 +187,43 @@ const handleSubmit = async () => {
   }
 };
 </script>
-
 <style scoped>
-/* Colores de tu estilo base */
+@import '@/assets/css/crearProducto.css';
+</style>
+
+<!-- <style scoped>
 .container {
-  background-color: #000; /* Fondo oscuro similar */
-  color: #fff; /* Texto blanco */
+  background-color: #000;
+  color: #fff;
   min-height: 100vh;
   padding: 1rem;
-  font-size: 13px; /* Consistencia en tamaño de fuente */
+  font-size: 13px; 
 }
 
-/* Estilos para el Header */
 header {
-  border-bottom: 1px solid #333; /* Borde inferior sutil */
+  border-bottom: 1px solid #333;
 }
 
 header h1 {
-  color: #ccaf54; /* Título dorado */
+  color: #ccaf54;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
   margin-top: 10px;
 }
 
-/* Contenedor principal del formulario */
 .edit-container {
   padding: 20px;
-  background-color: #1c1c1c; /* Fondo de la tarjeta central, un poco más claro que el body */
+  background-color: #1c1c1c;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-left: auto;
   margin-right: auto;
-  max-width: 900px; /* Un ancho máximo para centrarlo */
-  align-items: flex-start; /* Alinea los elementos al inicio (arriba) */
+  max-width: 1000px;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-/* Estilos de imagen */
 .image-placeholder {
   width: 100%;
   max-height: 170px;
@@ -231,23 +231,22 @@ header h1 {
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 15px;
-  display: flex; /* Para centrar la imagen */
+  display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #222; /* Fondo para el placeholder vacío */
+  background-color: #222;
 }
 
 .preview-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Para que la imagen cubra el espacio */
+  object-fit: cover;
 }
 
-/* Estilos de inputs y labels */
 .form-label {
   color: #ccaf54;
   font-size: 13px;
-  margin-bottom: 0.2rem; /* Espacio más compacto */
+  margin-bottom: 0.2rem;
 }
 
 .custom-input {
@@ -256,20 +255,18 @@ header h1 {
   border: 1px solid #ccaf54;
   font-size: 13px;
   padding: 6px 10px;
-  border-radius: 5px; /* Bordes ligeramente redondeados */
+  border-radius: 5px;
 }
 
 .custom-input::placeholder {
   color: #ccc;
 }
 
-/* Estilo para el textarea */
 textarea.custom-input {
-  resize: vertical; /* Permitir redimensionar solo verticalmente */
-  min-height: 80px; /* Altura mínima para la descripción */
+  resize: vertical;
+  min-height: 80px;
 }
 
-/* Botón de "Agregar" (Registrar) */
 .btn-add {
   background-color: #ccaf54;
   color: black;
@@ -287,18 +284,15 @@ textarea.custom-input {
   color: #CCAF54;
 }
 
-
-/* Mensajes de éxito/error */
 .text-success {
-  color: #4CAF50; /* Verde más estándar */
+  color: #4CAF50;
 }
 
 .text-danger {
-  color: #d9534f; /* Rojo más estándar */
+  color: #d9534f;
 }
 
-/* Pequeño ajuste para centrar el formulario dentro de su columna si es necesario */
 .edit-form {
-  margin-top: 0; /* Asegurarse de que no haya margen superior indeseado */
+  margin-top: 0;
 }
-</style>
+</style> -->
