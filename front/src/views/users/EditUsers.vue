@@ -55,7 +55,7 @@
 
       </div>
 
-      <button type="submit" class="btn button-registrar">Guardar Cambios</button>
+      <button type="submit" class="btn button-guardar">Guardar Cambios</button>
     </form>
     <button class="back-button" @click="goBack">Regresar</button>
   </div>
@@ -171,5 +171,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/register.css';
+@import '@/assets/css/editUsers.css';
 </style>

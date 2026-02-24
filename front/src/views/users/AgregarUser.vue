@@ -121,7 +121,6 @@ export default {
 </script>
 
 <style scoped>
-/* 🔹 Inputs */
 .input-field,
 .select-field {
   width: 100%;

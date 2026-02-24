@@ -53,7 +53,7 @@
         
       </div>
 
-      <button type="submit" class="btn button-registrar">Guardar Cambios</button>
+      <button type="submit" class="btn button-guardar">Guardar Cambios</button>
     </form>
     <button class="btn back-button" @click="goBack">Regresar</button>
   </div>
@@ -64,7 +64,6 @@
 import { reactive, ref, onMounted, computed } from 'vue';
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
-import '@/assets/css/register.css';
 
 export default {
   setup() {
@@ -171,31 +170,5 @@ export default {
 </script>
 
 <style scoped>
-/* 🔹 Estilos para campos deshabilitados */
-.disabled-field {
-  background-color: #f0f0f000 !important;
-  /* Color más claro */
-  color: #888 !important;
-  cursor: not-allowed;
-  border: 1px solid #ccc;
-}
-
-/* 🔹 Estilos para inputs y selects */
-.input-field,
-.select-field {
-  width: 100%;
-  padding: 10px;
-  color: #ffffff;
-  background-color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-top: 5px;
-  transition: 0.3s ease-in-out;
-}
-
-/* 🔹 Efecto cuando el input está deshabilitado */
-input:disabled,
-select:disabled {
-  cursor: not-allowed;
-}
+@import '@/assets/css/editPerfil.css';
 </style>
