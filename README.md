@@ -13,7 +13,7 @@ El sistema permite administrar usuarios, roles y operaciones internas mediante u
 
 ---
 
-## 🎯 Características Técnicas Clave
+# Características Técnicas Clave
 
 - Arquitectura cliente-servidor desacoplada
 - API REST documentada con Swagger
@@ -26,7 +26,7 @@ El sistema permite administrar usuarios, roles y operaciones internas mediante u
 
 ---
 
-# 🧠 Arquitectura del Proyecto
+# Arquitectura del Proyecto
 
 El proyecto está dividido en dos partes principales:
 
@@ -41,23 +41,23 @@ El frontend consume los servicios del backend mediante peticiones HTTP usando Ax
 
 ---
 
-# 🚀 Tecnologías Utilizadas
+# Tecnologías Utilizadas
 
-## 🔹 Frontend
+## Frontend
 - Vue 3 (Composition API)
 - Vue Router
 - Axios
 - Bootstrap 5
 - CSS modular (global + scoped)
 
-## 🔹 Backend
+## Backend
 - Node.js
 - Express
 - MySQL
 - JWT
 - Swagger
 
-## 🔹 QA y Automatización
+## QA y Automatización
 - Selenium WebDriver
 - Cucumber (BDD)
 - Serenity BDD
@@ -65,7 +65,7 @@ El frontend consume los servicios del backend mediante peticiones HTTP usando Ax
 
 ---
 
-# ⚙️ Requisitos Previos
+# Requisitos Previos
 
 Para ejecutar el proyecto en una máquina nueva se requiere:
 
@@ -78,29 +78,29 @@ Para ejecutar el proyecto en una máquina nueva se requiere:
 Verificar instalación de Node:
 
 node -v
+
 npm -v
 
 ---
 
-## ⚙️ Instalación
+# Instalación
 
-### 1️⃣ Clonar el repositorio
+## 1. Clonar el repositorio
 
 git clone https://github.com/DazhyGM/MysticalCutVue.git
 cd MysticalCutVue
 
-# ▶️ Ejecutar Backend
+## 2. Ejecutar Backend
 
 Abrir una terminal en VSC y ejecutar:
-cd back
-npm install
-npm run dev
+- cd back
+- npm run dev
 
 El servidor se ejecutará en:
+
 http://localhost:5000
 
----
-## 📄 Documentación de la API (Swagger)
+### Documentación de la API (Swagger)
 
 La documentación interactiva de la API está disponible en:
 
@@ -109,15 +109,14 @@ http://localhost:5000/api-docs
 
 Desde allí se pueden probar todos los endpoints disponibles del sistema.
 
----
 
-# ▶️ Ejecutar Frontend
+## 3. Ejecutar Frontend
 
 Abrir una nueva terminal (sin cerrar la del backend):
 
-cd front
-npm install
-npm run serve
+- cd front
+- npm install
+- npm run serve
 
 La aplicación estará disponible en:
 
@@ -125,35 +124,46 @@ http://localhost:8080
 
 ---
 
-# 🗂️ Estructura del Proyecto
+# Estructura del Proyecto
 
-## 📁 Frontend
+## Frontend
 
 front/src/
 │
+
 ├── assets/
+
 ├── components/
+
 ├── views/
+
 ├── router/
+
 ├── services/
+
 └── App.vue
 
 
-## 📁 Backend
+## Backend
 
 back/
 │
-├── controllers/
-├── routes/
-├── middleware/
-├── models/
-├── config/
-└── server.js
 
+├── controllers/
+
+├── routes/
+
+├── middleware/
+
+├── models/
+
+├── config/
+
+└── server.js
 
 ---
 
-# 🏗️ Base de Datos
+# Base de Datos
 
 El proyecto utiliza MySQL.
 
@@ -163,15 +173,16 @@ Es necesario:
 2. Crear nu archivo `.env` en la carpeta `back` y configurar las credenciales.
 
 Ejemplo:
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_password
-DB_NAME=mysticalcut-db
-JWT_SECRET=tu_clave_secreta
+
+- DB_HOST=localhost
+- DB_USER=root
+- DB_PASSWORD=tu_password
+- DB_NAME=mysticalcut-db
+- JWT_SECRET=tu_clave_secreta
 
 ---
 
-# 🔐 Funcionalidades Implementadas
+# Funcionalidades Implementadas
 
 - Autenticación con JWT
 - Protección de rutas
@@ -185,11 +196,11 @@ JWT_SECRET=tu_clave_secreta
 
 ---
 
-# 🧪 Aseguramiento de Calidad (QA)
+# Aseguramiento de Calidad (QA)
 
 El proyecto incluye un proceso formal de validación y pruebas dividido en:
 
-## 🔍 Pruebas Manuales
+## Pruebas Manuales
 
 - Plan de pruebas general
 - Casos de prueba por módulo (Usuarios y Servicios)
@@ -203,7 +214,7 @@ Documentación disponible en:
 
 ---
 
-## 🤖 Pruebas Automatizadas
+## Pruebas Automatizadas
 
 Se implementó automatización de pruebas utilizando:
 
@@ -224,7 +235,7 @@ Automatizaciones/MysticalCut
 
 ---
 
-## 🎯 Enfoque de Calidad
+## Enfoque de Calidad
 
 El proyecto fue desarrollado bajo un enfoque estructurado que incluye:
 
@@ -241,7 +252,7 @@ Casos de uso → Casos de prueba → Automatización
 
 ---
 
-## 🔄 Flujo General
+## Flujo General
 
 1. Usuario inicia sesión.
 2. Backend valida credenciales y genera JWT.
@@ -251,7 +262,7 @@ Casos de uso → Casos de prueba → Automatización
 
 ---
 
-## 📚 Documentación del Proyecto
+## Documentación del Proyecto
 El sistema cuenta con documentación estructurada que incluye:
 
 - Casos de uso
@@ -265,17 +276,17 @@ El sistema cuenta con documentación estructurada que incluye:
 
 ---
 
-# 👨‍💻 Autor
+# Autor
 
 Kevin David Sabogal  
 Desarrollador Full Stack con enfoque en calidad
 
-📧 kevinsabogal24@gmail.com  
+📧 Correo: kevinsabogal24@gmail.com  
 🔗 LinkedIn: (https://www.linkedin.com/in/kevin-david-sabogal-mancipe/)
 
 ---
 
-# ⭐ Objetivo del Proyecto
+# Objetivo del Proyecto
 
 Este proyecto fue desarrollado con fines académicos y de portafolio, con el objetivo de fortalecer habilidades en:
 
