@@ -31,8 +31,11 @@ El sistema permite administrar usuarios, roles y operaciones internas mediante u
 El proyecto está dividido en dos partes principales:
 
 mysticalcut/
+
 │
+
 ├── front/ # Aplicación Vue.js
+
 └── back/ # API REST con Node.js y Express
 
 ---
@@ -129,6 +132,7 @@ http://localhost:8080
 ## Frontend
 
 front/src/
+
 │
 
 ├── assets/
@@ -147,6 +151,7 @@ front/src/
 ## Backend
 
 back/
+
 │
 
 ├── controllers/
