@@ -14,7 +14,9 @@
     <form @submit.prevent="sendRecoveryEmail">
       <input v-model="email" type="email" placeholder="Escribe aqui tu correo electrónico" required />
       <button class="btn button-enviar" type="submit">Enviar</button>
+
     </form>
+    <button class="btn-regresar" @click="goBack">Regresar</button>
 
     <p v-if="message">{{ message }}</p>
   </div>
@@ -38,49 +40,14 @@ export default {
       } catch (error) {
         this.message = error.response?.data?.error || 'Error al enviar el correo';
       }
+    },
+    goBack() {
+      this.$router.push('/Login');
     }
   }
 };
 </script>
 
-
 <style scoped>
-.container {
-  max-width: 800px;
-  margin: auto;
-  text-align: center;
-}
-
-:placeholder-shown {
-  background-color: rgb(29, 27, 27);
-  border-radius: 10px;
-  text-align: center;
-}
-
-input,
-button {
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-}
-
-.button-enviar {
-  width: 100%;
-  padding: 12px;
-  background-color: #CCAF54;
-  border: 1px solid #D4AF37;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #000;
-  font-weight: bold;
-  font-size: 16px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.button-enviar:hover {
-  background-color: #000000;
-  border: 1px solid #D4AF37;
-  color: #CCAF54;
-}
+@import '@/assets/css/auth/forgotPassword.css';
 </style>

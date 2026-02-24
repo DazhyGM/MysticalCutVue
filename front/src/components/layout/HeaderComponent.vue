@@ -1,43 +1,41 @@
 <template>
-<header 
-  :class="[
+  <header :class="[
     'border-bottom',
     props.isHome ? 'header-home py-5' : 'header-normal py-3 mb-4'
-  ]"
->
-  <div class="container d-flex flex-wrap align-items-center justify-content-between">
+  ]">
+    <div class="container d-flex align-items-center justify-content-between">
 
-    <router-link to="/Home">
-      <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-    </router-link>
+      <router-link to="/Home">
+        <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
+      </router-link>
 
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li v-for="module in roleModules" :key="module.module_route" class="nav-item">
-        <a class="nav-link" :href="`/${module.module_route}`">{{ module.role_module }}</a>
-      </li>
-    </ul>
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li v-for="module in roleModules" :key="module.module_route" class="nav-item">
+          <a class="nav-link" :href="`/${module.module_route}`">{{ module.role_module }}</a>
+        </li>
+      </ul>
 
-    <div class="col-md-3 text-end">
-      <div class="dropdown">
-        <button class="btn dropdown-toggle" @click="toggleMenu">
-          <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
-          {{ user.full_name || 'Usuario' }}
-        </button>
-        <ul v-if="isMenuOpen" class="dropdown-menu dropdown-menu-end show">
-          <li>
-            <button class="dropdown-item" @click="goToProfile">Perfil</button>
-          </li>
-          <li>
-            <hr class="dropdown-divider" />
-          </li>
-          <li>
-            <button class="dropdown-item" @click="logout">Cerrar Sesión</button>
-          </li>
-        </ul>
-      </div>
+    
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" @click="toggleMenu">
+            <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
+            {{ user.full_name || 'Usuario' }}
+          </button>
+          <ul v-if="isMenuOpen" class="dropdown-menu dropdown-menu-end show">
+            <li>
+              <button class="dropdown-item" @click="goToProfile">Perfil</button>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <button class="dropdown-item" @click="logout">Cerrar Sesión</button>
+            </li>
+          </ul>
+        </div>
+      
     </div>
-  </div>
-</header>
+  </header>
 </template>
 
 
@@ -95,12 +93,7 @@ onMounted(() => {
     }
   }
 });
-
-
-
-
 </script>
-
 
 <style>
 .icon {
@@ -109,4 +102,12 @@ onMounted(() => {
   object-fit: contain;
 }
 
+/* .cont-header {
+  border-bottom: 1px solid #ccc;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+} */
 </style>

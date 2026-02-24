@@ -1,0 +1,160 @@
+
+
+.textnav {
+    color: #CCAF54;
+}
+
+.botonav {
+    background-color: #CCAF54;
+    color: black;
+}
+
+.recover-container {
+    background-color: #111;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 800px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+h3 {
+    color: #CCAF54;
+    margin-bottom: 25px;
+    font-size: 20px;
+    text-align: left;
+}
+
+.recover-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 16px;
+    text-align: left;
+}
+
+.recover-form input[type="text"],
+.recover-form input[type="email"],
+.recover-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+}
+
+.recover-form label[for="docType"],
+.recover-form label[for="full-name"],
+.recover-form label[for="email"],
+.recover-form label[for="phone"],
+.recover-form label[for="id-number"],
+.recover-form label[for="address"],
+.recover-form label[for="password"],
+.recover-form label[for="confirm-password"],
+.recover-form label[for="role"],
+.recover-form label[for="status"] {
+    width: 100%;
+    color: #CCAF54;
+}
+
+.recover-form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.button-registrar {
+    width: 100%;
+    padding: 12px;
+    background-color: #CCAF54;
+    border: 1px solid #D4AF37;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.button-registrar:hover {
+    background-color: #000000;
+    border: 1px solid #D4AF37;
+    color: #CCAF54;
+}
+
+.swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+}
+
+.readonly-field {
+  background-color: #f0f0f000 !important;
+  color: #888 !important;
+  cursor: not-allowed;
+  border: 1px solid #ccc;
+}
+
+.editable-field {
+  background-color: #ffffff;
+  border: 2px solid #4CAF50;
+  transition: border 0.3s ease-in-out;
+}
+
+.editable-field:focus {
+  border-color: #45a049;
+}
+
+.select-field {
+  width: 100%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.input-field,
+.select-field {
+  width: 100%;
+  padding: 10px;
+  color: #ffffff;
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.input-field:focus,
+.select-field:focus {
+  border-color: #cccccc3d;
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: #333;
+}

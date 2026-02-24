@@ -40,14 +40,12 @@ const router = useRouter();
 const isMenuOpen = ref(false);
 const user = ref({}); 
 
-// 🔥 Mapeo de roles en inglés a español
 const roleMapping = {
   "Admin": "Administrador",
   "Employee": "Empleado",
   "Client": "Cliente"
 };
 
-//Función para obtener los datos del usuario desde la API
 const fetchUserData = async () => {
   try {
     const token = localStorage.getItem("token");
@@ -57,10 +55,8 @@ const fetchUserData = async () => {
       return;
     }
 
-    // Hacer petición a la API
     const response = await getUserData(token); 
 
-    // Asignar los datos de la respuesta al objeto user
     user.value = {
       id: response.user_id,  
       full_name: response.full_name,
@@ -69,28 +65,25 @@ const fetchUserData = async () => {
       type_document: response.type_document,
       address: response.address,
       phone: response.phone,
-      role: roleMapping[response.role] || "Desconocido" // 🔥 Convertimos el rol aquí
+      role: roleMapping[response.role] || "Desconocido"
     };
   } catch (error) {
-    console.error("❌ Error al obtener los datos del usuario:", error);
+    console.error("Error al obtener los datos del usuario:", error);
     router.push('/login');  
   }
 };
 
-//Evento para cerrar el menú si se hace clic fuera
 const closeMenu = (event) => {
   if (!event.target.closest(".dropdown")) {
     isMenuOpen.value = false;
   }
 };
 
-//Agregar evento al montar el componente
 onMounted(() => {
   document.addEventListener("click", closeMenu);
-  fetchUserData(); // 👈 Llamamos a la función para obtener los datos del usuario
+  fetchUserData(); 
 });
 
-//Eliminar evento al desmontar el componente
 onUnmounted(() => {
   document.removeEventListener("click", closeMenu);
 });
@@ -111,17 +104,15 @@ const confirmDelete = async () => {
   }
 };
 
-//Función para regresar a la página anterior
 const goBack = () => {
   router.push('/Home');
 };
 
-//Función para redirigir a la página de Citas
 const goMisCitas = () => {
-  router.push('/Citas'); // Redirige a la ruta '/Citas'
+  router.push('/Citas');
 };
 </script>
 
 <style scoped>
-@import '@/assets/css/perfilUsuario.css';
+@import '@/assets/css/users/perfilUsuario.css';
 </style>

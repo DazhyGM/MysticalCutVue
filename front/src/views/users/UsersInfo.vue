@@ -1,12 +1,11 @@
 <template>
   <div class="container my-3">
-    <div class ="row mb-3">
+    <div class="row mb-3">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Usuarios</h1>
       </ul>
     </div>
 
-    <!-- FILTROS Y BUSCADOR -->
     <div class="row mb-3 gy-2">
       <div class="col-12 col-md-3">
         <router-link to="/AgregarUser" class="btn btn-agregar w-100 d-flex align-items-center justify-content-center">
@@ -74,7 +73,6 @@
       </div>
     </div>
 
-    <!-- BOTÓN REGRESAR -->
     <div class="btn-regresar mt-3">
       <button class="btn back-button" @click="goBack">Regresar</button>
     </div>
@@ -87,7 +85,7 @@
 import { ref, computed, onMounted } from 'vue';
 import { useRouter } from "vue-router";
 import { getUsers, deleteUser, updateUserStatus, filterUsersByRole } from '@/services/api';
-import '@/assets/css/usersInfo.css';
+// import '@/assets/css/usersInfo.css';
 
 
 
@@ -164,8 +162,5 @@ onMounted(loadUsers);
 </script>
 
 <style scoped>
-.form-check-input {
-  width: 50px;
-  height: 25px;
-}
+@import '@/assets/css/users/usersInfo.css';
 </style>

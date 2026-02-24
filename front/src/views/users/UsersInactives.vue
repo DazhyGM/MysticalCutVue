@@ -11,13 +11,11 @@
         </ul>
       </div>
 
-      <!-- Filtro por rol -->
       <select v-model="selectedRole" class="form-select" style="max-width: 200px;">
         <option value="">Todos los roles</option>
         <option value="1">Administrador</option>
         <option value="2">Empleado</option>
         <option value="3">Cliente</option>
-        <!-- Agrega más roles si tienes -->
       </select>
     </div>
 
@@ -45,7 +43,7 @@ import { getInactiveUsers, updateUserStatus } from '@/services/api';
 const router = useRouter();
 const inactiveUsers = ref([]);
 const searchQuery = ref("");
-const selectedRole = ref(""); // Nuevo filtro por rol
+const selectedRole = ref("");
 
 const loadInactiveUsers = async () => {
   try {
@@ -84,16 +82,5 @@ onMounted(loadInactiveUsers);
 </script>
 
 <style scoped>
-.activate-btn {
-  background-color: #CCAF54;
-  color: rgb(0, 0, 0);
-  padding: 5px 10px;
-  border: 1px;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: #6d550e;
-}
-.activate-btn:hover {
-  background-color: #8a7432;
-}
+ @import '@/assets/css/users/usersInactives.css';
 </style>

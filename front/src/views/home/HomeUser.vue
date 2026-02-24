@@ -1,43 +1,49 @@
 <template>
   <div>
     <div class="container">
-      <header
-        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <div class="col-md-3 mb-2 mb-md-0">
+      <header class="py-3 mb-4 border-bottom">
+        <div class="d-flex justify-content-between align-items-center">
+
           <router-link to="/Home">
-            <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125"
-              class="d-inline-block align-text-top" />
+            <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" />
           </router-link>
-        </div>
 
-        <!-- 🔹 Menú filtrado según el rol -->
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-          <li v-for="module in filteredModules" :key="module.module_route" class="nav-item">
-            <a class="nav-link" :href="`/${module.module_route}`">{{ module.role_module }}</a>
-          </li>
-        </ul>
-
-        <!-- Menú Perfil -->
-        <div class="col-md-3 text-end">
           <div class="dropdown">
             <button class="btn dropdown-toggle" @click="toggleMenu">
               <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
               {{ user.full_name || 'Usuario' }}
             </button>
+
             <ul v-if="isMenuOpen" class="dropdown-menu dropdown-menu-end show">
-              <!-- 🔹 Opción "Perfil" como botón -->
               <li>
-                <button class="dropdown-item" @click="goToProfile">Perfil</button>
+                <button class="dropdown-item" @click="goToProfile">
+                  Perfil
+                </button>
               </li>
               <li>
                 <hr class="dropdown-divider" />
               </li>
               <li>
-                <button class="dropdown-item" @click="logout">Cerrar Sesión</button>
+                <button class="dropdown-item" @click="logout">
+                  Cerrar Sesión
+                </button>
               </li>
             </ul>
           </div>
+
         </div>
+
+        <!-- FILA INFERIOR (MENÚ) -->
+        <div class="mt-3">
+          <ul class="nav justify-content-center flex-wrap">
+            <li v-for="module in filteredModules" :key="module.module_route" class="nav-item">
+              <a class="nav-link" :href="`/${module.module_route}`">
+                {{ module.role_module }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
       </header>
     </div>
 
@@ -176,7 +182,6 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
-import '@/assets/css/style.css';
 import '@/assets/css/footer.css';
 
 const router = useRouter();

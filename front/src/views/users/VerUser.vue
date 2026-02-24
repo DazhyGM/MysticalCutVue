@@ -147,5 +147,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/verUser.css';
+@import '@/assets/css/users/verUser.css';
 </style>

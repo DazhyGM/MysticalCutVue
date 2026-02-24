@@ -60,7 +60,7 @@
 <script>
 import { reactive, ref } from 'vue';
 import axios from 'axios';
-import '@/assets/css/register.css';
+import '@/assets/css/auth/registerUser.css';
 
 export default {
   setup() {

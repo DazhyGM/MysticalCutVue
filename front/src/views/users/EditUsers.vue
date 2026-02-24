@@ -65,7 +65,6 @@
 import { reactive, ref, onMounted } from 'vue';
 import axios from 'axios';
 import { useRoute, useRouter } from 'vue-router';
-import '@/assets/css/register.css';
 
 export default {
   setup() {
@@ -171,5 +170,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/editUsers.css';
+@import '@/assets/css/users/editUsers.css';
 </style>

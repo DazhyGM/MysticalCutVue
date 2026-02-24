@@ -61,7 +61,6 @@
 <script>
 import { reactive, ref } from 'vue';
 import axios from 'axios';
-import '@/assets/css/register.css';
 
 export default {
   setup() {
@@ -121,37 +120,5 @@ export default {
 </script>
 
 <style scoped>
-.input-field,
-.select-field {
-  width: 100%;
-  padding: 10px;
-  color: #ffffff;
-  background-color: #333;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-top: 5px;
-  transition: 0.3s ease-in-out;
-}
-
-.input-field:focus,
-.select-field:focus {
-  border-color: #cccccc3d;
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.3);
-  outline: none;
-}
-
-/* 🔹 Radio Buttons */
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.radio-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  color: #333;
-}
+ @import '@/assets/css/users/agregarUser.css';
 </style>

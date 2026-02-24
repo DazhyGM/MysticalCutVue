@@ -170,5 +170,5 @@ export default {
 </script>
 
 <style scoped>
-@import '@/assets/css/editPerfil.css';
+@import '@/assets/css/users/editPerfil.css';
 </style>
