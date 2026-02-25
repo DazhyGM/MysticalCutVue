@@ -96,7 +96,7 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { getProductById, updateProduct } from "@/services/productsApi"; // Asegúrate de que la ruta sea correcta
+import { getProductById, updateProduct } from "@/services/productsApi";
 
 const route = useRoute();
 const router = useRouter();
@@ -108,13 +108,13 @@ const product = ref({
   amount: 1,
   id_category: null,
   id_status: 1,
-  image: "", // Nombre de la imagen actual
+  image: "",
 });
-const newImage = ref(null); // Archivo de la nueva imagen seleccionada
-const newImagePreview = ref(null); // URL para la vista previa de la nueva imagen
+const newImage = ref(null); 
+const newImagePreview = ref(null); 
 
-const message = ref(''); // Para mensajes de éxito
-const error = ref(''); // Para mensajes de error
+const message = ref(''); 
+const error = ref(''); 
 
 const categories = ref([
   { id: 1, name: "Cabello" },
@@ -125,7 +125,6 @@ const categories = ref([
 ]);
 
 const getImageUrl = (imageName) => {
-  // Asegúrate de que esta URL base sea correcta para tu servidor de imágenes
   return `http://localhost:5000/uploads/products/${imageName}`;
 };
 
@@ -137,19 +136,15 @@ const loadProduct = async () => {
     if (data) {
       product.value = {
         ...data,
-        // Asegurarse de que los valores numéricos sean correctos, manejar nulos si es necesario
         price: data.price != null ? Number(data.price) : 1000,
         amount: data.amount != null ? Number(data.amount) : 1,
         id_category: data.id_category != null ? Number(data.id_category) : null,
         id_status: data.id_status != null ? Number(data.id_status) : 1,
       };
-      // Limpiar la previsualización de la nueva imagen cada vez que se carga un producto
       newImage.value = null;
       newImagePreview.value = null;
     } else {
       error.value = 'Producto no encontrado.';
-      // Opcional: Redirigir si el producto no se encuentra
-      // router.push('/Products');
     }
   } catch (err) {
     console.error("Error al cargar el producto:", err);
@@ -160,8 +155,8 @@ const loadProduct = async () => {
 const onImageSelected = (event) => {
   const file = event.target.files[0];
   if (file) {
-    newImage.value = file; // Almacena el archivo para el envío
-    newImagePreview.value = URL.createObjectURL(file); // Genera URL para la vista previa
+    newImage.value = file;
+    newImagePreview.value = URL.createObjectURL(file);
   } else {
     newImage.value = null;
     newImagePreview.value = null;
@@ -184,7 +179,6 @@ const update = async () => {
     return;
   }
 
-  // Validación específica para cantidad y precio
   if (product.value.price <= 0) {
     error.value = 'El precio debe ser un valor positivo.';
     return;
@@ -210,18 +204,9 @@ const update = async () => {
     await updateProduct(route.params.id, formData);
     message.value = "Producto actualizado correctamente.";
 
-    // **Modificación aquí:** Redirigir a la vista anterior después de un breve retraso
-    // Esto permite al usuario ver el mensaje de éxito antes de la redirección.
     setTimeout(() => {
-      router.push("/Products"); // Asume que '/Products' es la vista anterior
-    }, 1500); // Redirige después de 1.5 segundos
-
-    // Recargar el producto para reflejar los cambios (especialmente si la imagen ha cambiado)
-    // Esto ya no es estrictamente necesario si rediriges inmediatamente.
-    // Si quitaras la redirección de arriba, entonces sí sería importante.
-    // await loadProduct(); 
-    // newImage.value = null; // Limpiar la nueva imagen seleccionada
-    // newImagePreview.value = null; // Limpiar la vista previa de la nueva imagen
+      router.push("/Products");
+    }, 1500);
 
   } catch (err) {
     console.error("Error al actualizar producto:", err);
@@ -240,78 +225,60 @@ onMounted(loadProduct);
 </script>
 
 <style scoped>
-/* Estilos generales del contenedor y tipografía */
 .container {
   background-color: #000;
-  /* Fondo oscuro */
   color: #fff;
-  /* Texto blanco */
   min-height: 100vh;
   padding: 1rem;
   font-size: 13px;
-  /* Consistencia en tamaño de fuente */
 }
 
-/* Estilos para el Header */
 header {
   border-bottom: 1px solid #333;
-  /* Borde inferior sutil */
 }
 
 header h1 {
   color: #ccaf54;
-  /* Título dorado */
   text-align: center;
   font-size: 24px;
   font-weight: bold;
   margin-top: 10px;
 }
 
-/* Contenedor principal del formulario */
 .edit-container {
   padding: 20px;
   background-color: #1c1c1c;
-  /* Fondo de la tarjeta central, un poco más claro que el body */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   margin-left: auto;
   margin-right: auto;
   max-width: 900px;
-  /* Ancho máximo para centrarlo */
   align-items: flex-start;
-  /* Alinea los elementos al inicio (arriba) */
 }
 
-/* Estilos de imagen */
 .image-placeholder {
   width: 100%;
   max-height: 170px;
-  /* Altura máxima para la vista previa */
   border: 2px solid #ccaf54;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 15px;
   display: flex;
-  /* Para centrar la imagen */
   justify-content: center;
   align-items: center;
   background-color: #222;
-  /* Fondo para el placeholder vacío */
 }
 
 .preview-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Para que la imagen cubra el espacio */
 }
 
-/* Estilos de inputs y labels */
 .form-label {
   color: #ccaf54;
   font-size: 13px;
   margin-bottom: 0.2rem;
-  /* Espacio más compacto */
 }
 
 .custom-input {
@@ -321,19 +288,15 @@ header h1 {
   font-size: 13px;
   padding: 6px 10px;
   border-radius: 5px;
-  /* Bordes ligeramente redondeados */
 }
 
 .custom-input::placeholder {
   color: #ccc;
 }
 
-/* Estilo para el textarea */
 textarea.custom-input {
   resize: vertical;
-  /* Permitir redimensionar solo verticalmente */
   min-height: 80px;
-  /* Altura mínima para la descripción */
 }
 
 .contenedor-botones {

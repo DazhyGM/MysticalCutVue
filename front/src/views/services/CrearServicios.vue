@@ -1,22 +1,8 @@
 <template>
   <div class="container">
-    <!-- Header -->
-    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-  <router-link to="/Home">
-    <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-  </router-link>
-</div>
-
-<ul class="nav col-12 justify-content-center mx-auto">
-          <h1>Agregar Servicio</h1>
-        </ul>
-    </header>
-
-    <!-- Main Content -->
     <div class="row edit-container">
-      <!-- Imagen y Precio -->
       <div class="col-md-5 text-center">
+        <label class="form-label">Imagen actual:</label>
         <div class="image-placeholder mx-auto mb-3">
           <img :src="imagePreview || '/img/background/signointerrogacion.jpg'" alt="Preview" class="preview-image" />
         </div>
@@ -29,8 +15,6 @@
           <input v-model="form.price" type="number" class="form-control custom-input" placeholder="Precio" required />
         </div>
       </div>
-
-      <!-- Formulario -->
       <div class="col-md-5 offset-md-1">
         <form @submit.prevent="handleSubmit" class="edit-form">
           <div class="mb-3">
@@ -75,9 +59,8 @@
       </div>
     </div>
 
-    <!-- Botón Regresar -->
     <div class="text-center mt-3">
-      <router-link to="/Services" class="btn btn-secondary btn-regresar">
+      <router-link to="/Services" class="btn back-button">
         Regresar
       </router-link>
     </div>
@@ -194,14 +177,14 @@ export default {
 
 
 
-.container {
-  padding: 10px; /* Aún más compacto */
-  font-size: 13px; /* Letra un poco más pequeña */
+/* .container {
+  padding: 10px;
+  font-size: 13px;
 }
 
 .image-placeholder {
   width: 100%;
-  max-height: 170px; /* Imagen más pequeña */
+  max-height: 237px;
   border: 2px solid #ccaf54;
   border-radius: 8px;
   overflow: hidden;
@@ -219,7 +202,7 @@ export default {
   color: #fff;
   border: 1px solid #ccaf54;
   font-size: 13px;
-  padding: 6px 10px; /* Input más delgado */
+  padding: 6px 10px;
 }
 
 .custom-input::placeholder {
@@ -234,7 +217,7 @@ export default {
 .title {
   color: #ccaf54;
   text-align: center;
-  font-size: 24px; /* Título más compacto */
+  font-size: 24px; 
   font-weight: bold;
   margin-top: 10px;
 }
@@ -243,7 +226,7 @@ export default {
   background-color: #ccaf54;
   color: black;
   border: none;
-  padding: 8px 0; /* Botón más pequeño */
+  padding: 8px 0; 
   font-size: 13px;
   font-weight: bold;
   transition: background-color 0.3s ease;
@@ -257,12 +240,13 @@ export default {
   margin-top: 12px;
   background-color: #6c757d;
   color: white;
-  padding: 6px 14px; /* Botón más pequeño */
+  padding: 6px 14px;
   font-size: 13px;
 }
 
 .btn-regresar:hover {
   background-color: #5a6268;
-}
+} */
+ @import '@/assets/css/services/createServices.css';
 </style>
 

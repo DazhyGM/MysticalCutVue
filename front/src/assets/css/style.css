@@ -167,6 +167,8 @@
     margin: 0 auto;
     text-align: center;
     display: block;
+    width: 130px;
+    
   }
   
   .back-button:hover {

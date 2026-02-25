@@ -2,7 +2,7 @@
   transform: scale(0.9);
   transform-origin: top center;
   width: 100%;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
 
 .d-flex {

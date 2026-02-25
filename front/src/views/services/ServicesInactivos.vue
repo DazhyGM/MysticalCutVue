@@ -1,16 +1,10 @@
 <template>
-  <div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-  <router-link to="/Home">
-    <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-  </router-link>
-</div>
-
+  <div class ="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Servicios Inactivos</h1>
       </ul>
-    </header>
+    </div>
+  <div class="container">
 
     <div class="content">
       <div class="pedido-container">
@@ -26,16 +20,16 @@
             </div>
             <div class="info-row">
               <h5 class="info-title">Precio</h5>
-              <p class="info-text">\${{ parseFloat(service.price).toFixed(2) }}</p>
+              <p class="info-text">${{ parseFloat(service.price).toFixed(2) }}</p>
             </div>
           </div>
           <button class="activate-btn" @click="activateServiceHandler(service)">Activar</button>
         </div>
-        <button class="btn back-button" @click="goBack">Regresar</button>
+        
       </div>
+      <button class="btn back-buttonS" @click="goBack">Regresar</button>
     </div>
 
-    <FooterComponent />
   </div>
 </template>
 
@@ -43,7 +37,6 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveServices, activateService } from '@/services/servicesApi';
-import FooterComponent from '@/components/layout/FooterComponent.vue';
 import '@/assets/css/services/servicesInactives.css';
 
 const router = useRouter();
@@ -116,18 +109,27 @@ onMounted(loadInactiveServices);
   font-size: 1rem;
   color: #ffffff;
 }
-.back-button {
-  background-color: #444;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-.back-button:hover {
-  background-color: #666;
-}
+  .back-buttonS {
+    padding: 7px 15px;
+    background-color: #000000;
+    border: 1px solid #D4AF37;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #CCAF54;
+    margin-top: 105px;
+    margin: auto;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    width: 130px;
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+  }
+  
+  .back-buttonS:hover {
+    background-color: #CCAF54;
+    color: #000000;
+    border: 1px solid #D4AF37;
+  }
 </style>

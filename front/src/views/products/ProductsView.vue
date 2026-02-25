@@ -42,13 +42,12 @@
           </div>
         </div>
       </div>
-
-      <div class="btn-regresar mt-3">
+    </div>
+    
+  </div>
+  <div class="btn-regresar mt-3">
         <button class="btn back-button" @click="goBack">Regresar</button>
       </div>
-
-    </div>
-  </div>
   
   <div v-if="showSidebar && userRole === 'Client'" class="cart-add-box">
     <div class="cart-header-strip">
@@ -78,6 +77,7 @@
               <p><strong>Disponibles:</strong> {{ item.amount }}</p>
             </div>
           </div>
+          
           <div class="quantity-control-strip-item">
             <label :for="`quantity-${item.id_product}`">Cantidad:</label>
             <input
@@ -99,6 +99,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 
   <div v-if="showProductModal" class="modal-overlay" @click.self="showProductModal = false">

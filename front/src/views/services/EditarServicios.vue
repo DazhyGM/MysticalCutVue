@@ -1,21 +1,14 @@
 <template>
-  <div class="container">
-    <!-- Header -->
-    <header class="d-flex flex-wrap align-items-center justify-content-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <router-link to="/Home">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-        </router-link>
-      </div>
+  <div class ="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
-          <h1>Editar Servicio</h1>
-        </ul>
-    </header>
+        <h1>Editar Servicio</h1>
+      </ul>
+    </div>
+  <div class="container">
 
-    <!-- Main Content -->
     <div class="row edit-container">
-      <!-- Imagen y Precio -->
       <div class="col-md-5 text-center">
+        <label class="form-label">Imagen actual:</label>
         <div class="image-placeholder mx-auto mb-3">
           <img :src="imagePreview || '/img/background/signointerrogacion.jpg'" alt="Preview" class="preview-image" />
         </div>
@@ -27,24 +20,27 @@
           <label class="form-label">Precio</label>
           <input v-model="form.price" type="number" class="form-control custom-input" placeholder="Precio" required />
         </div>
+
       </div>
 
-      <!-- Formulario -->
       <div class="col-md-5 offset-md-1">
         <form @submit.prevent="handleSubmit" class="edit-form">
           <div class="mb-3">
             <label class="form-label">Nombre</label>
-            <input v-model="form.name_service" type="text" class="form-control custom-input" placeholder="Nombre del servicio" required />
+            <input v-model="form.name_service" type="text" class="form-control custom-input"
+              placeholder="Nombre del servicio" required />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Descripción</label>
-            <input v-model="form.description" type="text" class="form-control custom-input" placeholder="Descripción" required />
+            <input v-model="form.description" type="text" class="form-control custom-input" placeholder="Descripción"
+              required />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Tiempo estimado</label>
-            <input v-model="form.estimated_time" type="text" class="form-control custom-input" placeholder="00:30:00" required />
+            <input v-model="form.estimated_time" type="text" class="form-select custom-input" placeholder="00:30:00"
+              required />
           </div>
 
           <div class="mb-3">
@@ -74,14 +70,12 @@
       </div>
     </div>
 
-    <!-- Botón Regresar -->
     <div class="text-center mt-3">
-      <router-link to="/Services" class="btn btn-secondary btn-regresar">
+      <router-link to="/Services" class="btn back-button">
         Regresar
       </router-link>
     </div>
 
-    <!-- Mensajes -->
     <div class="text-center mt-3">
       <p v-if="message" class="text-success">{{ message }}</p>
       <p v-if="error" class="text-danger">{{ error }}</p>
@@ -194,74 +188,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  padding: 10px;
-  font-size: 13px;
-}
-
-.image-placeholder {
-  width: 100%;
-  max-height: 170px;
-  border: 2px solid #ccaf54;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.preview-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.custom-input {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #ccaf54;
-  font-size: 13px;
-  padding: 6px 10px;
-}
-
-.custom-input::placeholder {
-  color: #ccc;
-}
-
-.form-label {
-  color: #ccaf54;
-  font-size: 13px;
-}
-
-.title {
-  color: #ccaf54;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.btn-add {
-  background-color: #ccaf54;
-  color: black;
-  border: none;
-  padding: 8px 0;
-  font-size: 13px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn-add:hover {
-  background-color: #b3953f;
-}
-
-.btn-regresar {
-  margin-top: 12px;
-  background-color: #6c757d;
-  color: white;
-  padding: 6px 14px;
-  font-size: 13px;
-}
-
-.btn-regresar:hover {
-  background-color: #5a6268;
-}
+@import '@/assets/css/services/editServices.css';
 </style>

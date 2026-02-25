@@ -81,7 +81,6 @@
 <script>
 import axios from 'axios';
 import { getReportQuotes } from '@/services/quotesApi';
-import '@/assets/css/style.css'; 
 
 export default {
   name: 'CitasReportes',
@@ -450,17 +449,6 @@ footer {
 .btn-primary:hover {
   background-color: #e0c377;
   border-color: #e0c377;
-}
-
-button.back-button {
-  background-color: #ccaf54;
-  color: black;
-  border: none;
-}
-button.back-button:hover {
-  background-color: black;
-  color: #ccaf54;
-  border: 1px solid #ccaf54;
 }
 
 .alert-info {
