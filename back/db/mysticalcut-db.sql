@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-04-2025 a las 01:43:05
+-- Tiempo de generación: 25-02-2026 a las 06:55:36
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -110,8 +110,8 @@ TRUNCATE TABLE `category_product`;
 --
 
 INSERT INTO `category_product` (`id_category`, `name`) VALUES
-(1, 'Cortes de Cabello'),
-(2, 'Afeitado'),
+(1, 'Cabello'),
+(2, 'Belleza'),
 (3, 'Tintes y Coloración'),
 (4, 'Tratamientos Capilares'),
 (5, 'Productos de Estilo');
@@ -239,15 +239,18 @@ INSERT INTO `module` (`module_id`, `module_name`, `module_route`, `module_icon`,
 --
 
 CREATE TABLE IF NOT EXISTS `product` (
-  `id_product` int(11) NOT NULL,
+  `id_product` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `price` float NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `amount` int(11) NOT NULL,
   `id_category` int(11) DEFAULT NULL,
+  `id_status` int(11) NOT NULL DEFAULT 1,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_product`),
-  KEY `fk_categoria` (`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  KEY `fk_categoria` (`id_category`),
+  KEY `fk_product_status` (`id_status`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Truncar tablas antes de insertar `product`
@@ -258,12 +261,17 @@ TRUNCATE TABLE `product`;
 -- Volcado de datos para la tabla `product`
 --
 
-INSERT INTO `product` (`id_product`, `name`, `price`, `description`, `amount`, `id_category`) VALUES
-(1, 'Corte Clásico', 15, 'Corte de cabello tradicional', 10, 1),
-(2, 'Afeitado Tradicional', 10, 'Afeitado con navaja y toalla caliente', 15, 2),
-(3, 'Tinte para Cabello', 30, 'Tinte permanente para cabello', 5, 3),
-(4, 'Tratamiento de Keratina', 50, 'Hidratación profunda con keratina', 3, 4),
-(5, 'Pomada para el Cabello', 12, 'Pomada con fijación media para peinado', 20, 5);
+INSERT INTO `product` (`id_product`, `name`, `price`, `description`, `amount`, `id_category`, `id_status`, `image`) VALUES
+(1, 'Cepillo capilar', 15000, 'Cepillo para cabello delicado', 2, 1, 1, 'cepillo.jpg'),
+(2, 'Cepillo barba', 10000, 'Cepillo para barbas bellas y bonitas', 15, 2, 1, 'image-1770153078459-820017996.jpg'),
+(3, 'Cera para cabello', 30000, 'Cera para cabello de macho bello', 5, 1, 1, 'image-1770175934248-67742671.png'),
+(4, 'Crema de barba', 50000, 'Crema para depilacion de barba', 3, 2, 1, 'image-1770176008054-234384581.jpg'),
+(5, 'Cera brillante', 35000, 'Cera brillante para el cabello', 20, 5, 1, 'image-1770176090017-663102808.jpg'),
+(6, 'Tratamiento capilar', 28000, 'Tratamiento para el pelo para tenerlo lindo', 12, 1, 1, 'image-1770176224964-513076674.jpg'),
+(7, 'Shampoo anticaida', 28000, 'Shampo anticaida para que no caigas en las mentiras de tu ex', 12, 1, 1, 'image-1770176252239-493672053.jpg'),
+(8, 'Minoxidil barba', 28000, 'Minoxidil para que te crezca una barba de vikingo', 12, 1, 1, 'image-1770176296806-481801453.jpg'),
+(9, 'Maquina re Chimba', 28000, 'Para gente re chimba', 12, 1, 3, 'barbero4.jpg'),
+(11, 'Maquina re Chimba', 28000, 'Para gente re chimba', 12, 1, 3, 'barbero1.jpg');
 
 -- --------------------------------------------------------
 
@@ -304,6 +312,32 @@ INSERT INTO `product_invoice_detail` (`amount`, `price`, `id_facture`, `id_produ
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `product_status`
+--
+
+CREATE TABLE IF NOT EXISTS `product_status` (
+  `id_status` int(11) NOT NULL AUTO_INCREMENT,
+  `name_status` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_status`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Truncar tablas antes de insertar `product_status`
+--
+
+TRUNCATE TABLE `product_status`;
+--
+-- Volcado de datos para la tabla `product_status`
+--
+
+INSERT INTO `product_status` (`id_status`, `name_status`) VALUES
+(1, 'Active'),
+(2, 'Spent'),
+(3, 'Inactive');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `quotes`
 --
 
@@ -319,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `quotes` (
   KEY `fk_appointment_user` (`user_id`),
   KEY `fk_quotes_services` (`id_services`),
   KEY `fk_barber_user` (`barber_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Truncar tablas antes de insertar `quotes`
@@ -356,7 +390,10 @@ INSERT INTO `quotes` (`id_quotes`, `date_time`, `end_time`, `state_quotes`, `use
 (23, '2025-04-21 03:27:05', '2025-04-30 13:30:00', 'cancelada', 10, 13, 18),
 (24, '2025-04-21 03:27:25', '2025-04-26 14:00:00', 'finalizada', 10, 14, 22),
 (25, '2025-04-21 03:27:42', '2025-04-30 13:45:00', 'cancelada', 10, 15, 27),
-(26, '2025-04-22 13:00:00', '2025-04-22 13:35:00', 'pendiente', 6, 11, 7);
+(26, '2025-04-22 13:00:00', '2025-04-22 13:35:00', 'pendiente', 6, 11, 7),
+(28, '2025-07-10 14:00:00', '2025-07-10 14:40:00', 'pendiente', 36, 14, 24),
+(29, '2025-07-31 22:00:00', '2025-07-31 22:30:00', 'pendiente', 39, 11, 6),
+(30, '2026-01-09 20:13:04', '2026-01-09 14:30:00', 'finalizada', 42, 13, 11);
 
 -- --------------------------------------------------------
 
@@ -446,7 +483,7 @@ TRUNCATE TABLE `services`;
 --
 
 INSERT INTO `services` (`id_services`, `name_service`, `description`, `estimated_time`, `price`, `id_category_services`, `image`, `id_status`) VALUES
-(1, 'Corte Clásico', 'Corte clasico para gente wapa', '00:30:00', 15, 1, NULL, 2),
+(1, 'Corte Clásico', 'Corte clasico para gente wapa', '00:30:00', 15000, 1, 'barbero1.jpg', 2),
 (2, 'Afeitado Tradicional', 'Afeitado tranquilon para gente wapa', '00:20:00', 10, 2, NULL, 2),
 (3, 'Tinte Capilar', 'Tinte bien mamalon para gente wapa', '01:00:00', 40, 3, NULL, 2),
 (4, 'Tratamiento Hidratan', 'Tratamiento que hidrata para gente wapa', '00:45:00', 25, 4, NULL, 2),
@@ -579,10 +616,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   `profile_image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_email` (`user_email`),
+  UNIQUE KEY `unique_document` (`document_number`),
   KEY `user_role` (`role_fk`),
   KEY `user_status` (`userStatus_fk`),
   KEY `fk_id_tipo_docuemnto_User` (`type_document_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Truncar tablas antes de insertar `user`
@@ -594,27 +632,35 @@ TRUNCATE TABLE `user`;
 --
 
 INSERT INTO `user` (`user_id`, `user_email`, `user_password`, `full_name`, `document_number`, `userStatus_fk`, `role_fk`, `type_document_id`, `address`, `phone`, `reset_token`, `reset_token_expires`, `profile_image`) VALUES
-(1, 'kevinsabogal24@gmail.com', '$2b$10$4zzz43P8ZzJWGJU5nfLLpum9IJEYWUZQ9.MYeYAR3/TTa0OIIbXWq', 'Kevin David Sabogal', '1000619691', 1, 1, 1, 'Carrera 14 #22-45', '3003113203', NULL, NULL, NULL),
-(2, 'andresecasvar05@gmail.com', '$2b$10$8fjyRjQ7yRyGWWuqUR4Kje/9JQsgCDF4ne6Vaz3mkKHD/wUxLFPI2', 'Andres Esteban Castañeda', '1000621126', 1, 1, 2, 'Carrera 14 #22-46', '3175248114', 'dc28b1c23bc20cd6b7caa4bfe50597b528cfd658f9ad980afc35011ebbf6b8bb', 1744439824665, NULL),
-(3, 'leonoscarandres04@gmail.com', '$2b$10$zAt29/KSBa9msB95jO5lTeU4nv3Tp4fsRg/Lv2wE.WC4OIvZ5Dige', 'Oscar Andres Leon', '1000313313', 1, 1, 3, 'Carrera 14 #22-47', '3209241730', NULL, NULL, NULL),
-(4, 'hharold855@gmail.com', '$2b$10$69ey/9t5R1YwcxtOSS2sa.RjRq.0AaerI3rhCColETWMIx/OmaD5m', 'Harold David Hernandez', '1000919919', 1, 1, 1, 'Carrera 14 #22-48', '3212709274', NULL, NULL, NULL),
-(5, 'administrador5@gmail.com', '$2y$10$OCw6UzozG1/WR9K6RxFp6O9TfuBT5Luiub/tj2.T3rcPHpgJ1gvA2', 'Administrador', '7142565', 1, 1, 1, 'Carrera 14 #22-49', '12345678', NULL, NULL, NULL),
-(6, 'juan.perez@email.com', '$2b$10$fpqCIDQBnDRs2LEExifeIOnO5YGtcrcOkPPlvLmnq7XLusBontzoe', 'Juan Pérez', '12345678', 1, 3, 1, 'Calle Falsa 123, Ciudad', '612345678', NULL, NULL, NULL),
-(7, 'maria.gomez@email.com', '$2b$10$DEopUjIRHwokIoH186keMuunuedwnbSyIg3Le3FGY3akfF0o.uwl.', 'María Gómez', '23456789', 2, 3, 2, 'Avenida Siempre Viva 456, Ciudad', '623056789', NULL, NULL, NULL),
-(8, 'carlos.rodriguez@email.com', '$2b$10$8DxHC7FTDQflFLfYVHjwTO42nsuWtvjYZ35tmyezl93ndonbUtwI.', 'Carlos Rodríguez', '34567890', 1, 3, 3, 'Plaza Mayor 789, Ciudad', '634567890', NULL, NULL, NULL),
-(9, 'ana.martinez@email.com', '$2b$10$vjXnt9Pt29WM8XZ4IhzmsOWrr/yJfA.7Z39iGbbv/8cYmPHFD6JZm', 'Ana Martínez', '45678901', 2, 3, 2, 'Calle de la Luna 101, Ciudad', '645678901', NULL, NULL, NULL),
-(10, 'pedro.sanchez@email.com', '$2b$10$vtCX1phRQtmpXTJcevDa3Oc90bWm47AKyLnWK8DRLR6cLzNjQWBma', 'Pedro Sánchez', '56789012', 1, 3, 2, 'Calle Sol 202, Ciudad', '656789012', NULL, NULL, NULL),
-(11, 'alberto.diaz@email.com', '$2b$10$v0F65sja7gZQ0/uEzsoGuOSeUb5RLIlYZ4N3V5aBGmRvycDHU7Lue', 'Alberto Díaz', '87654321', 1, 2, 1, 'Calle del Río 10, Ciudad', '654321987', NULL, NULL, NULL),
-(12, 'beatriz.lopez@email.com', '$2b$10$riLX0O3c50pkTDXZZWa.AuY2X5mcECxpJJjitLxV.DrYM2R2RxtRO', 'Beatriz López', '98765432', 1, 2, 1, 'Avenida de la Paz 22, Ciudad', '665432198', NULL, NULL, NULL),
-(13, 'carlos.torres@email.com', '$2b$10$folkY30roUS8R6tQgmS.2.SSb7kV9eVwsb86OXDL49HcGdrsHNMDi', 'Carlos Torres', '19876543', 1, 2, 1, 'Calle del Mar 33, Ciudad', '676543209', NULL, NULL, NULL),
-(14, 'diana.perez@email.com', '$2b$10$Eu/Zq2VKe1iOgnw.FtcO0.trx5d1LvYJ3fbgG2wheu6S/yDSSPmse', 'Diana Pérez', '20987654', 1, 2, 1, 'Calle del Sol 44, Ciudad', '687654320', NULL, NULL, NULL),
-(15, 'enrique.garcia@email.com', '$2b$10$pYIMIrPuoJQUE9P3AKQGPuuwdYcfYHusgxMRv/2pTgWUS0.IdnVyW', 'Enrique García', '32098765', 1, 2, 1, 'Plaza del Mercado 55, Ciudad', '698765431', NULL, NULL, NULL),
+(1, 'kevinsabogal24@gmail.com', '$2b$10$uEGzJgmC8P7RZPv7x.uCR.KQjFuFXlQDj43QNBIb6tk1k5TrvpGh6', 'Kevin David Sabogal Mancipe', '1000619691', 1, 1, 1, 'Carrera 14 #22-45', '3003113203', NULL, NULL, NULL),
+(2, 'andresecasvar05@gmail.com', '$2b$10$G4LI.65vWDQtQt/xHCqjoeRGr6.DA.BzN9gBwnWZLlre8jrdlmZaG', 'Andres Esteban Castañeda', '1000621126', 1, 1, 2, 'Carrera 14 #22-46', '3175248114', 'dc28b1c23bc20cd6b7caa4bfe50597b528cfd658f9ad980afc35011ebbf6b8bb', 1744439824665, NULL),
+(3, 'leonoscarandres04@gmail.com', '$2b$10$dFflL6U2p5bvKgUy7IzaFemCXq4qncY/l4HUOhLMQ48dDiG2Xd556', 'Oscar Andres Leon', '1000313313', 1, 1, 3, 'Carrera 14 #22-47', '3209241730', NULL, NULL, NULL),
+(4, 'hharold855@gmail.com', '$2b$10$fRboAzBQ0DA/lSPpBvb9F.U3AuESKjE9GVfk5a4CfdjIR1mw4vJnm', 'Harold David Hernandez', '1000919919', 1, 1, 1, 'Carrera 14 #22-48', '3212709274', NULL, NULL, NULL),
+(5, 'administrador5@gmail.com', '$2b$10$KfluppChqXKJ/LywSYglc.xM.B5ZlhWRvQF1T2OrofFMJoqUqCnaC', 'Administrador', '7142565', 1, 1, 1, 'Carrera 14 #22-49', '12345678', NULL, NULL, NULL),
+(6, 'juan.perez@email.com', '$2b$10$eukDCrAnH5VEzSrtiPd09utHjQxtDjwcyg.0Tp9c0WcApU6PcKSAu', 'Juan Pérez', '12345678', 1, 3, 1, 'Calle Falsa 123, Ciudad', '612345678', NULL, NULL, NULL),
+(7, 'maria.gomez@email.com', '$2b$10$yr26ZIDnfAZrmKEGRPF7jOjiZCQVuFaKtAJ2UfA5gshQMyYSpwHpq', 'María Gómez', '23456789', 2, 3, 2, 'Avenida Siempre Viva 456, Ciudad', '623056789', NULL, NULL, NULL),
+(8, 'carlos.rodriguez@email.com', '$2b$10$.WyXUBn0TcdPV.Gipg.zGuYOJXzmWhUtcEVBDIwUDc3UPU5uZMD1G', 'Carlos Rodríguez', '34567890', 1, 3, 3, 'Plaza Mayor 789, Ciudad', '634567890', NULL, NULL, NULL),
+(9, 'ana.martinez@email.com', '$2b$10$o.MzU40UWg0bciyb/KiZ8uJdf9A3uUkQOib8rezB1JrkNW4eHjXDq', 'Ana Martínez', '45678901', 2, 3, 2, 'Calle de la Luna 101, Ciudad', '645678901', NULL, NULL, NULL),
+(10, 'pedro.sanchez@email.com', '$2b$10$rKj6PdoyMn2NWXuiHu89OeKTiFvu0Gtu5Awt57WRpKKgw1LovzcRa', 'Pedro Sánchez', '56789012', 1, 3, 2, 'Calle Sol 202, Ciudad', '656789012', NULL, NULL, NULL),
+(11, 'alberto.diaz@email.com', '$2b$10$lLTvn2EkHYfaSUEes4bmFOOxLaUyFqje9yUegIfLJ2d9d5/vQxjjK', 'Alberto Díaz', '87654321', 1, 2, 1, 'Calle del Río 10, Ciudad', '654321987', NULL, NULL, NULL),
+(12, 'beatriz.lopez@email.com', '$2b$10$oMkSObP9WG.iNOHMGGItIeFoSsqlBj2oNEbHPBf0UB5uMRUTuERXm', 'Beatriz López', '98765432', 1, 2, 1, 'Avenida de la Paz 22, Ciudad', '665432198', NULL, NULL, NULL),
+(13, 'carlos.torres@email.com', '$2b$10$ZGRDW/HHXY1LnP0yW2Z6KODhGgZex8RNvKx0itTHGcPGThgxZjeMq', 'Carlos Torres', '19876543', 1, 2, 1, 'Calle del Mar 33, Ciudad', '676543209', NULL, NULL, NULL),
+(14, 'diana.perez@email.com', '$2b$10$t4UdON04AcTKY4sCqpi53usYtl2HDxF2ZxIi5Ia2E6NIuLHb3sDeO', 'Diana Pérez', '20987654', 1, 2, 1, 'Calle del Sol 44, Ciudad', '687654320', NULL, NULL, NULL),
+(15, 'enrique.garcia@email.com', '$2b$10$VTQ5TnBD6NICQYpbv.Z4feZdWx5yIm1R.0wwY4ZJ6zqZ7pOt8avIS', 'Enrique García', '32098765', 1, 2, 1, 'Plaza del Mercado 55, Ciudad', '698765431', NULL, NULL, NULL),
 (16, 'laura.ramirez@email.com', '$2b$10$ijDdJ9OHJDcVKR59GB1zvuyaOpuUducPKMyF7HyTdQ6z0oV2/43NO', 'Laura Ramírez', '67890123', 3, 2, 1, 'Calle del Bosque 77, Ciudad', '667890123', NULL, NULL, NULL),
 (17, 'jorge.herrera@email.com', '$2b$10$o4RCNURGkNWXiuBnJpy2n.f01WJEV7I.daoJb9SPoVgNzHQZP0dwC', ' Jorge Herrera', '78901234', 3, 1, 2, 'Avenida Central 88, Ciudad', '678901234', NULL, NULL, NULL),
 (18, 'valentina.castro@email.com', '$2b$10$Gdit8uwRC04sI6TGoUUsBeyHs5w360aCpfG0CGUkNEzuuSKat9IFK', 'Valentina Castro', '89012345', 3, 3, 3, 'Calle del Lago 99, Ciudad', '689012345', NULL, NULL, NULL),
 (19, 'andres.molina@email.com', '$2b$10$usQTEFETGKcMXBskewLRiOf2PJ2R4zG9DHWAyHNSp0b1p3oygzJAW', 'Andrés Molina', '90123456', 3, 3, 1, 'Calle Primavera 100, Ciudad', '690123456', NULL, NULL, NULL),
 (20, 'camila.navarro@email.com', '$2b$10$4o9ylGQZpIp.piAWI8N/h.Sbql32aIYU9uUzQbGwuenY4NsZAvzse', 'Camila Navarro', '11223344', 3, 3, 2, 'Calle del Olivo 111, Ciudad', '611223344', NULL, NULL, NULL),
-(21, 'prueba1@gmail.com', '$2b$10$jFd..Dek0NW0oMYCiCjdq.hu4Je1U/Nm/Fgcoqblk1cu9woQ94NJu', 'Prueba Prueba', '1000222333', 4, 3, 2, 'Calle 50 #34-45', '3201122323', NULL, NULL, NULL);
+(21, 'prueba1@gmail.com', '$2b$10$Zh4yfNiGtm3j2/UTmm5hPub4lH5oGozNuOnvF1GUPSALWNv6tk4/O', 'Prueba Prueba', '1000222333', 4, 3, 2, 'Calle 50 #34-45', '3201122323', NULL, NULL, NULL),
+(22, 'Bot-services@gmail.com', '$2b$10$JfXLLLE/tbvjjLiElJnyHOswupMPtiuLVVPDZEAnuLIq8hy0jtdcm', 'Bot Automati', '1655852236', 1, 3, 1, 'Carrera 11 J b #98 - 70', '3003113255', NULL, NULL, NULL),
+(36, 'mariacvm.27@gmail.com', '$2b$10$CtUlLgalLbwu4L6dNzuKxeL5mpg8ubp0zG8.VMVnPrUPAiGChs5uS', 'María Camila Valencia ', '1007866080', 1, 3, 1, 'Calle 51 sur #81h-23', '3103116547', NULL, NULL, NULL),
+(37, 'nikoleusjwj@gmail.com', '$2b$10$5x27Cp2nT9f8NOFEaUR9Y.GCu5X41J1HiPIEXYFq.mOrK7NYf6Lvy', 'Kevin David Sabogal', '1000619611', 1, 3, 1, 'Carrera 14 #22-46', '3175248114', NULL, NULL, NULL),
+(38, 'coreodervicios@gmail.com', '$2b$10$QdkM65dA.iBukUK5Z28q9eV65cSlMEqIzHzdNHnus0KsOfUYuH/bC', 'BOT-Servicios', '1618293684', 1, 3, 1, 'Carrera 14 #22-47', '3209241732', NULL, NULL, NULL),
+(39, 'UsuariodePrueba20225@gmail.com', '$2b$10$gumvp5Yqq0vhSKSs7dh83.sjyL/ec57PmBzR/QpI9sllLLgmPVEMG', 'usuario de Prueba', '1000621120', 1, 3, 1, 'Carrera 14 #22-59', '3209241739', NULL, NULL, NULL),
+(40, 'mocaco@gmail.com', '$2b$10$7bevJojAS9.DUvsaGgqR8O6WybCbAaJwrIs6B5ydMDHGVcgsQx0v2', 'Mocaco mocaco', '1555202236', 1, 3, 1, 'Carrera 11 m Bis # 43 - 40 Sur', '3203206565', NULL, NULL, NULL),
+(41, 'kevin123@gmail.com', '$2b$10$LmZPvW25iW9X0fpZA6Zt9OHjflJQ2G7HOHHwSphjFs2T0fOV2Y7SG', 'Kevin David Sabogal Mancipe', '1020654800', 1, 3, 1, 'Carrera 11 J Bis # 43 - 40 Sur', '3003113204', NULL, NULL, NULL),
+(42, 'alex.boada@gmail.com', '$2b$10$wOXVZUEVifLHjetszFvoD.PMK1VzvauGR4OnX8cNXrDqbkhYcWrAC', 'Alex Boada', '1000111111', 1, 3, 1, 'carrera 10 # 56 57', '320010101', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -658,7 +704,8 @@ ALTER TABLE `facture`
 -- Filtros para la tabla `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`id_category`) REFERENCES `category_product` (`id_category`);
+  ADD CONSTRAINT `fk_categoria` FOREIGN KEY (`id_category`) REFERENCES `category_product` (`id_category`),
+  ADD CONSTRAINT `fk_product_status` FOREIGN KEY (`id_status`) REFERENCES `product_status` (`id_status`);
 
 --
 -- Filtros para la tabla `product_invoice_detail`
