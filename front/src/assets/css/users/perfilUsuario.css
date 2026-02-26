@@ -29,17 +29,7 @@
     gap: 8px;
     flex-wrap: wrap;
 }
-.btn-icon img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-right: 8px;
-}
-.btn-icon {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+
 .back-button {
     display: block;
     margin: 15px auto 0 auto; 
@@ -58,7 +48,7 @@
   border: 1px solid #ff0000;
 }
 
-.btn-edit {
+/* .btn-edit {
   background-color: #ccaf54;
   color: #000000;
   border: 1px solid #ccaf54;
@@ -68,5 +58,25 @@
   background-color: #000000;
   color: #ccaf54;
   border: 1px solid #ccaf54;
-}
+} */
 
+.btn-icon-edit img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-right: 8px;
+}
+.btn-icon-edit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #ccaf54;
+    color: #000000;
+    border: 1px solid #ccaf54;
+    font-weight: bold;
+}
+.btn-icon-edit:hover {
+    background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
+}

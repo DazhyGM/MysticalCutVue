@@ -102,7 +102,7 @@
           </ul>
         </div>
       </div>
-      <p class="text-center mt-3 mb-0">© 2024 www.mysticalcut.com, Inc</p>
+      <p class="text-center mt-3 mb-0">© 2026 www.mysticalcut.com, Inc</p>
     </div>
   </footer>
 </template>

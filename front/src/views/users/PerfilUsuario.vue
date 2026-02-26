@@ -17,15 +17,15 @@
     </div>
 
     <div class="back-button-container">
-      <router-link :to="`/EditPerfil/${user.id}`" class="btn btn-icon btn-edit">
+      <router-link :to="`/EditPerfil/${user.id}`" class="btn btn-icon-edit">
         <img src="/img/background/editar_perfil_2.png"> Editar
       </router-link>
-      <button v-if="['Cliente', 'Empleado'  ].includes(user.role)" class="btn botonav-citas" @click="goMisCitas">Mis citas</button>
+      <button v-if="['Cliente', 'Empleado'].includes(user.role)" class="btn botonav-citas" @click="goMisCitas">Mis
+        citas</button>
       <button class="btn btn-delete" @click="confirmDelete"> Eliminar cuenta </button>
-      
-
     </div>
-    <button v-if="['Administrador', 'Cliente', 'Empleado'].includes(user.role)" class="btn back-button" @click="goBack">Regresar</button>
+    <button v-if="['Administrador', 'Cliente', 'Empleado'].includes(user.role)" class="btn back-button"
+      @click="goBack">Regresar</button>
 
     <FooterComponent />
   </div>
@@ -34,11 +34,11 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
-import { getUserData, deleteAccount } from "@/services/api"; 
+import { getUserData, deleteAccount } from "@/services/api";
 
 const router = useRouter();
 const isMenuOpen = ref(false);
-const user = ref({}); 
+const user = ref({});
 
 const roleMapping = {
   "Admin": "Administrador",
@@ -55,10 +55,10 @@ const fetchUserData = async () => {
       return;
     }
 
-    const response = await getUserData(token); 
+    const response = await getUserData(token);
 
     user.value = {
-      id: response.user_id,  
+      id: response.user_id,
       full_name: response.full_name,
       user_email: response.user_email,
       document_number: response.document_number,
@@ -69,7 +69,7 @@ const fetchUserData = async () => {
     };
   } catch (error) {
     console.error("Error al obtener los datos del usuario:", error);
-    router.push('/login');  
+    router.push('/login');
   }
 };
 
@@ -81,7 +81,7 @@ const closeMenu = (event) => {
 
 onMounted(() => {
   document.addEventListener("click", closeMenu);
-  fetchUserData(); 
+  fetchUserData();
 });
 
 onUnmounted(() => {
