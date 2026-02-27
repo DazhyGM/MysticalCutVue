@@ -42,11 +42,11 @@ class LoginController
     try {
       $headerRoute = "";
       $this->result = $this->model->validateUser($this->getDataModel());
-      if (count($this->result['logIn']) > 0) {
+      if (!empty($this->result['logIn'])) {
 
         $hash = $this->result['logIn'][0]['user_password'];
 
-        if (password_verify($this->result['password'], $hash)) {
+        if (password_verify($this->result['user_password'], $hash)) {
           $this->data['data'] = [];
           $this->data['status'] = 200;
           $this->data['message'] = "Password is valid!";
@@ -78,7 +78,7 @@ class LoginController
     }
 
     header('Location: '   . $headerRoute);
-    echo json_encode($this->data);
+    exit();
   }
 
   public function logOut()

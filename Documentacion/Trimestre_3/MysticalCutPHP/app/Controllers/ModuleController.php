@@ -72,10 +72,6 @@ class ModuleController
     echo json_encode($this->data);
   }
 
-  /**
-   * The create function attempts to create a new entry using a model, returning the results or an error
-   * message in JSON format.
-   */
   public function create()
   {
     try {
@@ -90,14 +86,6 @@ class ModuleController
     }
     echo json_encode($this->data);
   }
-  /**
-   * This PHP function updates a record in a database based on the provided ID, handling validation and
-   * error messages accordingly.
-   * 
-   * @param int id The `update` function you provided seems to be updating a record in a database based
-   * on the `` parameter. The function first checks if a record with the given `` exists in the
-   * database. If it does, it proceeds with the update operation; otherwise, it returns an error message
-   */
 
   public function update(int $id = null)
   {
@@ -120,13 +108,6 @@ class ModuleController
     echo json_encode($this->data);
   }
 
-  /**
-   * This PHP function deletes a record based on the provided ID and returns a JSON response with status
-   * and message.
-   * 
-   * @param int id The `delete` function you provided seems to be a part of a class method that handles
-   * the deletion of a record based on the provided `id`.
-   */
   public function delete(int $id = null)
   {
     try {
@@ -149,13 +130,6 @@ class ModuleController
     echo json_encode($this->data);
   }
 
-  /**
-   * The function getDataModel in PHP retrieves and processes data from a JSON input.
-   * 
-   * @return An array named  is being returned by the getDataModel function. The array contains
-   * keys 'user_user', 'user_password', 'userStatus_fk', and 'role_fk', with corresponding values based
-   * on the data extracted from the JSON input.
-   */
   private function getDataModel()
   {
     $data_request = json_decode(file_get_contents('php://input'), true);

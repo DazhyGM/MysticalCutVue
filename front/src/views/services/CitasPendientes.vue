@@ -1,17 +1,10 @@
 <template>
   <div class="container text-white">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 mb-2 mb-md-0">
-        <router-link to="/Home">
-          <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" />
-        </router-link>
-      </div>
-
+    <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Citas</h1>
+        <h1>Mis Citas</h1>
       </ul>
-    </header>
-
+    </div>
     <div class="table-responsive">
       <table class="table table-dark table-striped">
         <thead>
@@ -39,18 +32,12 @@
             <td>{{ cita.state_quotes }}</td>
             <td v-if="userRole === 'Employee' || userRole === 'Client' || userRole === 'admin'">
               <div class="d-flex gap-2">
-                <button
-                  v-if="cita.state_quotes === 'pendiente'"
-                  class="btn btn-sm btn-danger"
-                  @click="cancelarCita(cita.id_quotes)"
-                >
+                <button v-if="cita.state_quotes === 'pendiente'" class="btn btn-sm btn-danger"
+                  @click="cancelarCita(cita.id_quotes)">
                   Cancelar
                 </button>
-                <button
-                  v-if="cita.state_quotes === 'pendiente' && userRole === 'Employee'"
-                  class="btn btn-sm btn-success"
-                  @click="finalizarCita(cita.id_quotes)"
-                >
+                <button v-if="cita.state_quotes === 'pendiente' && userRole === 'Employee'"
+                  class="btn btn-sm btn-success" @click="finalizarCita(cita.id_quotes)">
                   Finalizar
                 </button>
                 <span v-else-if="cita.state_quotes !== 'pendiente'" class="text-success fw-bold">✔ Terminado</span>
@@ -65,16 +52,12 @@
       <button class="btn back-button" @click="$router.push('/Home')">Regresar</button>
     </div>
 
-    <footer class="py-3 my-4">
-      <p class="text-center text-white">© 2024 www.mysticalcut.com, Inc</p>
-    </footer>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import { getQuotesWithServiceDetails, cancelQuote, finishQuote } from '@/services/quotesApi';
-import '@/assets/css/style.css';
 
 export default {
   name: 'CitasPendientes',
@@ -126,7 +109,7 @@ export default {
         await cancelQuote(id);
         alert('Cita cancelada con éxito');
         // Redirige a /Home después de cancelar
-        this.$router.push('/Home'); 
+        this.$router.push('/Home');
       } catch (error) {
         console.error('❌ Error al cancelar cita:', error);
         alert('No se pudo cancelar la cita.');
@@ -137,7 +120,7 @@ export default {
         await finishQuote(id);
         alert('Cita finalizada con éxito');
         // Redirige a /Home después de finalizar
-        this.$router.push('/Home'); 
+        this.$router.push('/Home');
       } catch (error) {
         console.error('❌ Error al finalizar cita:', error);
         alert('No se pudo finalizar la cita.');
@@ -189,7 +172,8 @@ footer {
   color: white;
 }
 
-.table th, .table td {
+.table th,
+.table td {
   padding: 15px;
   text-align: center;
 }
@@ -210,18 +194,6 @@ footer {
   overflow-x: auto;
 }
 
-button {
-  font-size: 1rem;
-  padding: 8px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  background-color: #ccaf54;
-}
-
-button:hover {
-  background-color: black;
-}
-
 button.btn-danger {
   background-color: #e3342f;
 }
@@ -230,7 +202,6 @@ button.btn-success {
   background-color: #38c172;
 }
 
-/* Estilo de la fila de acción */
 button.btn-sm {
   padding: 5px 10px;
 }

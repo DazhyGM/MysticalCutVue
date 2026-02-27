@@ -80,3 +80,18 @@
     color: #ccaf54;
     border: 1px solid #ccaf54;
 }
+
+.botonav-citas {
+    background-color: #3d71e2;
+    color: black;
+    border: 1px solid #0051ff;
+    /* margin-left: 10px; */
+  }
+  .botonav-citas:hover {
+    background-color: #000000;
+    color: #0051ff;
+    border: 1px solid #0051ff;
+    /* margin-left: 10px; */
+  }
+
+  

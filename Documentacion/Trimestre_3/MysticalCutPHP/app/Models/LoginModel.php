@@ -30,7 +30,7 @@ class LoginModel
 
   public function validateUser(array $user): array
   {
-   
+
     try {
       if ($this->validateModel($user)) {
         $this->conn = new ConnectDB();
@@ -57,15 +57,13 @@ class LoginModel
   }
 
 
-  private function validateModel($array): Bool
+  private function validateModel(array $array): bool
   {
-    $validate = true;
-    for ($i = 0; $i < count($array); $i++) {
-      if (!empty($user[$this->modelData[$i]])) {
-        $validate = false;
-        break;
+    foreach ($this->modelData as $field) {
+      if (empty($array[$field])) {
+        return false;
       }
     }
-    return $validate;
+    return true;
   }
 }

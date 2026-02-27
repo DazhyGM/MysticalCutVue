@@ -56,7 +56,6 @@
         </div>
       </div>
 
-      <!-- SERVICIOS SELECCIONADOS + RESUMEN DE USUARIO -->
       <div v-if="userRole === 'Client' && selectedServices.length" class="selected-service-box card text-white bg-dark p-4">
         <h4 class="mb-3">Servicios Seleccionados</h4>
         <ul class="list-unstyled">
@@ -77,7 +76,6 @@
       </div>
     </div>
 
-    <!-- BOTÓN REGRESAR -->
     <div class="btn-regresar mt-3 text-center">
       <button class="btn back-button" @click="goBack">Regresar</button>
     </div>
@@ -193,105 +191,6 @@ const goToSelectBarbero = () => {
 };
 </script>
 
-
 <style scoped>
-
-.category-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background-color: #000000;
-  padding: 10px 0;
-  border-bottom: 1px solid #444;
-}
-
-.col-md-3.text-end .dropdown {
-  z-index: 200;
-}
-
-.category-nav .nav-link {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #CCAF54;
-  text-transform: uppercase;
-}
-
-.category-nav .nav-link:hover {
-  color: #FFD700;
-  text-decoration: underline;
-}
-
-.category-title {
-  margin-top: 50px;
-  padding-top: 20px;
-  color: #CCAF54;
-  font-size: 1.8rem;
-}
-
-.selected-service-box {
-  position: sticky;
-  top: 120px;
-  max-width: 350px;
-  min-width: 280px;
-  border: 2px solid #444;
-  border-radius: 12px;
-  background-color: #111;
-  box-shadow: 0 0 10px rgba(204, 175, 84, 0.3);
-  align-self: flex-start;
-  z-index: 999;
-}
-
-.service-image img {
-  border-radius: 10px;
-}
-
-.service-details .card-description {
-  font-size: 0.9rem;
-  color: #bbb;
-}
-
-.card-actions button {
-  font-size: 0.9rem;
-  padding: 5px 10px;
-}
-
-.btn-view,
-.btn-select,
-.btn-edit {
-  background-color: #CCAF54;
-  color: #000;
-  border: 1px solid #D4AF37;
-  font-weight: bold;
-}
-
-.btn-view:hover,
-.btn-select:hover,
-.btn-edit:hover {
-  background-color: #000000;
-  color: #ccaf54;
-  border: 1px solid #D4AF37;
-}
-.btn-agregar {
-  background-color: #CCAF54;
-  color: #000;
-  border: 1px solid #D4AF37;
-  font-weight: bold;
-}
-.btn-agregar:hover {
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border: 1px solid #D4AF37;
-}
-
-.btn-delete {
-  background-color: #ff0000;
-  color: #000;
-  border: 1px solid #d43737;
-  font-weight: bold;
-}
-.btn-delete:hover {
-  background-color: #000000;
-  color: #ff0000;
-  border: 1px solid #ff0000;
-}
+@import '@/assets/css/services/servicesBarber.css';
 </style>

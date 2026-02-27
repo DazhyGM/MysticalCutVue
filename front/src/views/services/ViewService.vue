@@ -72,7 +72,6 @@ onMounted(fetchService);
 
 .details h3 {
   text-align: center;
-  /* Asegura que el nombre del servicio esté centrado */
 }
 
 .btn-volver {

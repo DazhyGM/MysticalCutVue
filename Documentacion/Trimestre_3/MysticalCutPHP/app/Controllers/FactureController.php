@@ -120,10 +120,6 @@ class FactureController
     //echo json_encode($this->data);
   }
 
-  /**
-   * The show function retrieves data from a model in PHP and handles exceptions by returning
-   * appropriate status and message.
-   */
   public function show()
   {
     try {
@@ -139,10 +135,6 @@ class FactureController
     //echo json_encode($this->data);
   }
 
-  /**
-   * The create function attempts to create a new entry using model data and handles exceptions by
-   * setting appropriate response data.
-   */
   public function create()
   {
     try {
@@ -159,10 +151,6 @@ class FactureController
     //echo json_encode($this->data);
   }
 
-  /**
-   * The viewCreate function in PHP sets up a view for creating a user with title, roles, and status
-   * data, and catches any exceptions that may occur.
-   */
   public function viewCreate()
   {
     try {
@@ -181,14 +169,6 @@ class FactureController
     //echo json_encode($this->data);
   }
 
-  /**
-   * This PHP function updates a record in a database based on the provided ID, handling validation and
-   * error messages accordingly.
-   * 
-   * @param int id The `update` function you provided seems to be updating a record in a database based
-   * on the `` parameter. The function first checks if a record with the given `` exists in the
-   * database. If it does, it proceeds with the update operation; otherwise, it returns an error message
-   */
 
   public function update(int $id = null)
   {
@@ -213,13 +193,6 @@ class FactureController
     //echo json_encode($this->data);
   }
 
-  /**
-   * This PHP function deletes a user record based on the provided ID and returns a response with status
-   * and message.
-   * 
-   * @param int id The `delete` function you provided seems to be a part of a PHP class. This function is
-   * responsible for deleting a record based on the provided `id`.
-   */
   public function delete(int $id = null)
   {
     try {
