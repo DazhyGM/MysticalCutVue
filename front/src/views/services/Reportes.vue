@@ -447,8 +447,9 @@ footer {
   color: #000;
 }
 .btn-primary:hover {
-  background-color: #e0c377;
-  border-color: #e0c377;
+  background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
 }
 
 .alert-info {

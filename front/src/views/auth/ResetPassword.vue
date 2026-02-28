@@ -17,14 +17,14 @@
       <input v-model="newPassword" type="password" placeholder="Escribe aqui tu nueva contraseña" required />
       <label for="password">Confirmar Contraseña</label>
       <input v-model="confirmPassword" type="password" placeholder="Confirma la contraseña" required />
-      <button class="btn botonav" type="submit">Actualizar Contraseña</button>
+      <button class="btn btn-update" type="submit">Actualizar Contraseña</button>
     </form>
     <p v-if="message">{{ message }}</p>
   </div>
 </template>
 
 <script>
-import { resetPassword } from '@/services/api.js'; // Importar la función correcta
+import { resetPassword } from '@/services/api.js';
 
 export default {
   data() {
@@ -42,11 +42,10 @@ export default {
       }
 
       try {
-        const token = this.$route.params.token; // Obtener el token de la URL
-        const response = await resetPassword(token, this.newPassword); // Llamar la función correcta
+        const token = this.$route.params.token;
+        const response = await resetPassword(token, this.newPassword);
         this.message = response.message;
 
-        // ✅ Alerta de éxito y redirección al login
         alert("✅ Contraseña cambiada exitosamente.");
         this.$router.push("/login");
 
@@ -60,7 +59,7 @@ export default {
 </script>
 
 <style scoped>
-.container {
+/* .container {
   max-width: 600px;
   margin: auto;
   text-align: center;
@@ -77,5 +76,6 @@ button {
   width: 100%;
   margin: 10px 0;
   padding: 10px;
-}
+} */
+ @import '@/assets/css/auth/resetPassword.css';
 </style>

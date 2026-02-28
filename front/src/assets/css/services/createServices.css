@@ -57,7 +57,9 @@
 }
 
 .btn-add:hover {
-  background-color: #b3953f;
+  background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
 }
 
 .btn-regresar {

@@ -71,13 +71,15 @@ onMounted(loadInactiveServices);
   background-color: #CCAF54;
   color: rgb(0, 0, 0);
   padding: 5px 10px;
-  border: 1px;
+  border: 1px solid #ccaf54;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: #6d550e;
 }
 .activate-btn:hover {
-  background-color: #8a7432;
+  background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
 }
 .pedido-box {
   display: flex;

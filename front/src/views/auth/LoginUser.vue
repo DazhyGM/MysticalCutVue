@@ -20,7 +20,7 @@
         <label for="password">Contraseña</label>
         <input type="password" id="password" v-model="password" required placeholder="Ingresa tu contraseña" />
 
-        <button type="submit" class="btn btn-iniciar w-100">Iniciar Sesión</button>
+        <button type="submit" class="btn btn-iniciar-sesion ">Iniciar Sesión</button>
 
         <div class="links text-center mt-3">
           <a href="/forgotPassword">Recuperar Contraseña</a>
@@ -38,10 +38,10 @@
 
 <script setup>
 import { ref } from "vue";
-import { useRouter } from "vue-router"; // Importa Vue Router
-import { login } from "@/services/api"; // Importa la API
+import { useRouter } from "vue-router";
+import { login } from "@/services/api";
 
-const router = useRouter(); // Instancia Vue Router
+const router = useRouter();
 
 const email = ref("");
 const password = ref("");
@@ -66,12 +66,11 @@ const logIn = async () => {
 
     message.value = "✅ Inicio de sesión exitoso";
 
-    // Guardar datos en localStorage
     localStorage.setItem("token", data.token);
     localStorage.setItem("user", JSON.stringify(data.user));
 
     setTimeout(() => {
-      router.push("/Home"); // Redirige a Home después de iniciar sesión
+      router.push("/Home");
     }, 1000);
 
   } catch (error) {
@@ -98,21 +97,7 @@ const logIn = async () => {
   }
 };
 </script>
-<style scoped>
-.btn-iniciar {
-  background-color: #ccaf54;
-  color: black;
-  border: 1px solid #D4AF37;
-  padding: 12px 0;
-  font-size: 15px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
-}
 
-.btn-iniciar:hover {
-  background-color: #000000;
-  border: 1px solid #D4AF37;
-  color: #CCAF54;
-}
+<style scoped>
+ @import '@/assets/css/auth/loginUser.css';
 </style>

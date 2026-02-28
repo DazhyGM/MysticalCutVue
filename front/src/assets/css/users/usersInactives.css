@@ -57,7 +57,9 @@
 }
 
 .activate-btn:hover {
-    background-color: #8a7432;
+    background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
 }
 
 /* .swal2-popup {

@@ -19,17 +19,20 @@
         <form @submit.prevent="handleSubmit" class="edit-form">
           <div class="mb-3">
             <label class="form-label">Nombre</label>
-            <input v-model="form.name_service" type="text" class="form-control custom-input" placeholder="Nombre del servicio" required />
+            <input v-model="form.name_service" type="text" class="form-control custom-input"
+              placeholder="Nombre del servicio" required />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Descripción</label>
-            <input v-model="form.description" type="text" class="form-control custom-input" placeholder="Descripción" required />
+            <input v-model="form.description" type="text" class="form-control custom-input" placeholder="Descripción"
+              required />
           </div>
 
           <div class="mb-3">
             <label class="form-label">Tiempo estimado</label>
-            <input v-model="form.estimated_time" type="text" class="form-control custom-input" placeholder="00:30:00" required />
+            <input v-model="form.estimated_time" type="text" class="form-control custom-input" placeholder="00:30:00"
+              required />
           </div>
 
           <div class="mb-3">
@@ -82,7 +85,7 @@ export default {
   setup() {
     const router = useRouter();
     const imagePreview = ref(null);
-    const selectedImageFile = ref(null); // Archivo real
+    const selectedImageFile = ref(null);
 
     const form = ref({
       name_service: '',
@@ -101,7 +104,7 @@ export default {
       const file = e.target.files[0];
       if (file) {
         selectedImageFile.value = file;
-        form.value.image = file.name; // Opcional: nombre del archivo
+        form.value.image = file.name;
         imagePreview.value = URL.createObjectURL(file);
       }
     };
@@ -110,7 +113,6 @@ export default {
       message.value = '';
       error.value = '';
 
-      // Validación
       if (
         !form.value.name_service.trim() ||
         !form.value.description.trim() ||
@@ -131,12 +133,11 @@ export default {
         formData.append('price', form.value.price);
         formData.append('id_category_services', form.value.id_category_services);
         formData.append('id_status', form.value.id_status);
-        formData.append('image', selectedImageFile.value); // El archivo real
+        formData.append('image', selectedImageFile.value);
 
-        await createService(formData); // Asegúrate de usar fetch o axios que soporte FormData
+        await createService(formData);
         message.value = 'Servicio creado correctamente.';
 
-        // Reset
         form.value = {
           name_service: '',
           description: '',
@@ -172,81 +173,6 @@ export default {
 };
 </script>
 
-
 <style scoped>
-
-
-
-/* .container {
-  padding: 10px;
-  font-size: 13px;
-}
-
-.image-placeholder {
-  width: 100%;
-  max-height: 237px;
-  border: 2px solid #ccaf54;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.preview-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.custom-input {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #ccaf54;
-  font-size: 13px;
-  padding: 6px 10px;
-}
-
-.custom-input::placeholder {
-  color: #ccc;
-}
-
-.form-label {
-  color: #ccaf54;
-  font-size: 13px;
-}
-
-.title {
-  color: #ccaf54;
-  text-align: center;
-  font-size: 24px; 
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.btn-add {
-  background-color: #ccaf54;
-  color: black;
-  border: none;
-  padding: 8px 0; 
-  font-size: 13px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.btn-add:hover {
-  background-color: #b3953f;
-}
-
-.btn-regresar {
-  margin-top: 12px;
-  background-color: #6c757d;
-  color: white;
-  padding: 6px 14px;
-  font-size: 13px;
-}
-
-.btn-regresar:hover {
-  background-color: #5a6268;
-} */
- @import '@/assets/css/services/createServices.css';
+@import '@/assets/css/services/createServices.css';
 </style>
-

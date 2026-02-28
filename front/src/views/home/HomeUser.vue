@@ -173,7 +173,7 @@
         </div>
 
         <!-- Copyright -->
-        <p class="footer-copyright">© 2024 www.mysticalcut.com, Inc</p>
+        <p class="footer-copyright">© 2026 www.mysticalcut.com, Inc</p>
       </div>
     </footer>
   </div>
