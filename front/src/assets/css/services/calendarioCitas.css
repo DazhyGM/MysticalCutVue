@@ -1,0 +1,236 @@
+/* @font-face {
+  font-family: 'Amasis_MT_Std_Black';
+  src: url('@/assets/fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* body,
+.container {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Amasis_MT_Std_Black', serif;
+} */
+/* 
+header {
+  background-color: #000;
+  color: white;
+} */
+
+/* h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+} */
+
+.custom-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #666;
+  padding: 10px 0;
+  position: relative;
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+  position: absolute;
+  left: 20px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #fff;
+}
+
+.main-content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.left-column {
+  flex: 2;
+  margin-right: 20px;
+  min-width: 300px;
+}
+
+.right-column {
+  flex: 1;
+  max-width: 350px;
+  padding: 20px;
+  background-color: #222;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+.calendar {
+  background-color: #111;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #333;
+  margin-top: 20px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #ccaf54;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+}
+
+.calendar-header button {
+  background-color: #333;
+  border: none;
+  color: #ccaf54;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.calendar-header button:hover {
+  background-color: #444;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day-label {
+  text-align: center;
+  font-weight: bold;
+  color: #ccaf54;
+  margin-bottom: 5px;
+}
+
+.calendar-day {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  border: 1px solid transparent;
+}
+
+.calendar-day:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+
+.calendar-day.selected {
+  background-color: #ccaf54;
+  color: #000;
+}
+
+.calendar-day.disabled {
+  background-color: #444;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+  border: none;
+  pointer-events: none;
+}
+
+.time-list {
+  margin-top: 30px;
+  background-color: #111;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.time-scroll {
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.time-button {
+  padding: 12px;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  margin: 8px 0;
+  cursor: pointer;
+  width: 100%;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.time-button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+.time-button.selected {
+  background-color: #ccaf54;
+  color: #000;
+}
+
+.confirm-button,
+.back-button1 {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  font-family: 'Amasis_MT_Std_Black', serif;
+}
+
+.confirm-button {
+  background-color: #ccaf54;
+  color: #000;
+  border: 1px solid #ccaf54;
+}
+.confirm-button:hover {
+  background-color: #000000;
+  color: #ccaf54;
+  border: 1px solid #ccaf54;
+}
+
+.back-button-calendar {
+  background-color: #000000;
+  color: #CCAF54;
+  padding: 10px 20px;
+  border: 1px solid #D4AF37;
+  cursor: pointer;
+  border-radius: 8px;
+  display: block;
+  margin: 20px auto 0;
+  width: fit-content;
+}
+
+.back-button-calendar:hover {
+  background-color: #ccaf54;
+  color: #000;
+  border: 1px solid #ccaf54;
+}
+
+.barber-name {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ccaf54;
+  font-family: 'Amasis_MT_Std_Black', serif;
+  text-align: left;
+  padding-left: 10px;
+}

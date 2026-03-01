@@ -213,6 +213,12 @@
   .btn-custom {
     background-color: #CCAF54;
     color: #000;
+    border: 1px solid #CCAF54;
+  }
+  .btn-custom:hover {
+    background-color: #000000;
+    color: #CCAF54;
+    border: 1px solid #CCAF54;
   }
   
   .card {

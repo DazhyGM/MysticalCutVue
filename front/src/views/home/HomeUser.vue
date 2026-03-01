@@ -172,7 +172,6 @@
           </div>
         </div>
 
-        <!-- Copyright -->
         <p class="footer-copyright">© 2026 www.mysticalcut.com, Inc</p>
       </div>
     </footer>
@@ -182,7 +181,6 @@
 <script setup>
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
 import { useRouter } from "vue-router";
-import '@/assets/css/footer.css';
 
 const router = useRouter();
 const isMenuOpen = ref(false);

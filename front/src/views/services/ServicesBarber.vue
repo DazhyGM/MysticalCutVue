@@ -46,7 +46,7 @@
                       <router-link :to="`/View-Service/${service.id_services}`" class="btn btn-view me-2">Ver</router-link>
                       <button v-if="userRole === 'Client'" class="btn btn-select me-2" @click="selectService(service)">Seleccionar</button>
                       <router-link v-if="userRole === 'Admin'" :to="`/Editar-Services/${service.id_services}`" class="btn btn-edit me-2">Editar</router-link>
-                      <button v-if="userRole === 'Admin'" class="btn btn-delete" @click="confirmDelete(service.id_services)">Eliminar</button>
+                      <button v-if="userRole === 'Admin'" class="btn btn-delete-service" @click="confirmDelete(service.id_services)">Eliminar</button>
                     </div>
                   </div>
                 </div>
@@ -69,9 +69,9 @@
         <hr />
         
 
-        <div class="d-flex justify-content-between mt-3">
-          <button class="btn btn-danger" @click="clearAllSelected">Eliminar selección</button>
-          <button class="btn btn-success" @click="goToSelectBarbero">Continuar</button>
+        <div class="mt-3 d-grid gap-2">
+          <button class="btn btn-delete-select" @click="clearAllSelected">Eliminar selección</button>
+          <button class="btn btn-continuar" @click="goToSelectBarbero">Continuar</button>
         </div>
       </div>
     </div>

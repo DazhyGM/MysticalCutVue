@@ -74,26 +74,54 @@
   color: #ccaf54;
   border: 1px solid #D4AF37;
 }
+
 .btn-agregar {
   background-color: #CCAF54;
   color: #000;
   border: 1px solid #D4AF37;
   font-weight: bold;
 }
+
 .btn-agregar:hover {
   background-color: #2d2d2d;
   color: #ffffff;
   border: 1px solid #D4AF37;
 }
 
-.btn-delete {
+.btn-delete-service {
   background-color: #ff0000;
   color: #000;
   border: 1px solid #d43737;
   height: 38px;
 }
-.btn-delete:hover {
+
+.btn-delete-service:hover {
   background-color: #000000;
   color: #ff0000;
   border: 1px solid #ff0000;
+}
+
+.btn-delete-select {
+  background-color: #ff0000;
+  color: #000;
+  border: 1px solid #d43737;
+  font-weight: bold;
+}
+
+.btn-delete-select:hover {
+  background-color: #000000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+
+.btn-continuar {
+  background-color: #CCAF54;
+  color: black;
+  border: 1px solid #CCAF54;
+}
+
+.btn-continuar:hover {
+  background-color: #000000;
+  color: #CCAF54;
+  border: 1px solid #CCAF54;
 }

@@ -1,0 +1,244 @@
+/* @font-face {
+  font-family: 'Amasis_MT_Std_Black';
+  src: url('@/assets/fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* body {
+  background-color: black;
+  color: white;
+  font-family: Amasis_MT_Std_Black;
+} */
+
+.custom-text-white {
+  color: white !important;
+}
+
+.barber-name {
+  color: #CCAF54;
+}
+
+.custom-card {
+  background-color: #111;
+  border: 5px solid #333;
+  color: #fff;
+  padding: 50px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.barber-card {
+  background-color: #111;
+  border: 2px solid #CCAF54;
+  color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 10px 0;
+  transition: 0.3s ease-in-out;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.barber-card:hover {
+  transform: scale(1.02);
+  border-color: #CCAF54;
+}
+
+.barber-card img.barber-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+.barber-card h4 {
+  margin-top: 10px;
+  color: #CCAF54;
+}
+
+.barber-card .select-barber {
+  margin-top: 10px;
+  background-color: #CCAF54;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barber-card .select-barber:hover {
+  background-color: #D4AF37;
+}
+
+.selected {
+  border: 3px solid #D4AF37;
+  background-color: #1a1a1a;
+}
+
+.btn {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-danger {
+  background-color: #8B0000;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #a10000;
+}
+
+.btn-continuar-barber {
+  background-color: #CCAF54;
+  color: black;
+border: 1px solid #CCAF54;
+}
+
+.btn-continuar-barber:disabled {
+  background-color: #CCAF54;
+  color: black;
+border: 1px solid #CCAF54;
+}
+
+.btn-continuar-barber:hover {
+  background-color: #000000;
+  color: #CCAF54;
+  border: 1px solid #CCAF54;
+}
+
+.btn-delete-select-barber {
+  background-color: #ff0000;
+  color: #000;
+  border: 1px solid #d43737;
+  font-weight: bold;
+}
+
+.btn-delete-select-barber:hover {
+  background-color: #000000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+
+.btn-secondary {
+  background-color: #555;
+  border: none;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #666;
+}
+
+.back-button-barber {
+  background-color: #000000;
+  color: #CCAF54;
+  padding: 10px 20px;
+  border: 1px solid #D4AF37;
+  cursor: pointer;
+  border-radius: 8px;
+  display: block;
+  margin: 20px auto 0;
+  width: fit-content;
+}
+
+.back-button-barber:hover {
+  background-color: #ccaf54;
+  color: #000;
+  border: 1px solid #ccaf54;
+}
+
+@media (max-width: 767.98px) {
+  .col-6.col-sm-4.col-md-4 { 
+    flex: 0 0 auto;
+    width: 33.333333%; 
+    padding-right: 5px; 
+    padding-left: 5px;  
+  }
+
+  .barber-card {
+    height: 200px; 
+    padding: 8px; 
+    margin: 5px 0; 
+  }
+
+  .barber-card img.barber-img {
+    width: 70px; 
+    height: 70px;
+  }
+
+  .barber-card h4 {
+    font-size: 0.8rem; 
+    margin-top: 5px;
+  }
+
+  .barber-card .select-barber {
+    width: 30px; 
+    height: 30px;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+
+  .custom-card.summary-fixed-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1030;
+    border-radius: 0;
+    padding: 10px 15px;
+    margin-bottom: 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+  }
+
+  body {
+    padding-bottom: 300px;
+  }
+
+  .container {
+    padding-bottom: 300px;
+  }
+
+  .custom-card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  .custom-card p {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+  }
+
+  .custom-card hr {
+    margin: 5px 0;
+  }
+
+  .custom-card .btn {
+    padding: 5px 10px;
+    font-size: 0.7rem;
+  }
+
+  .custom-card .d-grid.gap-2 {
+    gap: 5px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .custom-card {
+    padding: 30px;
+  }
+}
