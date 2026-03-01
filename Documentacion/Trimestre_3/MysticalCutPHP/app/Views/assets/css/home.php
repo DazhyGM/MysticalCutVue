@@ -1,1 +1,0 @@
-<link href="<?= FOLDER_PUBLIC_ASSETS ?>/css/home.css" rel="stylesheet">
