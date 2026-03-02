@@ -43,7 +43,6 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineProps } from 'vue'
-import '@/assets/css/footer.css';
 
 const props = defineProps({
   isHome: Boolean
@@ -96,18 +95,5 @@ onMounted(() => {
 </script>
 
 <style>
-.icon {
-  width: 2.5rem;
-  height: 2.5rem;
-  object-fit: contain;
-}
-
-/* .cont-header {
-  border-bottom: 1px solid #ccc;
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-} */
+ @import '@/assets/css/header.css';
 </style>

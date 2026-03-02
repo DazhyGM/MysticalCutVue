@@ -1,0 +1,41 @@
+  .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+
+  .icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      object-fit: contain;
+  }
+
+  .cont-header {
+      border-bottom: 1px solid #ccc;
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+  }
+
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  .dropdown-toggle {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s ease;
+  }
+
+  .dropdown-toggle:hover {
+      background-color: #333;
+  }

@@ -1,0 +1,231 @@
+.factura-container {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Amasis_MT_Std_Black', serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px; 
+  box-sizing: border-box; 
+}
+
+.factura-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.factura-wrapper {
+  background-color: #111;
+  padding: 50px;
+  border-radius: 20px;
+  border: 1px solid #555;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+  width: 95%;
+  max-width: 650px;
+  box-sizing: border-box;
+}
+
+.mini-title {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  opacity: 0.9;
+}
+
+.resumen-title {
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 35px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.factura-box {
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+  min-height: 600px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  box-sizing: border-box;
+}
+
+.orden-title {
+  text-align: center;
+  font-size: 26px;
+  color: #D4AF37;
+  margin-bottom: 40px;
+}
+
+.fila-dato {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 15px 0;
+  font-size: 20px;
+  line-height: 1.5; 
+  flex-wrap: wrap;
+}
+
+.etiqueta {
+  color: #bbb;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.valor {
+  color: #fff;
+  font-weight: normal;
+  text-align: right;
+  flex-grow: 1;
+}
+
+.total {
+  margin-top: auto;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #D4AF37;
+}
+
+.volver-btn {
+  margin-top: 20px;
+  background-color: #CCAF54;
+  color: #000;
+  border: 1px solid #CCAF54;
+  padding: 16px 26px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  font-size: 18px;
+}
+.volver-btn:hover {
+  background-color: #000000;
+  color: #CCAF54;
+  border: 1px solid #CCAF54;
+}
+
+@media (max-width: 575.98px) {
+  .factura-container {
+    padding: 10px;
+  }
+
+  .factura-wrapper {
+    padding: 25px; 
+    width: 100%; 
+  }
+
+  .mini-title {
+    font-size: 14px;
+  }
+
+  .resumen-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+
+  .factura-box {
+    padding: 25px; 
+    min-height: auto; 
+  }
+
+  .orden-title {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .fila-dato {
+    font-size: 16px;
+    margin: 10px 0; 
+    flex-direction: column; 
+    align-items: flex-start; 
+  }
+
+  .etiqueta {
+    margin-bottom: 2px; 
+  }
+
+  .valor {
+    text-align: left; 
+  }
+
+  .total {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+
+  .volver-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .factura-wrapper {
+    padding: 35px;
+  }
+
+  .resumen-title {
+    font-size: 32px;
+  }
+
+  .factura-box {
+    padding: 30px;
+  }
+
+  .orden-title {
+    font-size: 24px;
+  }
+
+  .fila-dato {
+    font-size: 18px;
+  }
+
+  .total {
+    font-size: 20px;
+  }
+
+  .volver-btn {
+    padding: 14px 22px;
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .factura-wrapper {
+    padding: 40px;
+  }
+
+  .resumen-title {
+    font-size: 34px;
+  }
+
+  .factura-box {
+    padding: 35px;
+  }
+
+  .orden-title {
+    font-size: 25px;
+  }
+
+  .fila-dato {
+    font-size: 19px;
+  }
+
+  .total {
+    font-size: 21px;
+  }
+}

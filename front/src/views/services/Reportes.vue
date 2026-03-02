@@ -1,6 +1,6 @@
 <template>
   <div class="container text-white">
-    <div class ="row mb-3">
+    <div class="row mb-3">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Reportes</h1>
       </ul>
@@ -9,11 +9,13 @@
       <div class="row g-3 align-items-end">
         <div class="col-md-3">
           <label for="reportType" class="form-label">Tipo de Reporte:</label>
-          <select id="reportType" class="form-select bg-dark text-white" v-model="selectedReportType" @change="updateDatesForReportType">
-            <option value="custom">Todas las Citas</option> <option value="daily">Hoy</option>
+          <select id="reportType" class="form-select bg-dark text-white" v-model="selectedReportType"
+            @change="updateDatesForReportType">
+            <option value="custom">Todas las Citas</option>
+            <option value="daily">Hoy</option>
             <option value="weekly">Esta Semana</option>
             <option value="monthly">Este Mes</option>
-            </select>
+          </select>
         </div>
         <div class="col-md-3" v-if="selectedReportType === 'custom'">
           <label for="startDate" class="form-label">Fecha de Inicio:</label>
@@ -23,14 +25,16 @@
           <label for="endDate" class="form-label">Fecha de Fin:</label>
           <input type="date" id="endDate" class="form-control bg-dark text-white" v-model="endDate">
         </div>
-        
+
         <div class="col-md-3">
           <label for="searchText" class="form-label">Buscar por texto:</label>
-          <input type="text" id="searchText" class="form-control bg-dark text-white" v-model="searchText" placeholder="Barbero, Cliente, Servicio..." @input="applyFilters">
+          <input type="text" id="searchText" class="form-control bg-dark text-white" v-model="searchText"
+            placeholder="Barbero, Cliente, Servicio..." @input="applyFilters">
         </div>
 
         <div class="col-md-6 offset-md-3 d-flex justify-content-center mt-3">
-          <button class="btn btn-primary w-50 me-2" @click="loadReport" :disabled="selectedReportType !== 'custom' && !searchText">Generar Reporte / Aplicar Filtro</button>
+          <button class="btn btn-primary w-50 me-2" @click="loadReport"
+            :disabled="selectedReportType !== 'custom' && !searchText">Generar Reporte / Aplicar Filtro</button>
           <button class="btn btn-primary w-50" @click="resetFilters">Reiniciar Filtros</button>
         </div>
       </div>
@@ -86,29 +90,29 @@ export default {
   name: 'CitasReportes',
   data() {
     return {
-      citas: [], 
-      selectedReportType: 'custom', 
+      citas: [],
+      selectedReportType: 'custom',
       startDate: null,
       endDate: null,
       loading: false,
-      userRole: null, 
-      user: null, 
-      isMenuOpen: false, 
-      searchText: '', 
+      userRole: null,
+      user: null,
+      isMenuOpen: false,
+      searchText: '',
     };
   },
   computed: {
     filteredCitas() {
       if (!this.searchText) {
-        return this.citas; 
+        return this.citas;
       }
 
       const normalizeText = (text) => {
         if (!text) return '';
         return String(text)
-          .normalize("NFD") 
-          .replace(/[\u0300-\u036f]/g, "") 
-          .toLowerCase(); 
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
       };
 
       const searchNormalized = normalizeText(this.searchText);
@@ -117,11 +121,11 @@ export default {
         const clientNameNormalized = normalizeText(cita.client_name);
         const barberNameNormalized = normalizeText(cita.barber_name);
         const serviceNameNormalized = normalizeText(cita.name_service);
-        
+
         const clientMatch = clientNameNormalized.includes(searchNormalized);
         const barberMatch = barberNameNormalized.includes(searchNormalized);
         const serviceMatch = serviceNameNormalized.includes(searchNormalized);
-        
+
         return clientMatch || barberMatch || serviceMatch;
       });
     }
@@ -153,12 +157,12 @@ export default {
 
         this.userRole = userData.role;
         this.user = {
-          full_name: userData.full_name || 'Usuario', 
+          full_name: userData.full_name || 'Usuario',
           user_id: userData.user_id,
           user_email: userData.user_email || '',
           role: userData.role
         };
-        return true; 
+        return true;
       } catch (error) {
         console.error('Error al verificar el rol del usuario:', error);
         alert("Error al verificar la sesión. Por favor, inicie sesión de nuevo.");
@@ -168,10 +172,10 @@ export default {
     },
     async loadReport() {
       if (!this.startDate || !this.endDate) {
-          if (this.selectedReportType === 'custom') {
-            alert("Por favor, selecciona las fechas de inicio y fin para el reporte personalizado.");
-          }
-          return; 
+        if (this.selectedReportType === 'custom') {
+          alert("Por favor, selecciona las fechas de inicio y fin para el reporte personalizado.");
+        }
+        return;
       }
 
       this.loading = true;
@@ -182,7 +186,7 @@ export default {
         console.error('❌ Error al cargar el reporte de citas:', error);
         if (error.response && error.response.status === 403) {
           alert("No tienes permisos para ver este reporte. Debes iniciar sesión.");
-          this.$router.push('/'); 
+          this.$router.push('/');
         } else {
           alert("No se pudo cargar el reporte de citas.");
         }
@@ -195,11 +199,11 @@ export default {
       // La propiedad computada `filteredCitas` se actualizará automáticamente.
     },
     resetFilters() {
-      this.selectedReportType = 'custom'; 
-      this.searchText = ''; 
-      this.startDate = '2000-01-01'; 
+      this.selectedReportType = 'custom';
+      this.searchText = '';
+      this.startDate = '2000-01-01';
       this.endDate = '2099-12-31';
-      this.loadReport(); 
+      this.loadReport();
     },
     getTodayDates() {
       const today = new Date();
@@ -209,16 +213,16 @@ export default {
     },
     getWeekDates() {
       const today = new Date();
-      const dayOfWeek = today.getDay(); 
-      const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); 
-      
+      const dayOfWeek = today.getDay();
+      const diff = today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1);
+
       const startOfWeek = new Date(today.setDate(diff));
       startOfWeek.setHours(0, 0, 0, 0);
 
       const endOfWeek = new Date(startOfWeek);
-      endOfWeek.setDate(startOfWeek.getDate() + 6); 
+      endOfWeek.setDate(startOfWeek.getDate() + 6);
       endOfWeek.setHours(23, 59, 59, 999);
-      
+
       return { start: startOfWeek, end: endOfWeek };
     },
     getMonthDates() {
@@ -226,9 +230,9 @@ export default {
       const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
       startOfMonth.setHours(0, 0, 0, 0);
 
-      const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0); 
+      const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
       endOfMonth.setHours(23, 59, 59, 999);
-      
+
       return { start: startOfMonth, end: endOfMonth };
     },
     formatDateForInput(date) {
@@ -256,16 +260,16 @@ export default {
           dates = this.getMonthDates();
           break;
         case 'custom':
-          this.startDate = '2000-01-01'; 
+          this.startDate = '2000-01-01';
           this.endDate = '2099-12-31';
-          this.loadReport(); 
+          this.loadReport();
           return;
         default:
           return;
       }
       this.startDate = this.formatDateForInput(dates.start);
       this.endDate = this.formatDateForInput(dates.end);
-      this.loadReport(); 
+      this.loadReport();
     },
     formatDate(dateString) {
       if (!dateString) return 'Fecha no disponible';
@@ -284,8 +288,8 @@ export default {
     const hasAccess = await this.checkUserRole();
     if (hasAccess) {
       this.selectedReportType = 'custom';
-      this.startDate = '2000-01-01'; 
-      this.endDate = '2099-12-31'; 
+      this.startDate = '2000-01-01';
+      this.endDate = '2099-12-31';
       await this.loadReport();
     }
   }
@@ -293,168 +297,5 @@ export default {
 </script>
 
 <style scoped>
-/* Tus estilos generales */
-.container {
-  max-width: 1200px;
-  margin-top: 30px;
-}
-
-header {
-  background-color: #000;
-  padding: 20px 0;
-  color: white;
-}
-
-header img {
-  width: 125px;
-  height: 125px;
-}
-
-/* --- Estilos para el perfil de usuario y dropdown --- */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-toggle {
-  background-color: transparent;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-toggle:hover {
-  background-color: #333;
-}
-
-.icon {
-  width: 30px; 
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: 100%; 
-  right: 0; 
-  background-color: #212529; 
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  border-radius: 0.25rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
-  padding: 0.5rem 0;
-  z-index: 1000; 
-  min-width: 160px; 
-}
-
-.dropdown-menu.show {
-  display: block; 
-}
-
-.dropdown-item {
-  display: block;
-  width: 100%;
-  padding: 0.25rem 1rem;
-  clear: both;
-  font-weight: 400;
-  color: #dee2e6; 
-  text-align: inherit;
-  white-space: nowrap;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
-}
-
-.dropdown-item:hover,
-.dropdown-item:focus {
-  color: #fff;
-  background-color: #495057; 
-}
-
-.dropdown-divider {
-  height: 0;
-  margin: 0.5rem 0;
-  overflow: hidden;
-  border-top: 1px solid rgba(0, 0, 0, 0.15);
-  opacity: 0.25;
-}
-/* --- Fin Estilos de perfil y dropdown --- */
-
-
-footer {
-  background-color: #000;
-  padding: 20px 0;
-  color: white;
-  text-align: center;
-  border-top: 1px solid #fff;
-}
-
-/* Tabla de citas */
-.table {
-  margin-top: 30px;
-  border-collapse: collapse;
-}
-
-.table thead {
-  background-color: #333;
-  color: white;
-}
-
-.table th, .table td {
-  padding: 15px;
-  text-align: center;
-}
-
-.table td {
-  font-size: 1rem;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #2b2b2b;
-}
-
-.table-striped tbody tr:nth-of-type(even) {
-  background-color: #222;
-}
-
-.table-responsive {
-  overflow-x: auto;
-}
-
-/* Estilos para los select y inputs */
-.form-select, .form-control {
-  border: 1px solid #444;
-  color: #fff;
-  background-color: #212529; 
-}
-.form-select option {
-    color: #fff;
-    background-color: #333;
-}
-.form-label {
-  color: #fff;
-  font-weight: bold;
-}
-.btn-primary {
-  background-color: #ccaf54;
-  border-color: #ccaf54;
-  color: #000;
-}
-.btn-primary:hover {
-  background-color: #000000;
-    color: #ccaf54;
-    border: 1px solid #ccaf54;
-}
-
-.alert-info {
-  background-color: #17a2b8;
-  color: #fff;
-  border-color: #17a2b8;
-}
+@import '@/assets/css/services/reportes.css';
 </style>
