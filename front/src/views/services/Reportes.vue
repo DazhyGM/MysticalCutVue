@@ -46,7 +46,9 @@
     <div v-else-if="filteredCitas.length === 0" class="alert alert-info text-center">
       No hay citas registradas para los criterios seleccionados.
     </div>
-    <div v-else class="table-responsive">
+    
+    <div class="pedido-container">
+    <div class="table-responsive">
       <table class="table table-dark table-striped">
         <thead>
           <tr>
@@ -73,6 +75,7 @@
           </tr>
         </tbody>
       </table>
+    </div>
     </div>
 
     <div class="text-center my-4">
