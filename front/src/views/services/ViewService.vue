@@ -5,7 +5,7 @@
     </ul>
   </div>
 
-  <div class="container mt-5 text-white">
+  <div class="container-service mt-5 text-white">
     <div class="card p-4 bg-dark text-white">
       <h2 class="text-center mb-4">{{ service.name_service }}</h2>
 
@@ -60,37 +60,5 @@ onMounted(fetchService);
 </script>
 
 <style scoped>
-.container {
-  max-width: 800px;
-}
-
-.card {
-  background-color: #222;
-  border: 1px solid #444;
-  border-radius: 12px;
-}
-
-.details h3 {
-  text-align: center;
-}
-
-.btn-volver {
-  padding: 7px 15px;
-  background-color: #000000;
-  border: 1px solid #D4AF37;
-  border-radius: 5px;
-  cursor: pointer;
-  color: #CCAF54;
-  margin-top: 15px;
-  margin: 0 auto;
-  text-align: center;
-  display: block;
-  width: 190px;
-}
-
-.btn-volver:hover {
-  background-color: #CCAF54;
-  color: #000000;
-  border: 1px solid #D4AF37;
-}
+ @import '@/assets/css/services/viewService.css';
 </style>

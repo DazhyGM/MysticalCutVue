@@ -1,3 +1,66 @@
+.activate-btn {
+  background-color: #CCAF54;
+  color: rgb(0, 0, 0);
+  padding: 5px 10px;
+  border: 1px solid #ccaf54;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: #6d550e;
+}
+.activate-btn:hover {
+  background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
+}
+
+.service-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.info-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.info-title {
+  color: #CCAF54;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.info-text {
+  font-size: 1rem;
+  color: #ffffff;
+}
+  .back-buttonS {
+    padding: 7px 15px;
+    background-color: #000000;
+    border: 1px solid #D4AF37;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #CCAF54;
+    margin-top: 105px;
+    margin: auto;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    width: 130px;
+    position: relative;
+    top: 50%;
+    transform: translateY(50%);
+  }
+  
+  .back-buttonS:hover {
+    background-color: #CCAF54;
+    color: #000000;
+    border: 1px solid #D4AF37;
+  }
+
 .pedido-container {
     display: flex;
     flex-direction: column;
@@ -11,12 +74,11 @@
     background-color: #333;
     border: 2px solid #CCAF54;
     border-radius: 10px;
-    border-bottom: 1px solid #ccc;
     width: 90%;
     max-width: 900px;
     gap: 10px;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 15px;
+    margin-bottom: 10px;
     text-align: center;
     display: flex;
     justify-content: space-between;
