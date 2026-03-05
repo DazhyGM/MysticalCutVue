@@ -158,5 +158,5 @@ const handleSubmit = async () => {
 </script>
 
 <style scoped>
-@import '@/assets/css/crearProducto.css';
+@import '@/assets/css/products/crearProducto.css';
 </style>

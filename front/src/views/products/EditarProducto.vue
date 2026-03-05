@@ -71,19 +71,19 @@
               <option :value="3">Inactivo</option>
             </select>
           </div>
-
+          <div class="contenedor-botones">
+            <button type="submit" class="btn btn-add flex-grow-1 me-2">
+              Guardar cambios
+            </button>
+            <button type="button" @click="goBack" class="btn btn-secondary btn-regresar flex-grow-1">
+              Cancelar
+            </button>
+          </div>
 
         </form>
-        
+
       </div>
-      <div class="contenedor-botones">
-          <button type="submit" class="btn btn-add flex-grow-1 me-2">
-            Guardar cambios
-          </button>
-          <button type="button" @click="goBack" class="btn btn-secondary btn-regresar flex-grow-1">
-            Cancelar
-          </button>
-        </div>
+
     </div>
 
     <div class="text-center mt-3">
@@ -110,11 +110,11 @@ const product = ref({
   id_status: 1,
   image: "",
 });
-const newImage = ref(null); 
-const newImagePreview = ref(null); 
+const newImage = ref(null);
+const newImagePreview = ref(null);
 
-const message = ref(''); 
-const error = ref(''); 
+const message = ref('');
+const error = ref('');
 
 const categories = ref([
   { id: 1, name: "Cabello" },
@@ -301,8 +301,8 @@ textarea.custom-input {
 
 .contenedor-botones {
   display: flex;
-  justify-content: center;  
-  gap: 20px;               
+  justify-content: center;
+  gap: 20px;
   margin-top: 20px;
 }
 
@@ -338,11 +338,11 @@ textarea.custom-input {
 
 .btn-add,
 .btn-regresar {
-  padding: 6px 20px;  
+  padding: 6px 20px;
   font-size: 14px;
   border-radius: 5px;
-  width: auto;       
-  max-width: 140px;   
+  width: auto;
+  max-width: 140px;
 }
 
 .text-success {
