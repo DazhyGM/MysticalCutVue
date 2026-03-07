@@ -25,7 +25,7 @@
 .error-code {
   font-size: 6rem;
   font-weight: bold;
-  color: #ff3b3b; /* Rojo para destacar el error */
+  color: #ff3b3b;
   margin-bottom: 10px;
 }
 
@@ -43,7 +43,7 @@
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1.1rem;
-  background-color: #daa520; /* Dorado */
+  background-color: #daa520;
   color: black;
   text-decoration: none;
   border-radius: 5px;
@@ -52,8 +52,8 @@
 }
 
 .home-link:hover {
-  background-color: #970606; /* Un dorado más claro */
-  transform: scale(1.05); /* Efecto de agrandamiento */
+  background-color: #970606;
+  transform: scale(1.05);
 }
 </style>
 

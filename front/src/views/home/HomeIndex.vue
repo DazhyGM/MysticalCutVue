@@ -110,8 +110,8 @@ onMounted(() => {
   const carouselElement = document.querySelector('#carouselExampleCaptions');
   if (carouselElement) {
     new Carousel(carouselElement, {
-      interval: 4000, // Tiempo entre diapositivas (3 segundos)
-      ride: 'carousel' // Hace que el carrusel empiece automáticamente
+      interval: 4000,
+      ride: 'carousel' 
     });
   }
 });
