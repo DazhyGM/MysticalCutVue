@@ -1,4 +1,9 @@
 <template>
+  <div class="row mb-2">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1>Agregar servicio</h1>
+    </ul>
+  </div>
   <div class="container">
     <div class="row edit-container">
       <div class="col-md-5 text-center">

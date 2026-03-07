@@ -1,6 +1,6 @@
 <template>
   <div class="container-scaled-wrapper">
-    <div class ="row mb-2">
+    <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Productos</h1>
       </ul>
@@ -28,36 +28,31 @@
 
           <div class="card-actions">
             <label class="switch" v-if="userRole === 'Admin'">
-              <input
-                type="checkbox"
-                :checked="product.id_status === 1"
-                @change="() => toggleSwitch(product)"
-              />
-              <span class="slider round" :class="{ blocked: product.id_status === 2, active: product.id_status === 1 }"></span>
+              <input type="checkbox" :checked="product.id_status === 1" @change="() => toggleSwitch(product)" />
+              <span class="slider round"
+                :class="{ blocked: product.id_status === 2, active: product.id_status === 1 }"></span>
             </label>
 
             <button class="btn-view" @click="() => viewProductDetails(product)">Ver</button>
-            <button class="btn-edit" @click="() => editProduct(product.id_product)" v-if="userRole === 'Admin'">Editar</button>
-            <button class="btn-delete-prod" @click="() => confirmInactivate(product.id_product)" v-if="userRole === 'Admin'">Eliminar</button>
+            <button class="btn-edit" @click="() => editProduct(product.id_product)"
+              v-if="userRole === 'Admin'">Editar</button>
+            <button class="btn-delete-prod" @click="() => confirmInactivate(product.id_product)"
+              v-if="userRole === 'Admin'">Eliminar</button>
           </div>
         </div>
       </div>
     </div>
-    
+
   </div>
-  <div class="btn-regresar mt-3">
-        <button class="btn back-button" @click="goBack">Regresar</button>
-      </div>
-  
+  <div>
+    <button class="btn back-button" @click="goBack">Regresar</button>
+  </div>
+
   <div v-if="showSidebar && userRole === 'Client'" class="cart-add-box">
     <div class="cart-header-strip">
       <h4 class="mb-0">Productos para agregar al carrito</h4>
       <div class="cart-actions-strip">
-        <button
-          class="btn btn-success"
-          @click="confirmAddToCart"
-          :disabled="!isConfirmButtonEnabled"
-        >
+        <button class="btn btn-success" @click="confirmAddToCart" :disabled="!isConfirmButtonEnabled">
           Confirmar y Añadir Todos
         </button>
         <button class="close-btn-strip" @click="clearPendingCartAndClose">X</button>
@@ -77,17 +72,11 @@
               <p><strong>Disponibles:</strong> {{ item.amount }}</p>
             </div>
           </div>
-          
+
           <div class="quantity-control-strip-item">
             <label :for="`quantity-${item.id_product}`">Cantidad:</label>
-            <input
-              :id="`quantity-${item.id_product}`"
-              type="number"
-              v-model.number="item.quantity"
-              :min="1"
-              :max="item.amount"
-              class="form-control"
-            />
+            <input :id="`quantity-${item.id_product}`" type="number" v-model.number="item.quantity" :min="1"
+              :max="item.amount" class="form-control" />
             <p v-if="item.quantity > item.amount" class="error-message">
               No puedes seleccionar más de {{ item.amount }} unidades
             </p>
@@ -99,7 +88,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 
   <div v-if="showProductModal" class="modal-overlay" @click.self="showProductModal = false">
@@ -110,7 +99,7 @@
       <p class="modal-description"><strong>Descripción:</strong> {{ selectedProduct.description }}</p>
       <p class="modal-price"><strong>Precio:</strong> ${{ selectedProduct.price.toLocaleString() }}</p>
       <p class="modal-amount"><strong>Disponibles:</strong> {{ selectedProduct.amount }}</p>
-      </div>
+    </div>
   </div>
 </template>
 
