@@ -303,5 +303,5 @@ export default {
 };
 </script>
 <style scoped>
-@import '@/assets/css/footer.css';
+@import '@/assets/css/components/footer.css';
 </style>

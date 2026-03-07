@@ -3,8 +3,8 @@
     <header
       class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
-  <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
-</div>
+        <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
+      </div>
 
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
@@ -22,65 +22,49 @@
   </div>
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-  <div class="carousel-indicators">
-    <button v-for="(item, index) in images" :key="index" type="button"
-      :data-bs-target="'#carouselExampleCaptions'" :data-bs-slide-to="index"
-      :class="{ active: index === 0 }" :aria-label="'Slide ' + (index + 1)">
-    </button>
-  </div>
-
-  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div
-        v-for="(item, index) in images"
-        :key="index"
-        class="carousel-item"
-        :class="{ active: index === 0 }"
-      >
-        <img :src="item.src" class="d-block w-100" :alt="item.alt" />
-
-        <!-- Título centrado solo en la primera imagen -->
-        <h2 v-if="index === 0" class="titulo1">{{ item.title }}</h2>
-
-        <!-- Para las demás imágenes -->
-        <div v-else class="carousel-caption d-none d-md-block">
-          <h2 class="carousel-title">{{ item.title }}</h2>
-          <p v-if="item.text">{{ item.text }}</p>
-        </div>
-      </div>
+    <div class="carousel-indicators">
+      <button v-for="(item, index) in images" :key="index" type="button" :data-bs-target="'#carouselExampleCaptions'"
+        :data-bs-slide-to="index" :class="{ active: index === 0 }" :aria-label="'Slide ' + (index + 1)">
+      </button>
     </div>
 
-    <!-- Controles del carrusel -->
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExample"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Anterior</span>
-    </button>
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div v-for="(item, index) in images" :key="index" class="carousel-item" :class="{ active: index === 0 }">
+          <img :src="item.src" class="d-block w-100" :alt="item.alt" />
 
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExample"
-      data-bs-slide="next"
-    >
+          <!-- Título centrado solo en la primera imagen -->
+          <h2 v-if="index === 0" class="titulo1">{{ item.title }}</h2>
+
+          <!-- Para las demás imágenes -->
+          <div v-else class="carousel-caption d-none d-md-block">
+            <h2 class="carousel-title">{{ item.title }}</h2>
+            <p v-if="item.text">{{ item.text }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles del carrusel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Siguiente</span>
+      <span class="visually-hidden">Next</span>
     </button>
   </div>
-
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
 
   <footer class="py-3 my-4 bg-dark text-white">
@@ -111,7 +95,6 @@
 import { ref, onMounted } from 'vue';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import '@/assets/css/style.css';
 import { Carousel } from 'bootstrap';
 
 // Imágenes del carrusel
@@ -153,7 +136,3 @@ export default {
   }
 };
 </script>
-
-
-
-
