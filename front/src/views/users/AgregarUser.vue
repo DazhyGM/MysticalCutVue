@@ -40,7 +40,6 @@
           <input type="password" id="password" v-model="form.password" required />
           <label for="confirm-password">Confirmar Contraseña</label>
           <input type="password" id="confirm-password" v-model="form.confirmPassword" required />
-          <!-- 🔹 Selector de Rol con Estilos -->
           <label for="role">Rol del Usuario</label>
           <select id="role" class="select-field" v-model="form.role" required>
             <option value="" disabled>Seleccione un rol</option>
@@ -76,11 +75,10 @@ export default {
       role: ''
     });
 
-    // 🔹 Lista de roles disponibles (podrías cargarlos desde la API si lo prefieres)
     const roles = ref([
       { id: 1, name: 'Administrador' },
       { id: 2, name: 'Empleado' },
-      { id: 3, name: 'Cliente' } // Si el backend maneja el ID 3 como cliente
+      { id: 3, name: 'Cliente' }
     ]);
 
     const confirmRegistro = async () => {
@@ -98,7 +96,7 @@ export default {
           type_document_id: form.docType,
           address: form.address,
           phone: form.phone,
-          role_fk: form.role // 🔹 Se envía el rol seleccionado
+          role_fk: form.role
         });
 
         alert(response.data.message);
@@ -120,5 +118,5 @@ export default {
 </script>
 
 <style scoped>
- @import '@/assets/css/users/agregarUser.css';
+@import '@/assets/css/users/agregarUser.css';
 </style>

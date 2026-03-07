@@ -1,6 +1,10 @@
 <template>
+  <div class="row mb-2">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1>Perfil del Usuario</h1>
+    </ul>
+  </div>
   <div class="container">
-
     <div class="profile-container d-flex align-items-center justify-content-center">
       <div class="profile-image me-3">
         <img src="/img/background/Icono usuario.png" width="100px" alt="Usuario">

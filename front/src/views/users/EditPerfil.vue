@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class ="row mb-2">
+    <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Editar perfil</h1>
       </ul>
@@ -13,15 +13,18 @@
         <div class="col-md-6">
           <h3>Tipo de documento de identificación</h3>
           <label>
-            <input type="radio" v-model="form.docType" value="1" :disabled="form.role !== 1" class="disabled-field" /> Cédula
+            <input type="radio" v-model="form.docType" value="1" :disabled="form.role !== 1" class="disabled-field" />
+            Cédula
             de Ciudadanía
           </label>
           <label>
-            <input type="radio" v-model="form.docType" value="2" :disabled="form.role !== 1" class="disabled-field" /> Tarjeta
+            <input type="radio" v-model="form.docType" value="2" :disabled="form.role !== 1" class="disabled-field" />
+            Tarjeta
             de Identidad
           </label>
           <label>
-            <input type="radio" v-model="form.docType" value="3" :disabled="form.role !== 1" class="disabled-field" /> Cédula
+            <input type="radio" v-model="form.docType" value="3" :disabled="form.role !== 1" class="disabled-field" />
+            Cédula
             de Extranjería
           </label>
           <label for="full-name">Nombres y Apellidos</label>
@@ -42,15 +45,14 @@
           <label for="confirm-password">Confirmar Contraseña</label>
           <input type="password" id="confirm-password" v-model="form.confirmPassword" />
           <!-- Selector de Rol -->
-        <label for="role">Rol del Usuario</label>
-        <select id="role" class="select-field" v-model="form.role" required :disabled="form.role !== 1">
-          <option value="" disabled>Seleccione un rol</option>
-          <option v-for="role in roles" :key="role.id" :value="role.id">
-            {{ role.name }}
-          </option>
-        </select>
+          <label for="role">Rol del Usuario</label>
+          <select id="role" class="select-field" v-model="form.role" required :disabled="form.role !== 1">
+            <option value="" disabled>Seleccione un rol</option>
+            <option v-for="role in roles" :key="role.id" :value="role.id">
+              {{ role.name }}
+            </option>
+          </select>
         </div>
-        
       </div>
 
       <button type="submit" class="btn button-guardar">Guardar Cambios</button>
@@ -83,17 +85,14 @@ export default {
     const router = useRouter();
     const userId = route.params.id;
 
-    // Lista de roles
     const roles = ref([
       { id: 1, name: 'Administrador' },
       { id: 2, name: 'Empleado' },
       { id: 3, name: 'Cliente' }
     ]);
 
-    // Computed para saber si el usuario es cliente
     const isClient = computed(() => form.role === 3);
 
-    // Cargar datos del usuario
     onMounted(async () => {
       try {
         const token = localStorage.getItem('token');
@@ -141,7 +140,6 @@ export default {
           phone: form.phone,
         };
 
-        // Solo enviar contraseña si el usuario la cambia
         if (form.password.trim()) {
           updateData.user_password = form.password.trim();
         }

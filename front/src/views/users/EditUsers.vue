@@ -51,10 +51,7 @@
             </option>
           </select>
         </div>
-
-
       </div>
-
       <button type="submit" class="btn button-guardar">Guardar Cambios</button>
     </form>
     <button class="back-button" @click="goBack">Regresar</button>

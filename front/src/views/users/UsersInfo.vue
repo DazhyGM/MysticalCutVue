@@ -41,7 +41,6 @@
       </div>
     </div>
 
-    <!-- LISTADO DE USUARIOS -->
     <div class="pedido-container">
       <div v-for="user in filteredUsers" :key="user.user_id" class="pedido-box">
         <div class="icon-usuario-container">

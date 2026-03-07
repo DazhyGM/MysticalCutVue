@@ -62,7 +62,6 @@ const activateUser = async (user) => {
   }
 };
 
-// Computed para filtrar usuarios inactivos
 const filteredInactiveUsers = computed(() => {
   return inactiveUsers.value.filter(user =>
     user.userStatus_fk === 3 &&

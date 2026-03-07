@@ -112,10 +112,7 @@ export default {
         user.address = userData.address || '';
         user.phone = userData.phone || '';
         user.role = userData.role_fk || '';
-
-        // Mapear el nombre del estado al español
         user.status = statusMap[userData.userStatus_name] || userData.userStatus_name;
-
         user.docType = userData.type_document_id || '';
 
         isLoading.value = false;
