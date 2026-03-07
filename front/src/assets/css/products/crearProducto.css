@@ -53,7 +53,7 @@ textarea.custom-input {
   min-height: 80px;
 }
 
-.btn-add {
+.btn-registrar-prod {
   background-color: #ccaf54;
   color: black;
   border: 1px solid #D4AF37;
@@ -64,7 +64,7 @@ textarea.custom-input {
   border-radius: 5px;
 }
 
-.btn-add:hover {
+.btn-registrar-prod:hover {
   background-color: #000000;
   border: 1px solid #D4AF37;
   color: #CCAF54;

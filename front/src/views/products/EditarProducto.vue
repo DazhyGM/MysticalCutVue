@@ -72,10 +72,10 @@
             </select>
           </div>
           <div class="contenedor-botones">
-            <button type="submit" class="btn btn-add flex-grow-1 me-2">
+            <button type="submit" class="btn btn-guardar flex-grow-1 me-2">
               Guardar cambios
             </button>
-            <button type="button" @click="goBack" class="btn btn-secondary btn-regresar flex-grow-1">
+            <button type="button" @click="goBack" class="btn btn-cancelar flex-grow-1">
               Cancelar
             </button>
           </div>
@@ -225,131 +225,5 @@ onMounted(loadProduct);
 </script>
 
 <style scoped>
-.container {
-  background-color: #000;
-  color: #fff;
-  min-height: 100vh;
-  padding: 1rem;
-  font-size: 13px;
-}
-
-header {
-  border-bottom: 1px solid #333;
-}
-
-header h1 {
-  color: #ccaf54;
-  text-align: center;
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.edit-container {
-  padding: 20px;
-  background-color: #1c1c1c;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 900px;
-  align-items: flex-start;
-}
-
-.image-placeholder {
-  width: 100%;
-  max-height: 170px;
-  border: 2px solid #ccaf54;
-  border-radius: 8px;
-  overflow: hidden;
-  margin-bottom: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #222;
-}
-
-.preview-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.form-label {
-  color: #ccaf54;
-  font-size: 13px;
-  margin-bottom: 0.2rem;
-}
-
-.custom-input {
-  background-color: #333;
-  color: #fff;
-  border: 1px solid #ccaf54;
-  font-size: 13px;
-  padding: 6px 10px;
-  border-radius: 5px;
-}
-
-.custom-input::placeholder {
-  color: #ccc;
-}
-
-textarea.custom-input {
-  resize: vertical;
-  min-height: 80px;
-}
-
-.contenedor-botones {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.btn-add {
-  background-color: #ccaf54;
-  color: black;
-  border: 1px solid #D4AF37;
-  padding: 8px 0;
-  font-size: 13px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  border-radius: 5px;
-}
-
-.btn-add:hover {
-  background-color: #000000;
-  border: 1px solid #D4AF37;
-  color: #CCAF54;
-}
-
-.btn-regresar {
-  background-color: #ff0000;
-  color: #000;
-  border: 1px solid #d43737;
-  font-weight: bold;
-}
-
-.btn-regresar:hover {
-  background-color: #000000;
-  color: #ff0000;
-  border: 1px solid #ff0000;
-}
-
-.btn-add,
-.btn-regresar {
-  padding: 6px 20px;
-  font-size: 14px;
-  border-radius: 5px;
-  width: auto;
-  max-width: 140px;
-}
-
-.text-success {
-  color: #4CAF50;
-}
-
-.text-danger {
-  color: #d9534f;
-}
+ @import "@/assets/css/products/editProduct.css";
 </style>

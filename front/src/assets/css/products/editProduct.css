@@ -79,7 +79,7 @@ textarea.custom-input {
   margin-top: 20px;
 }
 
-.btn-add {
+.btn-guardar {
   background-color: #ccaf54;
   color: black;
   border: 1px solid #D4AF37;
@@ -90,20 +90,20 @@ textarea.custom-input {
   border-radius: 5px;
 }
 
-.btn-add:hover {
+.btn-guardar:hover {
   background-color: #000000;
   border: 1px solid #D4AF37;
   color: #CCAF54;
 }
 
-.btn-regresar {
+.btn-cancelar {
   background-color: #ff0000;
   color: #000;
   border: 1px solid #d43737;
   font-weight: bold;
 }
 
-.btn-regresar:hover {
+.btn-cancelar:hover {
   background-color: #000000;
   color: #ff0000;
   border: 1px solid #ff0000;

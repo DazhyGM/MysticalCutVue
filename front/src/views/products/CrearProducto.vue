@@ -1,6 +1,10 @@
 <template>
+  <div class="row mb-2">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1>Agregar producto</h1>
+    </ul>
+  </div>
   <div class="container">
-
     <div class="row edit-container">
       <div class="col-md-5 text-center">
         <label class="form-label">Imagen</label>
@@ -54,14 +58,14 @@
             </select>
           </div>
 
-          <button type="submit" class="btn w-100 btn-add">
+          <button type="submit" class="btn w-100 btn-registrar-prod">
             Registrar Producto
           </button>
         </form>
       </div>
 
     </div>
-    <div class="btn-regresar mt-3">
+    <div class="text-center mt-3">
       <button class="btn back-button" @click="goBack">Regresar</button>
     </div>
 
@@ -77,7 +81,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { createProduct } from '@/services/productsApi';
 
-const goBack = () => router.push("/Products"); 
+const goBack = () => router.push("/Products");
 
 const router = useRouter();
 

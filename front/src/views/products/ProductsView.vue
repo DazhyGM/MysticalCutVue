@@ -38,7 +38,7 @@
 
             <button class="btn-view" @click="() => viewProductDetails(product)">Ver</button>
             <button class="btn-edit" @click="() => editProduct(product.id_product)" v-if="userRole === 'Admin'">Editar</button>
-            <button class="btn-delete" @click="() => confirmInactivate(product.id_product)" v-if="userRole === 'Admin'">Eliminar</button>
+            <button class="btn-delete-prod" @click="() => confirmInactivate(product.id_product)" v-if="userRole === 'Admin'">Eliminar</button>
           </div>
         </div>
       </div>
@@ -120,7 +120,6 @@ import { useRouter } from "vue-router";
 import { getProducts, updateProductStatus } from "@/services/productsApi";
 import { addToCartAPI, getCartAPI, updateCartItemAPI } from "@/services/shoppingCartApi";
 import axios from 'axios';
-import '@/assets/css/products.css';
 
 const router = useRouter();
 const products = ref([]);
@@ -299,4 +298,6 @@ function getUserIdFromToken() {
   }
 }
 </script>
-
+<style scoped>
+@import '@/assets/css/products/products.css';
+</style>
