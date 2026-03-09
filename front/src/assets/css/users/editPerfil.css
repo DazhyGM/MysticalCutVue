@@ -1,15 +1,4 @@
-
-
-.textnav {
-    color: #CCAF54;
-}
-
-.botonav {
-    background-color: #CCAF54;
-    color: black;
-}
-
-.recover-container {
+.perfil-container {
     background-color: #111;
     padding: 30px;
     border-radius: 10px;
@@ -19,14 +8,15 @@
     margin-top: 50px;
 }
 
-h3 {
+.docType-label{
     color: #CCAF54;
     margin-bottom: 25px;
     font-size: 20px;
     text-align: left;
 }
 
-.recover-form label {
+
+.edit-user-form label {
     display: block;
     margin-bottom: 8px;
     color: #fff;
@@ -34,9 +24,9 @@ h3 {
     text-align: left;
 }
 
-.recover-form input[type="text"],
-.recover-form input[type="email"],
-.recover-form input[type="password"] {
+.edit-user-form input[type="text"],
+.edit-user-form input[type="email"],
+.edit-user-form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -47,21 +37,21 @@ h3 {
     font-size: 14px;
 }
 
-.recover-form label[for="docType"],
-.recover-form label[for="full-name"],
-.recover-form label[for="email"],
-.recover-form label[for="phone"],
-.recover-form label[for="id-number"],
-.recover-form label[for="address"],
-.recover-form label[for="password"],
-.recover-form label[for="confirm-password"],
-.recover-form label[for="role"],
-.recover-form label[for="status"] {
+.edit-user-form label[for="docType"],
+.edit-user-form label[for="full-name"],
+.edit-user-form label[for="email"],
+.edit-user-form label[for="phone"],
+.edit-user-form label[for="id-number"],
+.edit-user-form label[for="address"],
+.edit-user-form label[for="password"],
+.edit-user-form label[for="confirm-password"],
+.edit-user-form label[for="role"],
+.edit-user-form label[for="status"] {
     width: 100%;
     color: #CCAF54;
 }
 
-.recover-form input[type="checkbox"] {
+.edit-user-form input[type="checkbox"] {
     margin-right: 8px;
 }
 
@@ -85,38 +75,6 @@ h3 {
     color: #CCAF54;
 }
 
-.swal2-popup {
-    background-color: #000 !important;
-    border: 2px solid #CCAF54;
-}
-
-.swal2-title,
-.swal2-content {
-    color: #fff !important;
-}
-
-.swal2-confirm,
-.swal2-cancel {
-    color: #000 !important;
-}
-
-.readonly-field {
-  background-color: #f0f0f000 !important;
-  color: #888 !important;
-  cursor: not-allowed;
-  border: 1px solid #ccc;
-}
-
-.editable-field {
-  background-color: #ffffff;
-  border: 2px solid #4CAF50;
-  transition: border 0.3s ease-in-out;
-}
-
-.editable-field:focus {
-  border-color: #45a049;
-}
-
 .select-field {
   width: 100%;
   padding: 10px;
@@ -128,13 +86,11 @@ h3 {
 
 .disabled-field {
   background-color: #f0f0f000 !important;
-  /* Color más claro */
   color: #888 !important;
   cursor: not-allowed;
   border: 1px solid #ccc;
 }
 
-.input-field,
 .select-field {
   width: 100%;
   padding: 10px;
@@ -150,3 +106,18 @@ input:disabled,
 select:disabled {
   cursor: not-allowed;
 }
+
+/* .swal2-popup {
+    background-color: #000 !important;
+    border: 2px solid #CCAF54;
+}
+
+.swal2-title,
+.swal2-content {
+    color: #fff !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    color: #000 !important;
+} */

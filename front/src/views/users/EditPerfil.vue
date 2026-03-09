@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1 class="titulo-header">Editar perfil</h1>
@@ -7,11 +7,11 @@
     </div>
   </div>
 
-  <div class="recover-container">
-    <form class="recover-form" @submit.prevent="confirmEdit">
+  <div class="perfil-container">
+    <form class="edit-user-form" @submit.prevent="confirmEdit">
       <div class="row">
         <div class="col-md-6">
-          <h3>Tipo de documento de identificación</h3>
+          <h3 class="docType-label">Tipo de documento de identificación</h3>
           <label>
             <input type="radio" v-model="form.docType" value="1" :disabled="form.role !== 1" class="disabled-field" />
             Cédula
