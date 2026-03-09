@@ -1,16 +1,15 @@
 <template>
-  <div class="container">
+  <div>
     <ul class="nav col-12 justify-content-center mx-auto">
       <h1 class="titulo-header">Agregar Usuario</h1>
     </ul>
   </div>
 
-  <div class="recover-container">
-
-    <form class="recover-form" @submit.prevent="confirmRegistro">
+  <div class="add-user-container">
+    <form class="add-user-form" @submit.prevent="confirmRegistro">
       <div class="row">
         <div class="col-md-6">
-          <h3>Tipo de documento de identificación</h3>
+          <h3 class="docType-label">Tipo de documento de identificación</h3>
           <label>
             <input type="radio" v-model="form.docType" value="1" required /> Cédula de Ciudadanía
           </label>
@@ -51,7 +50,7 @@
 
       </div>
 
-      <button type="submit" class="btn button-registrar">Agregar Usuario</button>
+      <button type="submit" class="btn button-add-user">Agregar Usuario</button>
     </form>
     <button class="back-button" @click="goBack">Regresar</button>
   </div>

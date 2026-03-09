@@ -47,7 +47,7 @@
           <img src="/img/logos/person-circle.svg" class="btn icon-usuario">
         </div>
 
-        <h5 class="mb-2">{{ user.full_name }}</h5>
+        <h5>{{ user.full_name }}</h5>
 
         <div class="icon-container">
           <router-link :to="`/EditUser/${user.user_id}`" class="btn btn-icon">
