@@ -1,6 +1,11 @@
 <template>
-  <div class="container">
+  <div class="row mb-2">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1 class="titulo-header">Usuarios Inactivos</h1>
+    </ul>
+  </div>
 
+  <div class="container">
     <div class="search-filter-container">
       <div class="input-group" style="max-width: 300px;">
         <input type="text" v-model="searchQuery" class="form-control" placeholder="Buscar usuario...">

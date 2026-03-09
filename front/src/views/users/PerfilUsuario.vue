@@ -1,7 +1,7 @@
 <template>
   <div class="row mb-2">
     <ul class="nav col-12 justify-content-center mx-auto">
-      <h1>Perfil del Usuario</h1>
+      <h1 class="titulo-header">Perfil del Usuario</h1>
     </ul>
   </div>
   <div class="container">

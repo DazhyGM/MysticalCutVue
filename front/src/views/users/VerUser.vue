@@ -1,7 +1,7 @@
 <template>
   <div class="row mb-3">
     <ul class="nav col-12 justify-content-center mx-auto">
-      <h1>Info Usuario</h1>
+      <h1 class="titulo-header">Info Usuario</h1>
     </ul>
   </div>
   <div class="recover-container">

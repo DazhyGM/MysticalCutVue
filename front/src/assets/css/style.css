@@ -2,7 +2,11 @@
     font-family: Amasis_MT_Std_Black;
     src: url('../fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf');
   }
-  
+  .titulo-header {
+    color: #CCAF54;
+    font-size: 40px;
+    font-weight: bold;
+}
   .carousel-item img {
     height: 610px;
     object-fit: cover;
