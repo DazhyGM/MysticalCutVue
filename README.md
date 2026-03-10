@@ -304,3 +304,14 @@ Este proyecto fue desarrollado con fines académicos y de portafolio, con el obj
 - Organización modular de código
 - Buenas prácticas de desarrollo
 - Documentacion técnica estructurada
+
+# Credenciales para prueba del sistema por roles:
+
+- Admin: usuario.admin@gmail.com
+- Client: usuario.client@gmail.com
+- Employee: usuario.employee@gmail.com
+
+- Password: Login.2025
+
+Nota: La contraseña de todos los usuarios de prueba es la misma.
+Al crearse un usuario nuevo se registra con el rol de cliente. Cada rol tiene una visualizacion e interaccion diferente dentro del sistema
