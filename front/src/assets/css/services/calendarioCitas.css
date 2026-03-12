@@ -1,26 +1,8 @@
-/* @font-face {
-  font-family: 'Amasis_MT_Std_Black';
-  src: url('@/assets/fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-} */
-
-/* body,
-.container {
-  background-color: #000;
-  color: #fff;
-  font-family: 'Amasis_MT_Std_Black', serif;
-} */
-/* 
-header {
-  background-color: #000;
-  color: white;
-} */
-
-/* h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-} */
+  .container-calendario {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
 .custom-header {
   display: flex;
@@ -31,17 +13,17 @@ header {
   position: relative;
 }
 
-.logo {
+/* .logo {
   width: 90px;
   height: auto;
   position: absolute;
   left: 20px;
-}
+} */
 
-h1 {
+/* h1 {
   font-size: 28px;
   color: #fff;
-}
+} */
 
 .main-content {
   display: flex;
@@ -184,22 +166,18 @@ h1 {
   color: #000;
 }
 
-.confirm-button,
-.back-button1 {
+.confirm-button {
+  background-color: #ccaf54;
+  color: #000;
   margin-top: 20px;
   width: 100%;
   padding: 10px;
-  border: none;
+  border: 1px solid #ccaf54;
   cursor: pointer;
   border-radius: 8px;
   font-family: 'Amasis_MT_Std_Black', serif;
 }
 
-.confirm-button {
-  background-color: #ccaf54;
-  color: #000;
-  border: 1px solid #ccaf54;
-}
 .confirm-button:hover {
   background-color: #000000;
   color: #ccaf54;

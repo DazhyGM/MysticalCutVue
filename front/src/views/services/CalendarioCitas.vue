@@ -1,15 +1,11 @@
 <template>
-  <div class="container">
-    
-
+  <div class="container-calendario">
     <div v-if="!userId || !barberId" class="alert alert-warning text-center" style="color: #f5c30f;">
       ⚠️ Faltan datos del usuario o del barbero. La cita no podrá confirmarse.
     </div>
-
     <div class="main-content">
       <div class="left-column">
-        <div class="profile">
-          <div class="profile-pic"></div>
+        <div>
           <span class="barber-name">Barbero: {{ barberName }}</span>
         </div>
 
@@ -43,18 +39,17 @@
       </div>
 
       <div class="right-column">
-        <div class="service-summary">
+        <div>
           <h3>MysticalCut</h3>
-            <h4>Resumen de Datos</h4>
+          <h4>Resumen de Datos</h4>
           <p v-if="selectedDate">Fecha: {{ selectedDate }}</p>
           <p v-if="selectedTime">Hora: {{ selectedTime }}</p>
           <section class="barber-info">
-            
             <p><strong>Nombre:</strong> {{ barberName }}</p>
-          </section>          
+          </section>
         </div>
-        
-        <div v-if="userId && barberId" class="summary-box">
+
+        <div v-if="userId && barberId">
           <div v-if="userName && userEmail && userId">
           </div>
           <div v-else class="text-muted">No se encontró información del usuario.</div>
@@ -64,9 +59,9 @@
             <p>Precio: ${{ service.price }}</p>
             <p>Duración: {{ service.duration }}</p>
             <button v-if="selectedDate && selectedTime" class="confirm-button" :disabled="!userId || !barberId"
-            @click="confirmQuote">
-            Confirmar Cita
-          </button>
+              @click="confirmQuote">
+              Confirmar Cita
+            </button>
             <button class="back-button-calendar" @click="regresar">Regresar</button>
           </div>
         </div>
@@ -229,12 +224,12 @@ export default {
     },
 
     regresar() {
-      this.$router.go(-1); 
+      this.$router.go(-1);
     }
   },
   mounted() {
     console.log('--- INICIO mounted ---');
-    
+
     this.barberId = localStorage.getItem('barberId');
     this.barberName = localStorage.getItem('barberName');
     this.userId = localStorage.getItem('userId');
@@ -245,7 +240,7 @@ export default {
     try {
       this.selectedServices = storedServices ? JSON.parse(storedServices) : [];
       console.log('Servicios cargados:', this.selectedServices);
-      
+
       if (!Array.isArray(this.selectedServices)) {
         console.warn('Formato inválido de servicios, reseteando...');
         this.selectedServices = [];
@@ -269,5 +264,5 @@ export default {
 </script>
 
 <style scoped>
- @import '@/assets/css/services/calendarioCitas.css';
+@import '@/assets/css/services/calendarioCitas.css';
 </style>
