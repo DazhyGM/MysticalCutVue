@@ -1,5 +1,5 @@
 <template>
-  <div class="container text-white">
+  <div class="container-reporte text-white">
     <div class="row mb-3">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Reportes</h1>
@@ -47,7 +47,7 @@
       No hay citas registradas para los criterios seleccionados.
     </div>
     
-    <div class="pedido-container">
+    <div class="reporte-form-container">
     <div class="table-responsive">
       <table class="table table-dark table-striped">
         <thead>
