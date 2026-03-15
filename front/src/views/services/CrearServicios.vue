@@ -4,8 +4,8 @@
       <h1>Agregar servicio</h1>
     </ul>
   </div>
-  <div class="container">
-    <div class="row edit-container">
+  <div class="container-create-service">
+    <div class="row add-service-container">
       <div class="col-md-5 text-center">
         <label class="form-label">Imagen actual:</label>
         <div class="image-placeholder mx-auto mb-3">
@@ -60,7 +60,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn w-100 btn-add">
+          <button type="submit" class="btn w-100 btn-add-service">
             Agregar
           </button>
         </form>
@@ -73,7 +73,6 @@
       </router-link>
     </div>
 
-    <!-- Mensajes -->
     <div class="text-center mt-3">
       <p v-if="message" class="text-success">{{ message }}</p>
       <p v-if="error" class="text-danger">{{ error }}</p>

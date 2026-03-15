@@ -1,4 +1,9 @@
-.edit-container {
+.container-create-service {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.add-service-container {
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
@@ -46,30 +51,18 @@
   margin-top: 10px;
 }
 
-.btn-add {
+.btn-add-service {
   background-color: #ccaf54;
   color: black;
-  border: none;
+  border: 1px solid #ccaf54;
   padding: 8px 0; 
   font-size: 13px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
-.btn-add:hover {
+.btn-add-service:hover {
   background-color: #000000;
     color: #ccaf54;
     border: 1px solid #ccaf54;
-}
-
-.btn-regresar {
-  margin-top: 12px;
-  background-color: #6c757d;
-  color: white;
-  padding: 6px 14px;
-  font-size: 13px;
-}
-
-.btn-regresar:hover {
-  background-color: #5a6268;
 }
