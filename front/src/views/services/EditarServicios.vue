@@ -4,8 +4,8 @@
         <h1>Editar Servicio</h1>
       </ul>
     </div>
-  <div class="container">
-
+    
+  <div class="container-edit-services">
     <div class="row edit-container">
       <div class="col-md-5 text-center">
         <label class="form-label">Imagen actual:</label>
@@ -63,7 +63,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn w-100 btn-add">
+          <button type="submit" class="btn w-100 btn-save-service">
             Guardar Cambios
           </button>
         </form>
