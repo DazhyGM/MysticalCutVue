@@ -1,16 +1,8 @@
-/* @font-face {
-  font-family: 'Amasis_MT_Std_Black';
-  src: url('@/assets/fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-} */
-
-/* body {
-  background-color: black;
-  color: white;
-  font-family: Amasis_MT_Std_Black;
-} */
-
+.container-select-barber {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 .custom-text-white {
   color: white !important;
 }
@@ -19,7 +11,7 @@
   color: #CCAF54;
 }
 
-.custom-card {
+.custom-card-resumen {
   background-color: #111;
   border: 5px solid #333;
   color: #fff;
@@ -192,7 +184,7 @@ border: 1px solid #CCAF54;
     margin-top: 5px;
   }
 
-  .custom-card.summary-fixed-bottom {
+  .custom-card-resumen.summary-fixed-bottom {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -213,32 +205,32 @@ border: 1px solid #CCAF54;
     padding-bottom: 300px;
   }
 
-  .custom-card h3 {
+  .custom-card-resumen h3 {
     font-size: 0.9rem;
     margin-bottom: 5px;
   }
 
-  .custom-card p {
+  .custom-card-resumen p {
     font-size: 0.75rem;
     margin-bottom: 2px;
   }
 
-  .custom-card hr {
+  .custom-card-resumen hr {
     margin: 5px 0;
   }
 
-  .custom-card .btn {
+  .custom-card-resumen .btn {
     padding: 5px 10px;
     font-size: 0.7rem;
   }
 
-  .custom-card .d-grid.gap-2 {
+  .custom-card-resumen .d-grid.gap-2 {
     gap: 5px !important;
   }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
-  .custom-card {
+  .custom-card-resumen {
     padding: 30px;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-select-barber">
 
     <div class="row">
       <div class="col-md-8 col-12 order-2 order-md-1">
@@ -21,7 +21,7 @@
       </div>
 
       <div class="col-md-4 col-12 order-1 order-md-2 mb-4 mb-md-0">
-        <div class="custom-card p-4 bg-dark text-white rounded summary-fixed-bottom">
+        <div class="custom-card-resumen p-4 bg-dark text-white rounded summary-fixed-bottom">
           <h3>Resumen de selección</h3>
           <div v-if="selectedBarber">
             <p><strong>Barbero Seleccionado:</strong></p>
@@ -57,58 +57,52 @@
 </template>
 
 <script>
-import { getBarbers } from '@/services/api'; // Importa la función que obtiene la lista de barberos desde la API
+import { getBarbers } from '@/services/api'; 
 
 export default {
-  name: 'SeleccionarBarbero', // Nombre del componente
+  name: 'SeleccionarBarbero', 
 
   data() {
-    // Datos reactivos del componente
     return {
-      barbers: [],          // Lista de barberos obtenida de la API
-      selectedBarber: null,   // Barbero actualmente seleccionado
-      selectedServices: [],   // Servicios seleccionados previamente
-      userName: '',         // Nombre del usuario (obtenido del localStorage)
-      userEmail: '',        // Email del usuario
-      userId: ''            // ID del usuario
+      barbers: [],         
+      selectedBarber: null,   
+      selectedServices: [],   
+      userName: '',         
+      userEmail: '',        
+      userId: ''            
     };
   },
 
   mounted() {
-    // Se ejecuta cuando el componente es montado en el DOM
-    this.fetchBarbers();      // Llama a la función para obtener barberos desde la API
-    this.loadLocalData();     // Carga los datos del usuario y servicios desde localStorage
+    this.fetchBarbers();     
+    this.loadLocalData();    
   },
 
   methods: {
-    // Método asíncrono para obtener la lista de barberos desde la API
     async fetchBarbers() {
       try {
-        this.barbers = await getBarbers(); // Asigna la respuesta a la lista local
+        this.barbers = await getBarbers(); 
       } catch (error) {
-        console.error('❌ Error al obtener barberos:', error); // Muestra error en consola
-        alert('No se pudieron cargar los barberos.');          // Alerta para el usuario
+        console.error('❌ Error al obtener barberos:', error); 
+        alert('No se pudieron cargar los barberos.');         
       }
     },
 
-    // Devuelve la URL completa de la imagen del barbero o una imagen predeterminada si no existe
     getImageUrl(image) {
       return image ? `/background/${image}` : '/img/background/BarberoPredeterminado.png';
     },
 
-    // Maneja el error de carga de imagen y muestra una imagen por defecto
     onImageError(event) {
       if (!event.target.src.includes('default-barber.png')) {
         event.target.src = '/img/background/default-barber.png';
       }
     },
 
-    // Asigna el barbero seleccionado al estado local
     selectBarber(barber) {
       this.selectedBarber = barber;
     },
 
-    // Carga datos desde localStorage: servicios seleccionados, nombre, email e ID del usuario
+    
     loadLocalData() {
       const storedService = localStorage.getItem('selectedService');
       const storedName = localStorage.getItem('userName');
@@ -121,27 +115,21 @@ export default {
       this.userId = storedId || '';
     },
 
-    // Limpia SOLO la selección del barbero
     clearSelection() {
-      this.selectedBarber = null; // Deselecciona el barbero
+      this.selectedBarber = null; 
     },
 
-    // Navega a la vista del calendario si hay un barbero seleccionado
     goToCalendar() {
       if (!this.selectedBarber) {
         return alert('Por favor selecciona un barbero antes de continuar.');
       }
 
-      // Guarda los datos del barbero
       localStorage.setItem('barberId', this.selectedBarber.user_id);
       localStorage.setItem('barberName', this.selectedBarber.full_name);
-
-      // Guarda los datos del usuario autenticado
       localStorage.setItem('userName', this.userName);
       localStorage.setItem('userEmail', this.userEmail);
       localStorage.setItem('userId', this.userId);
 
-      // Guarda los servicios seleccionados con el formato solicitado
       const simplifiedServices = this.selectedServices.map(service => ({
         id: service.id_services,
         name: service.name_service,
@@ -155,23 +143,20 @@ export default {
       this.$router.push('/Calendario');
     },
 
-    // Regresa a la vista anterior en el historial de navegación
     goBack() {
-      this.$router.go(-1); // Esto te devuelve a la vista anterior en el historial
+      this.$router.go(-1); 
     },
 
-    // Da formato a la duración en minutos (por ejemplo: 1 hora 30 minutos)
     formatDuration(minutes) {
-      const validMinutes = parseInt(minutes, 10); // Convierte a número
+      const validMinutes = parseInt(minutes, 10); 
 
       if (isNaN(validMinutes) || validMinutes <= 0) {
-        return 'Duración no disponible'; // Si no es válido, muestra mensaje predeterminado
+        return 'Duración no disponible'; 
       }
 
-      const hrs = Math.floor(validMinutes / 60); // Calcula horas
-      const mins = validMinutes % 60;            // Calcula minutos restantes
+      const hrs = Math.floor(validMinutes / 60); 
+      const mins = validMinutes % 60;            
 
-      // Devuelve el string con formato según las horas y minutos
       if (hrs && mins) return `${hrs} hora${hrs > 1 ? 's' : ''} ${mins} minuto${mins > 1 ? 's' : ''}`;
       if (hrs) return `${hrs} hora${hrs > 1 ? 's' : ''}`;
       return `${mins} minuto${mins > 1 ? 's' : ''}`;
