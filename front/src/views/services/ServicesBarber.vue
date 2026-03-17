@@ -8,7 +8,6 @@
   <div class="container">
 
 
-    <!-- NAV DE CATEGORÍAS -->
     <div class="category-nav">
       <ul class="nav justify-content-center">
         <li v-for="(services, category) in servicesByCategory" :key="category" class="nav-item">
@@ -17,7 +16,6 @@
       </ul>
     </div>
 
-    <!-- BOTONES SUPERIORES (solo admin) -->
     <div class="d-flex justify-content-between align-items-center my-3" v-if="userRole === 'Admin'">
       <router-link to="/Create-Services" class="btn btn-agregar">
         <img src="https://cdn-icons-png.flaticon.com/512/992/992651.png" style="width: 20px; height: 20px; margin-right: 5px;" />
@@ -26,7 +24,6 @@
       <router-link to="/Services-Inactivos" class="btn btn-agregar">Servicios Inactivos</router-link>
     </div>
 
-    <!-- SERVICIOS -->
     <div class="d-flex flex-wrap justify-content-center gap-4 align-items-start">
       <div class="col-lg-8">
         <div v-for="(services, category) in servicesByCategory" :key="category" class="service-category">
@@ -100,12 +97,9 @@ const isMenuOpen = ref(false);
 const user = ref({ full_name: '', user_id: null, user_email: '' });
 const roleModules = ref([]);
 const userRole = ref('');
-
-// Funciones menú y navegación
 const closeMenu = (event) => { if (!event.target.closest('.dropdown')) isMenuOpen.value = false; };
 const goBack = () => router.push('/Home');
 
-// Obtener usuario y servicios
 onMounted(() => {
   fetchServices();
   fetchUserData();
@@ -178,7 +172,6 @@ const confirmDelete = async (id) => {
   }
 };
 
-// Guardar servicio + usuario en localStorage
 const goToSelectBarbero = () => {
   if (!user.value.user_id) return alert("No se ha podido obtener el ID del usuario.");
 
