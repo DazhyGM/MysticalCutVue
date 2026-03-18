@@ -1,3 +1,9 @@
+.container-si {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .activate-btn {
   background-color: #CCAF54;
   color: rgb(0, 0, 0);
@@ -61,7 +67,7 @@
     border: 1px solid #D4AF37;
   }
 
-.pedido-container {
+.servi-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -70,8 +76,8 @@
     overflow-y: auto;
 }
 
-.pedido-box {
-    background-color: #333;
+.servi-box {
+    background-color: #2d2d2d;
     border: 2px solid #CCAF54;
     border-radius: 10px;
     width: 90%;
@@ -87,12 +93,12 @@
     flex-wrap: wrap;
 }
 
-.pedido-box h5 {
+.servi-box h5 {
     margin: 0;
     font-size: 1.5rem;
 }
 
-.pedido-box a {
+.servi-box a {
     color: #ffffff;
     text-decoration: none;
 }
@@ -122,55 +128,11 @@
     object-fit: contain; 
 }
 
-
-.bi-person-circle{
-    background-color: #ffffff;
-    color: #CCAF54;
-}
-
-.icon-usuario-container {
-    position: relative;
-    left: 20px; 
-    border: 2px solid #CCAF54;
-    border-radius: 20%;
-    padding: 7px;
-}
-
-.icon-usuario {
-    width: 100%;
-    padding: 7px;
-}
-
 .form-check-input {
-    background-color: #ccc; /* Color gris al estar desactivado */
-    border-color: #ccc;    /* Bordes grises */
+    background-color: #ccc;
+    border-color: #ccc;    
     width: 50px;
     height: 25px;
-}
-
-.form-check-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.form-check-input:active {
-  appearance: none;
-  box-shadow: none;
-}
-
-.form-check-input.active-switch {
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
-}
-
-.form-check-input.blocked-switch {
-  background-color: #dc3545 !important;
-  border-color: #dc3545 !important;
-}
-
-.form-check-input.disabled-switch {
-  background-color: #6c757d !important;
-  border-color: #6c757d !important;
 }
 
 .swal2-popup {
@@ -187,21 +149,4 @@
 .swal2-cancel {
     color: #000 !important;
 }
-.btn-agregar{
-    background-color: #ccaf54;
-    color: #000000;
-    border: 1px solid #d4af37;
-}
-.btn-agregar:hover{
-    background-color: #2d2d2d;
-    color: #ffffff;
-    border: 1px solid #d4af37;
-}
-.search-filter-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
   

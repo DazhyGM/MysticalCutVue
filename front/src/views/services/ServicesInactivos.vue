@@ -1,14 +1,13 @@
 <template>
-  <div class ="row mb-2">
-      <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Servicios Inactivos</h1>
-      </ul>
-    </div>
-  <div class="container">
-
+  <div class="row mb-2">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1>Servicios Inactivos</h1>
+    </ul>
+  </div>
+  <div class="container-si">
     <div class="content">
-      <div class="pedido-container">
-        <div v-for="service in inactiveServices" :key="service.id_services" class="pedido-box">
+      <div class="servi-container">
+        <div v-for="service in inactiveServices" :key="service.id_services" class="servi-box">
           <div class="service-info">
             <div class="info-row">
               <h5 class="info-title">Servicio</h5>
@@ -25,7 +24,7 @@
           </div>
           <button class="activate-btn" @click="activateServiceHandler(service)">Activar</button>
         </div>
-        
+
       </div>
       <button class="btn back-buttonS" @click="goBack">Regresar</button>
     </div>
@@ -67,71 +66,5 @@ onMounted(loadInactiveServices);
 </script>
 
 <style scoped>
-.activate-btn {
-  background-color: #CCAF54;
-  color: rgb(0, 0, 0);
-  padding: 5px 10px;
-  border: 1px solid #ccaf54;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: #6d550e;
-}
-.activate-btn:hover {
-  background-color: #000000;
-    color: #ccaf54;
-    border: 1px solid #ccaf54;
-}
-.pedido-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px;
-}
-.service-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-.info-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-.info-title {
-  color: #CCAF54;
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-.info-text {
-  font-size: 1rem;
-  color: #ffffff;
-}
-  .back-buttonS {
-    padding: 7px 15px;
-    background-color: #000000;
-    border: 1px solid #D4AF37;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #CCAF54;
-    margin-top: 105px;
-    margin: auto;
-    text-align: center;
-    display: block;
-    justify-content: center;
-    width: 130px;
-    position: relative;
-    top: 50%;
-    transform: translateY(50%);
-  }
-  
-  .back-buttonS:hover {
-    background-color: #CCAF54;
-    color: #000000;
-    border: 1px solid #D4AF37;
-  }
+@import '@/assets/css/services/servicesInactives.css';
 </style>
