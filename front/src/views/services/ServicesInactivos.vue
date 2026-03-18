@@ -36,7 +36,6 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { getInactiveServices, activateService } from '@/services/servicesApi';
-import '@/assets/css/services/servicesInactives.css';
 
 const router = useRouter();
 const inactiveServices = ref([]);
