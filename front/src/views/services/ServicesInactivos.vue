@@ -26,7 +26,7 @@
         </div>
 
       </div>
-      <button class="btn back-buttonS" @click="goBack">Regresar</button>
+      <button class="btn back-button-servi-in" @click="goBack">Regresar</button>
     </div>
 
   </div>

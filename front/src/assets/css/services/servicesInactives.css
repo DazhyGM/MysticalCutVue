@@ -43,7 +43,7 @@
   font-size: 1rem;
   color: #ffffff;
 }
-  .back-buttonS {
+  .back-button-servi-in {
     padding: 7px 15px;
     background-color: #000000;
     border: 1px solid #D4AF37;
@@ -61,7 +61,7 @@
     transform: translateY(50%);
   }
   
-  .back-buttonS:hover {
+  .back-button-servi-in:hover {
     background-color: #CCAF54;
     color: #000000;
     border: 1px solid #D4AF37;
@@ -101,38 +101,6 @@
 .servi-box a {
     color: #ffffff;
     text-decoration: none;
-}
-
-.icon-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    color: #CCAF54;
-}
-
-.btn-icon {
-    background-color: #CCAF54;
-    color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px; 
-    border: none;
-    cursor: pointer;
-}
-
-.btn-icon img {
-    width: 24px; 
-    height: 24px;
-    object-fit: contain; 
-}
-
-.form-check-input {
-    background-color: #ccc;
-    border-color: #ccc;    
-    width: 50px;
-    height: 25px;
 }
 
 .swal2-popup {
