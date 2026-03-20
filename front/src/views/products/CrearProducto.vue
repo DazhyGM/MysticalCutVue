@@ -4,7 +4,7 @@
       <h1>Agregar producto</h1>
     </ul>
   </div>
-  <div class="container">
+  <div class="container-create-prod">
     <div class="row edit-container">
       <div class="col-md-5 text-center">
         <label class="form-label">Imagen</label>

@@ -1,3 +1,9 @@
+.container-create-prod {
+  width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .edit-container {
   padding: 20px;
   background-color: #1c1c1c;
