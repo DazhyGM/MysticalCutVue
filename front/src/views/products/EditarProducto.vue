@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <div>
     <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
         <h1>Editar producto</h1>
       </ul>
     </div>
 
-    <div class="row edit-container">
+    <div class="row edit-product-container">
       <div class="col-md-5 text-center">
         <div class="mb-3">
           <label class="form-label">Imagen actual:</label>
