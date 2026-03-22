@@ -2,7 +2,6 @@
 const ShoppingCart = require('../models/shoppingCart');
 
 const shoppingCartController = {
-  // Agregar producto al carrito
   async addToCart(req, res) {
     try {
       const { user_id, id_product, amount } = req.body;

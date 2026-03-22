@@ -1,6 +1,6 @@
 const productModel = require('../models/productModel');
 
-// 🔹 Crear producto
+// Crear producto
 exports.createProduct = async (req, res) => {
   try {
     const image = req.file ? req.file.filename : null;
@@ -14,7 +14,7 @@ exports.createProduct = async (req, res) => {
   }
 };
 
-// 🔹 Obtener todos los productos
+// Obtener todos los productos
 exports.getProducts = async (req, res) => {
   try {
     const products = await productModel.getAllProducts();
@@ -25,7 +25,7 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-// 🔹 Obtener producto por ID
+// Obtener producto por ID
 exports.getProductById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -37,17 +37,15 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-// 🔹 Actualizar producto
+// Actualizar producto
 exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
     const productData = { ...req.body };
 
-    // Solo si hay archivo nuevo, actualizar la imagen
 if (req.file) {
   productData.image = req.file.filename;
 } else {
-  // Mantener la imagen actual en DB: deberías obtener la imagen actual antes y asignarla aquí
   const currentProduct = await productModel.getProductById(id);
   productData.image = currentProduct.image;
 }
@@ -60,7 +58,7 @@ if (req.file) {
   }
 };
 
-// 🔹 Cambiar estado del producto
+// Cambiar estado del producto
 exports.updateProductStatus = async (req, res) => {
   try {
     const { id } = req.params;
@@ -74,7 +72,7 @@ exports.updateProductStatus = async (req, res) => {
   }
 };
 
-// 🔹 Eliminar producto (lógica suave)
+// Eliminar producto (lógica suave)
 exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -86,7 +84,7 @@ exports.deleteProduct = async (req, res) => {
   }
 };
 
-// 🔹 Obtener productos inactivos
+// Obtener productos inactivos
 exports.getInactiveProducts = async (req, res) => {
   try {
     const products = await productModel.getInactiveProducts();

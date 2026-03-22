@@ -1,6 +1,6 @@
 const ServiceModel = require('../models/serviceModel');
 
-// 🔹 Obtener todos los servicios activos
+// Obtener todos los servicios activos
 exports.getAllServices = (req, res) => {
   ServiceModel.getAllActiveServices((err, results) => {
     if (err) {
@@ -11,7 +11,7 @@ exports.getAllServices = (req, res) => {
   });
 };
 
-// 🔹 Obtener un servicio por ID
+// Obtener un servicio por ID
 exports.getServiceById = (req, res) => {
   const { id } = req.params;
   ServiceModel.getServiceById(id, (err, result) => {
@@ -26,7 +26,7 @@ exports.getServiceById = (req, res) => {
   });
 };
 
-// 🔹 Crear nuevo servicio
+// Crear nuevo servicio
 exports.createService = (req, res) => {
   const { name_service, description, estimated_time, price, id_category_services, id_status } = req.body;
   const image = req.file ? req.file.filename : null;
@@ -42,7 +42,7 @@ exports.createService = (req, res) => {
   });
 };
 
-// 🔹 Actualizar servicio
+// Actualizar servicio
 exports.updateService = (req, res) => {
   const { id } = req.params;
   const { name_service, description, estimated_time, price, id_category_services, id_status } = req.body;
@@ -72,7 +72,7 @@ exports.updateService = (req, res) => {
   });
 };
 
-// 🔹 Eliminar servicio (cambiar estado a inactivo)
+// Eliminar servicio (cambiar estado a inactivo)
 exports.deleteService = (req, res) => {
   const { id } = req.params;
   ServiceModel.deleteService(id, (err, result) => {
@@ -87,7 +87,7 @@ exports.deleteService = (req, res) => {
   });
 };
 
-// 🔹 Obtener servicios inactivos
+// Obtener servicios inactivos
 exports.getInactiveServices = (req, res) => {
   ServiceModel.getInactiveServices((err, results) => {
     if (err) {
@@ -98,7 +98,7 @@ exports.getInactiveServices = (req, res) => {
   });
 };
 
-// 🔹 Reactivar un servicio
+// Reactivar un servicio
 exports.activateService = (req, res) => {
   const { id } = req.params;
   ServiceModel.activateService(id, (err, result) => {

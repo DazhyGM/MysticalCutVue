@@ -1,6 +1,6 @@
 const Quote = require('../models/Quote');
 
-// 🔹 Enviar correo con detalles de la cita
+// Enviar correo con detalles de la cita
 exports.sendQuoteEmail = async (req, res) => { 
   const { email, servicio, fecha, hora, total, barbero } = req.body;
 
@@ -21,7 +21,7 @@ exports.sendQuoteEmail = async (req, res) => {
   }
 };
 
-// 🔹 Crear una nueva cita
+// Crear una nueva cita
 exports.createQuote = async (req, res) => {
   const { user_id, barber_id, date_time, state_quotes, id_services } = req.body;
 
@@ -48,7 +48,7 @@ exports.createQuote = async (req, res) => {
   }
 };
 
-// 🔹 Obtener citas por barbero, año y mes
+// Obtener citas por barbero, año y mes
 exports.getQuotesByBarberAndMonth = async (req, res) => {
   const { barber_id, year, month } = req.query;
 
@@ -65,7 +65,7 @@ exports.getQuotesByBarberAndMonth = async (req, res) => {
   }
 };
 
-// 🔹 Obtener citas con detalle de servicio por usuario o barbero
+// Obtener citas con detalle de servicio por usuario o barbero
 exports.getQuotesWithServiceDetails = async (req, res) => {
   const { user_id, barber_id } = req.query;
   const userRole = req.user.role;
@@ -80,7 +80,7 @@ exports.getQuotesWithServiceDetails = async (req, res) => {
   }
 };
 
-// 🔹 Función para cancelar una cita
+// Función para cancelar una cita
 exports.cancelQuote = async (req, res) => {
   const quoteId = req.params.id;
 
@@ -98,7 +98,7 @@ exports.cancelQuote = async (req, res) => {
   }
 };
 
-// 🔹 Función para finalizar una cita
+// Función para finalizar una cita
 exports.finishQuote = async (req, res) => {
   const quoteId = req.params.id;
 
@@ -116,7 +116,7 @@ exports.finishQuote = async (req, res) => {
   }
 };
 
-// 🔹 Obtener citas por barbero y fecha
+// Obtener citas por barbero y fecha
 exports.getQuotesByBarberAndDate = async (req, res) => {
   const { barber_id, date } = req.query;
 
@@ -133,7 +133,7 @@ exports.getQuotesByBarberAndDate = async (req, res) => {
   }
 };
 
-// 🔹 Método modificado: Obtener citas para reportes por rango de fechas
+// Método modificado: Obtener citas para reportes por rango de fechas
 exports.getReportQuotes = async (req, res) => {
   const { startDate, endDate } = req.query; // Recibimos las fechas como parámetros de consulta
   

@@ -56,7 +56,7 @@ const activateProductHandler = async (product) => {
   if (!confirmActivation) return;
 
   try {
-    await updateProductStatus(product.id_product, 1); // 1 = estado ACTIVO
+    await updateProductStatus(product.id_product, 1);
     inactiveProducts.value = inactiveProducts.value.filter(p => p.id_product !== product.id_product);
   } catch (error) {
     console.error("Error al activar el producto:", error);
