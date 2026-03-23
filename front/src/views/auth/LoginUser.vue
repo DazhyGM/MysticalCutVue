@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-login">
     <header
       class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
       <div class="col-md-3 mb-2 mb-md-0">
@@ -10,7 +10,7 @@
       </ul>
     </header>
 
-    <div class="login-container">
+    <div class="login-cont">
       <form @submit.prevent="logIn" class="login-form">
         <h6 class="text-center text-danger">{{ message }}</h6>
 

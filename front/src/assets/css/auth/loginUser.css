@@ -1,4 +1,9 @@
-.login-container {
+.container-login {
+    max-width: 1200px;
+    margin-top: 30px;
+    margin: auto;
+}
+.login-cont {
   background-color: #111;
   padding: 30px;
   border-radius: 10px;
