@@ -2,7 +2,7 @@
   <div class="container-scaled">
     <div class ="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Servicios</h1>
+        <h1 class="titulo-header">Servicios</h1>
       </ul>
     </div>
   <div class="container">

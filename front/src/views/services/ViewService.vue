@@ -1,12 +1,12 @@
 <template>
   <div class="row mb-2">
     <ul class="nav col-12 justify-content-center mx-auto">
-      <h1>Detalles del Servicio</h1>
+      <h1 class="titulo-header">Detalles del Servicio</h1>
     </ul>
   </div>
 
   <div class="container-service mt-5 text-white">
-    <div class="card p-4 bg-dark text-white">
+    <div class="card p-4 text-white">
       <h2 class="text-center mb-4">{{ service.name_service }}</h2>
 
       <div class="d-flex flex-column align-items-center">

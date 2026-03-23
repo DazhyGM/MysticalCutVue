@@ -1,10 +1,10 @@
 <template>
-  <div class ="row mb-2">
-      <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Editar Servicio</h1>
-      </ul>
-    </div>
-    
+  <div class="row mb-2">
+    <ul class="nav col-12 justify-content-center mx-auto">
+      <h1 class="titulo-header">Editar Servicio</h1>
+    </ul>
+  </div>
+
   <div class="container-edit-services">
     <div class="row edit-container">
       <div class="col-md-5 text-center">
@@ -69,17 +69,15 @@
         </form>
       </div>
     </div>
-
-    <div class="text-center mt-3">
-      <router-link to="/Services" class="btn back-button">
-        Regresar
-      </router-link>
-    </div>
-
     <div class="text-center mt-3">
       <p v-if="message" class="text-success">{{ message }}</p>
       <p v-if="error" class="text-danger">{{ error }}</p>
     </div>
+  </div>
+  <div class="text-center mt-3">
+    <router-link to="/Services" class="btn back-button">
+      Regresar
+    </router-link>
   </div>
 </template>
 

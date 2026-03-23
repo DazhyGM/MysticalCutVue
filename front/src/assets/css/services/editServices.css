@@ -1,4 +1,6 @@
 .container-edit-services {
+    background-color: #111;
+  border-radius: 15px;
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;

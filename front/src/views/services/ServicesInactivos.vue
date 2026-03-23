@@ -1,7 +1,7 @@
 <template>
   <div class="row mb-2">
     <ul class="nav col-12 justify-content-center mx-auto">
-      <h1>Servicios Inactivos</h1>
+      <h1 class="titulo-header">Servicios Inactivos</h1>
     </ul>
   </div>
   <div class="container-si">
@@ -24,11 +24,9 @@
           </div>
           <button class="activate-btn" @click="activateServiceHandler(service)">Activar</button>
         </div>
-
       </div>
       <button class="btn back-button-servi-in" @click="goBack">Regresar</button>
     </div>
-
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="row mb-2">
     <ul class="nav col-12 justify-content-center mx-auto">
-      <h1>Agregar servicio</h1>
+      <h1 class="titulo-header">Agregar servicio</h1>
     </ul>
   </div>
   <div class="container-create-service">

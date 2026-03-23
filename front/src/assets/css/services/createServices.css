@@ -1,14 +1,17 @@
 .container-create-service {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
 .add-service-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    margin-top: 30px;
-    color: #fff;
+  background-color: #111;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-top: 30px;
+  color: #fff;
 }
 
 .image-placeholder {
@@ -46,7 +49,7 @@
 .title {
   color: #ccaf54;
   text-align: center;
-  font-size: 24px; 
+  font-size: 24px;
   font-weight: bold;
   margin-top: 10px;
 }
@@ -55,7 +58,7 @@
   background-color: #ccaf54;
   color: black;
   border: 1px solid #ccaf54;
-  padding: 8px 0; 
+  padding: 8px 0;
   font-size: 13px;
   font-weight: bold;
   transition: background-color 0.3s ease;
@@ -63,6 +66,6 @@
 
 .btn-add-service:hover {
   background-color: #000000;
-    color: #ccaf54;
-    border: 1px solid #ccaf54;
+  color: #ccaf54;
+  border: 1px solid #ccaf54;
 }

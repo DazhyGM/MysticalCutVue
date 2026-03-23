@@ -1,7 +1,7 @@
 .container-si {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .activate-btn {
@@ -12,109 +12,139 @@
   border-radius: 5px;
   cursor: pointer;
   box-shadow: #6d550e;
+  display: block;
+  margin: 10px auto 0 auto;
 }
+
 .activate-btn:hover {
   background-color: #000000;
-    color: #ccaf54;
-    border: 1px solid #ccaf54;
+  color: #ccaf54;
+  border: 1px solid #ccaf54;
 }
 
 .service-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  /* columnas: servicio | descripción | precio */
+  gap: 20px;
+  width: 100%;
+  align-items: start;
   text-align: center;
 }
+
 .info-row {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-bottom: 15px;
 }
+
 .info-title {
   color: #CCAF54;
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 5px;
+  display: block;
 }
+
 .info-text {
   font-size: 1rem;
   color: #ffffff;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
-  .back-button-servi-in {
-    padding: 7px 15px;
-    background-color: #000000;
-    border: 1px solid #D4AF37;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #CCAF54;
-    margin-top: 105px;
-    margin: auto;
-    text-align: center;
-    display: block;
-    justify-content: center;
-    width: 130px;
-    position: relative;
-    top: 50%;
-    transform: translateY(50%);
-  }
-  
-  .back-button-servi-in:hover {
-    background-color: #CCAF54;
-    color: #000000;
-    border: 1px solid #D4AF37;
-  }
+
+.back-button-servi-in {
+  padding: 7px 15px;
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #CCAF54;
+  margin-top: 105px;
+  margin: auto;
+  text-align: center;
+  display: block;
+  justify-content: center;
+  width: 130px;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+}
+
+.back-button-servi-in:hover {
+  background-color: #CCAF54;
+  color: #000000;
+  border: 1px solid #D4AF37;
+}
 
 .servi-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    max-height: 70vh;
-    overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  max-height: 70vh;
+  overflow-y: auto;
 }
 
 .servi-box {
-    background-color: #2d2d2d;
-    border: 2px solid #CCAF54;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 900px;
-    gap: 10px;
-    padding: 15px;
-    margin-bottom: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    flex-wrap: wrap;
+  background-color: #111;
+  border: 2px solid #CCAF54;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 900px;
+  gap: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  flex-wrap: wrap;
 }
 
 .servi-box h5 {
-    margin: 0;
-    font-size: 1.5rem;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 .servi-box a {
-    color: #ffffff;
-    text-decoration: none;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .service-info {
+    grid-template-columns: 1fr; /* 👈 una sola columna */
+    gap: 10px;
+  }
+
+  .servi-box {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-row {
+    width: 100%;
+  }
+
+  .activate-btn {
+    width: 60%;
+  }
 }
 
 .swal2-popup {
-    background-color: #000 !important;
-    border: 2px solid #CCAF54;
+  background-color: #000 !important;
+  border: 2px solid #CCAF54;
 }
 
 .swal2-title,
 .swal2-content {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .swal2-confirm,
 .swal2-cancel {
-    color: #000 !important;
+  color: #000 !important;
 }
-  
