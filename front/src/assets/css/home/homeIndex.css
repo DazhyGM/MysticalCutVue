@@ -1,0 +1,12 @@
+.botonav-index {
+    margin-top: 5px;
+    margin-right: 10px;
+    background-color: #CCAF54;
+    color: black;
+}
+
+.botonav-index:hover {
+    background-color: #000000;
+    color: #ccaf54;
+    border: 1px solid #ccaf54;
+}

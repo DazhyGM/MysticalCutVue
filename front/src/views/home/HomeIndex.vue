@@ -11,10 +11,10 @@
         <h1>MysticalCut</h1>
       </ul>
       <div class="col-md-3 text-end">
-        <router-link class="btn botonav" to="/Login">
+        <router-link class="btn botonav-index" to="/Login">
           <i></i>Iniciar Sesión
         </router-link>
-        <router-link class="btn botonav" to="/Register">
+        <router-link class="btn botonav-index" to="/Register">
           <i></i>Registrar
         </router-link>
       </div>
@@ -136,3 +136,6 @@ export default {
   }
 };
 </script>
+<style scoped>
+@import '@/assets/css/home/homeIndex.css';
+</style>
