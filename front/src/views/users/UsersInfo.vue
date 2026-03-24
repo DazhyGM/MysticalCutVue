@@ -66,6 +66,7 @@
                 'active-switch': user.userStatus_fk === 1,
                 'blocked-switch': user.userStatus_fk === 2,
                 'disabled-switch': user.userStatus_fk === 3,
+                'disabled-switch': user.userStatus_fk === 4,
               }" />
           </div>
         </div>

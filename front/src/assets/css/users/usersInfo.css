@@ -13,7 +13,7 @@
     border-radius: 10px;
     width: 90%;
     max-width: 900px;
-    gap:10px;
+    gap: 10px;
     padding: 10px;
     margin-bottom: 20px;
     text-align: center;
@@ -48,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px; 
+    padding: 10px;
     border: 1px solid #ccaf54;
     cursor: pointer;
 }
@@ -60,20 +60,20 @@
 }
 
 .btn-icon img {
-    width: 24px; 
+    width: 24px;
     height: 24px;
-    object-fit: contain; 
+    object-fit: contain;
 }
 
 
-.bi-person-circle{
+.bi-person-circle {
     background-color: #ffffff;
     color: #CCAF54;
 }
 
 .icon-usuario-container {
     position: relative;
-    left: 20px; 
+    left: 20px;
     border: 2px solid #CCAF54;
     border-radius: 20%;
     padding: 7px;
@@ -86,34 +86,37 @@
 
 .form-check-input {
     background-color: #ccc;
-    border-color: #ccc;    
-    width: 50px;
+    border-color: #ccc;
     height: 25px;
+    width: 39px;
 }
 
 .form-check-input:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.form-check-input:active {
-  appearance: none;
-  box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    height: 25px ;
+    width: 39px;
 }
 
 .form-check-input.active-switch {
-  background-color: #28a745 !important;
-  border-color: #28a745 !important;
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    height: 25px;
+    width: 39px;
 }
 
 .form-check-input.blocked-switch {
-  background-color: #dc3545 !important;
-  border-color: #dc3545 !important;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    height: 25px;
+    width: 39px;
 }
 
 .form-check-input.disabled-switch {
-  background-color: #6c757d !important;
-  border-color: #6c757d !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    height: 25px;
+    width: 39px;
 }
 
 .swal2-popup {
@@ -130,21 +133,23 @@
 .swal2-cancel {
     color: #000 !important;
 }
-.btn-agregar{
+
+.btn-agregar {
     background-color: #ccaf54;
     color: #000000;
     border: 1px solid #d4af37;
 }
-.btn-agregar:hover{
+
+.btn-agregar:hover {
     background-color: #2d2d2d;
     color: #ffffff;
     border: 1px solid #d4af37;
 }
+
 .search-filter-container {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
     margin-bottom: 20px;
-  }
-  
+}
