@@ -49,6 +49,7 @@ const router = useRouter();
 const inactiveUsers = ref([]);
 const searchQuery = ref("");
 const selectedRole = ref("");
+const sortOrder = ref(""); // "asc" | "desc" | ""
 
 const loadInactiveUsers = async () => {
   try {
@@ -67,8 +68,12 @@ const activateUser = async (user) => {
   }
 };
 
+const sortUsers = (order) => {
+  sortOrder.value = order;
+};
+
 const filteredInactiveUsers = computed(() => {
-  return inactiveUsers.value.filter(user =>
+  let result = inactiveUsers.value.filter(user =>
     user.userStatus_fk === 3 &&
     (selectedRole.value === "" || user.role_fk === Number(selectedRole.value)) &&
     (
@@ -76,6 +81,18 @@ const filteredInactiveUsers = computed(() => {
       user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase())
     )
   );
+
+  if (sortOrder.value === "asc") {
+    result.sort((a, b) =>
+      a.full_name.trim().localeCompare(b.full_name.trim(), 'es', { sensitivity: 'base' })
+    );
+  } else if (sortOrder.value === "desc") {
+    result.sort((a, b) =>
+      b.full_name.trim().localeCompare(a.full_name.trim(), 'es', { sensitivity: 'base' })
+    );
+  }
+
+  return result;
 });
 
 const goBack = () => {
@@ -86,5 +103,5 @@ onMounted(loadInactiveUsers);
 </script>
 
 <style scoped>
- @import '@/assets/css/users/usersInactives.css';
+@import '@/assets/css/users/usersInactives.css';
 </style>

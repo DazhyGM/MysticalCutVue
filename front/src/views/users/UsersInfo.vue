@@ -65,7 +65,6 @@
               @change="toggleUserStatus(user)" :disabled="user.userStatus_fk === 3" :class="{
                 'active-switch': user.userStatus_fk === 1,
                 'blocked-switch': user.userStatus_fk === 2,
-                'disabled-switch': user.userStatus_fk === 3,
                 'disabled-switch': user.userStatus_fk === 4,
               }" />
           </div>
@@ -90,6 +89,7 @@ const router = useRouter();
 const users = ref([]);
 const searchQuery = ref("");
 const selectedRole = ref("");
+const sortOrder = ref(""); // "asc" | "desc" | ""
 
 const loadUsers = async () => {
   try {
@@ -100,12 +100,26 @@ const loadUsers = async () => {
 };
 
 const filteredUsers = computed(() => {
-  return users.value.filter(user =>
+  let result = users.value.filter(user =>
     user.userStatus_fk !== 3 &&
     (selectedRole.value === "" || user.role_fk === Number(selectedRole.value)) &&
-    (user.full_name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase()))
+    (
+      user.full_name.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      user.document_number.toLowerCase().includes(searchQuery.value.toLowerCase())
+    )
   );
+
+  if (sortOrder.value === "asc") {
+    result.sort((a, b) =>
+      a.full_name.trim().localeCompare(b.full_name.trim(), 'es', { sensitivity: 'base' })
+    );
+  } else if (sortOrder.value === "desc") {
+    result.sort((a, b) =>
+      b.full_name.trim().localeCompare(a.full_name.trim(), 'es', { sensitivity: 'base' })
+    );
+  }
+
+  return result;
 });
 
 const filtrarPorRol = async () => {
@@ -148,7 +162,7 @@ const confirmDelete = async (id) => {
 };
 
 const sortUsers = (order) => {
-  users.value.sort((a, b) => order === "asc" ? a.full_name.localeCompare(b.full_name) : b.full_name.localeCompare(a.full_name));
+  sortOrder.value = order;
 };
 
 const goBack = () => {
