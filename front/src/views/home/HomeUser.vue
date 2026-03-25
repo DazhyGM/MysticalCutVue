@@ -9,7 +9,7 @@
           </router-link>
 
           <div class="dropdown">
-            <button class="btn dropdown-toggle" @click="toggleMenu">
+            <button class="btn dropdown-toggle-perfil" @click="toggleMenu">
               <img src="/img/background/Icono usuario.png" alt="Profile" class="icon me-2" />
               {{ user.full_name || 'Usuario' }}
             </button>

@@ -40,7 +40,7 @@
 
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineProps } from 'vue'
 
@@ -50,6 +50,12 @@ const props = defineProps({
 
 
 const router = useRouter();
+watch(
+  () => router.path,
+  () => {
+    isMenuOpen.value = false;
+  }
+);
 const isMenuOpen = ref(false);
 
 const toggleMenu = () => {
@@ -77,6 +83,7 @@ const logout = () => {
 };
 
 const goToProfile = () => {
+  isMenuOpen.value = false;
   router.push('/perfil');
 };
 
