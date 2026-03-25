@@ -27,7 +27,7 @@
   .dropdown-toggle {
       background-color: transparent;
       color: #fff;
-      border: none;
+      border: 1px solid #d4af37;
       padding: 0.5rem 1rem;
       border-radius: 5px;
       cursor: pointer;

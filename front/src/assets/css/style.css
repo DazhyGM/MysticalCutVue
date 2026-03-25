@@ -402,12 +402,36 @@
     z-index: 1000;
     min-width: 200px;
   }
-  
-  .dropdown-toggle{
-    color: white;
+
+  .dropdown-toggle-perfil {
+      background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s ease;
+  }
+
+  .dropdown-toggle-perfil:hover {
+      background-color: #333;
   }
   
-  .dropdown-toggle:hover{
+  .dropdown-toggle-users{
+    background-color: transparent;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-toggle-users:hover{
     color: #CCAF54;
   }
   
