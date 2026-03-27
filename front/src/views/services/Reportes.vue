@@ -33,9 +33,9 @@
         </div>
 
         <div class="col-md-6 offset-md-3 d-flex justify-content-center mt-3">
-          <button class="btn btn-primary w-50 me-2" @click="loadReport"
+          <button class="btn btn-reporte w-50 me-2" @click="loadReport"
             :disabled="selectedReportType !== 'custom' && !searchText">Generar Reporte / Aplicar Filtro</button>
-          <button class="btn btn-primary w-50" @click="resetFilters">Reiniciar Filtros</button>
+          <button class="btn btn-reporte w-50" @click="resetFilters">Reiniciar Filtros</button>
         </div>
       </div>
     </div>

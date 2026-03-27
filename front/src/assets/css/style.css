@@ -1,74 +1,77 @@
 @font-face {
-    font-family: Amasis_MT_Std_Black;
-    src: url('../fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf');
-  }
-  .titulo-header {
-    color: #CCAF54;
-    font-size: 40px;
-    font-weight: bold;
+  font-family: Amasis_MT_Std_Black;
+  src: url('../fonts/Amasis_MT_Std_Black/Amasis_MT_Std_Black.ttf');
 }
-  .carousel-item img {
-    height: 610px;
-    object-fit: cover;
-  }
-  
-  .carousel-title {
-    font-size: 2rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    text-align: center;
-  }
-  
-  .titulo1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 100%;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    z-index: 10;
-  }
-  
-  .carousel-item {
-    position: relative;
-  }
-  
-  body {
-    background-color: #000000;
-    color: #ffffff;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: Amasis_MT_Std_Black;
-  }
-  
-  .textnav {
-    color: #CCAF54;
-  }
-  
-  .botonav {
-    background-color: #CCAF54;
-    color: black;
-    margin-left: 10px;
-  }
 
-  .botonav-delete:hover {
-    background-color: #ff0000;
-    color: black;
-    margin-left: 10px;
-  }
-  .botonav-delete {
-    background-color: #f32f2f;
-    color: black;
-    margin-left: 10px;
-  }
+.titulo-header {
+  color: #CCAF54;
+  font-size: 40px;
+  font-weight: bold;
+}
 
-  /* .botonav-citas:hover {
+.carousel-item img {
+  height: 610px;
+  object-fit: cover;
+}
+
+.carousel-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.titulo1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.carousel-item {
+  position: relative;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Amasis_MT_Std_Black;
+}
+
+.textnav {
+  color: #CCAF54;
+}
+
+.botonav {
+  background-color: #CCAF54;
+  color: black;
+  margin-left: 10px;
+}
+
+.botonav-delete:hover {
+  background-color: #ff0000;
+  color: black;
+  margin-left: 10px;
+}
+
+.botonav-delete {
+  background-color: #f32f2f;
+  color: black;
+  margin-left: 10px;
+}
+
+/* .botonav-citas:hover {
     background-color: #0051ff;
     color: black;
     margin-left: 10px;
@@ -79,8 +82,8 @@
     color: black;
     margin-left: 10px;
   } */
-  
-  /* .login-container {
+
+/* .login-container {
     background-color: #111;
     padding: 30px;
     border-radius: 10px;
@@ -89,27 +92,27 @@
     margin: auto;
     margin-top: 50px;
   } */
-  
-  .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .logo {
-    width: 70px;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    color: #D4AF37;
-    margin-bottom: 25px;
-    font-size: 24px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.552);
-  }
-  
-  /* .login-form label {
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 70px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #D4AF37;
+  margin-bottom: 25px;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.552);
+}
+
+/* .login-form label {
     display: block;
     margin-bottom: 8px;
     color: #fff;
@@ -126,8 +129,8 @@
     color: #fff;
     font-size: 16px;
   } */
-  
-  /* .links {
+
+/* .links {
     display: flex;
     flex-direction: column;
   }
@@ -142,323 +145,332 @@
   .links a:hover {
     text-decoration: underline;
   } */
-  
-  .back-button {
-    padding: 7px 15px;
-    background-color: #000000;
-    border: 1px solid #D4AF37;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #CCAF54;
-    margin-top: 15px;
-    margin: 0 auto;
-    text-align: center;
-    display: block;
-    width: 130px;
-    
-  }
-  
-  .back-button:hover {
-    background-color: #CCAF54;
-    color: #000000;
-    border: 1px solid #D4AF37;
-  }
-  
-  footer {
-    margin-top: auto;
-    background-color: #00000000;
-    padding: 10px 0;
-  }
-  
-  footer h5 {
-    color: #D4AF37;
-    margin-bottom: 10px;
-  }
-  
-  footer p {
-    margin-top: 10px;
-    margin-bottom: 0;
-  }
-  
-  footer .nav-link {
-    color: #D4AF37;
-  }
-  
-  footer .nav-link:hover {
-    color: #CCAF54;
-  }
-  
-  .footer-social-icons {
-    margin-top: 10px;
-  }
-  
-  .footer-social-icons a {
-    color: #D4AF37;
-    font-size: 24px;
-    margin: 0 10px;
-  }
-  
-  .footer-social-icons a:hover {
-    color: #CCAF54;
-  }
-  
-  .icon {
-    margin-right: 25px;
-    cursor: pointer;
-    width: 2.5rem;
-    height: 2.5rem;
-    object-fit: contain;
-  }
-  
-  .icon:hover {
-    opacity: 0.8;
-  }
-  
-  .btn-custom {
-    background-color: #CCAF54;
-    color: #000;
-    border: 1px solid #CCAF54;
-  }
-  .btn-custom:hover {
-    background-color: #000000;
-    color: #CCAF54;
-    border: 1px solid #CCAF54;
-  }
-  
-  .card {
-    background-color: #111;
-    border: 1px solid #333;
-    color: #fff;
-  }
-  
-  .custom-card {
-    background-color: #111;
-    border: 5px solid #333;
-    color: #fff;
-    padding: 50px;
-    border-radius: 5px;
-    margin-top: 155px;
-    position: fixed;
-  }
-  
-  #service-title {
-    color: #CCAF54;
-    font-size: 1.5rem;
-    margin-bottom: 150px;
-  }
 
-  .social-icon {
-    width: 44px;
-    height: auto;
-    margin: 0 5px;
-  }
-  
-  .nav-link {
-    padding: 10;
-    color: #D4AF37;
-  }
-  
-  .nav-link:hover {
-    padding: 10;
-    color: #7e6208;
-  }
-  
-  .login-container1 {
-    background-color: #111;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    width: 600px;
-    margin: auto;
-    margin-top: 50px;
-  }
-  
-  .section {
-    margin-bottom: 40px;
-  }
-  
-  .section-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 100px;
-    color: #CCAF54;
-    text-align: center;
-    margin-top: 100px;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.552);
-  }
-  
-  .btn-custom {
-    width: 100%;
-    max-width: 100%;
-    padding: 10px;
-    background-color: #CCAF54;
-    color: #000;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .navbar {
-    background-color: #222;
-  }
-  
-  .navbar-nav .nav-link {
-    color: #CCAF54;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: #D4AF37;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #CCAF54;
-    text-align: center;
-  }
-  
-  .card-title {
-    color: #CCAF54;
-  }
-  
-  .btn-custom {
-    width: 100%;
-    max-width: 100%;
-    padding: 10px;
-    background-color: #CCAF54;
-    color: #000;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .custom-card {
-    background-color: #111;
-    border: 5px solid #333;
-    color: #fff;
-    padding: 50px;
-    border-radius: 5px;
-    margin-top: 155px;
-    position: fixed;
-  }
-  
-  #service-title {
-    color: #CCAF54;
-    font-size: 1.5rem;
-    margin-bottom: 150px;
-  }
-  
-  .back-button1 {
-    padding: 7px 15px;
-    background-color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #000;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 15px;
-    margin-left: 33%;
-    font-family: Amasis_MT_Std_Black;
-  }
-  
-  .back-button2 {
-    padding: 7px 15px;
-    background-color: #CCAF54;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #000;
-    font-weight: bold;
-    font-size: 14px;
-    margin-top: 80px;
-    margin-left: 80px;
-  }
-  
-  input::placeholder {
-    color: rgba(255, 255, 255, 0.527);
-  }
-  
-  #username {
-    color: rgb(255, 255, 255);
-  }
-  
-  .dropdown {
-    position: relative; 
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    margin-top: 5px;
-    background-color: #141313;
-    border: 0.5px solid rgba(255, 255, 255, 0.315);
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    min-width: 200px;
-  }
+.back-button {
+  padding: 7px 15px;
+  background-color: #000000;
+  border: 1px solid #D4AF37;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #CCAF54;
+  margin-top: 15px;
+  margin: 0 auto;
+  text-align: center;
+  display: block;
+  width: 130px;
 
-  .dropdown-toggle-perfil {
-      background-color: transparent;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      transition: background-color 0.3s ease;
-  }
+}
 
-  .dropdown-toggle-perfil:hover {
-      background-color: #333;
-  }
-  
-  .dropdown-toggle-users{
-    background-color: transparent;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      transition: background-color 0.3s ease;
-  }
-  
-  .dropdown-toggle-users:hover{
-    color: #CCAF54;
-  }
-  
-  .dropdown-item {
-    color: #D4AF37;
-    padding: 10px;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  .error-text {
+.back-button:hover {
+  background-color: #CCAF54;
+  color: #000000;
+  border: 1px solid #D4AF37;
+}
+
+.back-button:active {
+  background-color: #91720f !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  transition: all 0.2s ease;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #00000000;
+  padding: 10px 0;
+}
+
+footer h5 {
+  color: #D4AF37;
+  margin-bottom: 10px;
+}
+
+footer p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+footer .nav-link {
+  color: #D4AF37;
+}
+
+footer .nav-link:hover {
+  color: #CCAF54;
+}
+
+.footer-social-icons {
+  margin-top: 10px;
+}
+
+.footer-social-icons a {
+  color: #D4AF37;
+  font-size: 24px;
+  margin: 0 10px;
+}
+
+.footer-social-icons a:hover {
+  color: #CCAF54;
+}
+
+.icon {
+  margin-right: 25px;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+}
+
+.icon:hover {
+  opacity: 0.8;
+}
+
+.btn-custom {
+  background-color: #CCAF54;
+  color: #000;
+  border: 1px solid #CCAF54;
+}
+
+.btn-custom:hover {
+  background-color: #000000;
+  color: #CCAF54;
+  border: 1px solid #CCAF54;
+}
+
+.card {
+  background-color: #111;
+  border: 1px solid #333;
+  color: #fff;
+}
+
+.custom-card {
+  background-color: #111;
+  border: 5px solid #333;
+  color: #fff;
+  padding: 50px;
+  border-radius: 5px;
+  margin-top: 155px;
+  position: fixed;
+}
+
+#service-title {
+  color: #CCAF54;
+  font-size: 1.5rem;
+  margin-bottom: 150px;
+}
+
+.social-icon {
+  width: 44px;
+  height: auto;
+  margin: 0 5px;
+}
+
+.nav-link {
+  padding: 10;
+  color: #D4AF37;
+}
+
+.nav-link:hover {
+  padding: 10;
+  color: #7e6208;
+}
+
+.login-container1 {
+  background-color: #111;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  width: 600px;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 100px;
+  color: #CCAF54;
+  text-align: center;
+  margin-top: 100px;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.552);
+}
+
+.btn-custom {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  background-color: #CCAF54;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.navbar {
+  background-color: #222;
+}
+
+.navbar-nav .nav-link {
+  color: #CCAF54;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #D4AF37;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #CCAF54;
+  text-align: center;
+}
+
+.card-title {
+  color: #CCAF54;
+}
+
+.btn-custom {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  background-color: #CCAF54;
+  color: #000;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.custom-card {
+  background-color: #111;
+  border: 5px solid #333;
+  color: #fff;
+  padding: 50px;
+  border-radius: 5px;
+  margin-top: 155px;
+  position: fixed;
+}
+
+#service-title {
+  color: #CCAF54;
+  font-size: 1.5rem;
+  margin-bottom: 150px;
+}
+
+.back-button1 {
+  padding: 7px 15px;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 15px;
+  margin-left: 33%;
+  font-family: Amasis_MT_Std_Black;
+}
+
+.back-button2 {
+  padding: 7px 15px;
+  background-color: #CCAF54;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 80px;
+  margin-left: 80px;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.527);
+}
+
+#username {
+  color: rgb(255, 255, 255);
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 5px;
+  background-color: #141313;
+  border: 0.5px solid rgba(255, 255, 255, 0.315);
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.dropdown-toggle-perfil {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle-perfil:hover {
+  background-color: #333;
+}
+
+.dropdown-toggle-users {
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-toggle-users:hover {
+  color: #CCAF54;
+}
+
+.dropdown-item {
+  color: #D4AF37;
+  padding: 10px;
+}
+
+.dropdown-item:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.error-text {
   color: red;
   margin-top: 10px;
   font-weight: bold;
 
   .header-normal {
-  padding: 10px 0;
-}
+    padding: 10px 0;
+  }
 
-.header-home {
-  padding: 40px 0;
-  background-color: #000;
-}
+  .header-home {
+    padding: 40px 0;
+    background-color: #000;
+  }
 
-.hero-section {
-  margin-top: 20px;
-}
+  .hero-section {
+    margin-top: 20px;
+  }
 }
