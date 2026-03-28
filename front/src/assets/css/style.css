@@ -71,28 +71,6 @@ body {
   margin-left: 10px;
 }
 
-/* .botonav-citas:hover {
-    background-color: #0051ff;
-    color: black;
-    margin-left: 10px;
-  }
-
-  .botonav-citas {
-    background-color: #3d71e2;
-    color: black;
-    margin-left: 10px;
-  } */
-
-/* .login-container {
-    background-color: #111;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    width: 400px;
-    margin: auto;
-    margin-top: 50px;
-  } */
-
 .header {
   display: flex;
   flex-direction: column;
