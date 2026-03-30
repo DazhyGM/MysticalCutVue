@@ -1,9 +1,7 @@
-// Cargar variables de entorno desde el archivo .env
 require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
 
-// Usar la variable de entorno para la clave secreta
 const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports = (req, res, next) => {
