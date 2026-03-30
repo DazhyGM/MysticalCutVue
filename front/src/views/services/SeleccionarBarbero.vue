@@ -1,18 +1,24 @@
 <template>
-  <div class="container-select-barber">
 
+  <div class="container-select-barber">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+      <div class="col-md-3 mb-2 mb-md-0">
+        <img src="/img/background/LOGO.png" alt="Logo" width="125" height="125" class="d-inline-block align-text-top" />
+      </div>
+      <ul class="nav col-12 justify-content-center mx-auto">
+        <h1>Selecciona el barbero</h1>
+      </ul>
+    </header>
     <div class="row">
       <div class="col-md-8 col-12 order-2 order-md-1">
         <h2>Barbero</h2>
         <div class="row">
           <div class="col-6 col-sm-4 col-md-4 mb-3" v-for="barber in barbers" :key="barber.id">
-            <div class="barber-card" :class="{ selected: selectedBarber && selectedBarber.id === barber.id }" @click="selectBarber(barber)">
-              <img
-                :src="getImageUrl(barber.image)"
-                :alt="barber.full_name"
-                class="barber-img"
-                @error="onImageError($event)"
-              />
+            <div class="barber-card" :class="{ selected: selectedBarber && selectedBarber.id === barber.id }"
+              @click="selectBarber(barber)">
+              <img :src="getImageUrl(barber.image)" :alt="barber.full_name" class="barber-img"
+                @error="onImageError($event)" />
               <h4>{{ barber.full_name }}</h4>
               <button class="select-barber" title="Seleccionar barbero">+</button>
             </div>
@@ -33,10 +39,7 @@
 
           <div v-if="selectedServices.length">
             <p><strong>Servicios Seleccionados:</strong></p>
-            <div
-              class="mb-2"
-              v-for="service in selectedServices"
-              :key="service.id_services">
+            <div class="mb-2" v-for="service in selectedServices" :key="service.id_services">
               <p><strong></strong> {{ service.name_service }}</p>
               <p><strong>Precio:</strong> ${{ service.price }}</p>
               <p><span>Duración: {{ service.estimated_time }}</span></p>
@@ -47,7 +50,8 @@
 
           <div class="mt-3 d-grid gap-2">
             <button class="btn btn-delete-select-barber" @click="clearSelection">Eliminar selección</button>
-            <button class="btn btn-continuar-barber" @click="goToCalendar" :disabled="!selectedBarber">Continuar</button>
+            <button class="btn btn-continuar-barber" @click="goToCalendar"
+              :disabled="!selectedBarber">Continuar</button>
             <button class="btn back-button-barber mt-2" @click="goBack">Regresar</button>
           </div>
         </div>
@@ -57,34 +61,34 @@
 </template>
 
 <script>
-import { getBarbers } from '@/services/api'; 
+import { getBarbers } from '@/services/api';
 
 export default {
-  name: 'SeleccionarBarbero', 
+  name: 'SeleccionarBarbero',
 
   data() {
     return {
-      barbers: [],         
-      selectedBarber: null,   
-      selectedServices: [],   
-      userName: '',         
-      userEmail: '',        
-      userId: ''            
+      barbers: [],
+      selectedBarber: null,
+      selectedServices: [],
+      userName: '',
+      userEmail: '',
+      userId: ''
     };
   },
 
   mounted() {
-    this.fetchBarbers();     
-    this.loadLocalData();    
+    this.fetchBarbers();
+    this.loadLocalData();
   },
 
   methods: {
     async fetchBarbers() {
       try {
-        this.barbers = await getBarbers(); 
+        this.barbers = await getBarbers();
       } catch (error) {
-        console.error('❌ Error al obtener barberos:', error); 
-        alert('No se pudieron cargar los barberos.');         
+        console.error('❌ Error al obtener barberos:', error);
+        alert('No se pudieron cargar los barberos.');
       }
     },
 
@@ -102,7 +106,7 @@ export default {
       this.selectedBarber = barber;
     },
 
-    
+
     loadLocalData() {
       const storedService = localStorage.getItem('selectedService');
       const storedName = localStorage.getItem('userName');
@@ -116,7 +120,7 @@ export default {
     },
 
     clearSelection() {
-      this.selectedBarber = null; 
+      this.selectedBarber = null;
     },
 
     goToCalendar() {
@@ -144,18 +148,18 @@ export default {
     },
 
     goBack() {
-      this.$router.go(-1); 
+      this.$router.go(-1);
     },
 
     formatDuration(minutes) {
-      const validMinutes = parseInt(minutes, 10); 
+      const validMinutes = parseInt(minutes, 10);
 
       if (isNaN(validMinutes) || validMinutes <= 0) {
-        return 'Duración no disponible'; 
+        return 'Duración no disponible';
       }
 
-      const hrs = Math.floor(validMinutes / 60); 
-      const mins = validMinutes % 60;            
+      const hrs = Math.floor(validMinutes / 60);
+      const mins = validMinutes % 60;
 
       if (hrs && mins) return `${hrs} hora${hrs > 1 ? 's' : ''} ${mins} minuto${mins > 1 ? 's' : ''}`;
       if (hrs) return `${hrs} hora${hrs > 1 ? 's' : ''}`;

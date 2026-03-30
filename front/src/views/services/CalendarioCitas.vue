@@ -60,7 +60,7 @@
             <p>Duración: {{ service.duration }}</p>
             <button v-if="selectedDate && selectedTime" class="confirm-button" :disabled="!userId || !barberId"
               @click="confirmQuote">
-              Confirmar Cita
+              Siguiente
             </button>
             <button class="back-button-calendar" @click="regresar">Regresar</button>
           </div>
