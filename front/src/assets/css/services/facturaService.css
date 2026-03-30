@@ -99,7 +99,7 @@
   color: #D4AF37;
 }
 
-.volver-btn {
+.confirmar-btn {
   margin-top: 20px;
   background-color: #CCAF54;
   color: #000;
@@ -111,9 +111,27 @@
   width: 100%;
   font-size: 18px;
 }
-.volver-btn:hover {
+.confirmar-btn:hover {
   background-color: #000000;
   color: #CCAF54;
+  border: 1px solid #CCAF54;
+}
+
+.volver-btn {
+  margin-top: 20px;
+  background-color: #000000;
+  color: #CCAF54;
+  border: 1px solid #CCAF54;
+  padding: 16px 26px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+  width: 100%;
+  font-size: 18px;
+}
+.volver-btn:hover {
+  background-color: #CCAF54;
+  color: #000;
   border: 1px solid #CCAF54;
 }
 

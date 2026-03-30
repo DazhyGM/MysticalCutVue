@@ -165,13 +165,13 @@ class Quote {
     return result.affectedRows > 0;
   }
 
-  // 🔹 Enviar correo de confirmación
-  static async sendConfirmationEmail(email, servicio, fecha, hora, total, barbero) {
+static async sendConfirmationEmail(email, servicio, fecha, hora, total, barbero) {
+  try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         user: 'mysticalcut@gmail.com',
-        pass: 'wwgn lfus tlik utax',
+        pass: 'ubxijicfjfuejqqp',
       },
     });
 
@@ -192,8 +192,17 @@ class Quote {
       `,
     };
 
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('📧 Correo enviado:', info.response);
+
+    return true;
+
+  } catch (error) {
+    console.error('❌ Error en sendConfirmationEmail:', error);
+    throw error;
   }
+}
 
 // 🔹 Nuevo método: Obtener citas con detalles filtradas por rango de fechas
   static async getQuotesForReports(startDate, endDate) {

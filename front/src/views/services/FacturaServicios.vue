@@ -10,7 +10,7 @@
           <div class="fila-dato">
             <span class="etiqueta">Servicio Seleccionado:</span>
             <span class="valor">{{ servicioSeleccionado.name || servicioSeleccionado.name_service || 'No disponible'
-              }}</span>
+            }}</span>
           </div>
 
           <div class="fila-dato">
@@ -38,7 +38,13 @@
             <span class="valor"><strong>${{ totalServicios }}</strong></span>
           </div>
 
-          <button class="volver-btn" @click="verCitas">Ver Citas</button>
+          <button class="confirmar-btn" @click="confirmarCita">
+            Confirmar Cita
+          </button>
+
+          <button class="volver-btn" @click="volver">
+            Volver / Editar Cita
+          </button>
         </div>
       </div>
     </div>
@@ -135,22 +141,33 @@ export default {
           total: this.totalServicios
         });
 
-        if (response.message === 'Correo enviado exitosamente') {
-          console.log('✅ Correo enviado correctamente');
-          alert('Correo de confirmación enviado.');
-        } else {
-          alert('Error al enviar el correo.');
+        console.log('📩 Respuesta del backend:', response);
+
+        if (response && (response.message || response.msg)) {
+          return true;
         }
+
+        return false;
+
       } catch (error) {
         console.error('❌ Error al enviar correo:', error);
-        alert('Ocurrió un error al enviar el correo. Intenta nuevamente.');
+        return false;
       }
     },
-    verCitas() {
-      this.enviarCorreo().then(() => {
-        localStorage.removeItem('facturaData');
-        this.$router.push('/citas');
-      });
+    async confirmarCita() {
+      const enviado = await this.enviarCorreo();
+
+      if (enviado) {
+        alert('Cita confirmada correctamente ✅');
+      } else {
+        alert('Cita confirmada, pero hubo un problema con el correo ⚠️');
+      }
+
+      localStorage.removeItem('facturaData');
+      this.$router.push('/citas');
+    },
+    volver() {
+      this.$router.back();
     }
   },
 
