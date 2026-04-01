@@ -102,15 +102,13 @@ exports.getUserById = (id) => {
 // 🔹 Actualizar usuario
 exports.updateUser = async (id, userData) => {
     const currentUser = await module.exports.getUserById(id); // Asegúrate de usar `module.exports`
-
-    // Actualizamos solo si los valores están definidos y no vacíos
+    
     const full_name = userData.full_name?.trim() || currentUser.full_name;
     const user_email = userData.user_email?.trim() || currentUser.user_email;
     const role_fk = userData.role_fk ?? currentUser.role_fk;
     const address = userData.address?.trim() || currentUser.address;
     const phone = userData.phone?.trim() || currentUser.phone;
 
-    // Lógica para la contraseña
     const newPassword = userData.user_password
         ? await bcrypt.hash(userData.user_password, 10)
         : currentUser.user_password;
