@@ -24,7 +24,7 @@ API.interceptors.response.use(
     if (error.response && error.response.status === 401) {
       console.warn("⚠️ Token inválido o expirado");
       localStorage.removeItem('token');
-      window.location.href = '/login'; // o la ruta de login que tengas
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
@@ -137,7 +137,7 @@ export const updateUserStatus = async (id, status) => {
 
 // 🔹 Eliminar usuario (cambiar estado a inactivo)
 export const deleteUser = async (id) => {
-    const token = localStorage.getItem('token');  // Obtener el token de localStorage
+    const token = localStorage.getItem('token'); 
   
     if (!token) {
       console.error("No se encontró el token, el usuario no está autenticado.");
@@ -147,7 +147,7 @@ export const deleteUser = async (id) => {
     try {
       await API.delete(`${API_URL}/users/${id}`, {
         headers: {
-          Authorization: `Bearer ${token}`,  // Incluir el token en los encabezados
+          Authorization: `Bearer ${token}`,  
         }
       });
     } catch (error) {
@@ -158,12 +158,12 @@ export const deleteUser = async (id) => {
 
   //Mostrar usuarios inactivos
   export const getInactiveUsers = async () => {
-    const token = localStorage.getItem('token'); // Obtén el token almacenado
+    const token = localStorage.getItem('token');
     try {
         const response = await fetch(`${API_URL}/inactives`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`, // Enviar el token
+                'Authorization': `Bearer ${token}`, 
                 'Content-Type': 'application/json'
             }
         });
@@ -236,8 +236,8 @@ export const filterUsersByRole = async (role) => {
         Authorization: `Bearer ${token}`
       }
     });
-    console.log("Respuesta de la API:", response.data); // Verificar qué contiene la respuesta
-    return response.data;  // Asegúrate de que esto sea un arreglo
+    console.log("Respuesta de la API:", response.data); 
+    return response.data; 
   } catch (error) {
     console.error("Error al obtener usuarios por rol:", error);
     throw error;
