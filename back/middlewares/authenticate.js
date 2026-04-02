@@ -15,17 +15,16 @@ const authenticate = (req, res, next) => {
 
     req.user = decoded;
 
-    const now = Math.floor(Date.now() / 1000); // en segundos
+    const now = Math.floor(Date.now() / 1000);
     const timeLeft = decoded.exp - now;
 
-    // Si quedan menos de 15 min, renovar token
     if (timeLeft < 15 * 60) {
       const newToken = jwt.sign(
         { id: decoded.id, role: decoded.role },
         JWT_SECRET,
         { expiresIn: '1h' }
       );
-      res.setHeader('x-new-token', newToken); // Enviamos token renovado en header
+      res.setHeader('x-new-token', newToken);
     }
 
     next();
