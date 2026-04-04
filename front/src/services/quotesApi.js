@@ -17,7 +17,6 @@ export const createQuote = async (quoteData) => {
     const response = await axios.post(QUOTES_API_URL, quoteData, getAuthHeaders());
     return response.data;
   } catch (error) {
-    // Esto te dará más detalles si algo falla
     console.error('Error en createQuote:', error.response?.data || error.message);
     throw error;
   }
