@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Productos Inactivos</h1>
+        <h1 class="titulo-header">Productos Inactivos</h1>
       </ul>
     </div>
     <div class="content">

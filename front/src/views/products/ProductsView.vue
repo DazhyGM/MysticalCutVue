@@ -2,7 +2,7 @@
   <div class="container-scaled-wrapper">
     <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Productos</h1>
+        <h1 class="titulo-header">Productos</h1>
       </ul>
     </div>
     <div class="container">

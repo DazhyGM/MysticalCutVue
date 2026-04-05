@@ -2,7 +2,7 @@
   <div>
     <div class="row mb-2">
       <ul class="nav col-12 justify-content-center mx-auto">
-        <h1>Editar producto</h1>
+        <h1 class="titulo-header">Editar producto</h1>
       </ul>
     </div>
 
